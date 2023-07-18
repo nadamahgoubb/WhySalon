@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:fillViewport="true" android:layout_height="match_parent"
+        android:background="@drawable/bg_btn_white" >
+
+        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+            android:id="@+id/swiperefresh_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:fillViewport="true"        android:layout_height="match_parent"
+                >
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+
+                        <TextView
+                            android:id="@+id/tv_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/_6sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:paddingStart="@dimen/_12sdp"
+                            android:text="Choose the barber"
+                            android:textColor="@color/grey_1000"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rec_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:orientation="vertical"
+                            android:visibility="gone"                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_1"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_choose_barber" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <include
+                                android:id="@+id/item11"
+                                layout="@layout/item_choose_barber" />
+                            <include
+                                android:id="@+id/item12"
+                                layout="@layout/item_choose_barber" />
+
+                        </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:elevation="@dimen/_70sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingVertical="@dimen/_20sdp"
+                        android:gravity="bottom"
+android:id="@+id/lyt_nxt"
+                        android:background="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginVertical="@dimen/_10sdp"
+                            android:background="@drawable/bg_btn_gray"
+                            android:backgroundTint="@color/grey_800"
+                            android:paddingHorizontal="@dimen/_10sdp"
+
+                            >
+
+                            <TextView
+                                android:id="@+id/btn_next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_10sdp"
+                                android:text="@string/next"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0,00 SAR"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                 <!--
+                                             <androidx.recyclerview.widget.RecyclerView
+                                                 android:id="@+id/rec_offers"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                  android:clipToPadding="false"
+                                              android:orientation="vertical"
+                                           android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                                 app:layout_constraintEnd_toEndOf="parent"
+                                                 app:layout_constraintStart_toStartOf="parent"
+                                                 app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                                 tools:listitem="@layout/item_service_details" />-->
+
+
+            </ScrollView>
+        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

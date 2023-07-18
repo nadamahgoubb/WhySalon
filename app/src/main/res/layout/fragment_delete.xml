@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_btn_white"
+        android:fillViewport="true">
+
+        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+            android:id="@+id/swiperefresh_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:text="@string/delete_your_account"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Lorem Ipsum is simply dummy text of the printing
+and typesetting industry. Lorem Ipsum has been
+the industry's standard dummy text ever since the
+1500s when an unknown printer took."
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_1" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/selector_cb_square"
+                        android:button="@null"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintBottom_toTopOf="@id/btn_keep_account"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/i_understand_that_this_will_remove_my_account"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/checkbox"
+                        app:layout_constraintStart_toEndOf="@+id/checkbox"
+                        app:layout_constraintTop_toTopOf="@id/checkbox" />
+
+                    <TextView
+                        android:id="@+id/btn_keep_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:padding="@dimen/_7sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/keep_account"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintBottom_toTopOf="@id/card_btn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:background="@color/white"
+                        android:elevation="@dimen/_55sdp"
+                        android:gravity="bottom"
+                        android:paddingVertical="@dimen/_20sdp"
+
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_delete"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_55sdp"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginVertical="@dimen/_20sdp"
+                            android:backgroundTint="@color/red_100"
+                            android:text="@string/delete_account"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/_12sdp"
+                            app:icon="@drawable/ic_trash"
+                            app:iconGravity="textStart"
+                            app:iconPadding="@dimen/_7sdp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--
+                                             <androidx.recyclerview.widget.RecyclerView
+                                                 android:id="@+id/rec_offers"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                  android:clipToPadding="false"
+                                              android:orientation="vertical"
+                                           android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                                 app:layout_constraintEnd_toEndOf="parent"
+                                                 app:layout_constraintStart_toStartOf="parent"
+                                                 app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                                 tools:listitem="@layout/item_service_details" />-->
+
+
+            </ScrollView>
+        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

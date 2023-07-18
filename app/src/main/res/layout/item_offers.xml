@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_5sdp"
+
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_wish_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/offers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintBottom_toBottomOf="@id/card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/card"
+                app:layout_constraintTop_toTopOf="@id/card">
+
+                <ImageView
+                    android:id="@+id/iv_barber"
+
+
+                    android:visibility="gone"                  android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:src="@drawable/user_black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_barber_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="The Barber Name here"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_8sdp"
+         android:visibility="gone"           android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_barber"
+                    app:layout_constraintStart_toEndOf="@id/iv_barber"
+                    app:layout_constraintTop_toTopOf="@id/iv_barber" />
+
+                <ImageView
+                    android:id="@+id/iv_service_type"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:src="@drawable/paper"
+android:layout_marginStart="@dimen/_5sdp"
+
+                    app:layout_constraintStart_toStartOf="@id/iv_barber"
+                    app:layout_constraintTop_toBottomOf="@id/iv_barber" />
+
+                <TextView
+                    android:id="@+id/tv_services_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Service type:Long hair cut"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_service_type"
+                    app:layout_constraintStart_toEndOf="@id/iv_service_type"
+                    app:layout_constraintTop_toTopOf="@id/iv_service_type" />
+
+                <ImageView
+                    android:id="@+id/iv_money"
+
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:src="@drawable/reminder"
+                    app:layout_constraintStart_toStartOf="@id/iv_barber"
+                    app:layout_constraintTop_toBottomOf="@id/iv_service_type"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_money_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Price:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_money"
+                    app:layout_constraintStart_toEndOf="@+id/iv_money"
+                    app:layout_constraintTop_toTopOf="@id/iv_money" />
+
+                <TextView
+                    android:id="@+id/tv_money_before"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 150 SAR"
+                    android:textColor="@color/red_500"
+                    android:textSize="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_money_title"
+                    app:layout_constraintStart_toEndOf="@+id/tv_money_title"
+                    app:layout_constraintTop_toTopOf="@id/tv_money_title" />
+
+                <TextView
+                    android:id="@+id/tv_money_after"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ( 75SAR)"
+                    android:textColor="@color/green_500"
+                    android:textSize="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_money_title"
+                    app:layout_constraintStart_toEndOf="@+id/tv_money_before"
+                    app:layout_constraintTop_toTopOf="@id/tv_money_title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

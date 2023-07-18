@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+         app:layout_constraintTop_toTopOf="parent"
+
+            android:background="@drawable/bg_btn_white_black_border"
+            android:text="First Case"
+            android:button="@null"
+
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="@dimen/_12sdp">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_24sdp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_300sdp"
+                    android:background="@drawable/bg_login_first"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/you_must_log_in"
+                    android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_4sdp"        android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_login" />
+
+                <TextView
+                    android:id="@+id/tv_2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/you_must_log_in_to_be_able_to_complete_your_reservation"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey_dark_"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_2">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_login"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_btn_black_white_border"            android:layout_weight="1"
+                        android:text="@string/login"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_12sdp"
+                        app:cornerRadius="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_2"
+                        app:layout_constraintWidth_percent=".5" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_ignore"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_weight="1"
+                 android:background="@drawable/bg_btn_gray_dark"       android:text="Ignore"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_12sdp"
+                        app:cornerRadius="@dimen/_8sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_2"
+                        app:layout_constraintWidth_percent=".5" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--
+                                         <androidx.recyclerview.widget.RecyclerView
+                                             android:id="@+id/rec_offers"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                              android:clipToPadding="false"
+                                          android:orientation="vertical"
+                                       android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                             app:layout_constraintEnd_toEndOf="parent"
+                                             app:layout_constraintStart_toStartOf="parent"
+                                             app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                             tools:listitem="@layout/item_offers" />-->
+
+
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

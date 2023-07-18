@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".ui.activity.main.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp">
+
+            <ImageView
+                android:id="@+id/iv_header"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/header"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                  android:backgroundTint="@color/transparent"
+                 app:cardCornerRadius="@dimen/_25sdp"
+ android:layout_marginTop="@dimen/_20sdp"                app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginEnd="@dimen/_15sdp"
+                 app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_notifaction"
+
+                    app:tint="@color/white" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                   android:gravity="center"
+                android:text="@string/offers"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintBottom_toBottomOf="@id/card"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/card" />
+            <View
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_height="0.5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                 android:background="@color/grey_100" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingVertical="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_4sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_26sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:listitem="@layout/item_filter" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             android:layout_below="@+id/header"
+            android:background="@drawable/bg_btn_white_rounded_top">
+
+            <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+                android:id="@+id/swiperefresh_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+<!--
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                     android:clipToPadding="false"
+                 android:orientation="vertical"
+              android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                    tools:listitem="@layout/item_offers" />-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <include
+                        android:id="@+id/item11"
+                        layout="@layout/item_offers" />
+                    <include
+                        android:id="@+id/item12"
+                        layout="@layout/item_offers" />
+                    <include
+                        layout="@layout/item_offers" />
+                    <include
+                        layout="@layout/item_offers" />
+                    <include
+                        layout="@layout/item_offers" />
+
+                </LinearLayout>
+
+
+            </ScrollView>
+            </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.whysalon.ui.fragment.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.whysalon.ui.fragment.setting.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.example.whysalon.ui.fragment.offers.OffersFragment"
+        android:label="OffersFragment" />
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.example.whysalon.ui.fragment.services.ServicesFragment"
+        android:label="ServicesFragment" />
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.whysalon.ui.fragment.booking.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking" />
+    <fragment
+        android:id="@+id/serviceDetailsFragment"
+        android:name="com.example.whysalon.ui.fragment.services.ServiceDetailsFragment"
+        android:label="ServiceDetailsFragment" />
+    <fragment
+        android:id="@+id/notifactionFragment"
+        android:name="com.example.whysalon.ui.fragment.NotifactionFragment"
+        android:label="NotifactionFragment" />
+    <fragment
+        android:id="@+id/serviceMoreDetailsFragment"
+        android:name="com.example.whysalon.ui.fragment.services.ServiceMoreDetailsFragment"
+        android:label="ServiceMoreDetailsFragment" />
+    <fragment
+        android:id="@+id/calenderFragment"
+        android:name="com.example.whysalon.ui.fragment.services.CalenderFragment"
+        android:label="CalenderFragment" />
+    <dialog
+        android:id="@+id/orderSucessDialog"
+        android:name="com.example.whysalon.ui.dialog.OrderSucessDialog"
+        android:label="TimingPickerDialog" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.whysalon.ui.fragment.history.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.whysalon.ui.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/deleteFragment"
+        android:name="com.example.whysalon.ui.fragment.setting.DeleteFragment"
+        android:label="fragment_delete"
+        tools:layout="@layout/fragment_delete" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.example.whysalon.ui.fragment.setting.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.whysalon.ui.fragment.setting.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <dialog
+        android:id="@+id/logoutDialog"
+        android:name="com.example.whysalon.ui.dialog.LogoutDialog"
+        android:label="LogoutDialog" />
+    <dialog
+        android:id="@+id/rateBottomSheet"
+        android:name="com.example.whysalon.ui.dialog.RateBottomSheet"
+        android:label="RateBottomSheet" />
+    <dialog
+        android:id="@+id/loginFirstDialog"
+        android:name="com.example.whysalon.ui.dialog.LoginFirstDialog"
+        android:label="LoginFirstDialog" />
+    <fragment
+        android:id="@+id/chooseBarberFragment"
+        android:name="com.example.whysalon.ui.fragment.services.ChooseBarberFragment"
+        android:label="ChooseBarberFragment" />
+</navigation>
