@@ -44,7 +44,7 @@ if(list.size>1) {
 
         var currentItem = list[position]
         holder.binding.tvMoney.setText(currentItem.cost)
-        holder.binding.tvBarberName.setText(currentItem.name)
+     //   holder.binding.tvBarberName.setText(currentItem.name)
         holder.binding.tvServicesType.setText(currentItem.service)
       //  holder.binding.ivService.loadImage(currentItem.img)
         holder.binding.lytBook.setOnClickListener {

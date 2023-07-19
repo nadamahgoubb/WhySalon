@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
         android:background="@drawable/bg_btn_white"
-    android:layout_marginVertical="@dimen/_5sdp"
         android:paddingVertical="@dimen/_10sdp">
 
         <com.google.android.material.card.MaterialCardView
@@ -56,12 +56,11 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:text="@string/hair_service"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-             android:textColor="@color/black"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
-                android:textSize="@dimen/_12sdp"/>
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
@@ -70,47 +69,49 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_5sdp"
- android:text="Our highly recomended team can takecar of any kind of hair"
-android:textColor="@color/grey_400"
+                android:text="Our highly recomended team can takecar of any kind of hair"
+                android:textColor="@color/grey_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_service"
                 app:layout_constraintTop_toBottomOf="@id/tv_service" />
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="@dimen/_5sdp"
-    app:layout_constraintStart_toStartOf="@id/tv_service"
-    app:layout_constraintTop_toBottomOf="@id/tv_desc"
-  android:gravity="center"  >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@id/tv_service"
+                app:layout_constraintTop_toBottomOf="@id/tv_desc">
 
-    <TextView
-        android:id="@+id/tv_explore"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_20sdp"
-        android:text="@string/explore"
-        android:textColor="@color/black"
-    android:gravity="center"    android:textSize="@dimen/_11sdp"
-        android:drawableTint="@color/black"
-    app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-       />
-    <ImageView
-        android:id="@+id/iv_arrow"
+                <TextView
+                    android:id="@+id/tv_explore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:drawableTint="@color/black"
+                    android:gravity="center"
+                    android:text="@string/explore"
+                android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        app:layout_constraintStart_toEndOf="@id/tv_explore"
-        app:layout_constraintTop_toTopOf="@id/tv_explore"
-        android:gravity="center"      app:layout_constraintBottom_toBottomOf="@id/tv_explore"
-            android:layout_width="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_height="@dimen/_20sdp"
-         android:src="@drawable/ic_arrow_right" />
+                <ImageView
+                    android:id="@+id/iv_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_2sdp"  android:gravity="center"
+                    android:rotation="180"
+                    android:src="@drawable/ic_arrow_"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_explore"
+                    app:layout_constraintStart_toEndOf="@id/tv_explore"
+                    app:layout_constraintTop_toTopOf="@id/tv_explore"
+                    app:tint="@color/black" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,7 +57,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
     }
 
     override fun onHistoryClickListener() {
-         findNavController().navigate(R.id.calenderFragment)
+         findNavController().navigate(R.id.basketFragment)
     }
 
 }

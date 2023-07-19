@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_btn_white"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_9sdp">
+
+
+        <TextView
+            android:id="@+id/tv_service"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Hair cut"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_desc"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_4sdp"    android:layout_marginStart="@dimen/_13sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text"
+            android:textColor="@color/grey_600"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_service" />
+
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_time"
+
+            app:layout_constraintBottom_toBottomOf="@id/tv_service"
+            app:layout_constraintEnd_toStartOf="@+id/tv_time"
+            app:layout_constraintTop_toTopOf="@id/tv_service"
+            app:tint="@color/grey_1000" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_6sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="25 - 30 min"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_clock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_clock" />
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="@dimen/_35sdp"
+    android:layout_height="@dimen/_35sdp"
+    app:cardCornerRadius="@dimen/_25sdp"
+    android:id="@+id/lyt_delete"
+  android:padding="@dimen/_5sdp"  android:backgroundTint="@color/red"
+    app:layout_constraintTop_toBottomOf="@id/tv_desc"
+    app:layout_constraintStart_toStartOf="@id/tv_desc"
+    android:layout_marginVertical="@dimen/_5sdp"
+    >
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+android:src="@drawable/ic_trash"
+        android:padding="@dimen/_2sdp"
+        android:layout_gravity="center"
+        />
+
+</com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_6sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="100 SAR"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/lyt_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lyt_delete" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

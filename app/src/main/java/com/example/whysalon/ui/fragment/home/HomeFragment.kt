@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HistoryClickListener {
         initAdapter()
         binding.tvServicesViewAll.setPaintFlags(binding.tvServicesViewAll.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         binding.tvOffersViewAll.setPaintFlags(binding.tvOffersViewAll.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+        binding.tvRecommendedViewAll.setPaintFlags(binding.tvRecommendedViewAll.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         binding.item12.tvMoneyBefore.setPaintFlags(binding.item12.tvMoneyBefore.getPaintFlags() or Paint.LINEAR_TEXT_FLAG )
         lifecycleScope.launch{
             delay(1000)
@@ -36,17 +37,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HistoryClickListener {
 
     private fun onClick() {
         binding.tvServicesViewAll.setOnClickListener {
-            findNavController().navigate(R.id.rateBottomSheet)
+            findNavController().navigate(R.id.servicesFragment)
+        }
+        binding.tvRecommendedViewAll.setOnClickListener {
+            findNavController().navigate(R.id.packagesFragment)
         }
         binding.tvOffersViewAll.setOnClickListener {
             findNavController().navigate(R.id.offersFragment)
         }
         binding.item12.root.setOnClickListener {
-            findNavController().navigate(R.id.calenderFragment)
-        }
+            findNavController().navigate(R.id.itemDetailsFragment)
+         }
         binding.item11.root.setOnClickListener {
-            findNavController().navigate(R.id.calenderFragment)
-        }
+            findNavController().navigate(R.id.itemDetailsFragment)
+         }
         binding.item1.root.setOnClickListener {
             findNavController().navigate(R.id.serviceDetailsFragment)
         }
@@ -77,7 +81,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HistoryClickListener {
     }
 
     override fun onHistoryClickListener() {
-        findNavController().navigate(R.id.calenderFragment)
+        findNavController().navigate(R.id.itemDetailsFragment)
     }
 
 }

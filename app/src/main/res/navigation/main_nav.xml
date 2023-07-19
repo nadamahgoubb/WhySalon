@@ -86,4 +86,20 @@
         android:id="@+id/chooseBarberFragment"
         android:name="com.example.whysalon.ui.fragment.services.ChooseBarberFragment"
         android:label="ChooseBarberFragment" />
+    <fragment
+        android:id="@+id/basketFragment"
+        android:name="com.example.whysalon.ui.fragment.basket.BasketFragment"
+        android:label="BasketFragment" />
+    <fragment
+        android:id="@+id/packagesFragment"
+        android:name="com.example.whysalon.ui.fragment.allPackages.PackagesFragment"
+        android:label="PackagesFragment" />
+    <dialog
+        android:id="@+id/cancelBookingDialog"
+        android:name="com.example.whysalon.ui.dialog.CancelBookingDialog"
+        android:label="CancelBookingDialog" />
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.example.whysalon.ui.fragment.allPackages.ItemDetailsFragment"
+        android:label="ItemDetailsFragment" />
 </navigation>

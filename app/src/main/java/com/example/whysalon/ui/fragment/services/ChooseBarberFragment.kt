@@ -46,10 +46,10 @@ var state=0
 
     fun enablebtn(enable: Boolean) {
         if (enable) {
-            binding.lytNxt.background = resources.getDrawable(R.drawable.bg_btn_black_white_border)
+            binding.cardNext.background = resources.getDrawable(R.drawable.bg_btn_black_white_border)
             state = 1
         } else {
-            binding.lytNxt.background = resources.getDrawable(R.drawable.bg_btn_gray)
+            binding.cardNext.background = resources.getDrawable(R.drawable.bg_btn_gray1)
             state = 0
 
         }
@@ -63,7 +63,7 @@ var state=0
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
         }
-        binding.lytNxt.setOnClickListener {
+        binding.cardNext.setOnClickListener {
             if(state==1) findNavController().navigate(R.id.calenderFragment)
         }
         parent.setTitle(resources.getString(R.string.hair_cut))

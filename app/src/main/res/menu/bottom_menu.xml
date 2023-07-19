@@ -13,9 +13,9 @@
        />
 
     <item
-        android:id="@+id/offersFragment"
-        android:icon="@drawable/selector_offers"
-        android:title="@string/offers" />
+        android:id="@+id/basketFragment"
+        android:icon="@drawable/selector_basket"
+        android:title="@string/basket" />
 
     <item
         android:id="@+id/servicesFragment"

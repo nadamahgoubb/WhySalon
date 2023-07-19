@@ -11,6 +11,9 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
 
     override fun onFragmentReady() {
         setupUi()
+        binding.lytCancel.setOnClickListener {
+            findNavController().navigate(R.id.cancelBookingDialog)
+        }
     }
 
     private fun setupUi() {

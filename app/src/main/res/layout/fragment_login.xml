@@ -215,7 +215,7 @@ android:textSize="@dimen/_10sdp"
                         app:iconTint="@null"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:backgroundTint="@color/light_blue"
-                   app:icon="@drawable/googleg_standard_color_18"
+                   app:icon="@drawable/ic_google"
                    app:iconGravity="textStart"
 
                         android:text="@string/login_with_google"

@@ -29,7 +29,7 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>() {
                 findNavController().navigate(R.id.loginFirstDialog)
 
              } else {
-                findNavController().navigate(R.id.calenderFragment)
+                findNavController().navigate(R.id.basketFragment)
             }
          }
         binding.item12.root.setOnClickListener {
@@ -37,7 +37,7 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>() {
                 findNavController().navigate(R.id.loginFirstDialog)
 
             } else {
-                findNavController().navigate(R.id.calenderFragment)
+                findNavController().navigate(R.id.basketFragment)
             }        }
     }
     private fun setupUi() {

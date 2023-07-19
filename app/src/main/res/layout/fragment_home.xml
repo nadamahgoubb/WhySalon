@@ -46,21 +46,22 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tv_services_view_all" />
 
+
                     <TextView
                         android:id="@+id/tv_services_view_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginEnd="12dp"
                         android:gravity="end"
                         android:paddingVertical="@dimen/_10sdp"
                         android:text="@string/see_all"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp"
 
+                        android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rec_services"
@@ -124,13 +125,30 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_25sdp"
                         android:paddingBottom="@dimen/_5sdp"
-                        android:text="@string/recommended_for_you"
+                        android:text="@string/packages"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/lisr_serv" />
 
+
+                    <TextView
+                        android:id="@+id/tv_recommended_view_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginEnd="12dp"
+                        android:gravity="end"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/black"
+
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_recommended"
+                        app:layout_constraintTop_toTopOf="@id/tv_recommended" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_recommended"

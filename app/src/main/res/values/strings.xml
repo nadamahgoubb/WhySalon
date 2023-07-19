@@ -120,5 +120,12 @@
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="submit">Submit</string>
     <string name="skip">Skip</string>
+    <string name="packages">Packages</string>
+    <string name="about_this_service">About this service:</string>
+    <string name="total">Total</string>
+    <string name="cancellation_booking">Cancellation booking</string>
+    <string name="are_you_sure_to_cancel_your_booking">Are you sure to cancel your booking?</string>
+    <string name="continuee">Continue</string>
+    <string name="basket">Basket</string>
 
 </resources>

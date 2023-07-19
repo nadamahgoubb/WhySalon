@@ -136,7 +136,7 @@
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardCornerRadius="@dimen/_12sdp"
+                            app:cardCornerRadius="@dimen/_8sdp"
                             android:layout_marginVertical="@dimen/_6sdp"
                              app:cardElevation="0dp"
                             android:id="@+id/card_order_details"
@@ -147,7 +147,6 @@
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingBottom="@dimen/_10sdp"
 
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +155,7 @@
                                 <com.google.android.material.card.MaterialCardView
                                     android:id="@+id/card"
                                     android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_150sdp"
+                                    android:layout_height="@dimen/_120sdp"
                                     app:cardCornerRadius="@dimen/_12sdp"
                                     android:layout_margin="@dimen/_8sdp"
 
@@ -171,7 +170,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
                                         android:scaleType="centerCrop"
-                                        android:src="@drawable/offers"
+                                        android:src="@drawable/walk_2_r"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent" />
@@ -263,7 +262,7 @@
                                     android:id="@+id/tv_money"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="150 SAR"
+                                    android:text="Price : 150 SAR"
                                     android:textStyle="bold"
                                     android:paddingHorizontal="@dimen/_5sdp"
                                     android:textColor="@color/black"
@@ -294,7 +293,7 @@
                                     android:id="@+id/tv_date"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Date : 12/4"
+                                    android:text="Date and Time: 3May - 10:00am"
                                     android:textStyle="bold"
                                     android:paddingHorizontal="@dimen/_5sdp"
                                     android:textColor="@color/black"
@@ -302,39 +301,39 @@
                                     app:layout_constraintStart_toEndOf="@+id/iv_calender"
                                     app:layout_constraintTop_toTopOf="@id/iv_calender"
                                     app:layout_constraintBottom_toBottomOf="@id/iv_calender" />
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/iv_clock"
-                                    android:layout_width="@dimen/_25sdp"
-                                    android:layout_height="@dimen/_25sdp"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:backgroundTint="@color/grey"
-                                    app:cardCornerRadius="@dimen/_5sdp"
-                                    app:cardElevation="0dp"
-                                    app:layout_constraintStart_toStartOf="@id/iv_barber"
-                                    app:layout_constraintTop_toBottomOf="@id/iv_calender">
 
-                                    <ImageView
-                                        android:layout_width="@dimen/_15sdp"
-                                        android:layout_height="@dimen/_15sdp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_clock"
-                                        app:tint="@color/black" />
-                                </com.google.android.material.card.MaterialCardView>
-                                <TextView
-                                    android:id="@+id/tv_time"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Time :11:30 Am"
-                                    android:textStyle="bold"
-                                    android:paddingHorizontal="@dimen/_5sdp"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_9sdp"
-                                    app:layout_constraintStart_toEndOf="@+id/iv_clock"
-                                    app:layout_constraintTop_toTopOf="@id/iv_clock"
-                                    app:layout_constraintBottom_toBottomOf="@id/iv_clock" />
-                             </androidx.constraintlayout.widget.ConstraintLayout>
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/lyt_cancel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_38sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@color/red"
+                                    android:gravity="center"
+                                     app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_calender"
+                                     tools:layout_editor_absoluteX="70dp">
+
+
+                                    <TextView
+                                        android:id="@+id/tv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="@dimen/_5sdp"
+                                 app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:text="@string/cancellation_booking"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp"
+                                        />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </com.google.android.material.card.MaterialCardView>
+
+
 
                         <com.google.android.material.button.MaterialButton
                             android:layout_width="wrap_content"

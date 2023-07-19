@@ -18,20 +18,18 @@ class ServiceDetailsFragment : BaseFragment<FragmentServiceDetailsBinding>() {
     override fun onFragmentReady() {
         setupUi()
         binding.item11.root.setOnClickListener {
-            if (PrefsHelper.getToken().isNullOrEmpty()) {
-                findNavController().navigate(R.id.loginFirstDialog)
 
-            } else {
-                findNavController().navigate(R.id.serviceMoreDetailsFragment)
-            }
+                findNavController().navigate(R.id.itemDetailsFragment)
+
         }
         binding.item12.root.setOnClickListener {
-            if (PrefsHelper.getToken().isNullOrEmpty()) {
+          /*  if (PrefsHelper.getToken().isNullOrEmpty()) {
                 findNavController().navigate(R.id.loginFirstDialog)
 
-            } else {
-                findNavController().navigate(R.id.serviceMoreDetailsFragment)
-            }        }
+            } else {*/
+                findNavController().navigate(R.id.itemDetailsFragment)
+         //   }
+    }
 
     }
 

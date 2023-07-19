@@ -260,7 +260,7 @@
                             android:layout_height="@dimen/_50sdp"
                             android:layout_marginTop="@dimen/_16sdp"
                              android:backgroundTint="@color/light_blue"
-                            app:icon="@drawable/googleg_standard_color_18"
+                            app:icon="@drawable/ic_google"
                             app:iconGravity="textStart"
                             android:text="@string/sign_up_with_google"
 app:iconTint="@null"

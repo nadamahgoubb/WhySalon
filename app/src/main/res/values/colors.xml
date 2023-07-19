@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blue">#20BCE3</color>
+    <color name="blue_dark">#1882AC</color>
     <color name="light_blue">#E9F1F3</color>
     <color name="light_light_blue">#effafc</color>
 
@@ -16,7 +17,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="grey">#1F000000</color>
-    <color name="grey_medium">#4D000000</color>
+     <color name="grey_medium">#4D000000</color>
     <color name="grey1">#4D000000</color>
     <color name="grey3">#BF000000</color>
     <color name="grey4">#C3C3C3</color>

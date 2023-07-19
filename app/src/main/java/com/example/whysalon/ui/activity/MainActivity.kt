@@ -58,10 +58,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                     true
                 }
-                R.id.offersFragment -> {
+                R.id.basketFragment -> {
 
-                    navController.navigate(R.id.offersFragment)
 
+                     if (PrefsHelper.getToken().isNullOrEmpty()) {
+
+                        navController.navigate(R.id.loginFirstDialog)
+                    } else {
+                        navController.navigate(R.id.basketFragment)
+                    }
                     true
                 }
                 R.id.servicesFragment -> {
