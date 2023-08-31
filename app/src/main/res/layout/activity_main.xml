@@ -5,8 +5,15 @@
 
     <data>
 
-    </data>
+        <import type="android.view.View" />
 
+
+        <variable
+            name="progress"
+            type="androidx.databinding.ObservableBoolean" />
+
+
+    </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -112,8 +119,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
+
                 app:navGraph="@navigation/main_nav" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:id="@+id/progress_bar"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_alignBottom="@id/lyt_data"
+            android:visibility="@{progress?View.VISIBLE:View.GONE}"
+            app:indicatorColor="@color/black"
+
+            />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"

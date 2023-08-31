@@ -13,7 +13,7 @@
         android:background="@drawable/bg_btn_white"
         android:backgroundTint="@color/grey_100">
 
-        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
           android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -206,7 +206,7 @@
     android:id="@+id/tv_total"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="0,00 SAR"
+    android:text="0.00 SAR"
     android:textColor="@color/white"
     android:textSize="@dimen/_13sdp"
     app:layout_constraintEnd_toEndOf="parent"
@@ -234,7 +234,7 @@
 
 
             </ScrollView>
-        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,7 +13,7 @@
         android:background="@drawable/bg_btn_white"
         android:fillViewport="true">
 
-        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -144,7 +144,7 @@ the industry's standard dummy text ever since the
 
 
             </ScrollView>
-        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

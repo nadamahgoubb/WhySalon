@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
       >
 
-        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,48 +37,62 @@
                         android:textSize="@dimen/_14sdp"
               android:layout_marginVertical="@dimen/_15sdp"          app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_service"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginTop="@dimen/_5sdp"
                         app:layout_constraintTop_toBottomOf="@+id/tv_services"
-                        android:layout_height="match_parent"
-                         android:orientation="vertical"
-                        >
-                        <include
-                            android:id="@+id/item11"
-                            layout="@layout/item_full_service" />
-                        <include
-                            android:id="@+id/item12"
-                            layout="@layout/item_full_service" />
-                        <include
-                            layout="@layout/item_full_service" />
-                        <include
-                            layout="@layout/item_full_service" />
-                        <include
-                            layout="@layout/item_full_service" />
+                        tools:listitem="@layout/item_full_service" />
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_services">
 
-                    </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/lisr_serv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_services">
+
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+                            <include layout="@layout/item_full_service_shimmer" />
+
+
+                        </LinearLayout>
+
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--
-                                             <androidx.recyclerview.widget.RecyclerView
-                                                 android:id="@+id/rec_offers"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                  android:clipToPadding="false"
-                                              android:orientation="vertical"
-                                           android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                 app:layout_constraintEnd_toEndOf="parent"
-                                                 app:layout_constraintStart_toStartOf="parent"
-                                                 app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                                                 tools:listitem="@layout/item_offers" />-->
-
 
             </ScrollView>
-        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

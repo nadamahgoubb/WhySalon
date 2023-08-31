@@ -11,16 +11,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/splash">
 
-        <ImageView
-            android:id="@+id/iv_header"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_200sdp"
-    android:visibility="gone"        android:scaleType="fitStart"
-            android:src="@drawable/header"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
 
         <ImageView
             android:id="@+id/image"
@@ -39,7 +29,7 @@ app:layout_constraintBottom_toBottomOf="parent"
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lyt_lang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+      android:visibility="gone"      android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/image"
             app:layout_constraintBottom_toBottomOf="parent">
 

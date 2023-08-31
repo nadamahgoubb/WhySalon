@@ -10,7 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_200"
+        android:background="@color/grey_100"
         android:fillViewport="true">
 
 
@@ -51,11 +51,12 @@
                     android:id="@+id/img"
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="@dimen/_100sdp"
-         android:textSize="@dimen/_10sdp"     android:paddingBottom="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:paddingBottom="@dimen/_24sdp"
                     android:src="@drawable/logo"
+                    android:textSize="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-android:layout_marginTop="@dimen/_40sdp"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,13 +92,14 @@ android:layout_marginTop="@dimen/_40sdp"
 
 
                     <EditText
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_btn_white_grey_border"
                         android:drawableStart="@drawable/mail"
                         android:drawablePadding="@dimen/_8sdp"
                         android:hint="@string/enter_your_email"
-
+                        android:inputType="textEmailAddress"
                         android:minHeight="@dimen/_40sdp"
 
                         android:paddingHorizontal="@dimen/_10sdp"
@@ -109,8 +111,7 @@ android:layout_marginTop="@dimen/_40sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:gravity="center"
-                      >
+                        android:gravity="center">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/lyt_pass"
@@ -135,17 +136,17 @@ android:layout_marginTop="@dimen/_40sdp"
                                 android:id="@+id/et_password"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:minHeight="@dimen/_40sdp"
                                 android:autofillHints="password"
-                                android:padding="@dimen/_4sdp"
-                              android:drawablePadding="@dimen/_8sdp"
                                 android:background="@drawable/bg_btn_white_grey_border"
                                 android:drawableStart="@drawable/padlock"
+                                android:drawablePadding="@dimen/_8sdp"
                                 android:hint="@string/entert_y_password"
                                 android:inputType="textPassword"
+                                android:minHeight="@dimen/_40sdp"
+                                android:padding="@dimen/_4sdp"
                                 android:textAlignment="viewStart"
-android:textSize="@dimen/_10sdp"
-                                android:textColorHint="@color/grey3" />
+                                android:textColorHint="@color/grey3"
+                                android:textSize="@dimen/_10sdp" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -212,17 +213,17 @@ android:textSize="@dimen/_10sdp"
                         android:id="@+id/btn_google"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
-                        app:iconTint="@null"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:backgroundTint="@color/light_blue"
-                   app:icon="@drawable/ic_google"
-                   app:iconGravity="textStart"
-
                         android:text="@string/login_with_google"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
+
                         android:textSize="@dimen/_12sdp"
-                        app:cornerRadius="@dimen/_10sdp" />
+                        app:cornerRadius="@dimen/_10sdp"
+                        app:icon="@drawable/ic_google"
+                        app:iconGravity="textStart"
+                        app:iconTint="@null" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -238,9 +239,10 @@ android:textSize="@dimen/_10sdp"
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/robotomedium"
                             android:gravity="center"
                             android:text="@string/new_here"
-                  android:fontFamily="@font/robotomedium"          android:textColor="@color/black"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />
 
@@ -249,7 +251,8 @@ android:textSize="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:fontFamily="@font/robotomedium"            android:gravity="center"
+                            android:fontFamily="@font/robotomedium"
+                            android:gravity="center"
                             android:text="@string/sign_up"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
@@ -267,23 +270,17 @@ android:textSize="@dimen/_10sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/_60sdp"
-                android:backgroundTint="@color/grey_200"
-                android:gravity="center"
-                android:icon="@drawable/ic_google"
+                android:backgroundTint="@color/grey4"
                 android:text="@string/continue_as_guest"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
-                app:cornerRadius="@dimen/_6sdp"
-                app:iconGravity="textStart"
-                app:iconPadding="@dimen/_5sdp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/lyt_data"
                 app:layout_constraintEnd_toEndOf="@id/lyt_data"
                 app:layout_constraintStart_toStartOf="@id/lyt_data"
                 app:layout_constraintTop_toBottomOf="@id/lyt_data" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--
 
-                </LinearLayout>-->
     </androidx.core.widget.NestedScrollView>
 </layout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -22,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true">
@@ -31,212 +32,262 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <!--
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/shimmer">
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer_view_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:orientation="vertical"
+                            shimmer:duration="800">
 
+                            &lt;!&ndash; Adding 7 rows of placeholders &ndash;&gt;
 
-                    <TextView
-                        android:id="@+id/tv_services"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:text="@string/services"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_services_view_all"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tv_services_view_all" />
-
-
-                    <TextView
-                        android:id="@+id/tv_services_view_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginEnd="12dp"
-                        android:gravity="end"
-                        android:paddingVertical="@dimen/_10sdp"
-                        android:text="@string/see_all"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rec_services"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_110sdp"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:visibility="gone"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_services"
-                        tools:listitem="@layout/item_service" />
-
-
-                    <HorizontalScrollView
-
-                        android:id="@+id/lisr_serv"
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_Data"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_services">
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <TextView
+                            android:id="@+id/tv_services"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:text="@string/services"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_services_view_all"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tv_services_view_all" />
+
+
+                        <TextView
+                            android:id="@+id/tv_services_view_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginEnd="12dp"
+                            android:gravity="end"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/see_all"
+                            android:textColor="@color/black"
+
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:id="@+id/lyt_services"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_services">
 
-                            <include
-                                android:id="@+id/item1"
-                                layout="@layout/item_service_tst" />
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rec_services"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
-                            <include
-                                android:id="@+id/item2"
-                                layout="@layout/item_service" />
+                                tools:listitem="@layout/item_service" />
 
-                            <include
-                                android:id="@+id/item3"
-                                layout="@layout/item_service_tst" />
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp">
 
-                            <include
-                                android:id="@+id/item4"
-                                layout="@layout/item_service_tst" />
+                                <HorizontalScrollView
 
-                            <include
-                                android:id="@+id/item5"
-                                layout="@layout/item_service" />
+                                    android:id="@+id/lisr_serv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_services">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <include layout="@layout/item_service_shimmer" />
+
+                                        <include layout="@layout/item_service_shimmer" />
+
+                                        <include layout="@layout/item_service_shimmer" />
+
+                                        <include layout="@layout/item_service_shimmer" />
+
+
+                                    </LinearLayout>
+
+                                </HorizontalScrollView>
+
+
+                            </com.facebook.shimmer.ShimmerFrameLayout>
 
                         </LinearLayout>
 
-                    </HorizontalScrollView>
+                        <TextView
+                            android:id="@+id/tv_recommended"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="@string/packages"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/lyt_services" />
 
-                    <TextView
-                        android:id="@+id/tv_recommended"
-                        android:layout_width="wrap_content"
+
+                        <TextView
+                            android:id="@+id/tv_recommended_view_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/see_all"
+                            android:textColor="@color/black"
+
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_recommended"
+                            app:layout_constraintEnd_toEndOf="@id/tv_services_view_all"
+                            app:layout_constraintTop_toTopOf="@id/tv_recommended" />
+
+                        <LinearLayout
+                             android:id="@+id/lyt_packages"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_recommended">
+
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmer_packages"
+                                android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_25sdp"
-                        android:paddingBottom="@dimen/_5sdp"
-                        android:text="@string/packages"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/lisr_serv" />
+                                android:layout_marginTop="@dimen/_12sdp">
+
+                                        <include
+                                             layout="@layout/item_recomendation_shimmer" />
 
 
-                    <TextView
-                        android:id="@+id/tv_recommended_view_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginEnd="12dp"
-                        android:gravity="end"
-                        android:paddingVertical="@dimen/_10sdp"
-                        android:text="@string/see_all"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_recommended"
-                        app:layout_constraintTop_toTopOf="@id/tv_recommended" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_recommended"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_recommended"
-                        tools:itemCount="5"
-                        tools:listitem="@layout/item_recomendation" />
-
-                    <TextView
-                        android:id="@+id/tv_offers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_5sdp"
-                        android:text="@string/offers"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rv_recommended" />
-
-                    <TextView
-                        android:id="@+id/tv_offers_view_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:paddingVertical="@dimen/_10sdp"
-                        android:text="@string/see_all"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_13sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_offers"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tv_offers"
-
-                        />
 
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rec_offers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:clipToPadding="false"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                        tools:listitem="@layout/item_offers" />
+                            </com.facebook.shimmer.ShimmerFrameLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_recommended"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 
-                        <include
-                            android:id="@+id/item11"
-                            layout="@layout/item_offers" />
+                                tools:itemCount="5"
+                                tools:listitem="@layout/item_recomendation" />
+                        </LinearLayout>
 
-                        <include
-                            android:id="@+id/item12"
-                            layout="@layout/item_offers" />
+                        <TextView
+                            android:id="@+id/tv_offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="@string/offers"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/lyt_packages" />
 
-                        <include layout="@layout/item_offers" />
+                        <TextView
+                            android:id="@+id/tv_offers_view_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/see_all"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_offers"
+                            app:layout_constraintEnd_toEndOf="@id/tv_services_view_all"
+                            app:layout_constraintTop_toTopOf="@+id/tv_offers"
 
-                        <include layout="@layout/item_offers" />
+                            />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="@id/tv_services_view_all"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmer_offers"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp">
 
-                        <include layout="@layout/item_offers" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                     android:orientation="vertical"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
 
-                    </LinearLayout>
+                                <include
+                                    layout="@layout/item_offers_shimmer" />
+                                    <include              layout="@layout/item_offers_shimmer" />
+                                    <include             layout="@layout/item_offers_shimmer" />
+                                </LinearLayout>
 
 
+
+
+                            </com.facebook.shimmer.ShimmerFrameLayout>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rec_offers"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:clipToPadding="false"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/tv_services"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                tools:listitem="@layout/item_offers" />
+
+                        </LinearLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
+            </androidx.core.widget.NestedScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_5sdp"
+
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_wish_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                     android:src="@drawable/shimmer_effect"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="@id/card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/card"
+                app:layout_constraintTop_toTopOf="@id/card">
+
+
+
+                <ImageView
+                    android:id="@+id/iv_service_type"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:src="@drawable/paper"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_services_type"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
+ android:background="@drawable/shimmer_effect"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_service_type"
+                    app:layout_constraintStart_toEndOf="@id/iv_service_type"
+                    app:layout_constraintTop_toTopOf="@id/iv_service_type" />
+
+                <ImageView
+                    android:id="@+id/iv_money"
+
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                     android:src="@drawable/reminder"
+                    app:layout_constraintStart_toStartOf="@id/iv_service_type"
+                    app:layout_constraintTop_toBottomOf="@id/iv_service_type"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                     android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:background="@drawable/shimmer_effect"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_money"
+                    app:layout_constraintStart_toEndOf="@+id/iv_money"
+                    app:layout_constraintTop_toTopOf="@id/iv_money" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

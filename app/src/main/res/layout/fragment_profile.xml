@@ -7,14 +7,20 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh_home"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <androidx.core.widget.NestedScrollView        android:layout_width="match_parent"
         android:background="@drawable/bg_btn_white"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+  android:visibility="gone"   android:id="@+id/lyt_data"
+        android:layout_width="match_parent"
             android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/_40sdp"
             tools:context=".ui.fragments.accountFragment.AccountFragment">
@@ -23,14 +29,30 @@
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/iv_profile"
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="@dimen/_70sdp"
+                        android:layout_width="@dimen/_85sdp"
+                        android:layout_height="@dimen/_85sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:src="@drawable/user_tst"
+                        android:src="@drawable/empty_user_"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+        <FrameLayout
+            android:layout_width="@dimen/_29sdp"
+            android:layout_height="@dimen/_29sdp"
+    android:id="@+id/iv_edit_pic"        android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+            app:layout_constraintEnd_toEndOf="@id/iv_profile"
+        >
+            <ImageView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:src="@drawable/ic_camera"
+                android:layout_gravity="center"
+                app:tint="@color/white" />
+        </FrameLayout>
+
 
 
 
@@ -38,8 +60,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_20sdp"
-                        android:text="Mohammed Ali"
-                        android:textColor="@color/grey_1000"
+                         android:textColor="@color/grey_1000"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -80,8 +101,7 @@
                 android:layout_height="wrap_content"
                  android:drawablePadding="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                 android:text="info@example.com"
-                android:textColor="@color/grey_1000"
+                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
 app:layout_constraintStart_toStartOf="@id/tv_1"
@@ -155,5 +175,5 @@ app:layout_constraintBottom_toBottomOf="parent"              app:layout_constrai
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

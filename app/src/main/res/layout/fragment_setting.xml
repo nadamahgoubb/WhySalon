@@ -44,7 +44,6 @@
                         android:layout_height="@dimen/_50sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:src="@drawable/user_tst"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,8 +65,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_20sdp"
-                        android:text="Mohammed Ali"
-                        android:textColor="@color/grey_1000"
+                         android:textColor="@color/grey_1000"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@id/iv_profile"
@@ -218,9 +216,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                  android:drawablePadding="@dimen/_8sdp"
-                 android:paddingVertical="@dimen/_12sdp"
-                 android:text="@string/language"
+                android:drawablePadding="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_12sdp"
+                android:text="@string/language"
                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
@@ -280,72 +278,79 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_privacy" />
 
-            <View
-                android:id="@+id/view_3"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_notifaction"
+          android:layout_width="match_parent"
+      android:visibility="gone"          android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_privacy">
 
-                android:background="@color/gray_400"
-                app:layout_constraintTop_toBottomOf="@+id/tv_privacy" />
+                <View
+                    android:id="@+id/view_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
 
-            <TextView
-                android:id="@+id/tv_vouchers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:paddingVertical="@dimen/_14sdp"
+                    android:background="@color/gray_400"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                android:text="@string/notification"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold"
+                <TextView
+                    android:id="@+id/tv_vouchers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_14sdp"
 
-
-                app:layout_constraintTop_toBottomOf="@+id/view_3" />
-
-            <View
-                android:id="@+id/view_4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/gray_400"
-                app:layout_constraintTop_toBottomOf="@+id/tv_vouchers" />
-
-            <TextView
-                android:id="@+id/tv_active_notifation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-
-                 android:paddingTop="@dimen/_10sdp"
-
-                android:paddingBottom="@dimen/_10sdp"
-                android:text="Activate notification"
-                android:textColor="@color/grey_1000"
-
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/view_4"
+                    android:text="@string/notification"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
 
 
-                />
+                    app:layout_constraintTop_toBottomOf="@+id/view_3" />
 
-            <CheckBox
-                android:id="@+id/checkbox_notifaction"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@drawable/selector_cb_switch"
-                android:button="@null"
-                android:enabled="true"
-                android:padding="@dimen/_10sdp"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_active_notifation"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_active_notifation" />
+                <View
+                    android:id="@+id/view_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/gray_400"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_vouchers" />
+
+                <TextView
+                    android:id="@+id/tv_active_notifation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+
+                    android:paddingTop="@dimen/_10sdp"
+
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:text="Activate notification"
+                    android:textColor="@color/grey_1000"
+
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/view_4"
+
+
+                    />
+
+                <CheckBox
+                    android:id="@+id/checkbox_notifaction"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/selector_cb_switch"
+                    android:button="@null"
+                    android:enabled="true"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_13sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_active_notifation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_active_notifation" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <com.google.android.material.button.MaterialButton
@@ -356,16 +361,16 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:backgroundTint="@color/red_400"
                 android:text="@string/log_out"
+                android:visibility="gone"
 
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:visibility="gone"
-                app:cornerRadius="@dimen/_8sdp"
+                 app:cornerRadius="@dimen/_8sdp"
                 app:icon="@drawable/logout"
                 app:iconGravity="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_active_notifation" />
+                app:layout_constraintTop_toBottomOf="@+id/lyt_notifaction" />
 
             <com.google.android.material.button.MaterialButton
 
@@ -383,7 +388,7 @@
                 app:iconGravity="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_active_notifation" />
+                app:layout_constraintTop_toBottomOf="@+id/lyt_notifaction" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

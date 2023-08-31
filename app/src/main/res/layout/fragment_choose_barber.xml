@@ -9,91 +9,117 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:fillViewport="true" android:layout_height="match_parent"
-        android:background="@drawable/bg_btn_white_rounded_top" >
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_btn_white_rounded_top"
+        android:fillViewport="true">
 
-        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:fillViewport="true"        android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/lyt_data"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
 
-                        <TextView
-                            android:id="@+id/tv_1"
-                            android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:paddingStart="@dimen/_12sdp"
+                        android:text="Choose the barber"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/lyt_nxt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_1">
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawablePadding="@dimen/_6sdp"
-                            android:paddingVertical="@dimen/_3sdp"
-                            android:paddingStart="@dimen/_12sdp"
-                            android:text="Choose the barber"
-                            android:textColor="@color/grey_1000"
-                            android:textSize="@dimen/_14sdp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:layout_marginTop="@dimen/_12sdp"
+                             >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
+
+                                <include layout="@layout/item_choose_barber_shimmer" />
+
+                                <include layout="@layout/item_choose_barber_shimmer" />
+
+                                <include layout="@layout/item_choose_barber_shimmer" />
+
+                                <include layout="@layout/item_choose_barber_shimmer" />
+                            </LinearLayout>
+
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rec_details"
+                            android:id="@+id/rv_barbars"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:clipToPadding="false"
                             android:orientation="vertical"
-                            android:visibility="gone"                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_1"
-                            tools:itemCount="2"
+                            app:layout_constraintStart_toStartOf="@id/tv_services"
+                            app:layout_constraintTop_toBottomOf="@+id/shimmer"
+                            tools:itemCount="12"
                             tools:listitem="@layout/item_choose_barber" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_1"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
-                            <include
-                                android:id="@+id/item11"
-                                layout="@layout/item_choose_barber" />
-                            <include
-                                android:id="@+id/item12"
-                                layout="@layout/item_choose_barber" />
 
-                        </LinearLayout>
+                    </LinearLayout>
 
                     <androidx.cardview.widget.CardView
-                        android:elevation="@dimen/_65sdp"
+                        android:id="@+id/lyt_nxt"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_80sdp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:paddingVertical="@dimen/_20sdp"
+                        android:background="@color/white"
+                        android:elevation="@dimen/_65sdp"
                         android:gravity="bottom"
-android:id="@+id/lyt_nxt"
-                        android:background="@color/white">
+                        android:paddingVertical="@dimen/_20sdp"
+                        app:layout_constraintBottom_toBottomOf="parent">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/card_next"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_47sdp"
                             android:layout_centerVertical="true"
-                       android:id="@+id/card_next"     android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
                             android:layout_marginVertical="@dimen/_10sdp"
-                   android:layout_gravity="center"
-                             android:background="@drawable/bg_btn_gray1"
+                            android:background="@drawable/bg_btn_gray1"
                             android:paddingHorizontal="@dimen/_10sdp"
 
                             >
@@ -114,7 +140,7 @@ android:id="@+id/lyt_nxt"
                                 android:id="@+id/tv_total"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0,00 SAR"
+                                android:text="0.00 SAR"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_13sdp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -128,23 +154,22 @@ android:id="@+id/lyt_nxt"
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+                <!--
+                                            <androidx.recyclerview.widget.RecyclerView
+                                                android:id="@+id/rec_offers"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                 android:clipToPadding="false"
+                                             android:orientation="vertical"
+                                          android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                                tools:listitem="@layout/item_service_details" />-->
 
-                 <!--
-                                             <androidx.recyclerview.widget.RecyclerView
-                                                 android:id="@+id/rec_offers"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                  android:clipToPadding="false"
-                                              android:orientation="vertical"
-                                           android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                 app:layout_constraintEnd_toEndOf="parent"
-                                                 app:layout_constraintStart_toStartOf="parent"
-                                                 app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                                                 tools:listitem="@layout/item_service_details" />-->
 
-
-            </ScrollView>
-        </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+            </androidx.core.widget.NestedScrollView>
+        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

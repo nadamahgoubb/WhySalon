@@ -47,101 +47,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_service" />
 
-        <TextView
-            android:id="@+id/tv_desc"
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_services"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- Lorem Ipsum is dummy text of the printing."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_service_count" />
+            app:layout_constraintStart_toStartOf="@id/tv_service_count"
+            app:layout_constraintTop_toBottomOf="@id/tv_service_count"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_package_services_item" />
 
-        <TextView
-            android:id="@+id/tv_desc1"
 
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- It is a long established fact."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
-
-        <TextView
-            android:id="@+id/tv_desc2"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- There are many variations of passages."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc1" />
-
-        <TextView
-            android:id="@+id/tv_desc3"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- The standard chunk of Lorem Ipsum used."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc2" />
-
-        <TextView
-            android:id="@+id/tv_desc4"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- Contrary to popular belief."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc3" />
-
-        <TextView
-            android:id="@+id/tv_desc5"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="- Lorem Ipsum is dummy text."
-            android:textColor="@color/grey_dark_"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_service"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc4" />
 
 
         <ImageView
@@ -179,8 +100,8 @@
             android:backgroundTint="@color/red"
             android:padding="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_25sdp"
-            app:layout_constraintStart_toStartOf="@id/tv_desc"
-            app:layout_constraintTop_toBottomOf="@id/tv_desc5">
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toBottomOf="@id/rv_services">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -206,41 +127,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/lyt_delete" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-        android:paddingHorizontal="@dimen/_12sdp"    android:layout_height="@dimen/_45sdp"
-            android:layout_marginVertical="@dimen/_12sdp"
-            android:background="@drawable/bg_btn_gray_light"
-            app:layout_constraintTop_toBottomOf="@id/lyt_delete">
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 android:fontFamily="@font/roboto_bold"
-                 android:text="@string/total"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_total_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_6sdp"
-                android:fontFamily="@font/roboto_bold"
-                android:paddingStart="@dimen/_5sdp"
-                android:text="675 SAR"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

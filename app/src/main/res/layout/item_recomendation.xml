@@ -77,7 +77,7 @@
                     app:tint="@color/white" />
 
                 <TextView
-                    android:id="@+id/tv2"
+                    android:id="@+id/tvtime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/_5sdp"

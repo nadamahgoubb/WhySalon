@@ -30,8 +30,7 @@
                 android:layout_width="@dimen/_75sdp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:src="@drawable/tst"
-                app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,8 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_13sdp"
-                 android:text="Groom package"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +80,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/_6sdp"
                  android:paddingStart="@dimen/_5sdp"
-          android:text="25 - 30 Min"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_9sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_clock"
@@ -107,8 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Price from: 50 Sar"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_9sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/iv_money"
@@ -133,9 +129,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Congratulations to our Groom!
-let us pamper you with the
-best services at Why salon!"
+
                 android:textColor="@color/black"
                 android:textSize="@dimen/_9sdp"
                 android:textStyle="bold"

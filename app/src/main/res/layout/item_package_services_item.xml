@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_9sdp">
+
+        <ImageView
+            android:id="@+id/ic_tab"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:padding="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:src="@drawable/tab"
+            app:layout_constraintBottom_toBottomOf="@id/tv_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_desc"
+            app:tint="@color/grey_medium" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/grey_dark_"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ic_tab"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

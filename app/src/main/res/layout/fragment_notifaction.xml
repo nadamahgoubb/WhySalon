@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_btn_white">
 
-        <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -114,7 +114,7 @@
                                      tools:listitem="@layout/item_offers" />-->
 
 
-</ScrollView></com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+</ScrollView></com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,409 +8,406 @@
     </data>
 
 
-    <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
-        android:id="@+id/swiperefresh_home"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         android:background="@drawable/bg_btn_white_rounded_top"
-       >
+        android:background="@drawable/bg_btn_white_rounded_top">
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lyt_data"
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:text="@string/choose_the_time_with_ahmed_ali"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/lyt_availabe"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:minHeight="@dimen/_30sdp"
+                android:paddingVertical="@dimen/_20sdp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_1"
+                app:strokeColor="@color/black"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_services">
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/selected_dot"
+                        app:tint="@color/blue_grey_800_overlay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:paddingStart="@dimen/_2sdp"
+                        android:text="@string/available"
+                        android:textColor="@color/grey_800"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/selected_dot"
+
+                        app:tint="@color/grey_400" />
+
+                    <TextView
+                        android:id="@+id/tv_unavailable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/unavailable"
+                        android:textColor="@color/grey_800"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/selected_dot" />
+
+                    <TextView
+                        android:id="@+id/tv_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/selected"
+                        android:textColor="@color/grey_800"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.applandeo.materialcalendarview.CalendarView
+                android:id="@+id/cal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:background="@color/grey_50"
+                android:backgroundTint="@color/grey_50"
+                app:abbreviationsBarColor="@color/grey_50"
+                app:disabledDaysLabelsColor="@color/grey_400"
+                app:headerColor="@color/grey_50"
+                app:headerLabelColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/lyt_availabe"
+                app:pagesColor="@color/grey_50"
+                app:selectionColor="@color/black"
+                app:todayLabelColor="@color/red_400"
+                app:type="one_day_picker" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_no_available_times"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/lyt_times">
+
+                <View
+                    android:id="@+id/v1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@color/grey_1000"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_1"
+                    android:id="@+id/tv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_15sdp"
+                    android:text="@string/barber_s_is_not_available_today"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+                <TextView
+                    android:id="@+id/tv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:text="@string/but_you_can_book_for_next_week_3_may"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_goto_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginVertical="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    android:text="GO to Wedensday 26 July"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_12sdp"
+                    app:cornerRadius="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_3" />
+
+                <LinearLayout
+                    android:id="@+id/lyt_re"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_goto_date">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_re"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_try_another_barber"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_try_another_barber" />
+
+                    <TextView
+                        android:id="@+id/tv_try_another_barber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="Or try with other staff, 30 Apr"
+                        android:textColor="@color/grey_700"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_re"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_goto_date" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_times"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cal">
+
+                <TextView
+                    android:id="@+id/tv_11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginVertical="@dimen/_15sdp"
-                    android:text="@string/choose_the_time_with_ahmed_ali"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/time"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/lyt_availabe"
-                    android:layout_width="match_parent"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_times"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginVertical="@dimen/_10sdp"
-                    android:minHeight="@dimen/_30sdp"
-                    android:paddingVertical="@dimen/_20sdp"
-                    app:cardCornerRadius="@dimen/_4sdp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_10sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_1"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="@dimen/_1sdp">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_11"
+                    tools:listitem="@layout/item_filter_time" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/lyt_rebook"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_100sdp"
+                                android:background="@drawable/rec"
+                                android:backgroundTint="@color/white_"
+                                android:gravity="bottom"
+                                android:minHeight="@dimen/_40sdp"
+                                app:cardPreventCornerOverlap="true"
+                                app:elevation="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/lyt_no_available_times">-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lyt_rebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_100sdp"
+                android:background="@color/white"
+                android:elevation="@dimen/_70sdp"
+                android:gravity="bottom"
+                android:paddingVertical="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lyt_no_available_times">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_10sdp">
 
                     <LinearLayout
+                        android:id="@+id/lyt_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:orientation="horizontal"
-                        android:weightSum="3"
+                        android:visibility="gone"
+                        android:weightSum="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_services">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:layout_width="@dimen/_10sdp"
-                            android:layout_height="@dimen/_10sdp"
+                            android:id="@+id/iv_clock"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/selected_dot"
-                            app:tint="@color/blue_grey_800_overlay" />
+                            android:src="@drawable/calendar"
+
+
+                            app:tint="@color/grey_1000" />
 
                         <TextView
+                            android:id="@+id/tv_date_selected"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:drawablePadding="@dimen/_6sdp"
                             android:paddingVertical="@dimen/_3sdp"
-                            android:paddingStart="@dimen/_2sdp"
-                            android:text="@string/available"
-                            android:textColor="@color/grey_800"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:text="Date: 26 july "
+                            android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
 
 
                         <ImageView
+                            android:id="@+id/iv_money"
 
-                            android:layout_width="@dimen/_10sdp"
-                            android:layout_height="@dimen/_10sdp"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/selected_dot"
+                            android:src="@drawable/ic_clock"
 
-                            app:tint="@color/grey_400" />
+                            app:tint="@color/grey_1000" />
 
                         <TextView
-                            android:id="@+id/tv_unavailable"
+                            android:id="@+id/tv_time_selected"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingStart="@dimen/_5sdp"
-                            android:text="@string/unavailable"
-                            android:textColor="@color/grey_800"
-                            android:textSize="@dimen/_10sdp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-
-                            android:layout_width="@dimen/_10sdp"
-                            android:layout_height="@dimen/_10sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/selected_dot" />
-
-                        <TextView
-                            android:id="@+id/tv_selected"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingStart="@dimen/_5sdp"
-                            android:text="@string/selected"
-                            android:textColor="@color/grey_800"
+                            android:text="Time:04:30 am"
+                            android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.applandeo.materialcalendarview.CalendarView
-                    android:id="@+id/cal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-            android:backgroundTint="@color/grey_50"
-                    android:background="@color/grey_50" android:layout_marginVertical="@dimen/_10sdp"
-                     app:disabledDaysLabelsColor="@color/grey_400"
-                    app:headerColor="@color/grey_50"
-                    app:headerLabelColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@id/lyt_availabe"
-                 app:abbreviationsBarColor="@color/grey_50"   app:pagesColor="@color/grey_50"
-                    app:selectionColor="@color/black"
-                     app:todayLabelColor="@color/red_400"
-                    app:type="one_day_picker" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/lyt_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/lyt_2">
-
-                    <View
-                        android:id="@+id/v1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:background="@color/grey_1000"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_15sdp"
-                        android:text="@string/barber_s_is_not_available_today"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/v1" />
-
-                    <TextView
-                        android:id="@+id/tv_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_5sdp"
-                        android:text="@string/but_you_can_book_for_next_week_3_may"
-                        android:textColor="@color/grey_700"
-                        android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_2" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_goto_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_50sdp"
-                        android:layout_marginVertical="@dimen/_25sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:paddingHorizontal="@dimen/_30sdp"
-                        android:text="GO to Wedensday 26 July"
-                        android:textAllCaps="false"
-                        android:textSize="@dimen/_12sdp"
-                        app:cornerRadius="@dimen/_4sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_3" />
-
-                    <LinearLayout
-                        android:id="@+id/lyt_re"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btn_goto_date">
-
-                        <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
-                            android:src="@drawable/ic_re"
-                            app:layout_constraintBottom_toBottomOf="@id/tv_try_another_barber"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_try_another_barber" />
-
-                        <TextView
-                            android:id="@+id/tv_try_another_barber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/_5sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:text="Or try with other staff, 30 Apr"
-                            android:textColor="@color/grey_700"
-                            android:textSize="@dimen/_11sdp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/iv_re"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_goto_date" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/lyt_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@+id/cal">
-
-                    <TextView
-                        android:id="@+id/tv_11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginVertical="@dimen/_5sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:text="@string/time"
-                        android:textColor="@color/grey_700"
-                        android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_filters"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingVertical="@dimen/_10sdp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_11"
-                        tools:listitem="@layout/item_filter_time" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/lyt_rebook"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_100sdp"
-                    android:background="@drawable/rec"
-                    android:backgroundTint="@color/white_"
-                    android:gravity="bottom"
-                    android:minHeight="@dimen/_40sdp"
-                    app:cardPreventCornerOverlap="true"
-                    app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lyt_1">-->
-                 <androidx.cardview.widget.CardView
-                     android:id="@+id/lyt_rebook"
-                    android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="@dimen/_100sdp"
-                     android:background="@color/white"            android:elevation="@dimen/_70sdp"
-                    android:gravity="bottom"
-                    android:paddingVertical="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                     app:layout_constraintTop_toBottomOf="@id/lyt_1">
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_next"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_50sdp"
                         android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginVertical="@dimen/_10sdp">
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_10sdp"
+                        android:background="@drawable/bg_btn_gray"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        app:backgroundTint="@color/black"
+                        app:layout_constraintTop_toBottomOf="@+id/lyt_time">
 
-                        <LinearLayout
-                            android:id="@+id/lyt_time"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/btn_next"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:weightSum="2"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            android:padding="@dimen/_10sdp"
+                            android:text="@string/next"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
-                                android:id="@+id/iv_clock"
-                                android:layout_width="@dimen/_15sdp"
-                                android:layout_height="@dimen/_15sdp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/calendar"
-
-
-                                app:tint="@color/grey_1000" />
-
-                            <TextView
-                                android:id="@+id/tv_time"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawablePadding="@dimen/_6sdp"
-                                android:paddingVertical="@dimen/_3sdp"
-                                android:paddingStart="@dimen/_5sdp"
-                                android:text="Date: 26 july "
-                                android:textColor="@color/grey_1000"
-                                android:textSize="@dimen/_10sdp"
-                                android:textStyle="bold" />
-
-
-                            <ImageView
-                                android:id="@+id/iv_money"
-
-                                android:layout_width="@dimen/_15sdp"
-                                android:layout_height="@dimen/_15sdp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_clock"
-
-                                app:tint="@color/grey_1000" />
-
-                            <TextView
-                                android:id="@+id/tv_money_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingStart="@dimen/_5sdp"
-                                android:text="Time:04:30 am"
-                                android:textColor="@color/grey_1000"
-                                android:textSize="@dimen/_10sdp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/lyt_next"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_marginVertical="@dimen/_10sdp"
-                            android:background="@drawable/bg_btn_gray"
-                            android:paddingHorizontal="@dimen/_10sdp"
-                            app:backgroundTint="@color/black"
-                            app:layout_constraintTop_toBottomOf="@+id/lyt_time">
-
-                            <TextView
-                                android:id="@+id/btn_next"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_10sdp"
-                                android:text="@string/next"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_13sdp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/tv_total"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="150,0 SAR"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_13sdp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--    <androidx.recyclerview.widget.RecyclerView
-                                             android:id="@+id/rec_offers"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                              android:clipToPadding="false"
-                                          android:orientation="vertical"
-                                       android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                             app:layout_constraintEnd_toEndOf="parent"
-                                             app:layout_constraintStart_toStartOf="parent"
-                                             app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                                             tools:listitem="@layout/item_service_details" />-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--    <androidx.recyclerview.widget.RecyclerView
+                                         android:id="@+id/rec_offers"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                          android:clipToPadding="false"
+                                      android:orientation="vertical"
+                                   android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                         app:layout_constraintEnd_toEndOf="parent"
+                                         app:layout_constraintStart_toStartOf="parent"
+                                         app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                         tools:listitem="@layout/item_service_details" />-->
 
 
-        </ScrollView>
-    </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+    </ScrollView>
 
 
 </layout>

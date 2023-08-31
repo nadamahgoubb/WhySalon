@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1028517061696",
+    "project_id": "whysalon-68085",
+    "storage_bucket": "whysalon-68085.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028517061696:android:0de1d48638133ea12d2ba5",
+        "android_client_info": {
+          "package_name": "com.dot_jo.whysalon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028517061696-4cfrsehh6rgob6bmnl57cne8stdp408u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dot_jo.whysalon",
+            "certificate_hash": "42c593681af14dc8c830ecffd6359ee3c418660c"
+          }
+        },
+        {
+          "client_id": "1028517061696-53fbjgf0kja8bpke4caobgsqdkqn4r79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYrpRJ-qLP3R3tdNh-dkEIxsUy8B1UobY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028517061696-53fbjgf0kja8bpke4caobgsqdkqn4r79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

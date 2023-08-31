@@ -7,15 +7,16 @@ plugins {
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
-      //   id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'com.google.gms.google-services'
+    //   id 'org.jetbrains.kotlin.plugin.serialization'
 
 }
 android {
-    namespace 'com.example.whysalon'
+    namespace 'com.dot_jo.whysalon'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.whysalon"
+        applicationId "com.dot_jo.whysalon"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -44,6 +45,12 @@ android {
     kapt {
         correctErrorTypes = true
     }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -52,11 +59,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
 
 /* def lottieVersion = "3.4.0"
  implementation "com.airbnb.android:lottie:$lottieVersion"*/
@@ -149,5 +156,12 @@ dependencies {
 //implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2'
     implementation 'commons-codec:commons-codec:1.3'
     implementation 'com.applandeo:material-calendar-view:1.7.0'
+   //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
+    // Rounded ImageView
+    //image paker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+    implementation 'org.jsoup:jsoup:1.13.1'
 }

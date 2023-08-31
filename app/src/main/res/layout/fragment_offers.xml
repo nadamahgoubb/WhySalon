@@ -87,15 +87,18 @@ android:layout_marginEnd="@dimen/_15sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"
                 tools:listitem="@layout/item_filter" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.constraintlayout.widget.ConstraintLayout
+             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header"
+            android:background="@drawable/bg_btn_white_rounded_top">
+            <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lyt_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-             android:layout_below="@+id/header"
-            android:background="@drawable/bg_btn_white_rounded_top">
+   >
 
-            <com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout
+            <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
                 android:id="@+id/swiperefresh_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -103,9 +106,60 @@ android:layout_marginEnd="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@id/tv_services_view_all"
+                    android:layout_marginHorizontal="@dimen/_5sdp"          app:layout_constraintStart_toStartOf="@id/tv_services"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_offers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all">
+
+                            <include
+                                layout="@layout/item_offers_shimmer" />
+                            <include              layout="@layout/item_offers_shimmer" />
+                            <include             layout="@layout/item_offers_shimmer" />
+                            <include             layout="@layout/item_offers_shimmer" />
+                            <include             layout="@layout/item_offers_shimmer" />
+                            <include             layout="@layout/item_offers_shimmer" />
+                            <include             layout="@layout/item_offers_shimmer" />
+                        </LinearLayout>
+
+
+
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_offers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                         android:clipToPadding="false"
+                        android:orientation="vertical"
+                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_services"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                        tools:listitem="@layout/item_offers" />
+
+                </LinearLayout>
 <!--
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rec_offers"
@@ -118,36 +172,62 @@ android:layout_marginEnd="@dimen/_15sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
                     tools:listitem="@layout/item_offers" />-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-                    <include
-                        android:id="@+id/item11"
-                        layout="@layout/item_offers" />
-                    <include
-                        android:id="@+id/item12"
-                        layout="@layout/item_offers" />
-                    <include
-                        layout="@layout/item_offers" />
-                    <include
-                        layout="@layout/item_offers" />
-                    <include
-                        layout="@layout/item_offers" />
-
-                </LinearLayout>
 
 
-            </ScrollView>
-            </com.example.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+            </androidx.core.widget.NestedScrollView>
+            </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt_empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+   android:visibility="gone"    >
 
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:text="@string/there_are_no_offers_in_this_service"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text"
+                android:textAlignment="center"
+                android:textColor="@color/grey_700"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_2" />
+
+            <ImageView
+                android:id="@+id/iv_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_140sdp"
+                  android:paddingHorizontal="@dimen/_30sdp"
+                android:src="@drawable/percentage"
+          android:layout_marginTop="@dimen/_25sdp"       app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_3" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </layout>

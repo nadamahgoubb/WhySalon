@@ -7,99 +7,103 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.whysalon.ui.fragment.home.HomeFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.home.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.whysalon.ui.fragment.setting.SettingFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/offersFragment"
-        android:name="com.example.whysalon.ui.fragment.offers.OffersFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.offers.OffersFragment"
         android:label="OffersFragment" />
     <fragment
         android:id="@+id/servicesFragment"
-        android:name="com.example.whysalon.ui.fragment.services.ServicesFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.services.ServicesFragment"
         android:label="ServicesFragment" />
     <fragment
         android:id="@+id/bookingFragment"
-        android:name="com.example.whysalon.ui.fragment.booking.BookingFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.booking.BookingFragment"
         android:label="fragment_booking"
         tools:layout="@layout/fragment_booking" />
     <fragment
-        android:id="@+id/serviceDetailsFragment"
-        android:name="com.example.whysalon.ui.fragment.services.ServiceDetailsFragment"
+        android:id="@+id/subServiceFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.services.SubServiceFragment"
         android:label="ServiceDetailsFragment" />
     <fragment
         android:id="@+id/notifactionFragment"
-        android:name="com.example.whysalon.ui.fragment.NotifactionFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.NotifactionFragment"
         android:label="NotifactionFragment" />
     <fragment
         android:id="@+id/serviceMoreDetailsFragment"
-        android:name="com.example.whysalon.ui.fragment.services.ServiceMoreDetailsFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.ServiceMoreDetailsFragment"
         android:label="ServiceMoreDetailsFragment" />
     <fragment
         android:id="@+id/calenderFragment"
-        android:name="com.example.whysalon.ui.fragment.services.CalenderFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.createOrder.CalenderFragment"
         android:label="CalenderFragment" />
     <dialog
         android:id="@+id/orderSucessDialog"
-        android:name="com.example.whysalon.ui.dialog.OrderSucessDialog"
+        android:name="com.dot_jo.whysalon.ui.dialog.OrderSucessDialog"
         android:label="TimingPickerDialog" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.whysalon.ui.fragment.history.HistoryFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.history.HistoryFragment"
         android:label="HistoryFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.whysalon.ui.fragment.profile.ProfileFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/deleteFragment"
-        android:name="com.example.whysalon.ui.fragment.setting.DeleteFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.DeleteFragment"
         android:label="fragment_delete"
         tools:layout="@layout/fragment_delete" />
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.example.whysalon.ui.fragment.setting.ContactUsFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.ContactUsFragment"
         android:label="fragment_contact_us"
         tools:layout="@layout/fragment_contact_us" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.example.whysalon.ui.fragment.setting.ChangePasswordFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <dialog
         android:id="@+id/logoutDialog"
-        android:name="com.example.whysalon.ui.dialog.LogoutDialog"
+        android:name="com.dot_jo.whysalon.ui.dialog.LogoutDialog"
         android:label="LogoutDialog" />
     <dialog
         android:id="@+id/rateBottomSheet"
-        android:name="com.example.whysalon.ui.dialog.RateBottomSheet"
+        android:name="com.dot_jo.whysalon.ui.dialog.RateBottomSheet"
         android:label="RateBottomSheet" />
     <dialog
         android:id="@+id/loginFirstDialog"
-        android:name="com.example.whysalon.ui.dialog.LoginFirstDialog"
+        android:name="com.dot_jo.whysalon.ui.dialog.LoginFirstDialog"
         android:label="LoginFirstDialog" />
     <fragment
         android:id="@+id/chooseBarberFragment"
-        android:name="com.example.whysalon.ui.fragment.services.ChooseBarberFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.createOrder.ChooseBarberFragment"
         android:label="ChooseBarberFragment" />
     <fragment
         android:id="@+id/basketFragment"
-        android:name="com.example.whysalon.ui.fragment.basket.BasketFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.basket.BasketFragment"
         android:label="BasketFragment" />
     <fragment
         android:id="@+id/packagesFragment"
-        android:name="com.example.whysalon.ui.fragment.allPackages.PackagesFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.allPackages.PackagesFragment"
         android:label="PackagesFragment" />
     <dialog
         android:id="@+id/cancelBookingDialog"
-        android:name="com.example.whysalon.ui.dialog.CancelBookingDialog"
+        android:name="com.dot_jo.whysalon.ui.dialog.CancelBookingDialog"
         android:label="CancelBookingDialog" />
     <fragment
         android:id="@+id/itemDetailsFragment"
-        android:name="com.example.whysalon.ui.fragment.allPackages.ItemDetailsFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.basket.ItemDetailsFragment"
         android:label="ItemDetailsFragment" />
+    <fragment
+        android:id="@+id/privcyPolicyFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.PrivcyPolicyFragment"
+        android:label="PrivcyPolicyFragment" />
 </navigation>

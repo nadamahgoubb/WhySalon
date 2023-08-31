@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.whysalon.ui.fragment.auth.SplashFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.auth.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/walkThroughtFragment"
-        android:name="com.example.whysalon.ui.fragment.walkThrought.WalkThrougthFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.walkThrought.WalkThrougthFragment"
         android:label="fragment_walk_throught"
         tools:layout="@layout/fragment_walk_throught" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.whysalon.ui.fragment.auth.LoginFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -32,13 +32,13 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.whysalon.ui.fragment.auth.RegisterFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.auth.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/resetPasswordFragment"
         tools:layout="@layout/fragment_reset_password"
-        android:name="com.example.whysalon.ui.fragment.auth.ResetPasswordFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.auth.ResetPasswordFragment"
         android:label="ResetPasswordFragment" />
 
 </navigation>
