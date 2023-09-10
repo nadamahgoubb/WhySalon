@@ -141,12 +141,15 @@ fun isVaildLogin(
         }
     }
 
-    fun isVaildRegisteration(name: String, email: String, pass: String, repeated_pass: String) {
+    fun isVaildRegisteration(name: String, email: String, country_code: String, phone: String, pass: String, repeated_pass: String) {
         if (name.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_name_msg)))
             false
         } else if (email.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_msg_email)))
+            false
+        } else if (phone.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_phone_number)))
             false
         } else if (pass.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_password)))
@@ -163,6 +166,7 @@ fun isVaildLogin(
                 RegisterParams(
                     name,
                     email,
+                    country_code, phone,
                     pass,
                 )
             )

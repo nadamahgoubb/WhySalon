@@ -29,7 +29,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun login(param: LoginParams) = api.login(param.email, param.password)
 
     suspend fun register(param: RegisterParams) =
-        api.register(param.name, param.email, param.password)
+        api.register(param.name, param.email,param.country_code, param.phone, param.password)
 
     suspend fun registerGuest() = api.registerGuest()
 
@@ -99,4 +99,5 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun getHistory() = api.getHistory()
     suspend fun getSetting() = api.getSetting()
     suspend fun getNotifications() = api.getNotifications()
+    suspend fun getContactUsData() = api.getContactUsData()
 }

@@ -119,6 +119,59 @@ android:id="@+id/et_name"
                             android:textColorHint="@color/grey3"
                             android:textSize="@dimen/_10sdp"
                             app:drawableStartCompat="@drawable/mail" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <com.hbb20.CountryCodePicker
+                                android:id="@+id/country_code_picker"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="2"
+                                android:background="@drawable/bg_btn_black_white_border"
+                         android:backgroundTint="@color/grey4"       android:clickable="true"
+                                android:gravity="center"
+                                app:ccp_defaultNameCode="JO"      app:ccp_showFlag="false"
+                                app:ccp_showNameCode="false"
+                                app:ccp_showPhoneCode="true"
+                                app:ccp_textSize="@dimen/_12sdp" />
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_weight="4"
+                                android:gravity="center"
+                                android:hint=""
+                                app:hintAnimationEnabled="false"
+                                app:hintEnabled="false"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_phone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="@dimen/_40sdp"
+                                    android:textColorHint="@color/grey3"
+
+                                    android:textSize="@dimen/_10sdp"
+                                    android:background="@drawable/bg_btn_white_grey_border"
+                                    android:hint="@string/enter_phone_number"
+                                    android:inputType="phone"
+                                    android:textAlignment="viewStart" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
 
 
                         <LinearLayout

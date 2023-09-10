@@ -40,6 +40,8 @@ data class ResetPasswordParams(
 data class RegisterParams(
     val name: String="",
     val email: String="",
+    val country_code: String="",
+    val phone: String="",
      val password: String="",
  ) : Parcelable
 @Parcelize

@@ -17,12 +17,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.hbb20.CountryCodePicker
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>(), CountryCodePicker.OnCountryChangeListener {
 
-
+private var  countryCode="+962"
     private val mViewModel: AuthViewModel by viewModels()
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -42,6 +43,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             mViewModel.isVaildRegisteration(
                 binding.etName.text.toString(),
                 binding.etEmail.text.toString(),
+                countryCode, binding.etPhone.text.toString(),
                 binding.etPassword.text.toString(),
                 binding.etPasswordComfirm.text.toString()
             )
@@ -124,6 +126,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             mViewModel.isVaildRegisteration(
                 if (fullName.isNullOrEmpty()) "" else fullName[0],
                 account.email!!,
+countryCode,
+                "2222222",
                 account.id!!,
                 account.id!!,
             )
@@ -148,6 +152,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     private fun gotoHome() {
         showActivity(MainActivity::class.java, clearAllStack = true)
+
+    }
+    override fun onCountrySelected() {
+        countryCode ="+"+ binding.countryCodePicker.selectedCountryCode
 
     }
 }

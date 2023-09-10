@@ -2,6 +2,7 @@ package com.dot_jo.whysalon.ui.fragment.profile
 
 import com.dot_jo.whysalon.base.Action
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
+import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationsResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
@@ -17,6 +18,7 @@ sealed class ProfileAction() : Action {
    data  class getNotifaction(val data: NotificationsResponse) : ProfileAction()
     data  class ShowProfileUpdates(val data : OtpChangePassswordResponse) : ProfileAction()
     data  class ShowPrivacy(val data : String) : ProfileAction()
+    data  class ShowContactUsResponse(val data : ContactUsResponse) : ProfileAction()
 
 
 }

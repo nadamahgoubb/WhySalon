@@ -9,6 +9,7 @@ import com.dot_jo.whysalon.data.response.BookingResponse
 import com.dot_jo.whysalon.data.response.CartResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
+import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationsResponse
 import com.dot_jo.whysalon.data.response.OffersResponse
@@ -40,6 +41,8 @@ interface ApiInterface {
     suspend fun register(
         @Field("name") name: String,
         @Field("email") email: String,
+        @Field("country_code") country_code: String,
+        @Field("phone") phone: String,
         @Field("password") password: String
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
@@ -207,6 +210,10 @@ interface ApiInterface {
     @GET("notifications")
     suspend fun getNotifications(
     ): NetworkResponse<DevResponse<NotificationsResponse>, ErrorResponse>
+
+    @GET("contact-us")
+    suspend fun getContactUsData(
+    ): NetworkResponse<DevResponse<ContactUsResponse>, ErrorResponse>
 
     @FormUrlEncoded
     @POST("barber-rate")
