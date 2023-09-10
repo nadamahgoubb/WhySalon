@@ -26,66 +26,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
-
-    /*
-    @Provides
-    @Singleton
-    fun provideRetrofit(): ApiInterface {
-        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(
-            LoggingInterceptor.Builder().setLevel(Level.BASIC)
-                .addHeader("Token" ,PrefsHelper.getToken()!!)
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
-                .addHeader("lang",  PrefsHelper.getLanguage())
-                .build()
-        )
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
-            .build()
-
-        return Retrofit.Builder()
-            .baseUrl(ApiBase.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-            .create(ApiInterface::class.java)
-    }*/
-
-/*    @Provides
-    @Singleton
-    fun proideokHttpClient():OkHttpClient{
-        val interceptor = HttpLoggingInterceptor()
-            .apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }
-
-        return OkHttpClient.Builder()
-            .addInterceptor { chain: Interceptor.Chain ->
-                val original = chain.request()
-                val requestBuilder = original.newBuilder()
-                    .method(original.method, original.body)
-                    .addHeader("Token" ,PrefsHelper.getToken()!!)
-                    .addHeader("Content-Type", "application/json")
-                    .addHeader("Accept", "application/json")
-                    .addHeader("lang",  PrefsHelper.getLanguage())
-
-                val request = requestBuilder.build()
-                chain.proceed(request)
-            }
-            .addInterceptor(interceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .build()
-
-    }
-
-
-    var gson = GsonBuilder()
-        .setLenient().disableHtmlEscaping()
- */
-
-
     val interceptor = HttpLoggingInterceptor()
         .apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -96,11 +36,10 @@ object RetrofitModule {
             val original = chain.request()
             val requestBuilder = original.newBuilder()
                 .method(original.method, original.body)
-                //  .addHeader(Constants.Token_HEADER ,DataStoreManger()?.read(Constants.Token_KEY))
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .addHeader("lang", PrefsHelper.getLanguage())
-                .addHeader("token",  PrefsHelper.getToken().toString())
+                .addHeader("token",  PrefsHelper.getToken()!!)
 
             val request = requestBuilder.build()
             chain.proceed(request)
@@ -118,14 +57,14 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-      fun provideClient(okHttpClient:OkHttpClient): Retrofit =
+    fun provideClient(): Retrofit =
         Retrofit.Builder()
             .baseUrl(ApiBase.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
-             .build()
- 
+            .build()
+
 
     @Provides
     @Singleton
