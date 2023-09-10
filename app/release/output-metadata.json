@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.whysalon",
+  "applicationId": "com.dot_jo.whysalon",
   "variantName": "release",
   "elements": [
     {
