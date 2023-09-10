@@ -34,6 +34,7 @@ class BookingAdapter(
         return BookingViewHolder(_binding!!)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
 
         var currentItem = list[position]
@@ -64,12 +65,13 @@ class BookingAdapter(
         )
         holder.binding.ivService.loadImage(image)
 
-         holder.binding.lytCancel.setOnClickListener {
+        holder.binding.tvCancel.setOnClickListener {
             listener.onCancelBooking(currentItem, position)
         }
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun removeItem(item: BookingsItem) {
         item?.let {
             list.remove(it)

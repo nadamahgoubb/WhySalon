@@ -2,6 +2,7 @@ package com.dot_jo.whysalon.ui.fragment.history
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,12 +16,14 @@ import com.dot_jo.whysalon.ui.adapter.booking.HistoryWithYearAdapter
 import com.dot_jo.whysalon.ui.fragment.booking.BookingAction
 import com.dot_jo.whysalon.ui.fragment.booking.BookingViewModel
 import com.dot_jo.whysalon.ui.interfaces.HistoryClickListener
+import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
 import com.dot_jo.whysalon.util.getYearFromDate
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickListener {
@@ -29,8 +32,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
 
     lateinit var adapter: HistoryWithYearAdapter
     private lateinit var parent: MainActivity
-
-
+    private var orderId: String = ""
     var item: BookingsItem? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -74,16 +76,17 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
                 }
             }
 
-            /*  is BookingAction.ShowBookingList -> {
-                  if (action.data.bookings.isNullOrEmpty()) {
-                      binding.lytData.isVisible = false
-                      binding.lytEmptyState.isVisible = true
-                  } else {
-                      adapter.list =
-                          action.data.bookings
+            is BookingAction.ShowReBooking -> {
+                findNavController().navigate(
+                    R.id.chooseBarberFragment, bundleOf(
+                        Constants.TOTAL to action.data.finalTotal?.toDoubleOrNull()
+                            ?.roundToInt().toString(),
+                        Constants.ORDER_ID to orderId
+                    )
+                )
 
-                      adapter.notifyDataSetChanged()}
-              }*/
+            }
+
             is BookingAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstDialog)
@@ -133,7 +136,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
         adapter.mapp = map as MutableMap<Int, ArrayList<BookingsItem>>
         adapter.notifyDataSetChanged()
 
-            }
+    }
 
     private fun initAdapter() {
         adapter = HistoryWithYearAdapter(this)
@@ -143,8 +146,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
 
 
     override fun onHistoryClickLisenter(id: BookingsItem) {
-        showToast(item?.id?.toString())
-
+        orderId = id.id!!
+        mViewModel.reBookingItem(id.id!!)
     }
 
 }

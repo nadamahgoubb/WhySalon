@@ -25,23 +25,25 @@
                 android:paddingBottom="@dimen/_24sdp">
 
 
-
                 <ImageView
                     android:id="@+id/iv_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-               app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" android:background="@drawable/calendar"
-         android:layout_marginTop="@dimen/_45sdp"           app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/_45sdp"
+                    android:background="@drawable/calendar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="0dp" />
 
                 <TextView
                     android:id="@+id/tv_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
                     android:text="@string/cancellation_booking"
                     android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_4sdp"        android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +77,8 @@
                         android:layout_height="@dimen/_50sdp"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:backgroundTint="@color/black"            android:layout_weight="1"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:text="@string/continuee"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_12sdp"
@@ -91,7 +94,8 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_weight="1"
-                 android:backgroundTint="@color/red"       android:text="Ignore"
+                        android:backgroundTint="@color/red"
+                        android:text="Ignore"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_12sdp"
                         app:cornerRadius="@dimen/_8sdp"

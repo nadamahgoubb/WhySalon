@@ -126,15 +126,14 @@
 
 
             <TextView
+                android:id="@+id/tv_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/_5sdp"
-
                 android:textColor="@color/black"
                 android:textSize="@dimen/_9sdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintStart_toEndOf="@id/iv_service_type"
                 app:layout_constraintTop_toTopOf="@id/iv_service_type" />
         </androidx.constraintlayout.widget.ConstraintLayout>

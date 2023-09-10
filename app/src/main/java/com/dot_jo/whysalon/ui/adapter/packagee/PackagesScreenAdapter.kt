@@ -28,27 +28,31 @@ class PackagesScreenAdapter(
     lateinit var context: Context
 
 
-
-
-override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PackagesScreenViewHolder {
-    context = parent.context
-         _binding = ItemPackagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PackagesScreenViewHolder {
+        context = parent.context
+        _binding = ItemPackagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return PackagesScreenViewHolder(_binding!!)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PackagesScreenViewHolder, position: Int) {
 
         var currentItem = list[position]
-        holder.binding.tvMoneyTitle.setText(context.resources.getString(R.string.price_from)+currentItem?.price?.toDoubleOrNull()?.roundTo(2)+context.resources.getString(
-            R.string.sr))
+        holder.binding.tvMoneyTitle.setText(
+            context.resources.getString(R.string.price_from) + " " + currentItem?.price?.toDoubleOrNull()
+                ?.roundTo(2) + context.resources.getString(
+                R.string.sr
+            )
+        )
+        holder.binding.tvDescription.text = currentItem.description
 
-                holder.binding.tvService.setText(currentItem.name)
-         holder.binding.tvTime.setText(currentItem.duration?.toIntOrNull()
-             ?.let { getDuration(it, context) })
+        holder.binding.tvService.setText(currentItem.name)
+        holder.binding.tvTime.setText(currentItem.duration?.toIntOrNull()
+            ?.let { getDuration(it, context) })
 
 
-       holder.binding.imgWishItem.loadImage(currentItem.image)
+        holder.binding.imgWishItem.loadImage(currentItem.image)
         holder.binding.root.setOnClickListener {
             listener.onPackagesClickListener(currentItem)
         }

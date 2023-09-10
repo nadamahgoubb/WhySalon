@@ -123,4 +123,8 @@ class SubServiceFragment : BaseFragment<FragmentSubServiceBinding>(), HomeClickL
 
     }
 
+    override fun onBookNowClickListener(item: ServicesItem) {
+
+    }
+
 }

@@ -11,6 +11,7 @@ import com.dot_jo.whysalon.data.response.ServicesItem
 interface HomeClickListener {
     fun onCategoryClickListener(item: CategoriesItem)
     fun onPackagesClickListener(item: ServicesItem)
+    fun onBookNowClickListener(item: ServicesItem)
 
 }
 interface OffersClickListener {

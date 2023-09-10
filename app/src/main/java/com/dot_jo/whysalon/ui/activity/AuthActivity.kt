@@ -6,6 +6,7 @@ import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseActivity
 import com.dot_jo.whysalon.databinding.ActivityAuthBinding
 import com.dot_jo.whysalon.util.Constants
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

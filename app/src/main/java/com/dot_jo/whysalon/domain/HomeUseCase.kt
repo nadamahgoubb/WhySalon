@@ -8,7 +8,9 @@ import com.dot_jo.whysalon.base.NetworkResponse
 import com.dot_jo.whysalon.data.param.OffersParam
 import com.dot_jo.whysalon.data.param.ServicesByCategoryParams
 import com.dot_jo.whysalon.data.param.UpdateFcmTokenParam
-import com.dot_jo.whysalon.data.webService.Repository
+import com.dot_jo.whysalon.data.Repository
+import com.dot_jo.whysalon.data.param.AddToCartParams
+import com.dot_jo.whysalon.data.param.RateParam
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -31,6 +33,12 @@ class HomeUseCase @Inject constructor(private val repository: Repository) :
             flow {
                 emit(repository.updateFcmToken(params))
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+
+        } else if (params is RateParam) {
+            flow {
+                emit(repository.rate(params))
+            } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+
         } else if (params == packags) {
             flow {
                 emit(repository.getPackages())
@@ -38,6 +46,10 @@ class HomeUseCase @Inject constructor(private val repository: Repository) :
         } else if (params is OffersParam) {
             flow {
                 emit(repository.getOffers(params))
+            } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+        } else if (params is AddToCartParams) {
+            flow {
+                emit(repository.addToCart(params))
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
         } else {
             flow {

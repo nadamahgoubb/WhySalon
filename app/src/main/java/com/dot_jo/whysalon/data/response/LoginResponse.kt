@@ -40,3 +40,25 @@ data class PrivacyPolicyResponse(
     @SerializedName("terms_and_conditions") var terms_and_conditions: String? = null,
     @SerializedName("privacy_policy") var privacy_policy: String? = null
 ) : Parcelable
+
+@Parcelize
+data class NotificationsResponse(
+    @SerializedName("notifications") var notifications: Notifications? = null,
+) : Parcelable
+@Parcelize
+data class Notifications(
+    @SerializedName("data") var data: MutableList<Notification>? = null,
+) : Parcelable
+@Parcelize
+data class Notification(
+    @SerializedName("id") var id: Int? = null,
+    @SerializedName("title") var title: String? = null,
+    @SerializedName("body") var body: String? = null,
+    @SerializedName("time") var time: String? = null,
+    @SerializedName("offer_id") var offer_id: Int? = null,
+    @SerializedName("client_id") var client_id: Int? = null,
+    @SerializedName("barber_id") var barber_id: Int? = null,
+    @SerializedName("order_id") var order_id: Int? = null,
+    @SerializedName("order_status") var order_status: Int? = null,
+) : Parcelable
+

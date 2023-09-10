@@ -31,6 +31,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_1"
+                app:layout_constraintStart_toEndOf="@+id/tv_1"
+                app:layout_constraintTop_toTopOf="@+id/tv_1" />
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/lyt_availabe"
@@ -130,6 +142,8 @@
                 app:disabledDaysLabelsColor="@color/grey_400"
                 app:headerColor="@color/grey_50"
                 app:headerLabelColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lyt_availabe"
                 app:pagesColor="@color/grey_50"
                 app:selectionColor="@color/black"
@@ -186,7 +200,6 @@
                     android:layout_marginVertical="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:paddingHorizontal="@dimen/_30sdp"
-                    android:text="GO to Wedensday 26 July"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_12sdp"
                     app:cornerRadius="@dimen/_4sdp"
@@ -218,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:text="Or try with other staff, 30 Apr"
+                        android:text="@string/or_try_with_other_staff"
                         android:textColor="@color/grey_700"
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="bold"
@@ -265,25 +278,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_11"
                     tools:listitem="@layout/item_filter_time" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/lyt_rebook"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_100sdp"
-                                android:background="@drawable/rec"
-                                android:backgroundTint="@color/white_"
-                                android:gravity="bottom"
-                                android:minHeight="@dimen/_40sdp"
-                                app:cardPreventCornerOverlap="true"
-                                app:elevation="0dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/lyt_no_available_times">-->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/lyt_rebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:background="@color/white"
                 android:elevation="@dimen/_70sdp"
                 android:gravity="bottom"
@@ -394,17 +394,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--    <androidx.recyclerview.widget.RecyclerView
-                                         android:id="@+id/rec_offers"
-                                         android:layout_width="match_parent"
-                                         android:layout_height="wrap_content"
-                                          android:clipToPadding="false"
-                                      android:orientation="vertical"
-                                   android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                         app:layout_constraintEnd_toEndOf="parent"
-                                         app:layout_constraintStart_toStartOf="parent"
-                                         app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                                         tools:listitem="@layout/item_service_details" />-->
 
 
     </ScrollView>

@@ -94,7 +94,8 @@ class BasketViewModel @Inject constructor(app: Application, val useCase: SubServ
             produce(BasketAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
 
-    }  fun addToBasket(packageid: String?,service_id: String?, price : String) {
+    }
+    fun addToBasket(packageid: String?,service_id: String?, price : String) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(BasketAction.ShowLoading(true))
 
@@ -115,7 +116,8 @@ class BasketViewModel @Inject constructor(app: Application, val useCase: SubServ
             produce(BasketAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
 
-    } fun deleteFromBasket(packageid: String ) {
+    }
+    fun deleteFromBasket(packageid: String ) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(BasketAction.ShowLoading(true))
 

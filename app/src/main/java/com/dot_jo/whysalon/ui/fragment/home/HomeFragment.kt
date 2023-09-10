@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.ui.fragment.home
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -58,6 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
             binding.swiperefreshHome.isRefreshing = false
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleViewState(action: HomeAction) {
         when (action) {
             is HomeAction.ShowLoading -> {
@@ -99,6 +101,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
                 adapterOffers.notifyDataSetChanged()
             }
         }
+
+            is HomeAction.AddItemToCart->{
+                showToast("Package Added To Cart Successfully")
+            }
 
             is HomeAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
@@ -169,6 +175,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
                 Constants.PACKAGE to item, Constants.Type to Constants.Package
             )
         )
+    }
+
+    override fun onBookNowClickListener(item: ServicesItem) {
+        mViewModel.addToBasket(item.id,null,item.price!!)
     }
 
     override fun onOffersClickListener(item: OfferssItem) {

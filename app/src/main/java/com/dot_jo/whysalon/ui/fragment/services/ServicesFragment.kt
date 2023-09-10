@@ -100,4 +100,8 @@ class ServicesFragment : BaseFragment<FragmentServicesBinding>(), HomeClickListe
 
     override fun onPackagesClickListener(item: ServicesItem) {
     }
+
+    override fun onBookNowClickListener(item: ServicesItem) {
+
+    }
 }

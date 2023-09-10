@@ -9,6 +9,7 @@ object Constants {
   const  val OFFERS   :Int =2
   const val Package: Int =0
   const val Service: Int =1
+  const val OPEN_NOTIFICATION = "open_not"
 
     const val USER: String = "USER"
     const val Notifaction: String= "notifaction"
@@ -26,7 +27,7 @@ object Constants {
   const val walk_throught = 4
   const val LANDRY = "Landry"
     const val ORDER_ID = "order_id"
-    const val ORDER  = "order"
+    const val BARBER_ID  = "BARBER_aSAs"
     const val ORDER_ID_PREVIOUS = "order_id_previous"
     const val ORDER_ID_TO_RATE = "order_id_to_rate"
     const val PAYMENT = "Payment"

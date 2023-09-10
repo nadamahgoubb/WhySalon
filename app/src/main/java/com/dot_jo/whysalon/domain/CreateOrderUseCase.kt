@@ -7,7 +7,9 @@ import com.dot_jo.whysalon.base.ErrorResponse
 import com.dot_jo.whysalon.base.NetworkResponse
 import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.GetTimesParams
-import com.dot_jo.whysalon.data.webService.Repository
+import com.dot_jo.whysalon.data.Repository
+import com.dot_jo.whysalon.data.param.AddReBookingParams
+import com.dot_jo.whysalon.data.param.GetTimesReBookingParams
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,19 +21,36 @@ class CreateOrderUseCase @Inject constructor(private val repository: Repository)
 
 
     override fun executeRemote(params: Any?): Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>> {
-        return if (params is AddBookingParams) {
-                 flow {
+        return when (params) {
+            is AddBookingParams -> {
+                flow {
                     emit(repository.addBooking(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
 
-        }  else if (params is GetTimesParams) {
-                 flow {
+            }
+            is AddReBookingParams -> {
+                flow {
+                    emit(repository.addReBooking(params))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+
+            }
+
+            is GetTimesParams -> {
+                flow {
                     emit(repository.getTimesByBarbarID(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
-           }  else {
-            flow {
-                emit(repository.getBarbar())
-            } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }
+            is GetTimesReBookingParams -> {
+                flow {
+                    emit(repository.getTimesByBarbarIDReBooking(params))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }
+
+            else -> {
+                flow {
+                    emit(repository.getBarbar())
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }
         }
 
     }

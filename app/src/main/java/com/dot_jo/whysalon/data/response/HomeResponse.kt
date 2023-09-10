@@ -18,6 +18,7 @@ data class ServicesItem(
     @SerializedName("name") var name: String? = null,
     @SerializedName("duration") var duration: String? = null,
     @SerializedName("price") var price: String? = null,
+    @SerializedName("price_before") var price_before: String? = null,
     @SerializedName("category_id") var category_id: String? = null,
     @SerializedName("images") var images: ArrayList<ImageItem>? = arrayListOf(),
     // for package details

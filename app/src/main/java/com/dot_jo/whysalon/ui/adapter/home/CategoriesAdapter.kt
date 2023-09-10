@@ -9,6 +9,7 @@ import com.dot_jo.whysalon.data.response.CategoriesItem
 
 import com.dot_jo.whysalon.databinding.ItemServiceBinding
 import com.dot_jo.whysalon.ui.interfaces.HomeClickListener
+import com.dot_jo.whysalon.util.ext.loadImage
 
 
 class CategoriesAdapter(
@@ -35,7 +36,7 @@ class CategoriesAdapter(
 
         var currentItem = list[position]
         holder.binding.tvName.setText(currentItem.name)
-        //  holder.binding.ivService.loadImage(currentItem.img)
+        holder.binding.imgWishItem.loadImage(currentItem.image)
         holder.binding.root.setOnClickListener {
             listener.onCategoryClickListener(currentItem)
         }

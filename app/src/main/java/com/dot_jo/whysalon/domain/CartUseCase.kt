@@ -7,7 +7,7 @@ import com.dot_jo.whysalon.base.ErrorResponse
 import com.dot_jo.whysalon.base.NetworkResponse
 import com.dot_jo.whysalon.data.param.AddToCartParams
 import com.dot_jo.whysalon.data.param.DeleteFronCartParams
-import com.dot_jo.whysalon.data.webService.Repository
+import com.dot_jo.whysalon.data.Repository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

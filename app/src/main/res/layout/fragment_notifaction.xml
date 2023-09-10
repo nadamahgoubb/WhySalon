@@ -17,105 +17,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lyt_data"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/_10sdp">
-        <TextView
-            android:id="@+id/tv_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_15sdp"
-            android:text="@string/today"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/list1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_1">
-
-            <include
-                android:id="@+id/item11"
-                layout="@layout/item_notifaction" />
-
-            <include
-                android:id="@+id/item12"
-                layout="@layout/item_notifaction" />
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/v1"
-            android:layout_width="match_parent"
-            android:layout_height=".7dp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@color/grey1"
-            app:layout_constraintTop_toBottomOf="@id/list1" />
-
-        <TextView
-            android:id="@+id/tv_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:text="@string/yestarday"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_2">
-
-            <include layout="@layout/item_notifaction" />
-
-            <include layout="@layout/item_notifaction" />
-
-            <include layout="@layout/item_notifaction" />
-
-            <include layout="@layout/item_notifaction" />
-
-            <include layout="@layout/item_notifaction" />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--
-                                 <androidx.recyclerview.widget.RecyclerView
-                                     android:id="@+id/rec_offers"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                      android:clipToPadding="false"
-                                  android:orientation="vertical"
-                               android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                     app:layout_constraintEnd_toEndOf="parent"
-                                     app:layout_constraintStart_toStartOf="parent"
-                                     app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                                     tools:listitem="@layout/item_offers" />-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10sdp">
 
 
-</ScrollView></com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rec_notifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/item_notifaction" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </layout>
+</layout>

@@ -30,23 +30,29 @@ class SubServicesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubServicesViewHolder {
         context = parent.context
-        _binding = ItemServiceDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        _binding =
+            ItemServiceDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SubServicesViewHolder(_binding!!)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: SubServicesViewHolder, position: Int) {
 
         var currentItem = list[position]
-         holder.binding.tvMoneyTitle.setText(context.resources.getString(R.string.price_from)+currentItem?.price?.toDoubleOrNull()?.roundTo(2)+context.resources.getString(
-            R.string.sr))
+        holder.binding.tvMoneyTitle.setText(
+            context.resources.getString(R.string.price_from) + " " + currentItem?.price?.toDoubleOrNull()
+                ?.roundTo(2) + " " + context.resources.getString(
+                R.string.sr
+            )
+        )
         holder.binding.tvService.setText(currentItem.name)
-         holder.binding.tvService.setText(currentItem.name)
+        holder.binding.tvService.setText(currentItem.name)
         holder.binding.tvTime.setText(currentItem.duration?.toIntOrNull()
             ?.let { getDuration(it, context) })
 
 
         holder.binding.imgWishItem.loadImage(currentItem.image)
-         holder.binding.root.setOnClickListener {
+        holder.binding.root.setOnClickListener {
             listener.onPackagesClickListener(currentItem)
         }
 

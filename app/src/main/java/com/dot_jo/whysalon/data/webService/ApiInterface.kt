@@ -10,12 +10,14 @@ import com.dot_jo.whysalon.data.response.CartResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
 import com.dot_jo.whysalon.data.response.LoginResponse
+import com.dot_jo.whysalon.data.response.NotificationsResponse
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
 import com.dot_jo.whysalon.data.response.OtpCheckEmailResponse
 import com.dot_jo.whysalon.data.response.PackageDetails
 import com.dot_jo.whysalon.data.response.PackagesResponse
 import com.dot_jo.whysalon.data.response.PrivacyPolicyResponse
+import com.dot_jo.whysalon.data.response.RebookingResponse
 import com.dot_jo.whysalon.data.response.ServicesResponse
 import com.dot_jo.whysalon.data.response.ServiceDetails
 import com.dot_jo.whysalon.data.response.TimesOfBarbarResponse
@@ -23,6 +25,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 import javax.inject.Singleton
+
 
 @Singleton
 interface ApiInterface {
@@ -102,8 +105,8 @@ interface ApiInterface {
     @Multipart
     @JvmSuppressWildcards
     suspend fun updateProfile(
-         @PartMap updateMap: Map<String, RequestBody>,
-         @Part image: MultipartBody.Part?
+        @PartMap updateMap: Map<String, RequestBody>,
+        @Part image: MultipartBody.Part?
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
     @POST("profile/change-password")
@@ -141,9 +144,15 @@ interface ApiInterface {
         @Query("category_id") category_id: String,
     ): NetworkResponse<DevResponse<OffersResponse>, ErrorResponse>
 
-    @GET("offers")
-    suspend fun getNotifications(
-    ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
+
+    @POST("booking/times-by-date-and-barber-id")
+    @FormUrlEncoded
+    suspend fun getTimesByBarbarIDReBooking(
+        @Field("barber_id") barber_id: String,
+        @Field("date") date: String?, //yyyy-mm-dd
+        @Field("order_id") orderId: String = "",
+    ): NetworkResponse<DevResponse<TimesOfBarbarResponse>, ErrorResponse>
+
 
     @POST("booking/times-by-date-and-barber-id")
     @FormUrlEncoded
@@ -158,6 +167,15 @@ interface ApiInterface {
 
     @FormUrlEncoded
     @POST("booking/add-booking")
+    suspend fun addReBooking(
+        @Field("barber_id") barber_id: String,
+        @Field("date") date: String?,
+        @Field("time") time: String?,
+        @Field("order_id") order_id: String = "",
+    ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
+
+    @FormUrlEncoded
+    @POST("booking/add-booking")
     suspend fun addBooking(
         @Field("barber_id") barber_id: String,
         @Field("date") date: String?,
@@ -169,15 +187,33 @@ interface ApiInterface {
         @Path("orderId") orderId: String,
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
-  @GET("booking")
+    @GET("booking/rebooking/{orderId}")
+    suspend fun rebooking(
+        @Path("orderId") orderId: String,
+    ): NetworkResponse<DevResponse<RebookingResponse>, ErrorResponse>
+
+    @GET("booking")
     suspend fun getBooking(
-     ): NetworkResponse<DevResponse<BookingResponse>, ErrorResponse>
- @GET("history")
+    ): NetworkResponse<DevResponse<BookingResponse>, ErrorResponse>
+
+    @GET("history")
     suspend fun getHistory(
-     ): NetworkResponse<DevResponse<BookingResponse>, ErrorResponse>
+    ): NetworkResponse<DevResponse<BookingResponse>, ErrorResponse>
 
-@GET("settings")
+    @GET("settings")
     suspend fun getSetting(
-     ): NetworkResponse<DevResponse<PrivacyPolicyResponse>, ErrorResponse>
+    ): NetworkResponse<DevResponse<PrivacyPolicyResponse>, ErrorResponse>
 
+    @GET("notifications")
+    suspend fun getNotifications(
+    ): NetworkResponse<DevResponse<NotificationsResponse>, ErrorResponse>
+
+    @FormUrlEncoded
+    @POST("barber-rate")
+    suspend fun rate(
+        @Field("rate") rate: String,
+        @Field("comment") comment: String,
+        @Field("barber_id") barber_id: String,
+        @Field("order_id") order_id: String,
+    ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 }

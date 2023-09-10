@@ -54,7 +54,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     private fun nextScreen() {
         val m = PrefsHelper.getToken()
-        if (PrefsHelper.getToken() != null) {
+        if (!PrefsHelper.getToken().isNullOrEmpty()) {
             showActivity(MainActivity::class.java, clearAllStack = true)
         } else {
             if (PrefsHelper.isLoggedBefore()) {
@@ -65,7 +65,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     NavOptions.Builder().setPopUpTo(R.id.splashFragment, true).build()
                 )
             } else {
-PrefsHelper.setLoggedBefore(true)
+                PrefsHelper.setLoggedBefore(true)
                 findNavController().navigate(
                     R.id.walkThroughtFragment,
                     null,

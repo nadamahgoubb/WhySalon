@@ -80,8 +80,7 @@
                     android:layout_marginTop="20dp"
                     android:isIndicator="false"
                     android:numStars="5"
-
-                     android:stepSize="1"
+                    android:stepSize="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv2">
@@ -95,6 +94,24 @@
                     android:background="@color/grey_400"
                     app:layout_constraintTop_toBottomOf="@+id/rating" />
 
+                <EditText
+                    android:id="@+id/notes_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/full_border_radius_8"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:minLines="4"
+                    android:hint="@string/notes"
+                    android:textSize="14sp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="viewStart"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rating"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine" />
                 <TextView
                     android:id="@+id/tv6"
                     android:layout_width="wrap_content"
@@ -103,6 +120,7 @@
                     android:text="Lorem Ipsum is simply dummy text of the printing
 and typesetting industry. Lorem Ipsum has been
 the industry's standard dummy text."
+                    android:visibility="gone"
                     android:textAlignment="center"
                     android:textColor="@color/grey_dark_1"
                     android:textSize="@dimen/_11sdp"
@@ -125,21 +143,21 @@ the industry's standard dummy text."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv6" />
+                    app:layout_constraintTop_toBottomOf="@id/notes_et" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_services"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:spanCount="3"
-                    android:clipToPadding="false"
-                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-android:visibility="gone"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
-                     app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv7"
+                    app:spanCount="3"
                     tools:listitem="@layout/item_filter_rating" />
 
                 <Button
@@ -147,6 +165,7 @@ android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:background="@drawable/bg_btn_gray_dark"
                     android:text="@string/submit"
                     android:textAllCaps="false"

@@ -37,15 +37,16 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OffersViewHol
         return OffersViewHolder(_binding!!)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: OffersViewHolder, position: Int) {
 
         var currentItem = list[position]
-         holder.binding.tvMoneyBefore.setText (currentItem?.price?.toDoubleOrNull()?.roundToInt().toString() +context.resources.getString(
+         holder.binding.tvMoneyBefore.setText (currentItem?.services!!.price_before?.toDoubleOrNull()?.roundToInt().toString() +" "+context.resources.getString(
             R.string.sr))
-         holder.binding.tvMoneyAfter.setText("( "+ currentItem?.services?.price?.toDoubleOrNull()?.roundToInt().toString()+context.resources.getString(
+        holder.binding.tvMoneyBefore.paintFlags =  holder.binding.tvMoneyBefore.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+         holder.binding.tvMoneyAfter.setText("( "+ currentItem?.services?.price?.toDoubleOrNull()?.roundToInt().toString()+" "+context.resources.getString(
             R.string.sr) + " )")
-        holder.binding.tvMoneyBefore.setPaintFlags(holder.binding.tvMoneyBefore.getPaintFlags() or Paint.LINEAR_TEXT_FLAG)
-        holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type)+currentItem.services?.name)
+        holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type)+" "+currentItem.services?.name)
            holder.binding.imgWishItem.loadImage(currentItem.services?.image)
 
         holder.binding.root.setOnClickListener {

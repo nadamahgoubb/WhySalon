@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
- import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import com.dot_jo.whysalon.data.response.BookingsItem
 import com.dot_jo.whysalon.databinding.ItemHistoryListBinding
 import com.dot_jo.whysalon.databinding.ItemHistoryTitleBinding
- import com.dot_jo.whysalon.ui.interfaces.HistoryClickListener
+import com.dot_jo.whysalon.ui.interfaces.HistoryClickListener
 import com.dot_jo.whysalon.util.ext.initNested
 
 
@@ -31,7 +31,7 @@ class HistoryWithYearAdapter(
             field = value
             notifyDataSetChanged()
         }
-    var mapp = mutableMapOf <Int, ArrayList<BookingsItem>>()
+    var mapp = mutableMapOf<Int, ArrayList<BookingsItem>>()
         @SuppressLint("NotifyDataSetChanged") set(value) {
             field = value
             notifyDataSetChanged()
@@ -41,7 +41,7 @@ class HistoryWithYearAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
-         when (viewType) {
+        when (viewType) {
 
             Type.title.value -> {
                 _bindingTitle = ItemHistoryTitleBinding.inflate(
@@ -56,7 +56,7 @@ class HistoryWithYearAdapter(
                 _bindingBody = ItemHistoryListBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
-                adapter= HistoryAdapter( listener)
+                adapter = HistoryAdapter(listener)
                 title = false
                 return HistoryBodyViewHolder(_bindingBody!!)
             }
@@ -72,22 +72,23 @@ class HistoryWithYearAdapter(
         if (title) {
 
             var holder2 = holder as HistoryTileViewHolder
-titleYear = (currentItem as HistoryItem.HeaderItem).title.toString()
-currentItem as HistoryItem
-            holder2.binding.tvYear.setText( titleYear)
+            titleYear = (currentItem as HistoryItem.HeaderItem).title.toString()
+            currentItem as HistoryItem
+            holder2.binding.tvYear.setText(titleYear)
 
         } else {
 
             var holder2 = holder as HistoryBodyViewHolder
-            holder2.binding.rvHistoryYearBfore.initNested(context, adapter )
+            holder2.binding.rvHistoryYearBfore.initNested(context, adapter)
             mapp?.get(titleYear?.toInt())?.let {
                 adapter.list = it
                 adapter.notifyDataSetChanged()
             }
-            }
+        }
 
 
     }
+
     override fun getItemViewType(position: Int): Int = when (list[position]) {
         is HistoryItem.HeaderItem -> Type.title.value
         is HistoryItem.historyItem -> Type.body.value

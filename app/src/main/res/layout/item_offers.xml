@@ -113,6 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 150 SAR"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
                     android:textColor="@color/red_500"
                     android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"
@@ -125,12 +126,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" ( 75SAR)"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
                     android:textColor="@color/green_500"
                     android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/tv_money_title"
                     app:layout_constraintStart_toEndOf="@+id/tv_money_before"
-                    app:layout_constraintTop_toTopOf="@id/tv_money_title" />
+                    app:layout_constraintTop_toTopOf="@id/tv_money_title"  />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

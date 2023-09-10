@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.ui.fragment.basket
 
+import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import androidx.core.view.isVisible
@@ -145,15 +146,15 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun loadOfferData(item: OfferssItem) {
         binding.lytData.isVisible = true
         //  binding.tvServices.setText(item?.name.toString())
         binding.tvTitle.setText(item?.services?.name.toString())
         binding.tvDesc.setText(item?.services?.description.toString())
-        binding.tvMoneyTitle.setText(
-            resources.getString(R.string.price_from) + item?.price?.toDoubleOrNull()?.roundToInt()
-                .toString() + resources.getString(R.string.sr)
-        )
+        binding.tvMoneyTitle.text =
+            resources.getString(R.string.price_from)+" "+ item.price?.toDoubleOrNull()?.roundToInt()
+                .toString()+" " + resources.getString(R.string.sr)
        // binding.tvTime.setText(item?.services?.duration.toString() + " " + resources.getString(R.string.min))
         binding.tvTime.setText(item?.services?.duration?.toIntOrNull()
             ?.let { getDuration(it, requireContext()) })

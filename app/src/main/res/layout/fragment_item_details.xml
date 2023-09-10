@@ -46,9 +46,7 @@
                             app:cardCornerRadius="@dimen/_8sdp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-                        <!--            android:layout_width="@dimen/_150sdp"
-                                    android:layout_height="@dimen/_10sdp"
-                                    app:tabBackground="@drawable/tab_selector"-->
+
 
                         <com.google.android.material.tabs.TabLayout
                             android:id="@+id/tab_layout"
@@ -102,12 +100,10 @@
 
                                 <ImageView
                                     android:id="@+id/iv_money"
-
                                     android:layout_width="@dimen/_15sdp"
                                     android:layout_height="@dimen/_15sdp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/reminder"
-
                                     app:tint="@color/grey_1000" />
 
                                 <TextView

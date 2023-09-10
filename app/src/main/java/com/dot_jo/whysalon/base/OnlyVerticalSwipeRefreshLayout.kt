@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -19,6 +20,7 @@ class OnlyVerticalSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
         touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     }
 
+    @SuppressLint("Recycle")
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {

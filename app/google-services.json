@@ -1,42 +1,49 @@
 {
   "project_info": {
-    "project_number": "1028517061696",
-    "project_id": "whysalon-68085",
-    "storage_bucket": "whysalon-68085.appspot.com"
+    "project_number": "370194282562",
+    "project_id": "why-salon",
+    "storage_bucket": "why-salon.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1028517061696:android:0de1d48638133ea12d2ba5",
+        "mobilesdk_app_id": "1:370194282562:android:1ee9819d1dd307f5df15db",
         "android_client_info": {
           "package_name": "com.dot_jo.whysalon"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1028517061696-4cfrsehh6rgob6bmnl57cne8stdp408u.apps.googleusercontent.com",
+          "client_id": "370194282562-3uipt0v13n19ujiqe714snk5quvj3kcn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.dot_jo.whysalon",
-            "certificate_hash": "42c593681af14dc8c830ecffd6359ee3c418660c"
+            "certificate_hash": "dff21bfb6c03e168aebf0cd61a4599fb43a30c1a"
           }
         },
         {
-          "client_id": "1028517061696-53fbjgf0kja8bpke4caobgsqdkqn4r79.apps.googleusercontent.com",
+          "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYrpRJ-qLP3R3tdNh-dkEIxsUy8B1UobY"
+          "current_key": "AIzaSyAKYOsogpK2IM3GXQ_i_z2eA6RqkyBdyCg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1028517061696-53fbjgf0kja8bpke4caobgsqdkqn4r79.apps.googleusercontent.com",
+              "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "370194282562-jd5j7h23ljrtdum2me7g9ojoggmc2102.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dotjo.WhySalonBarber"
+              }
             }
           ]
         }

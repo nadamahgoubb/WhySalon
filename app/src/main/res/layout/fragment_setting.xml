@@ -65,7 +65,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_20sdp"
-                         android:textColor="@color/grey_1000"
+                        android:textColor="@color/grey_1000"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@id/iv_profile"
@@ -280,8 +280,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lyt_notifaction"
-          android:layout_width="match_parent"
-      android:visibility="gone"          android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintTop_toBottomOf="@+id/tv_privacy">
 
                 <View
@@ -361,11 +364,11 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:backgroundTint="@color/red_400"
                 android:text="@string/log_out"
-                android:visibility="gone"
-
                 android:textAllCaps="false"
+
                 android:textColor="@color/white"
-                 app:cornerRadius="@dimen/_8sdp"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/_8sdp"
                 app:icon="@drawable/logout"
                 app:iconGravity="textStart"
                 app:layout_constraintEnd_toEndOf="parent"

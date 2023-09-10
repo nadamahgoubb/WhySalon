@@ -1,5 +1,7 @@
 package com.dot_jo.whysalon.ui.fragment.createOrder
 
+import android.annotation.SuppressLint
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -24,6 +26,8 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
     private val mViewModel: CreateOrderViewModel by activityViewModels()
     lateinit var adapter: BarbarAdapter
     private lateinit var parent: MainActivity
+    private lateinit var barbar: BarbarItem
+    private var orderId: String = ""
     private fun initAdapter() {
         adapter = BarbarAdapter(this)
         binding.rvBarbars.init(requireContext(), adapter, 2)
@@ -86,6 +90,7 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
     }
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun enablebtn(enable: Boolean) {
         if (enable) {
             binding.cardNext.background =
@@ -98,6 +103,7 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupUi() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
@@ -106,26 +112,36 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
         parent.showNotifactionFragment(false)
 
         parent.cardback.setOnClickListener {
-            activity?.onBackPressed()
+            findNavController().popBackStack()
         }
         binding.cardNext.setOnClickListener {
             if (state == 1) {
 
                 findNavController().navigate(
-                    R.id.calenderFragment)
-                    //bundleOf(Constants.BARBER to barbar)
+                    R.id.calenderFragment,
+                    bundleOf(
+                        Constants.BARBER to barbar.name!!,
+                        Constants.ORDER_ID to if (orderId == "") "" else orderId
+                    )
+                )
 
             }
         }
 
         parent.setTitle(resources.getString(R.string.barbars))
-       mViewModel. total = arguments?.getString(Constants.TOTAL)
-        binding.tvTotal.setText(mViewModel.total + resources.getString(R.string.sr))
+        mViewModel.total = arguments?.getString(Constants.TOTAL)
+        this.orderId = if (arguments?.getString(Constants.ORDER_ID) != "") {
+            arguments?.getString(Constants.ORDER_ID).toString()
+        }else{
+            ""
+        }
+        binding.tvTotal.text = mViewModel.total + resources.getString(R.string.sr)
 
     }
 
     override fun onBarbarClickListener(item: BarbarItem?) {
         mViewModel.barbar = item
+        barbar = item!!
         if (item == null) {
             enablebtn(false)
         } else enablebtn(true)

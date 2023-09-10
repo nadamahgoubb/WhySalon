@@ -11,169 +11,172 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView        android:layout_width="match_parent"
-        android:background="@drawable/bg_btn_white"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-  android:visibility="gone"   android:id="@+id/lyt_data"
-        android:layout_width="match_parent"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_40sdp"
-            tools:context=".ui.fragments.accountFragment.AccountFragment">
+            android:background="@drawable/bg_btn_white"
+            android:fillViewport="true">
 
-
-
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/iv_profile"
-                        android:layout_width="@dimen/_85sdp"
-                        android:layout_height="@dimen/_85sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:src="@drawable/empty_user_"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-        <FrameLayout
-            android:layout_width="@dimen/_29sdp"
-            android:layout_height="@dimen/_29sdp"
-    android:id="@+id/iv_edit_pic"        android:background="@drawable/bg_rounded"
-            android:backgroundTint="@color/dark_blue"
-            app:layout_constraintBottom_toBottomOf="@id/iv_profile"
-            app:layout_constraintEnd_toEndOf="@id/iv_profile"
-        >
-            <ImageView
-                android:layout_width="@dimen/_17sdp"
-                android:layout_height="@dimen/_17sdp"
-                android:src="@drawable/ic_camera"
-                android:layout_gravity="center"
-                app:tint="@color/white" />
-        </FrameLayout>
-
-
-
-
-                    <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_20sdp"
-                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        app:layout_constraintEnd_toEndOf="@id/iv_profile"
-                        app:layout_constraintStart_toStartOf="@+id/iv_profile"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
-
-
-
-
-            <View
-                android:id="@+id/view_11"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_data"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@color/gray_400"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-            <TextView
-                android:id="@+id/tv_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/mail"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:paddingTop="@dimen/_20sdp"
-                android:paddingBottom="@dimen/_12sdp"
-                android:text="@string/email"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
-
-                app:layout_constraintTop_toBottomOf="@+id/view_11" />
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                 android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                 android:textColor="@color/grey_1000"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
-app:layout_constraintStart_toStartOf="@id/tv_1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_1" />
-
-            <View
-                android:id="@+id/view_pass"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/_8sdp"
-      android:layout_marginVertical="@dimen/_10sdp"          android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/gray_400"
-                app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:visibility="gone"
+                tools:context=".ui.fragments.accountFragment.AccountFragment">
 
 
-            <TextView
-                android:id="@+id/tv_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/padlock"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:paddingVertical="@dimen/_10sdp"
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:src="@drawable/empty_user_"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-android:gravity="center_vertical"
-                android:text="@string/password"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
+                <FrameLayout
+                    android:id="@+id/iv_edit_pic"
+                    android:layout_width="@dimen/_29sdp"
+                    android:layout_height="@dimen/_29sdp"
+                    android:background="@drawable/bg_rounded"
+                    android:backgroundTint="@color/dark_blue"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                    app:layout_constraintEnd_toEndOf="@id/iv_profile">
 
-                app:layout_constraintTop_toBottomOf="@+id/view_pass" />
-            <TextView
-                android:id="@+id/tv_change_pass"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="wrap_content"
-                 android:layout_marginStart="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:paddingVertical="@dimen/_10sdp"
+                    <ImageView
+                        android:layout_width="@dimen/_17sdp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_camera"
+                        app:tint="@color/white" />
+                </FrameLayout>
 
-android:gravity="center_vertical"
-                android:text="@string/change"
-                android:textColor="@color/grey_1000"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_2"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_2"
 
-                />
-            <com.google.android.material.button.MaterialButton
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/grey_1000"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/iv_profile"
+                    app:layout_constraintStart_toStartOf="@+id/iv_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
-                android:id="@+id/btn_delet_account"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/red_400"
-                app:cornerRadius="@dimen/_8sdp"
-android:layout_marginBottom="@dimen/_50sdp"
-                android:text="@string/delete_account"
-                android:textAllCaps="false"
-                app:icon="@drawable/ic_trash"
-                app:iconGravity="textStart"
-                android:textColor="@color/white"
-app:layout_constraintBottom_toBottomOf="parent"              app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                <View
+                    android:id="@+id/view_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@color/gray_400"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/mail"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_20sdp"
+                    android:paddingBottom="@dimen/_12sdp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintTop_toBottomOf="@+id/view_11" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:textColor="@color/grey_1000"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_1"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_1" />
+
+                <View
+                    android:id="@+id/view_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/gray_400"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/padlock"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintTop_toBottomOf="@+id/view_pass" />
+
+                <TextView
+                    android:id="@+id/tv_change_pass"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/change"
+                    android:textColor="@color/grey_1000"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_2"
+
+                    />
+
+                <com.google.android.material.button.MaterialButton
+
+                    android:id="@+id/btn_delet_account"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/red_400"
+                    android:text="@string/delete_account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:cornerRadius="@dimen/_8sdp"
+                    app:icon="@drawable/ic_trash"
+                    app:iconGravity="textStart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

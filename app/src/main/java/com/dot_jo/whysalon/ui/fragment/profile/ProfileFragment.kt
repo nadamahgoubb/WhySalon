@@ -1,6 +1,7 @@
 package com.dot_jo.whysalon.ui.fragment.profile
 
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
@@ -91,8 +92,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         binding.ivEditPic.setOnClickListener {
             pickImage()
         }
+
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun setupUi() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)

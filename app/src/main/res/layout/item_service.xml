@@ -26,11 +26,10 @@
 
             <ImageView
                 android:id="@+id/img_wish_item"
-
-             android:layout_height="@dimen/_48sdp"
                 android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
                 android:layout_gravity="center"
-                 android:src="@drawable/beard"
+                android:src="@drawable/beard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

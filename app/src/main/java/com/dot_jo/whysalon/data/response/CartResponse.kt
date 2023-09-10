@@ -13,19 +13,19 @@ data class CartResponse(
     @SerializedName("tax") var tax: String? = null,
     @SerializedName("finalTotal") var finalTotal: String? = null,
 
-) : Parcelable
+    ) : Parcelable
 
 @Parcelize
 data class CartsItemResponse(
 
-   @SerializedName("client_id") val client_id: String?,
-   @SerializedName("id") val id: String?,
-   @SerializedName("order_id") val order_id: String?,
-   @SerializedName("package") val packagee: @RawValue PackageItem?,
-   @SerializedName("package_id") val package_id: String?,
-   @SerializedName("price") val price: String?,
-   @SerializedName("service") val service: ServicesItem?,
-   @SerializedName("service_id") val service_id: String?
+    @SerializedName("client_id") val client_id: String?,
+    @SerializedName("id") val id: String?,
+    @SerializedName("order_id") val order_id: String?,
+    @SerializedName("package") val packagee: @RawValue PackageItem?,
+    @SerializedName("package_id") val package_id: String?,
+    @SerializedName("price") val price: String?,
+    @SerializedName("service") val service: ServicesItem?,
+    @SerializedName("service_id") val service_id: String?
 ) : Parcelable
 
 @Parcelize
@@ -48,15 +48,16 @@ data class PackageItem(
 @Parcelize
 data class TimesOfBarbarResponse(
     @SerializedName("times") var times: ArrayList<String>? = null,
+    @SerializedName("date") var date: String? = null,
 
 
     ) : Parcelable
 
 @Parcelize
 data class TimesItem(
-  var time:String? = null,
+    var time: String? = null,
     var selected: Boolean? = false,
-   ) : Parcelable
+) : Parcelable
 
 @Parcelize
 data class BarbarsResponse(
@@ -88,54 +89,61 @@ data class BarbarItem(
     @SerializedName("avg_rates")
     var avg_rates: String? = null,
 
-     var seleted:Boolean? = false
-,
-    @SerializedName("barber_days"  ) var barberDays  : ArrayList<BarberDays> = arrayListOf()
+    var seleted: Boolean? = false,
+    @SerializedName("barber_days") var barberDays: ArrayList<BarberDays> = arrayListOf()
 
 ) : Parcelable
+
 @Parcelize
 
 
-data class BarberDays (
+data class BarberDays(
 
-    @SerializedName("id"            ) var id          : Int?    = null,
-    @SerializedName("status"        ) var status      : Int?    = null,
-    @SerializedName("barber_id"     ) var barberId    : Int?    = null,
-    @SerializedName("week_day_id"   ) var weekDayId   : Int?    = null,
-    @SerializedName("week_day_name" ) var weekDayName : String? = null,
-    @SerializedName("from"          ) var from        : String? = null,
-    @SerializedName("to"            ) var to          : String? = null
+    @SerializedName("id") var id: Int? = null,
+    @SerializedName("status") var status: Int? = null,
+    @SerializedName("barber_id") var barberId: Int? = null,
+    @SerializedName("week_day_id") var weekDayId: Int? = null,
+    @SerializedName("week_day_name") var weekDayName: String? = null,
+    @SerializedName("from") var from: String? = null,
+    @SerializedName("to") var to: String? = null
 
 ) : Parcelable
 
 @Parcelize
 data class BookingResponse(
-    @SerializedName("bookings" ) var bookings : ArrayList<BookingsItem> = arrayListOf()
+    @SerializedName("bookings") var bookings: ArrayList<BookingsItem> = arrayListOf()
 
 ) : Parcelable
+
+@Parcelize
+
+data class RebookingResponse(
+    @SerializedName("finalTotal") var finalTotal: String? = null,
+
+    ) : Parcelable
 
 @Parcelize
 data class BookingsItem(
 
 
-    @SerializedName("id"                  ) var id                : String?              = null,
-    @SerializedName("status"              ) var status            : Int?              = null,
-    @SerializedName("tax"                 ) var tax               : String?           = null,
-    @SerializedName("total"               ) var total             : String?           = null,
-    @SerializedName("final_total"         ) var finalTotal        : String?           = null,
-    @SerializedName("date"                ) var date              : String?           = null,
-    @SerializedName("from"                ) var from              : String?           = null,
-    @SerializedName("to"                  ) var to                : String?           = null,
-    @SerializedName("duration"            ) var duration          : String?              = null,
-    @SerializedName("payment_method"      ) var paymentMethod     : String?           = null,
-    @SerializedName("payment_method_name" ) var paymentMethodName : String?           = null,
-    @SerializedName("customer_number"     ) var customerNumber    : String?           = null,
-    @SerializedName("note"                ) var note              : String?           = null,
-    @SerializedName("client_id"           ) var clientId          : Int?              = null,
-    @SerializedName("barber_id"           ) var barberId          : Int?              = null,
-    @SerializedName("barber"              ) var barber            : BarbarItem?           = BarbarItem(),
-    @SerializedName("carts"               ) var carts             : ArrayList<CartsItemResponse>  = arrayListOf(),
-    @SerializedName("images"              ) var images            : ArrayList<ImageItem>?= null
+    @SerializedName("id") var id: String? = null,
+    @SerializedName("status") var status: Int? = null,
+    @SerializedName("tax") var tax: String? = null,
+    @SerializedName("total") var total: String? = null,
+    @SerializedName("final_total") var finalTotal: String? = null,
+    @SerializedName("date") var date: String? = null,
+    @SerializedName("from") var from: String? = null,
+    @SerializedName("to") var to: String? = null,
+    @SerializedName("duration") var duration: String? = null,
+    @SerializedName("payment_method") var paymentMethod: String? = null,
+    @SerializedName("payment_method_name") var paymentMethodName: String? = null,
+    @SerializedName("customer_number") var customerNumber: String? = null,
+    @SerializedName("note") var note: String? = null,
+    @SerializedName("client_id") var clientId: Int? = null,
+    @SerializedName("barber_id") var barberId: Int? = null,
+    @SerializedName("barber") var barber: BarbarItem? = BarbarItem(),
+    @SerializedName("carts") var carts: ArrayList<CartsItemResponse> = arrayListOf(),
+    @SerializedName("images") var images: ArrayList<ImageItem>? = null
 
 ) : Parcelable
 

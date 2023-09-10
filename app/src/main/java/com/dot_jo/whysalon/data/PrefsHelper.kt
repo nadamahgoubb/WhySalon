@@ -39,7 +39,7 @@ object PrefsHelper {
     }
 
     fun getToken(): String? {
-        return preferences.getString(Constants.TOKEN, null)
+        return preferences.getString(Constants.TOKEN, "")
     }
 
 
@@ -47,8 +47,8 @@ object PrefsHelper {
         saveUserData(null)
         preferences.edit().putString(Constants.PHONE, "").toString()
         preferences.edit().putString(Constants.NAME, "").apply()
-        preferences.edit().putString(Constants.TOKEN, null).apply()
-        preferences.edit().putString(Constants.DEAFAULT_ADDRES, null).apply()
+        preferences.edit().putString(Constants.TOKEN, "").apply()
+        preferences.edit().putString(Constants.DEAFAULT_ADDRES, "").apply()
     }
 
     fun setFCMToken(token: String) {

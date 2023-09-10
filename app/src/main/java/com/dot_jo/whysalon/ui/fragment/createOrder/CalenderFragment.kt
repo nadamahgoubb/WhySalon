@@ -1,6 +1,8 @@
 package com.dot_jo.whysalon.ui.fragment.createOrder
 
+import android.annotation.SuppressLint
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
@@ -13,30 +15,53 @@ import com.dot_jo.whysalon.databinding.FragmentCalenderBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.FilterTimeAdapter
 import com.dot_jo.whysalon.ui.interfaces.FilterTimeClickListener
+import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.convertPttern
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
+import com.dot_jo.whysalon.util.getDayFromDate
+import com.dot_jo.whysalon.util.getMonthFromDate
+import com.dot_jo.whysalon.util.getMonthNameFromDate
+import com.dot_jo.whysalon.util.getYearFromDate
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_calender.btn_goto_date
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.Month
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.properties.Delegates
 
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClickListener {
 
-    private var time: String? =""
+    private var time: String? = ""
+    private var date: String? = ""
+    private var dateReal: String? = ""
+    private var orderId by Delegates.notNull<String>()
     lateinit var adapter: FilterTimeAdapter
     private lateinit var parent: MainActivity
     private val mViewModel: CreateOrderViewModel by activityViewModels()
     var state = 0
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onFragmentReady() {
         initAdapter()
         setupUi()
         onClick()
-         mViewModel.apply {
+        binding.tvName.text = arguments?.getString(Constants.BARBER).toString()
+        orderId =arguments?.getString(Constants.ORDER_ID,"").toString()
+        Log.d("isllam", "onFragmentReady: $orderId")
+        if (orderId =="null"){
+            orderId = ""
+        }
+        Log.d("isllam", "onFragmentReady: $orderId")
+        mViewModel.apply {
             observe(viewState) {
                 handleViewState(it)
             }
@@ -57,8 +82,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
             is CreateOrderAction.ShowTimes -> {
                 showProgress(false)
                 showTimeList(action.data)
-
-
+                dateReal = action.data.date
             }
 
 
@@ -75,6 +99,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
                     findNavController().navigate(R.id.loginFirstDialog)
                 } else {
                     showToast(action.message)
+
                 }
                 showProgress(false)
 
@@ -93,10 +118,19 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
                 time?.let { it1 ->
                     mViewModel.barbar?.id?.let { it2 ->
                         mViewModel.date?.let { it3 ->
-                            mViewModel.addBooking(
-                                it2, it3,
-                                it1
-                            )
+                            if (orderId.isNullOrEmpty()){
+                                mViewModel.addBooking(
+                                    it2, it3,
+                                    it1,
+                                )
+                            }else{
+                                mViewModel.addReBooking(
+                                    it2, it3,
+                                    it1,
+                                    orderId!!
+                                )
+                            }
+
                         }
                     }
                 }
@@ -110,6 +144,8 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
 
     }
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupUi() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
@@ -120,61 +156,87 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         parent.showNotifactionFragment(false)
 
         parent.cardback.setOnClickListener {
-            activity?.onBackPressed()
+            findNavController().popBackStack()
         }
         setupCalender()
-binding.tvTotal.setText(mViewModel.total+ resources.getString(R.string.sr))
+        binding.tvTotal.setText(mViewModel.total + resources.getString(R.string.sr))
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun setupCalender() {
         //   Setting minumum and maximum dates:
         val calendarView = binding.cal
-         var min = Calendar.getInstance()//.add()
-        var dayBefore= LocalDate.now()?.plusDays(-1)
-      dayBefore?.let {
-          min.set(  dayBefore.year, dayBefore.monthValue-1, dayBefore.dayOfMonth);
-          calendarView.setMinimumDate(min)
-      }
+        var min = Calendar.getInstance()//.add()
+        var dayBefore = LocalDate.now()?.plusDays(-1)
+        dayBefore?.let {
+            min.set(dayBefore.year, dayBefore.monthValue - 1, dayBefore.dayOfMonth);
+            calendarView.setMinimumDate(min)
+        }
         calendarView.setOnDayClickListener(OnDayClickListener {
             if (it.isEnabled) {
+                date = convertPttern(it.calendar.time)
+                Log.d("isllam", "setupCalender: $orderId")
+                if (orderId.isNullOrEmpty()){
+                    mViewModel.getTimes(convertPttern(it.calendar.time))
+                    Log.d("isllam", "setupCalender1: $orderId")
+                }else{
+                    mViewModel.getTimesReBooking(convertPttern(it.calendar.time),orderId)
+                    Log.d("isllam", "setupCalender2: $orderId")
+                }
 
-                mViewModel.getTimes(convertPttern(it.calendar.time))
                 binding.cal
             }
 
         })
 
-        var e = Calendar.getInstance()
-     //  calendarView.setDate(e)
+
         binding.btnGotoDate.setOnClickListener {
-            /*       c = Calendar.getInstance()
-                   c.set(2023, Calendar.JULY, 26)
-                   binding.cal.setDate(c)*/
-            //  showTimeList(action.data)
+            var e = Calendar.getInstance()
+            calendarView.setDate(e)
+            e = Calendar.getInstance()
+            e.set(
+                getYearFromDate(dateReal!!)!!,
+                getMonthFromDate(dateReal!!)!!,
+                getDayFromDate(dateReal!!)!!
+            )
+            date = convertPttern(e.time)
+            if (orderId==null){
+                mViewModel.getTimes(dateReal!!)
+            }else{
+                mViewModel.getTimesReBooking(dateReal!!,orderId!!)
+            }
+            binding.cal.setDate(e)
+
         }
 
 
     }
 
+    @SuppressLint("SuspiciousIndentation", "NotifyDataSetChanged", "SetTextI18n")
     fun showTimeList(data: TimesOfBarbarResponse) {
-        if (data.times.isNullOrEmpty()) {
-            binding.lytNoAvailableTimes.isVisible = true
-            binding.lytTimes.isVisible = false
-        } else {
-            binding.lytNoAvailableTimes.isVisible = false
-            binding.lytTimes.isVisible = true
-     /* var arr : ArrayList<TimesItem> = arrayListOf()
-                data.times?.forEach(
-                    arr.add(false, )
-                )
-           */
+        if (data.date == date) {
 
-                adapter.list =         data.times!!
-                    adapter.notifyDataSetChanged()
+            if (data.times.isNullOrEmpty()) {
+                binding.lytNoAvailableTimes.isVisible = true
+                binding.lytTimes.isVisible = false
+            } else {
+                binding.lytNoAvailableTimes.isVisible = false
+                binding.lytTimes.isVisible = true
+                /* var arr : ArrayList<TimesItem> = arrayListOf()
+                           data.times?.forEach(
+                               arr.add(false, )
+                           )
+                      */
+
+                adapter.list = data.times!!
+                adapter.notifyDataSetChanged()
             }
+        } else {
+            binding.lytNoAvailableTimes.isVisible = true
+            btn_goto_date.text = "Please GO to ${data.date} "
         }
 
+    }
 
 
     /*
@@ -255,10 +317,13 @@ binding.tvTotal.setText(mViewModel.total+ resources.getString(R.string.sr))
         }*/
 
 
-
-
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint(
+        "SetTextI18n", "UseCompatLoadingForDrawables", "SimpleDateFormat",
+        "DefaultLocale"
+    )
     override fun onTimeChoosenListener(b: String?) {
-        if (b== null) {
+        if (b == null) {
             binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_gray)
             binding.lytTime.isVisible = false
             state = 0
@@ -266,15 +331,18 @@ binding.tvTotal.setText(mViewModel.total+ resources.getString(R.string.sr))
         } else {
             time = b
 
+
             binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_black_white_border)
             binding.lytTime.isVisible = true
-            binding.tvTimeSelected.setText(resources.getString(R.string.time_)+time)
-            binding.tvDateSelected.setText(resources.getString(R.string.date_)+ mViewModel.date?.let {
-                convertPttern(
-                    INPUT_DATE_STRING=       it
+            binding.tvTimeSelected.text =
+                resources.getString(R.string.time_) + " " + LocalTime.parse(time!!).format(
+                    DateTimeFormatter.ofPattern("h:mma")
                 )
-            })
+            binding.tvDateSelected.text =
+                resources.getString(R.string.date_) + " " + getDayFromDate(mViewModel.date!!)+" "+getMonthNameFromDate(mViewModel.date!!)!!.substring(0,3)
             state = 1
 
-        }    }
+
+        }
+    }
 }

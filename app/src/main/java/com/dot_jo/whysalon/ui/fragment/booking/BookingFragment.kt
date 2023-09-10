@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.ui.fragment.booking
 
+import android.annotation.SuppressLint
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,18 +34,20 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>(), CancelBookingLis
                 handleViewState(it)
             }
         }
+        /*
         binding.swiperefreshHome.setOnRefreshListener {
             mViewModel.getBookingList()
 
             binding.swiperefreshHome.isRefreshing = false
-        }
+        }*/
     }
 
     private fun initAdapter() {
         adapter = BookingAdapter(this)
-        binding.rvBookings.init(requireContext(), adapter, 2)
+        binding.rvBookings.init(requireContext(), adapter, 1)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleViewState(action: BookingAction) {
         when (action) {
             is BookingAction.ShowLoading -> {

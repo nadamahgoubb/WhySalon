@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseViewModel
 import com.dot_jo.whysalon.data.param.DeleteFromBookingParam
+import com.dot_jo.whysalon.data.param.ReBookingParam
 import com.dot_jo.whysalon.data.response.BookingResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
+import com.dot_jo.whysalon.data.response.RebookingResponse
 import com.dot_jo.whysalon.domain.BookingUseCase
 import com.dot_jo.whysalon.util.NetworkConnectivity
 import com.dot_jo.whysalon.util.Resource
@@ -23,7 +25,7 @@ class BookingViewModel @Inject constructor(
 
 
     fun getBookingList(
-       ) {
+    ) {
 
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
 
@@ -32,7 +34,7 @@ class BookingViewModel @Inject constructor(
                 var res = useCase.invoke(
                     viewModelScope,
 
-                ) { res ->
+                    ) { res ->
                     when (res) {
                         is Resource.Failure -> produce(BookingAction.ShowFailureMsg(res.message.toString()))
                         is Resource.Progress -> produce(BookingAction.ShowLoading(res.loading))
@@ -47,8 +49,9 @@ class BookingViewModel @Inject constructor(
             produce(BookingAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
     }
+
     fun getHistoryList(
-       ) {
+    ) {
 
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
 
@@ -72,6 +75,7 @@ class BookingViewModel @Inject constructor(
             produce(BookingAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
     }
+
     fun deleteBookingItem(orderId: String) {
 
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
@@ -79,7 +83,7 @@ class BookingViewModel @Inject constructor(
             produce(BookingAction.ShowLoading(true))
             viewModelScope.launch {
                 var res = useCase.invoke(
-                    viewModelScope,DeleteFromBookingParam(orderId)
+                    viewModelScope, DeleteFromBookingParam(orderId)
                 ) { res ->
                     when (res) {
                         is Resource.Failure -> produce(BookingAction.ShowFailureMsg(res.message.toString()))
@@ -87,6 +91,30 @@ class BookingViewModel @Inject constructor(
                         is Resource.Success -> {
 
                             produce(BookingAction.ShowBookingDeleted(res.data.data as OtpChangePassswordResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(BookingAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun reBookingItem(orderId: String) {
+
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
+
+            produce(BookingAction.ShowLoading(true))
+            viewModelScope.launch {
+                var res = useCase.invoke(
+                    viewModelScope, ReBookingParam(orderId)
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(BookingAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(BookingAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(BookingAction.ShowReBooking(res.data.data as RebookingResponse))
                         }
                     }
                 }

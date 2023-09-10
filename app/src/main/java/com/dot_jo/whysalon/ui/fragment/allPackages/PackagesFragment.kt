@@ -10,7 +10,7 @@ import com.dot_jo.whysalon.data.response.CategoriesItem
 import com.dot_jo.whysalon.data.response.ServicesItem
 import com.dot_jo.whysalon.databinding.FragmentPackagesBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
-  import com.dot_jo.whysalon.ui.adapter.packagee.PackagesScreenAdapter
+import com.dot_jo.whysalon.ui.adapter.packagee.PackagesScreenAdapter
 import com.dot_jo.whysalon.ui.fragment.home.HomeAction
 import com.dot_jo.whysalon.ui.fragment.home.HomeViewModel
 import com.dot_jo.whysalon.ui.interfaces.HomeClickListener
@@ -23,42 +23,43 @@ import kotlinx.android.synthetic.main.activity_main.cardback
 
 @AndroidEntryPoint
 class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListener {
-     private lateinit var parent: MainActivity
+    private lateinit var parent: MainActivity
     private val mViewModel: HomeViewModel by viewModels()
-lateinit var adapterPackages :PackagesScreenAdapter
+    lateinit var adapterPackages: PackagesScreenAdapter
     override fun onFragmentReady() {
         setupUi()
         initAdapter()
         mViewModel.apply {
-             getPackages()
+            getPackages()
             observe(viewState) {
                 handleViewState(it)
             }
         }
         binding.swiperefreshHome.setOnRefreshListener {
-             mViewModel.    getPackages()
-            binding.swiperefreshHome.isRefreshing= false
+            mViewModel.getPackages()
+            binding.swiperefreshHome.isRefreshing = false
         }
 
 
     }
+
     private fun handleViewState(action: HomeAction) {
         when (action) {
             is HomeAction.ShowLoading -> {
                 binding.shimmer.startShimmerAnimation()
-                 showProgress(action.show)
+                showProgress(action.show)
                 if (action.show) {
                     hideKeyboard()
                 }
             }
 
             is HomeAction.PackagesSucess -> {
-                binding.shimmer.isVisible= false
+                binding.shimmer.isVisible = false
                 binding.shimmer.stopShimmerAnimation()
                 showProgress(false)
 
                 action.data.packages?.let {
-                    adapterPackages.list =it
+                    adapterPackages.list = it
                     adapterPackages.notifyDataSetChanged()
                 }
             }
@@ -72,6 +73,7 @@ lateinit var adapterPackages :PackagesScreenAdapter
                 showProgress(false)
 
             }
+
             else -> {
 
             }
@@ -90,6 +92,7 @@ lateinit var adapterPackages :PackagesScreenAdapter
         }
 
     }
+
     private fun initAdapter() {
         adapterPackages = PackagesScreenAdapter(this)
         binding.rvPackages.init(requireContext(), adapterPackages, 2)
@@ -97,12 +100,19 @@ lateinit var adapterPackages :PackagesScreenAdapter
     }
 
     override fun onCategoryClickListener(item: CategoriesItem) {
-     }
+    }
 
     override fun onPackagesClickListener(item: ServicesItem) {
-        findNavController().navigate(R.id.itemDetailsFragment,  bundleOf(Constants.PACKAGE to item
-            ,            Constants.Type to Constants.Package))
+        findNavController().navigate(
+            R.id.itemDetailsFragment, bundleOf(
+                Constants.PACKAGE to item, Constants.Type to Constants.Package
+            )
+        )
 
+    }
+
+    override fun onBookNowClickListener(item: ServicesItem) {
+        TODO("Not yet implemented")
     }
 
 }

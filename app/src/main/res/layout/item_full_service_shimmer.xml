@@ -28,9 +28,10 @@
             <ImageView
                 android:id="@+id/img_wish_item"
                 android:layout_width="match_parent"
-            android:background="@drawable/shimmer_effect"    android:layout_height="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                 app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/shimmer_effect"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +54,8 @@
                 android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_12sdp"
-           android:background="@drawable/shimmer_effect"      android:textColor="@color/black"
+                android:background="@drawable/shimmer_effect"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,8 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_5sdp"
-                 android:background="@drawable/shimmer_effect"                   android:textColor="@color/grey_400"
+                android:background="@drawable/shimmer_effect"
+                android:textColor="@color/grey_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_service"
                 app:layout_constraintTop_toBottomOf="@id/tv_service" />
@@ -85,21 +88,22 @@
                     android:id="@+id/tv_explore"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:drawableTint="@color/black"
-         android:background="@drawable/shimmer_effect"           android:gravity="center"
-
-                android:textColor="@color/black"
+                    android:background="@drawable/shimmer_effect"
+                    android:gravity="center"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableTint="@color/black" />
 
                 <ImageView
                     android:id="@+id/iv_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_1sdp"
-                android:layout_marginTop="@dimen/_2sdp"  android:gravity="center"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:gravity="center"
                     android:rotation="180"
                     android:src="@drawable/ic_arrow_"
                     app:layout_constraintBottom_toBottomOf="@id/tv_explore"

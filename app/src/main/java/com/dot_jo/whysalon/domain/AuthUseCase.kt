@@ -9,7 +9,7 @@ import com.dot_jo.whysalon.data.param.CheckEmailParam
 import com.dot_jo.whysalon.data.param.LoginParams
 import com.dot_jo.whysalon.data.param.RegisterParams
 import com.dot_jo.whysalon.data.param.ResetPasswordParams
-import com.dot_jo.whysalon.data.webService.Repository
+import com.dot_jo.whysalon.data.Repository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

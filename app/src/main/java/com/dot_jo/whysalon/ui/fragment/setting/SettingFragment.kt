@@ -34,7 +34,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
                 mViewModel.showProfile()
             }
             observe(viewState) {
-                handleViewState(it)    }
+                handleViewState(it)
+            }
         }
 
         if (PrefsHelper.getUserData() == null) {
@@ -72,11 +73,16 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             startActivity(intent)
             activity?.finish()
         }
-    binding.checkboxNotifaction.setOnClickListener{
+        binding.lytNotifaction.setOnClickListener {
+            findNavController().navigate(R.id.notifactionFragment)
+        }
+
+        binding.checkboxNotifaction.setOnClickListener {
 
 
-        mViewModel.changeNotifactionStatus()
-    }}
+            mViewModel.changeNotifactionStatus()
+        }
+    }
 
     private fun loadData() {
         binding.ivProfile.loadImage(
@@ -85,9 +91,11 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             placeHolderOnFsImage = R.drawable.empty_user_
         )
         binding.tvName.setText(PrefsHelper.getUserData()?.client?.name)
-  binding.checkboxNotifaction.isChecked= PrefsHelper.getUserData()?.client?.notify=="1"
+        binding.checkboxNotifaction.isChecked = PrefsHelper.getUserData()?.client?.notify == "1"
         binding.headerData.isVisible = true
-        binding.lytNotifaction.isVisible = true }
+        binding.lytNotifaction.isVisible = true
+    }
+
     private fun handleViewState(action: ProfileAction) {
         when (action) {
             is ProfileAction.ShowLoading -> {
@@ -110,14 +118,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             is ProfileAction.ShowProfile -> {
 
                 PrefsHelper.saveUserData(action.data)
-                loadData( )
+                loadData()
             }
 
             is ProfileAction.NotifactionChanged -> {
-action.data.notify?.let {
-    binding.checkboxNotifaction.isChecked=it
-}
-mViewModel.showProfile()
+                action.data.notify?.let {
+                    binding.checkboxNotifaction.isChecked = it
+                }
+                mViewModel.showProfile()
             }
 
             else -> {

@@ -33,7 +33,7 @@
         android:label="ServiceDetailsFragment" />
     <fragment
         android:id="@+id/notifactionFragment"
-        android:name="com.dot_jo.whysalon.ui.fragment.NotifactionFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.notifaction.NotifactionFragment"
         android:label="NotifactionFragment" />
     <fragment
         android:id="@+id/serviceMoreDetailsFragment"

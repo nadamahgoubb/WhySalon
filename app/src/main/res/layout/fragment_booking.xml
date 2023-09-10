@@ -12,16 +12,10 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_btn_white_rounded_top">
 
-        <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
-            android:id="@+id/swiperefresh_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
-                >
+                android:fillViewport="true">>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -139,7 +133,7 @@
                             android:id="@+id/lyt_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             app:layout_constraintTop_toBottomOf="@+id/tv_11">
 
                             <com.facebook.shimmer.ShimmerFrameLayout
@@ -147,15 +141,16 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_12sdp">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
 
-                                <include layout="@layout/item_recomendation_shimmer" />
-                                <include layout="@layout/item_recomendation_shimmer" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
-</LinearLayout>
+                                    <include layout="@layout/item_recomendation_shimmer" />
+
+
+                                </LinearLayout>
 
                             </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -164,7 +159,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:clipToPadding="false"
-                                android:orientation="vertical"
+                                android:orientation="horizontal"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -190,12 +185,8 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--
-                                     -->
-
 
             </androidx.core.widget.NestedScrollView>
-        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
