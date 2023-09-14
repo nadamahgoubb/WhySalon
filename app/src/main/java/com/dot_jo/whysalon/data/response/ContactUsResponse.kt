@@ -10,6 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class ContactUsResponse(
 
     @SerializedName("address"           ) var address         : String?                    = null,
+    @SerializedName("lng"           ) var lng         : String?                    = null,
+    @SerializedName("lat"           ) var lat         : String?                    = null,
     @SerializedName("facebook_url"      ) var facebookUrl     : String?                    = null,
     @SerializedName("instagram_url"     ) var instagramUrl    : String?                    = null,
     @SerializedName("snapchat"          ) var snapchat        : String?                    = null,

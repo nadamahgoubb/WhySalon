@@ -1,6 +1,7 @@
 package com.dot_jo.whysalon.data
 
 
+import com.dot_jo.whysalon.base.PagingParams
 import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.AddReBookingParams
 import com.dot_jo.whysalon.data.param.AddToCartParams
@@ -90,7 +91,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun getTimesByBarbarID(params: GetTimesParams) =
         api.getTimesByBarbarID(params.barber_id, params.date,)
     suspend fun getTimesByBarbarIDReBooking(params: GetTimesReBookingParams) =
-        api.getTimesByBarbarIDReBooking(params.barber_id, params.date, params.orderId)
+        api.getTimesByBarbarIDReBooking(params.barber_id, params.date, params?.orderId)
 
     suspend fun rate(params: RateParam) =
         api.rate(params.rate, params.comment, params.barber_id, params.order_id)
@@ -98,6 +99,6 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun getBooking() = api.getBooking()
     suspend fun getHistory() = api.getHistory()
     suspend fun getSetting() = api.getSetting()
-    suspend fun getNotifications() = api.getNotifications()
+    suspend fun getNotifications(param: PagingParams) = api.getNotifications(param.page)
     suspend fun getContactUsData() = api.getContactUsData()
 }

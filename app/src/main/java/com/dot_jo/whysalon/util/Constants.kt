@@ -88,6 +88,10 @@ object Constants {
     const val OutOfRange = "3"
   //  const val UnAuthWithAddress = "4"
     const val UnAuthWithoutAddress = "5"
-
+  const val NEW =0
+  const val IN_PROGRESS =1
+  const val FINISHED =2
+  const val NOT_ATTEND =3
+  const val CANCELED =4
 
 }

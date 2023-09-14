@@ -129,17 +129,20 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         }
         type = arguments?.getInt(Constants.Type)!!
         if (type == Constants.Package) {
+            binding.tv1.setText(resources.getString(R.string.about_this_pack))
             item = arguments?.getParcelable(Constants.PACKAGE) 
             (item as ServicesItem)?.id?.let { mViewModel.getPackagesDetails(it) }
             //    loadPackageData(item as ServicesItem)
         } else if(type == Constants.OFFERS) {
+            binding.tv1.setText(resources.getString(R.string.about_this_offer))
             item  = arguments?.getParcelable(Constants.PACKAGE)
             //!! as OfferssItem
 
           loadOfferData(item as OfferssItem)
 
         } else{
-            item = arguments?.getParcelable(Constants.PACKAGE) 
+            binding.tv1.setText(resources.getString(R.string.about_this_service))
+            item = arguments?.getParcelable(Constants.PACKAGE)
             (item as ServicesItem)?.id?.let { mViewModel.getServiceDetails(it) }
 
         }
@@ -188,7 +191,7 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
                     //    loadPackageData(item as ServicesItem)
                 } else if(type == Constants.OFFERS) {
                      //!! as OfferssItem
-                    (item as OfferssItem )?.price?.let { it1 ->   (item as OfferssItem )?.id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
+                    (item as OfferssItem )?.price?.let { it1 ->   (item as OfferssItem )?.service_id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
 
 
                 } else{

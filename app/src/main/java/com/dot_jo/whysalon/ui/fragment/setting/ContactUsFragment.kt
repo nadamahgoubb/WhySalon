@@ -24,6 +24,8 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
     var facebookUrl = ""
     var snapchatUrl = ""
     var instagramUrl = ""
+    var lat :String? = null
+    var lng  :String? = null
 
     override fun onFragmentReady() {
         setupUi()
@@ -49,6 +51,9 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
         }
         binding.ivTwiter.setOnClickListener {
             openUrl(snapchatUrl)
+        }
+        binding.lytLocation.setOnClickListener {
+            lat?.let { it1 -> lng?.let { it2 -> openMap(it1, it2) } }
         }
     }
 
@@ -110,11 +115,18 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
  it.facebookUrl?.let {facebookUrl = it  }
  it.instagramUrl?.let {instagramUrl = it  }
  it.snapchat?.let {snapchatUrl = it  }
+ it.lat?.let {lat = it  }
+ it.lng?.let {lng = it  }
 
 
         }
     }
+    fun openMap(  latitude :String , longitude :String){
+        val uri = "https://www.google.com.tw/maps/place/$latitude,$longitude"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+        startActivity(intent)
 
+    }
     private fun openUrl(url: String) {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(browserIntent)

@@ -46,11 +46,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
                 handleViewState(it)
             }
         }
-        binding.swiperefreshHome.setOnRefreshListener {
-            mViewModel.getHistoryList()
 
-            binding.swiperefreshHome.isRefreshing = false
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

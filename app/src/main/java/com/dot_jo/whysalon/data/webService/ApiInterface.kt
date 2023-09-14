@@ -1,6 +1,7 @@
 package com.dot_jo.whysalon.data.webService
 
 
+import com.dot_jo.whysalon.base.BasePagingResponse
 import com.dot_jo.whysalon.base.DevResponse
 import com.dot_jo.whysalon.base.ErrorResponse
 import com.dot_jo.whysalon.base.NetworkResponse
@@ -11,7 +12,7 @@ import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
 import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
-import com.dot_jo.whysalon.data.response.NotificationsResponse
+import com.dot_jo.whysalon.data.response.NotificationItem
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
 import com.dot_jo.whysalon.data.response.OtpCheckEmailResponse
@@ -100,7 +101,7 @@ interface ApiInterface {
     @FormUrlEncoded
     suspend fun updateFcmToken(
         @Field("fcm_token") fcm_token: String,
-        @Field("mobile_id") mobile_id: String,
+        @Field("mobile_id") mobile_id: Int,
         @Field("lang") lang: String,
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
@@ -153,7 +154,7 @@ interface ApiInterface {
     suspend fun getTimesByBarbarIDReBooking(
         @Field("barber_id") barber_id: String,
         @Field("date") date: String?, //yyyy-mm-dd
-        @Field("order_id") orderId: String = "",
+        @Field("order_id") orderId: String? ,
     ): NetworkResponse<DevResponse<TimesOfBarbarResponse>, ErrorResponse>
 
 
@@ -209,7 +210,7 @@ interface ApiInterface {
 
     @GET("notifications")
     suspend fun getNotifications(
-    ): NetworkResponse<DevResponse<NotificationsResponse>, ErrorResponse>
+        @Query("page") page: Int ): NetworkResponse<BasePagingResponse<NotificationItem>, ErrorResponse>
 
     @GET("contact-us")
     suspend fun getContactUsData(

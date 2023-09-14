@@ -123,6 +123,8 @@
     <string name="skip">Skip</string>
     <string name="packages">Packages</string>
     <string name="about_this_service">About this service:</string>
+    <string name="about_this_pack">About this Package:</string>
+    <string name="about_this_offer">About this Offer:</string>
     <string name="total">Total</string>
     <string name="cancellation_booking">Cancel booking</string>
     <string name="are_you_sure_to_cancel_your_booking">Are you sure to cancel your booking?</string>
@@ -155,10 +157,11 @@
     <string name="h">"H "</string>
     <string name="you_don_t_have_an_appoinment">You don\'t have an appoinment</string>
     <string name="you_don_t_have_any_history">You don\'t have any history</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="or_try_with_other_staff">Or try with other staff</string>
     <string name="notes">Notes</string>
     <string name="msg_empty_phone_number">Please Enter your Phone Number</string>
     <string name="enter_phone_number">Enter your Phone number</string>
+    <string name="rate_your_barbar">Rate your Barbar</string>
+    <string name="enter_the_email_associated_with_your_account_and_we_will_send_an_email_with_a_code_to_reset_a_file_password">Enter the email associated with your account and We will send an email with a code to reset a file password.</string>
 </resources>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.data.response.BookingsItem
@@ -39,6 +40,7 @@ class BookingAdapter(
 
         var currentItem = list[position]
         holder.binding.tvBarberName.setText(currentItem.barber?.name)
+        holder.binding.tvCancel.isVisible = currentItem.status ==0
         var serviceType = ""
         var image: String? = null
         currentItem.carts.forEach {

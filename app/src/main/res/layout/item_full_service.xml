@@ -23,7 +23,8 @@
 
             app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toBottomOf="@id/lyt_data"
+            app:layout_constraintTop_toTopOf="@id/lyt_data">
 
             <ImageView
                 android:id="@+id/img_wish_item"
@@ -42,11 +43,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
-            app:layout_constraintBottom_toBottomOf="@id/card"
+android:id="@+id/lyt_data"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/card"
-            app:layout_constraintTop_toTopOf="@id/card">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_service"
@@ -55,8 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_12sdp"
-                android:text="@string/hair_service"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Our highly recomended team can takecar of any kind of hair"
-                android:textColor="@color/grey_400"
+                 android:textColor="@color/grey_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_service"
                 app:layout_constraintTop_toBottomOf="@id/tv_service" />

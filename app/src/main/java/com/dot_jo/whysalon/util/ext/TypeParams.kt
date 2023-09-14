@@ -22,13 +22,6 @@ fun <T : Any> Any.getTClass(): Class<T> {
 }
 
 
-@RequiresApi(Build.VERSION_CODES.O)
-fun String.toDate(pattern: String): LocalDate {
-    val formatter = DateTimeFormatter.ofPattern(pattern)
-    return LocalDate.parse(this, formatter)
-}
-
-
 fun Double?.roundTo(n: Int): Double {
     return "%.${n}f".format(Locale.ENGLISH, this).toDouble()
 }

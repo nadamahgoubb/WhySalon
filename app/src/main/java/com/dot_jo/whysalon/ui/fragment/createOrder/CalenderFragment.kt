@@ -19,6 +19,7 @@ import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.convertPttern
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
+import com.dot_jo.whysalon.util.formatDate
 import com.dot_jo.whysalon.util.getDayFromDate
 import com.dot_jo.whysalon.util.getMonthFromDate
 import com.dot_jo.whysalon.util.getMonthNameFromDate
@@ -41,7 +42,7 @@ import kotlin.properties.Delegates
 class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClickListener {
 
     private var time: String? = ""
-    private var date: String? = ""
+    private var date_: String? = null
     private var dateReal: String? = ""
     private var orderId by Delegates.notNull<String>()
     lateinit var adapter: FilterTimeAdapter
@@ -54,15 +55,20 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         initAdapter()
         setupUi()
         onClick()
-        binding.tvName.text = arguments?.getString(Constants.BARBER).toString()
         orderId =arguments?.getString(Constants.ORDER_ID,"").toString()
-        Log.d("isllam", "onFragmentReady: $orderId")
-        if (orderId =="null"){
+         if (orderId =="null"){
             orderId = ""
         }
-        Log.d("isllam", "onFragmentReady: $orderId")
+        date_ =  LocalDate.now().formatDate("yyyy-MM-dd")
         mViewModel.apply {
-            observe(viewState) {
+
+        
+                date_?.let {
+          if(orderId.isNullOrEmpty())        mViewModel.getTimesReBooking(   it  )
+                    else     mViewModel.getTimesReBooking(   it ,orderId)
+
+                } 
+             observe(viewState) {
                 handleViewState(it)
             }
         }
@@ -136,6 +142,25 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
                 }
             }
         }
+        binding.btnGotoDate.setOnClickListener {
+            var e = Calendar.getInstance()
+            binding.cal.setDate(e)
+            e = Calendar.getInstance()
+            e.set(
+                getYearFromDate(dateReal!!)!!,
+                getMonthFromDate(dateReal!!)!!,
+                getDayFromDate(dateReal!!)!!
+            )
+            date_= convertPttern(e.time)
+            if (orderId==null){
+                mViewModel.getTimes(dateReal!!)
+            }else{
+                mViewModel.getTimesReBooking(dateReal!!,orderId!!)
+            }
+            binding.cal.setDate(e)
+
+        }
+
     }
 
     private fun initAdapter() {
@@ -147,6 +172,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupUi() {
+        binding.tvName.text = arguments?.getString(Constants.BARBER).toString()
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
@@ -174,12 +200,10 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         }
         calendarView.setOnDayClickListener(OnDayClickListener {
             if (it.isEnabled) {
-                date = convertPttern(it.calendar.time)
-                Log.d("isllam", "setupCalender: $orderId")
-                if (orderId.isNullOrEmpty()){
+                date_= convertPttern(it.calendar.time)
+                 if (orderId.isNullOrEmpty()){
                     mViewModel.getTimes(convertPttern(it.calendar.time))
-                    Log.d("isllam", "setupCalender1: $orderId")
-                }else{
+                 }else{
                     mViewModel.getTimesReBooking(convertPttern(it.calendar.time),orderId)
                     Log.d("isllam", "setupCalender2: $orderId")
                 }
@@ -188,33 +212,11 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
             }
 
         })
-
-
-        binding.btnGotoDate.setOnClickListener {
-            var e = Calendar.getInstance()
-            calendarView.setDate(e)
-            e = Calendar.getInstance()
-            e.set(
-                getYearFromDate(dateReal!!)!!,
-                getMonthFromDate(dateReal!!)!!,
-                getDayFromDate(dateReal!!)!!
-            )
-            date = convertPttern(e.time)
-            if (orderId==null){
-                mViewModel.getTimes(dateReal!!)
-            }else{
-                mViewModel.getTimesReBooking(dateReal!!,orderId!!)
-            }
-            binding.cal.setDate(e)
-
-        }
-
-
     }
 
     @SuppressLint("SuspiciousIndentation", "NotifyDataSetChanged", "SetTextI18n")
     fun showTimeList(data: TimesOfBarbarResponse) {
-        if (data.date == date) {
+        if (data.date == date_) {
 
             if (data.times.isNullOrEmpty()) {
                 binding.lytNoAvailableTimes.isVisible = true
@@ -247,15 +249,15 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
 
     // Initial date
         calendar.set(2023, Calendar.JUNE, 1)
-        val initialDate = CalendarDate(calendar.time)
+        val initialdate_= CalendarDate(calendar.time)
 
     // Minimum available date
         calendar.set(2023, Calendar.MAY, 15)
-        val minDate = CalendarDate(calendar.time)
+        val mindate_= CalendarDate(calendar.time)
 
     // Maximum available date
         calendar.set(2023, Calendar.JULY, 30)
-        val maxDate = CalendarDate(calendar.time)
+        val maxdate_= CalendarDate(calendar.time)
 
     // List of preselected dates that will be initially selected
      //   val preselectedDates: List<CalendarDate> = getPreselectedDates()
@@ -267,10 +269,10 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
      //   calendarView.setupCalendar(selectionMode = ru.cleverpumpkin.calendar.CalendarView.SelectionMode.SINGLE)
 
 
-    // Get selected date or null
+    // Get selected date_or null
      //   val selectedDate: CalendarDate? = calendarView.selectedDate
 
-    // Get list with single selected date or empty list
+    // Get list with single selected date_or empty list
       //  val selectedDates: List<CalendarDate> = calendarView.selectedDates
       //  val calendarView: CalendarView = binding.cal
         var min = Calendar.getInstance();

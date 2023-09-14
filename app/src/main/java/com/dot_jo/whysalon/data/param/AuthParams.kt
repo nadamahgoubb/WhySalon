@@ -47,7 +47,7 @@ data class RegisterParams(
 @Parcelize
 data class UpdateFcmTokenParam(
 val  fcm_token: String,
-val mobile_id: String,
+val mobile_id: Int,
 val  lang: String,
  ) : Parcelable
 
@@ -58,6 +58,8 @@ data class EditProfileParam(
 
     var email: String = "",
     var name: String = "",
+    var country_code: String = "",
+    var phone: String = "",
     var image:File
 
     ) : Parcelable
@@ -70,6 +72,8 @@ fun EditProfileParam.toMap(): Map<String, RequestBody>{
     itemMap["email"] = email.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
 
     itemMap["name"] = name.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+    itemMap["country_code"] = country_code.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+    itemMap["phone"] = phone.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
 
 
     return itemMap

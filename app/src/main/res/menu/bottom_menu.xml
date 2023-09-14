@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/basketFragment"
-        android:icon="@drawable/cart"
+        android:icon="@drawable/selector_basket"
         android:title="@string/basket" />
 
     <item

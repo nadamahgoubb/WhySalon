@@ -14,17 +14,21 @@ import androidx.core.app.NotificationCompat
 import com.bumptech.glide.Glide
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.data.PrefsHelper
+import com.dot_jo.whysalon.data.param.UpdateFcmTokenParam
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.util.Constants
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Random
+import javax.inject.Inject
 
 private const val CHANNEL_ID = "my_channel"
-
+@AndroidEntryPoint
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
-
+    @Inject
+    lateinit var fcmUseCase: FcmUseCase
     override fun onNewToken(s: String) {
         super.onNewToken(s)
         Log.d("islam", "onNewToken: $s")
@@ -42,8 +46,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendRegistrationToServer(token: String?) {
-        Log.d("islam", "sendRegistrationTokenToServer($token)")
-    }
+token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHelper.getLanguage())) } }
 
     private fun showNotification(remoteMessage: Map<String, String>) {
 
@@ -51,6 +54,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Log.d("isllam", "showNotification: $remoteMessage")
         val barberId = remoteMessage["barber_id"]
         val orderId = remoteMessage["order_id"]
+        val barber_image = remoteMessage["barber_image"]
         val orderStatus = remoteMessage["order_status"]
         val intent = Intent(applicationContext, MainActivity::class.java)
         intent.action = Constants.OPEN_NOTIFICATION
@@ -58,6 +62,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             if (barberId != null && orderId != null) {
                 intent.putExtra(Constants.BARBER_ID, barberId.toString())
                 intent.putExtra(Constants.ORDER_ID, orderId.toString())
+                intent.putExtra(Constants.BARBER, barber_image.toString())
             }
         }
 

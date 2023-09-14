@@ -17,6 +17,8 @@ data class Client(
     @SerializedName("image") var image: String? = null,
     @SerializedName("name") var name: String? = null,
     @SerializedName("notify") var notify: String? = null,
+    @SerializedName("country_code") var country_code: String? = null,
+    @SerializedName("phone") var phone: String? = null,
 
 ) : Parcelable
 
@@ -47,14 +49,15 @@ data class NotificationsResponse(
 ) : Parcelable
 @Parcelize
 data class Notifications(
-    @SerializedName("data") var data: MutableList<Notification>? = null,
+    @SerializedName("data") var data: MutableList<NotificationItem>? = null,
 ) : Parcelable
 @Parcelize
-data class Notification(
+data class NotificationItem(
     @SerializedName("id") var id: Int? = null,
     @SerializedName("title") var title: String? = null,
-    @SerializedName("body") var body: String? = null,
     @SerializedName("time") var time: String? = null,
+    @SerializedName("body") var body: String? = null,
+    @SerializedName("created_at") var created_at: String? = null,
     @SerializedName("offer_id") var offer_id: Int? = null,
     @SerializedName("client_id") var client_id: Int? = null,
     @SerializedName("barber_id") var barber_id: Int? = null,

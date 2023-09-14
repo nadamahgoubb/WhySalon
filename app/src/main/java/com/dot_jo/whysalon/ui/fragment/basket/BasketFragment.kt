@@ -111,7 +111,7 @@ var total :String? = null
  }
     private fun setupUi() {
         parent = requireActivity() as MainActivity
-        parent.showBottomBar(false)
+        parent.showBottomBar(true)
         parent.showToolbar(true)
         parent.setTitle(resources.getString(R.string.basket))
         parent.showback(true)

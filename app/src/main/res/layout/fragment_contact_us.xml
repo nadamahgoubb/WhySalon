@@ -46,7 +46,7 @@
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/rec"
+                        android:id="@+id/lyt_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_20sdp"
@@ -100,9 +100,9 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:backgroundTint="@color/black"
                         app:cardCornerRadius="@dimen/_5sdp"
-                        app:layout_constraintBottom_toTopOf="@id/rec"
-                        app:layout_constraintStart_toStartOf="@id/rec"
-                        app:layout_constraintTop_toTopOf="@id/rec">
+                        app:layout_constraintBottom_toTopOf="@id/lyt_location"
+                        app:layout_constraintStart_toStartOf="@id/lyt_location"
+                        app:layout_constraintTop_toTopOf="@id/lyt_location">
 
                         <ImageView
                             android:layout_width="@dimen/_20sdp"

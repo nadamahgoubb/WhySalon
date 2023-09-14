@@ -107,7 +107,9 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>(), OffersClickListene
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(false)
-
+binding.card.setOnClickListener {
+    findNavController().navigate(R.id.notifactionFragment)
+}
     }
 
     private fun initAdapter() {
@@ -125,8 +127,7 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>(), OffersClickListene
                 Constants.PACKAGE to item, Constants.Type to Constants.OFFERS
             )
         )
-  //      findNavController().navigate(R.id.itemDetailsFragment)
-    }
+     }
 
     override fun onFilterOffersByCategory(item: CategoriesItem?) {
         item?.id?.let { mViewModel.getOffers(it) }

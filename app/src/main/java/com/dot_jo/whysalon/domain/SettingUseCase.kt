@@ -24,11 +24,7 @@ class SettingUseCase @Inject constructor(private val repository: Repository):
                   emit(repository.getSetting( ))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
-            else  if (params ==4) {
-                flow {
-                    emit(repository.getNotifications( ))
-                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
-            }
+
 
             else {
                 flow {

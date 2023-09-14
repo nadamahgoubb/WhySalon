@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(app: Application, val useCase: HomeUseCa
             viewModelScope.launch {
                 var res = useCase.invoke(
                     viewModelScope,
-                    UpdateFcmTokenParam(PrefsHelper.getFcmToken(), "0", PrefsHelper.getLanguage())
+                    UpdateFcmTokenParam(PrefsHelper.getFcmToken(), 0, PrefsHelper.getLanguage())
                 ) { res ->
                     when (res) {
                         is Resource.Failure -> {} //produce(HomeAction.ShowFailureMsg(res.message.toString()))

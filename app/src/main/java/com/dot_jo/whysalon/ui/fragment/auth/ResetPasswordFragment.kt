@@ -137,7 +137,7 @@ if(action.data.exists==true)                state2()
 
     private fun state2() {
       state=2
-        binding.tvEmailSendTo.setText(""+(R.string.enter_the_email_we_send_to) + " "+ mViewModel.email)
+        binding.tvEmailSendTo.setText(""+getString(R.string.enter_the_email_we_send_to) + " "+ mViewModel.email)
         binding.lytState1.isVisible = false
         binding.lytState2.isVisible = true
         binding.lytState3.isVisible = false

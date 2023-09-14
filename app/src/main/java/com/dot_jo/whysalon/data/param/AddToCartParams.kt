@@ -31,5 +31,5 @@ data class GetTimesParams(
 data class GetTimesReBookingParams(
     var barber_id: String,
     var date: String,
-    var orderId: String = "",
+    var orderId: String? = null,
 )

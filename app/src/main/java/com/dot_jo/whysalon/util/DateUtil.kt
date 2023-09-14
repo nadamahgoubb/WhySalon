@@ -14,15 +14,11 @@ import java.util.*
 
 fun convertPttern(serverDateFormat: Date?): String {
     var userPattern: String? = "yyyy-MM-dd"
-//    val serverDateFormat = SimpleDateFormat(pattern, Locale.getDefault())
-// Format the date output, as you wish to see, after we read the Date() value
     val userDateFormat = SimpleDateFormat(userPattern, Locale.getDefault())
-///
-    // val defaultDate = serverDateFormat.parse(INPUT_DATE_STRING)
-    if (serverDateFormat != null) {
+
+     if (serverDateFormat != null) {
         val userDate = userDateFormat.format(serverDateFormat)
         return userDate
-
     }
     return ""
 }
@@ -59,6 +55,9 @@ fun convertDateFormat(
     val outputDf: DateFormat = SimpleDateFormat(outputFormat)
     val tempDate: Date = inputDf.parse(inputDate)
     return outputDf.format(tempDate)
+}
+fun LocalDate.formatDate(pattern: String, locale: Locale = Locale.ENGLISH): String {
+    return DateTimeFormatter.ofPattern(pattern, locale).format(this)
 }
 
 fun timetoLong(s: String): Long {

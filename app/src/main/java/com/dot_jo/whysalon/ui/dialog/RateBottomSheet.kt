@@ -2,7 +2,10 @@ package com.dot_jo.whysalon.ui.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +39,7 @@ class RateBottomSheet(
     var state = 0 // not allowed_to_submit  // 1// allow to submit
     private var orderId by Delegates.notNull<String>()
     private var barberId by Delegates.notNull<String>()
+    private var barber_image by Delegates.notNull<String>()
     private val mViewModel: HomeViewModel by viewModels()
 
     companion object {
@@ -47,6 +51,17 @@ class RateBottomSheet(
             return f
         }
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+        val width = ViewGroup.LayoutParams.MATCH_PARENT
+        val height = ViewGroup.LayoutParams.WRAP_CONTENT
+
+        setLayoutMargin (binding.root, 50)
+
+
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -56,6 +71,8 @@ class RateBottomSheet(
         parent = requireActivity() as MainActivity
         orderId = arguments?.getString(Constants.ORDER_ID).toString()
         barberId = arguments?.getString(Constants.BARBER_ID).toString()
+        barber_image = arguments?.getString(Constants.BARBER).toString()
+      binding.ivProfile.loadImage(barber_image, isCircular = true)
         mViewModel.apply {
             observe(viewState) {
                 handleViewState(it)
@@ -76,23 +93,8 @@ class RateBottomSheet(
         }
         binding.rating.onRatingBarChangeListener =
             RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
-                Toast.makeText(requireContext(), rating.toString(), Toast.LENGTH_SHORT).show()
-                rate = rating.toInt()
-                if (rating > 2) {
-                    binding.btnDone.background =
-                        resources.getDrawable(R.drawable.bg_btn_black_white_border)
-                    binding.rvServices.isVisible = false
-                    binding.tv7.isVisible = false
-                    binding.tv6.isVisible = false
-                    state = 1
-                } else {
-                    binding.btnDone.background = resources.getDrawable(R.drawable.bg_btn_gray_dark)
+                 rate = rating.toInt()
 
-                    binding.rvServices.isVisible = false
-                    binding.tv7.isVisible = false
-                    binding.tv6.isVisible = false
-                    state = 0
-                }
             }
 
 
@@ -122,6 +124,12 @@ class RateBottomSheet(
 
             }
         }
+    }
+    fun setLayoutMargin(view: View, bottom: Int) {
+        val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
+         layoutParams.marginEnd = bottom
+        layoutParams.marginStart =bottom
+        view.layoutParams = layoutParams
     }
 
     @SuppressLint("CutPasteId")

@@ -26,14 +26,14 @@ abstract class BasePagingDataSource<ResponseItem : Any> :
             when (response) {
                 is NetworkResponse.Success -> {
                     onResponseReceived(response.body)
-                    var total: Int? =  (response.body.total?.div(response.body.perPage!!))
+                    var total: Int? =  (response.body.data?.data?.meta?.total?.div(response.body.data?.data?.meta!!.perPage!!))
                     if (total != null) {
                         total=total+1
                     }
 
 
                     val nextKey =
-                        if (response.body.data.isEmpty() == true || current >= total!!) {
+                        if (response.body.data?.data?.data?.isEmpty() == true || current >= total!!) {
                             null
                         } else {
                             // initial load size = 3 * NETWORK_PAGE_SIZE
@@ -46,7 +46,7 @@ abstract class BasePagingDataSource<ResponseItem : Any> :
                         current.minus(1)
                     }
 
-                    val listOfData = response.body.data.filterNotNull()
+                    val listOfData = response.body.data.data.data.filterNotNull()
                     LoadResult.Page(
                         data = listOfData,
                         prevKey = prevKey,
@@ -54,7 +54,7 @@ abstract class BasePagingDataSource<ResponseItem : Any> :
                     )
                 }
                 is NetworkResponse.NetworkError -> {LoadResult.Error(Throwable(response.error.message))
-                 //   LoadResult.Error(response.error)
+                    //   LoadResult.Error(response.error)
                 }
                 is NetworkResponse.ServerError -> LoadResult.Error(Throwable(response.body?.Error.toString()))
                 is NetworkResponse.UnknownError -> LoadResult.Error(response.error)
@@ -78,5 +78,5 @@ abstract class BasePagingDataSource<ResponseItem : Any> :
         }
     }*/
 
-    }
-}
+
+}}

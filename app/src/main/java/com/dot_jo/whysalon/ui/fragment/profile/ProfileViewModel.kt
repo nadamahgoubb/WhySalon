@@ -59,7 +59,9 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
                 var res =
                     useCase.invoke(viewModelScope, PrefsHelper.getUserData()?.client?.name?.let {
                         EditProfileParam(
-                            PrefsHelper.getUserData()?.client?.email.toString(), it, img
+                            PrefsHelper.getUserData()?.client?.email.toString(), it,
+                            PrefsHelper.getUserData()?.client?.country_code.toString(),
+                            PrefsHelper.getUserData()?.client?.phone.toString(),  img
                         )
                     }) { res ->
                         when (res) {

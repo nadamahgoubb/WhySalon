@@ -131,7 +131,7 @@ class CreateOrderViewModel @Inject constructor(
 
     }
 
-    fun getTimesReBooking(date :String,orderId:String="") {
+    fun getTimesReBooking(date :String,orderId:String?=null) {
         this.date = date
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
             produce(CreateOrderAction.ShowLoading(true))

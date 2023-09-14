@@ -57,10 +57,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             if (intent.hasExtra(Constants.BARBER_ID) && intent.hasExtra(Constants.ORDER_ID)) {
                 val barberId = intent.getStringExtra(Constants.BARBER_ID)
                 val orderId = intent.getStringExtra(Constants.ORDER_ID)
+                val barber_image = intent.getStringExtra(Constants.BARBER)
                 navController.navigate(
                     R.id.rateBottomSheet, bundleOf(
                         Constants.BARBER_ID to barberId,
-                        Constants.ORDER_ID to orderId
+                        Constants.ORDER_ID to orderId,
+                        Constants.BARBER to barber_image
                     )
                 )
             }

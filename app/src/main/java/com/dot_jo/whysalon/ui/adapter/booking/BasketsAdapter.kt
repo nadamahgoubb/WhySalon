@@ -97,7 +97,7 @@ class BasketsAdapter(val listener: BasketClickListener) :
             holder2.binding.tvService.setText(currentItem.packagee?.name)
             holder2.binding.tvServiceCount.setText(currentItem.packagee?.description)
             holder2.binding.tvTime.setText(
-                currentItem.service?.duration?.toIntOrNull()?.let { getDuration(it, context) })
+                currentItem.packagee?.duration?.toIntOrNull()?.let { getDuration(it, context) })
             holder2.binding.tvPrice.setText(
                 currentItem.packagee?.price?.toDoubleOrNull()?.roundTo(2)
                     .toString() + context.resources.getText(

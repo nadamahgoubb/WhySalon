@@ -5,18 +5,32 @@ import android.os.Parcelable
 
 import com.google.gson.annotations.SerializedName
 
-data class BasePagingResponse<T> (
+data class NotifactionOuterObject<T> (
+    @SerializedName("notifications")
+    var data:  NotifactionData<T> = NotifactionData<T>(),
+
+
+    )data class NotifactionData<T> (
+
+    @SerializedName("data"           ) var data         : ArrayList<T>  = arrayListOf(),
+    @SerializedName("meta"           ) var meta         :MetaPagingResponse  = MetaPagingResponse(),
+
+    )
+data class MetaPagingResponse (
 
     @SerializedName("current_page"   ) var currentPage  : Int?             = null,
-    @SerializedName("data"           ) var data         : ArrayList<T>  = arrayListOf(),
-    @SerializedName("first_page_url" ) var firstPageUrl : String?          = null,
     @SerializedName("from"           ) var from         : Int?             = null,
     @SerializedName("last_page"      ) var lastPage     : Int?             = null,
     @SerializedName("per_page"       ) var perPage      : Int?             = null,
     @SerializedName("to"             ) var to           : Int?             = null,
     @SerializedName("total"          ) var total        : Int?             = null
 
-) : BaseResponse(){
+)
+data class BasePagingResponse<T> (
+    @SerializedName("data")
+    var data:  NotifactionOuterObject<T> = NotifactionOuterObject<T>(),
+
+ ) : BaseResponse(){
     constructor(parcel: Parcel) : this()
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

@@ -38,6 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
+           android:paddingHorizontal="@dimen/_20sdp"
+                    android:paddingVertical="@dimen/_10sdp"
                     android:text="@string/skip"
                     android:textColor="@color/red_A700"
                     android:textSize="@dimen/_12sdp"
@@ -50,8 +52,7 @@
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_70sdp"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:src="@drawable/user_tst"
-                    app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvskip" />
 
@@ -62,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:fontFamily="@font/robotomedium"
-                    android:text="Rate your Barbar"
+                    android:text="@string/rate_your_barbar"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold"
@@ -77,11 +78,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="12dp"
                     android:isIndicator="false"
                     android:numStars="5"
                     android:stepSize="1"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.525"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv2">
 
@@ -89,7 +91,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
+             android:id="@+id/v1"       android:layout_height="@dimen/_1sdp"
                     android:layout_marginVertical="@dimen/_10sdp"
                     android:background="@color/grey_400"
                     app:layout_constraintTop_toBottomOf="@+id/rating" />
@@ -103,13 +105,13 @@
                     android:minLines="4"
                     android:hint="@string/notes"
                     android:textSize="14sp"
-                    android:layout_margin="@dimen/_10sdp"
+                android:layout_margin="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
                     android:textAlignment="viewStart"
                     android:layout_gravity="start"
                     android:gravity="start"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rating"
+                    app:layout_constraintTop_toBottomOf="@id/v1"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine" />
                 <TextView
@@ -128,6 +130,7 @@ the industry's standard dummy text."
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rating" />
 
+<!--
 
                 <TextView
                     android:id="@+id/tv7"
@@ -159,14 +162,15 @@ the industry's standard dummy text."
                     app:layout_constraintTop_toBottomOf="@+id/tv7"
                     app:spanCount="3"
                     tools:listitem="@layout/item_filter_rating" />
+-->
 
                 <Button
                     android:id="@+id/btn_done"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginTop="24dp"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:background="@drawable/bg_btn_gray_dark"
+                    android:background="@drawable/bg_btn_black_white_border"
                     android:text="@string/submit"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -175,7 +179,7 @@ the industry's standard dummy text."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.504"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_services" />
+                    app:layout_constraintTop_toBottomOf="@id/notes_et" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

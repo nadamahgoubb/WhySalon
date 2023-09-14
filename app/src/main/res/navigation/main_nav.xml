@@ -35,10 +35,7 @@
         android:id="@+id/notifactionFragment"
         android:name="com.dot_jo.whysalon.ui.fragment.notifaction.NotifactionFragment"
         android:label="NotifactionFragment" />
-    <fragment
-        android:id="@+id/serviceMoreDetailsFragment"
-        android:name="com.dot_jo.whysalon.ui.fragment.ServiceMoreDetailsFragment"
-        android:label="ServiceMoreDetailsFragment" />
+
     <fragment
         android:id="@+id/calenderFragment"
         android:name="com.dot_jo.whysalon.ui.fragment.createOrder.CalenderFragment"
