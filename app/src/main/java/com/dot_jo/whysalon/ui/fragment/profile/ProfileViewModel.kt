@@ -108,11 +108,11 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
             false
 
         } else if (confirmpass.isNullOrBlank()) {
-            produce(ProfileAction.ShowFailureMsg(getString(R.string.empt_Confirm_pass)))
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_confirm_password)))
             false
 
         } else if (!confirmpass.equals(newpass)) {
-            produce(ProfileAction.ShowFailureMsg(getString(R.string.password_dont_match)))
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.both_passwords_must_match)))
             false
 
         } else changePasswordParam(

@@ -29,7 +29,7 @@
                     <ImageView
                         android:id="@+id/iv_bg"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_300sdp"
+                        android:layout_height="@dimen/_270sdp"
                         android:background="@drawable/bg_sucess_order"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:layout_editor_absoluteX="0dp" />

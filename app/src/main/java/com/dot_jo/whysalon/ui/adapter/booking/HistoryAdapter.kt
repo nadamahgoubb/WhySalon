@@ -48,10 +48,10 @@ class HistoryAdapter(
         var image: String? = null
         currentItem.carts.forEach {
             if (it.packagee == null) {
-                serviceType = serviceType + it.service?.name
+                serviceType = serviceType + it.service?.name +"  "
                 image = it.service?.image
             } else {
-                serviceType = serviceType + it.packagee?.name
+                serviceType = serviceType + it.packagee?.name+"  "
                 image = it.packagee?.image
 
             }

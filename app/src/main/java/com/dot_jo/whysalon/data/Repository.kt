@@ -31,6 +31,8 @@ class Repository @Inject constructor(private val api: ApiInterface) {
 
     suspend fun register(param: RegisterParams) =
         api.register(param.name, param.email,param.country_code, param.phone, param.password)
+ suspend fun checkMailInRegisteration(param: CheckEmailParam) =
+        api.checkMailInRegisteration(  param.email )
 
     suspend fun registerGuest() = api.registerGuest()
 

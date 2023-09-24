@@ -221,102 +221,33 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
             if (data.times.isNullOrEmpty()) {
                 binding.lytNoAvailableTimes.isVisible = true
                 binding.lytTimes.isVisible = false
+                binding.rvTimes.isVisible = false
             } else {
                 binding.lytNoAvailableTimes.isVisible = false
                 binding.lytTimes.isVisible = true
+                binding.rvTimes.isVisible = true
                 /* var arr : ArrayList<TimesItem> = arrayListOf()
-                           data.times?.forEach(
-                               arr.add(false, )
-                           )
-                      */
+                                       data.times?.forEach(
+                                           arr.add(false, )
+                                       )
+                                  */
 
                 adapter.list = data.times!!
                 adapter.notifyDataSetChanged()
             }
         } else {
-            binding.lytNoAvailableTimes.isVisible = true
-            btn_goto_date.text = "Please GO to ${data.date} "
+            binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_gray)
+            binding.lytTime.isVisible = false
+            binding.rvTimes.isVisible = false
+            state = 0
+
+           binding.lytNoAvailableTimes.isVisible = true
+            btn_goto_date.text =   resources.getString(R.string.please_go_to)+ data.date
+            binding.tv3.text =resources.getString(R.string.but_you_can_book_for)+  data.date
         }
 
     }
 
-
-    /*
-    fun  setupCalender(){
-
-      //  val calendarView = binding.cal
-        val calendar = Calendar.getInstance()
-
-    // Initial date
-        calendar.set(2023, Calendar.JUNE, 1)
-        val initialdate_= CalendarDate(calendar.time)
-
-    // Minimum available date
-        calendar.set(2023, Calendar.MAY, 15)
-        val mindate_= CalendarDate(calendar.time)
-
-    // Maximum available date
-        calendar.set(2023, Calendar.JULY, 30)
-        val maxdate_= CalendarDate(calendar.time)
-
-    // List of preselected dates that will be initially selected
-     //   val preselectedDates: List<CalendarDate> = getPreselectedDates()
-
-    // The first day of week
-        val firstDayOfWeek = java.util.Calendar.SATURDAY
-
-    // Set up calendar with SelectionMode.SINGLE
-     //   calendarView.setupCalendar(selectionMode = ru.cleverpumpkin.calendar.CalendarView.SelectionMode.SINGLE)
-
-
-    // Get selected date_or null
-     //   val selectedDate: CalendarDate? = calendarView.selectedDate
-
-    // Get list with single selected date_or empty list
-      //  val selectedDates: List<CalendarDate> = calendarView.selectedDates
-      //  val calendarView: CalendarView = binding.cal
-        var min = Calendar.getInstance();
-        var max = Calendar.getInstance();
-    //    calendarView.setupCalendar()
-
-      //  calendarView.setMinimumDate(min);
-      //  calendarView.setMaximumDate(max);
-     //   Setting disabled dates:
-      var calendars   =  ArrayList<Calendar>();
-     //   calendarView.setDisabledDays(calendars);
-     //   Setting highlighted days:
-     //   List<Calendar> calendars = new ArrayList<>();
-       // calendarView.setHighlightedDays(calendars);
-    //    Setting selected dates:
-     //   List<Calendar> calendars = new ArrayList<>();
-      //  calendarView.setSelectedDates(calendars);
-    }
-    */
-    /*  override fun onDayClick(eventDay: EventDay) {
-        showToast( notes[eventDay] )
-          var ca = arrayListOf<Calendar>()
-           ca.add( eventDay.calendar)
-          binding.cal.selectedDates= ca
-  //binding.cal.text(int) = resources.getColor(R.color.blue_500)
-       *//*   val note = "data?.getStringExtra(NOTE_EXTRA) ?: return"
-         val eventDay = EventDay(eventDay.calendar, requireContext().getColor(R.color.red_dark))
-        notes[eventDay] = note
-        binding.cal.setEvents(notes.keys.toList())*//*
-    }*//*
-        override fun onSelect(calendar: List<Calendar>) {
-             val intent = Intent( )
-            intent.putExtra("CALENDAR_EXTRA", calendar.first())
-            startActivityForResult(intent, RESULT_CODE)
-            showToast(calendar.first().calendarType)
-        }
-
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-             val calendar = data?.getSerializableExtra(CALENDAR_EXTRA) as Calendar
-            val eventDay = EventDay(calendar, requireContext().getColor(R.color.red_dark))
-            notes[eventDay] = note
-            binding.cal.setEvents(notes.keys.toList())
-        }*/
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -328,7 +259,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         if (b == null) {
             binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_gray)
             binding.lytTime.isVisible = false
-            state = 0
+             state = 0
 
         } else {
             time = b

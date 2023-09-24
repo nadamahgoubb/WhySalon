@@ -51,7 +51,7 @@ mViewModel.isValidParamsChangePass(binding.etCurrentPass.text.toString(),
 
         parent.showNotifactionFragment(false)
         parent.showback(true)
-        parent.binding.ivIconNotifaction.isVisible= false
+        parent.binding.card.isVisible= false
 
         parent.cardback.setOnClickListener {
            findNavController().navigateUp()

@@ -330,7 +330,7 @@
                     android:paddingTop="@dimen/_10sdp"
 
                     android:paddingBottom="@dimen/_10sdp"
-                    android:text="Activate notification"
+                    android:text="@string/activate_notification"
                     android:textColor="@color/grey_1000"
 
                     android:textSize="@dimen/_10sdp"

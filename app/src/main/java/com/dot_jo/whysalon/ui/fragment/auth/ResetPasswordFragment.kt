@@ -42,7 +42,7 @@ class ResetPasswordFragment : BaseFragment<FragmentResetPasswordBinding>() {
 
             is AuthAction.EmailChecked -> {
                 showProgress(false)
-if(action.data.exists==true)                state2()
+if(action.data.exists==true)  state2()
                 else showToast(resources.getString(R.string.email_not_exist))
             }
             is AuthAction.OtpSuccess -> {
@@ -121,7 +121,7 @@ if(action.data.exists==true)                state2()
 
                                 if (isEnabled) {
                                     isEnabled = false
-                                    requireActivity().onBackPressed()
+                               findNavController().navigateUp()
                                 }
                             }
                             2 -> state1()

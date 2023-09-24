@@ -40,9 +40,9 @@ class OrderSucessDialog(
 
         dialog!!.window?.setLayout(width, height)
         dialog!!.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog!!.window?.setGravity(Gravity.TOP)
+        dialog!!.window?.setGravity(Gravity.CENTER)
         dialog!!.setCancelable(false)
-        setLayoutMarginTop(binding.root, 200f)
+      //  setLayoutMarginTop(binding.root, 200f)
 
          onClick()
 

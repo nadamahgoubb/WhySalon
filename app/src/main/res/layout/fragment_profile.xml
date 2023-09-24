@@ -24,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/_40sdp"
-                android:visibility="gone"
-                tools:context=".ui.fragments.accountFragment.AccountFragment">
+                 tools:context=".ui.fragments.accountFragment.AccountFragment">
 
 
                 <com.makeramen.roundedimageview.RoundedImageView

@@ -95,7 +95,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/red"
-                        android:text="Ignore"
+                        android:text="@string/ignore"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_12sdp"
                         app:cornerRadius="@dimen/_8sdp"

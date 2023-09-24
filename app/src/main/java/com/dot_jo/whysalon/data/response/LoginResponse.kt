@@ -26,6 +26,11 @@ data class Client(
 data class OtpCheckEmailResponse(
     @SerializedName("exists") var exists: Boolean? = null,
 ) : Parcelable
+@Parcelize
+data class OtpCheckEmailAfterRegisterResponse(
+    @SerializedName("exists") var exists: Boolean? = null,
+    @SerializedName("otp_code") var otp_code: String? = null,
+) : Parcelable
 
 @Parcelize
 data class OtpChangePassswordResponse(

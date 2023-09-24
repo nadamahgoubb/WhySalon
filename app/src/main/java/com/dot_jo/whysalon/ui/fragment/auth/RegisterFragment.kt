@@ -2,8 +2,11 @@ package com.dot_jo.whysalon.ui.fragment.auth
 
 import android.graphics.Paint
 import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.databinding.FragmentRegisterBinding
@@ -23,10 +26,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(), CountryCodePicker.OnCountryChangeListener {
 
-private var  countryCode="+962"
+private var  countryCode="+966"
+private var  otp=""
     private val mViewModel: AuthViewModel by viewModels()
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-
+    var state=0
+    var sendingCount=0
     private fun onclick() {
         binding.tvSignin.setPaintFlags(binding.tvSignin.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
 
@@ -39,19 +44,57 @@ private var  countryCode="+962"
         binding.btnGoogle.setOnClickListener {
             signInWithGoogle()
         }
-        binding.btnSignup.setOnClickListener {
-            mViewModel.isVaildRegisteration(
-                binding.etName.text.toString(),
-                binding.etEmail.text.toString(),
-                countryCode, binding.etPhone.text.toString(),
-                binding.etPassword.text.toString(),
-                binding.etPasswordComfirm.text.toString()
-            )
+        binding.tvResend.setOnClickListener {
+         sendingCount=1
+            mViewModel.registerParam?.email?.let { it1 ->
+                mViewModel.checkEmailAfterRegisteration(
+                    it1
+                )
+            }
         }
-    }
+        binding.cardback.setOnClickListener {
+           if(state == 0) {
+
+
+                requireActivity().onBackPressed()
+
+        }else {
+                state0()
+           }
+
+        }
+        binding.btnSignup.setOnClickListener {
+       //     if(state == 0||binding.etEmail.text.toString() != emailVerified) {
+                 mViewModel.isVaildRegisteration(
+                    binding.etName.text.toString(),
+                    binding.etEmail.text.toString(),
+                    countryCode, binding.etPhone.text.toString(),
+                    binding.etPassword.text.toString(),
+                    binding.etPasswordComfirm.text.toString(),
+                     state
+                )
+       //     }else{
+        //        mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
+         //   }
+        }
+        binding.btnDone.setOnClickListener {
+         if(binding.etOtp.otp == otp) {
+           mViewModel.  emailVerified = mViewModel.registerParam?.email.toString()
+             mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
+             binding.lytFilData.isVisible= true
+             binding.lytOtp.isVisible=false
+         }
+            else{
+                showToast(resources.getString(R.string.wrong_otp))
+         }
+
+            }
+        }
+
 
     override fun onFragmentReady() {
         onclick()
+        onBack()
         googleInit()
         mViewModel.apply {
             observe(viewState) {
@@ -60,7 +103,18 @@ private var  countryCode="+962"
         }
 
     }
+fun state0(){
+sendingCount=0
+    binding.lytFilData.isVisible= true
+    binding.lytOtp.isVisible=false
+    state=0
+}fun state1( ) {
 
+    binding.lytFilData.isVisible= false
+    binding.lytOtp.isVisible=true
+    binding.tvEmailSendTo.text=resources.getString(R.string.enter_the_email_we_send_to)+ mViewModel.registerParam?.email
+    state=1
+}
     private fun googleInit() {
         // Setup Google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -85,6 +139,15 @@ private var  countryCode="+962"
                 PrefsHelper.saveToken(action.data.client?.token)
                 gotoHome()
 
+            }
+            is AuthAction.EmailCheckedAfterRegister -> {
+                showProgress(false)
+                if (action.data.exists == true) {
+                    showToast(resources.getString(R.string.email_already_exist))
+                } else {
+                    otp = action.data.otp_code.toString()
+                    if (sendingCount == 0) state1()
+                }
             }
 
             is AuthAction.ContinueAsGuest -> {
@@ -111,6 +174,28 @@ private var  countryCode="+962"
             }
         }
     }
+    private fun onBack() {
+        activity?.let {
+            requireActivity().onBackPressedDispatcher.addCallback(it,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        when (state) {
+                            0 -> {
+
+                                if (isEnabled) {
+                                    isEnabled = false
+                                    requireActivity().onBackPressed()
+                                }
+                            }
+                            1 -> state0()
+
+                        }
+                    }
+                })
+
+
+        }
+    }
 
     private fun signInWithGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
@@ -123,14 +208,16 @@ private var  countryCode="+962"
 
             // Signed in successfully, show authenticated UI.
             val fullName = account.displayName?.split(" ")
-            mViewModel.isVaildRegisteration(
+        mViewModel.    emailVerified = account.email.toString()
+
+                mViewModel.isVaildRegisteration(
                 if (fullName.isNullOrEmpty()) "" else fullName[0],
                 account.email!!,
 countryCode,
                 "2222222",
                 account.id!!,
                 account.id!!,
-            )
+        1,    )
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.

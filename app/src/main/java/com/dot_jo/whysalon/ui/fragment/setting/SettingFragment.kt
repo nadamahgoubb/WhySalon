@@ -16,8 +16,10 @@ import com.dot_jo.whysalon.ui.fragment.profile.ProfileViewModel
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.loadImage
+import com.dot_jo.whysalon.util.ext.showActivity
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_setting.checkbox
 
 @AndroidEntryPoint
 class SettingFragment : BaseFragment<FragmentSettingBinding>() {
@@ -82,6 +84,15 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
             mViewModel.changeNotifactionStatus()
         }
+        binding.checkbox.setOnClickListener {
+            if (checkbox.isChecked) {
+                PrefsHelper.setLanguage(Constants.AR)
+                showActivity(MainActivity::class.java, clearAllStack = true)
+            } else {
+                PrefsHelper.setLanguage(Constants.EN)
+                showActivity(MainActivity::class.java, clearAllStack = true)
+            }
+        }
     }
 
     private fun loadData() {
@@ -142,6 +153,6 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         parent.setTitle(resources.getString(R.string.setting))
         parent.showback(false)
 
-
+binding.checkbox.isChecked = PrefsHelper.getLanguage()==Constants.AR
     }
 }

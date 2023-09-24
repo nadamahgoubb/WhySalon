@@ -20,8 +20,7 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_black_white_border"
-            android:text="@string/hair_services"
-            android:button="@null"
+             android:button="@null"
             android:paddingHorizontal="@dimen/_10sdp"
             android:textAllCaps="false"
             android:textColor="@color/white" />

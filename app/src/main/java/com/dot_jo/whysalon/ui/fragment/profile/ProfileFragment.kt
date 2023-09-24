@@ -108,8 +108,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
         }
-        binding.ivProfile.loadImage(resources.getDrawable(R.drawable.user_tst), isCircular = true)
-        binding.tvChangePass.setPaintFlags(binding.tvChangePass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+         binding.tvChangePass.setPaintFlags(binding.tvChangePass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
     }
 
 

@@ -39,6 +39,20 @@ fun Activity.getUriFromFileProvider(file: File): Uri = FileProvider.getUriForFil
     file
 )
 
+inline fun <reified T> Intent?.getMyData(key: String): T? {
+    if (this == null) {
+        return null
+    }
+    return if (hasExtra(key)) {
+        try {
+            extras!!.get(key) as T
+        } catch (e: Exception) {
+            null
+        }
+    } else {
+        null
+    }
+}
 fun Fragment.showKeyboard(): Unit? = activity?.let(FragmentActivity::showKeyboard)
 fun Fragment.hideKeyboard() = activity?.hideKeyboard()
 

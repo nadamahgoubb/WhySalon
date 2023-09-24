@@ -106,8 +106,9 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>(), OffersClickListene
     private fun setupUi() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
+        parent.showback(true)
         parent.showToolbar(false)
-binding.card.setOnClickListener {
+ binding.card.setOnClickListener {
     findNavController().navigate(R.id.notifactionFragment)
 }
     }

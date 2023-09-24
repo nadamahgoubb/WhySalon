@@ -1,0 +1,191 @@
+<resources>
+    <string name="app_name">Why Salon</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="select_date">اختار التاريخ</string>
+    <string name="not_all_permissions_accepted">Not All Permisition Accepted</string>
+    <string name="whatsup_not_installed">WhatsApp is not installed in your phone</string>
+    <string name="retry">إعاده المحاولة</string>
+     <string name="loading">تحميل</string>
+    <string name="error">خطأ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello">مرحبا  </string>
+    <string name="please_choose_language">برجاء اختيار اللغة</string>
+    <string name="please_choose_language_ar">برجاء اختيار اللغة</string>
+    <string name="ar">العربية</string>
+    <string name="en">English</string>
+    <string name="next">التالى</string>
+    <string name="walk_title_1">حجز زيارة سهلة \n
+و بسرعة</string>
+    <string name="walk_title_2"> الخبراء \n المتخصصون </string>
+    <string name="walk_title_3">مصففو شعر بإحتراف \n ذو مهارات عالية</string>
+    <string name="don_t_have_account">لا تمتلك حساب؟</string>
+    <string name="create_acount">إنشاء حساب  </string>
+    <string name="sign_up">تسجيل حساب جديد</string>
+    <string name="plese_continue_filling_your_info">يرجى الاستمرار في ملء المعلومات الخاصة بك</string>
+    <string name="or">أو</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="creat_new_account">انشاء حساب جديد</string>
+    <string name="creataccount">انشاء حساب  </string>
+    <string name="have_an_account">لديك حساب؟</string>
+    <string name="otp">Otp كود </string>
+    <string name="password">كلمة المرور </string>
+    <string name="entert_y_password"> إدخل كلمة المرور الخاصة بك </string>
+    <string name="enter_password">إدخل كلمة المرور </string>
+    <string name="confirm_password">أعد إدخال كلمة المرور</string>
+    <string name="continue1">تأكيد</string>
+    <string name="login">تسجيل الدخول </string>
+    <string name="enter_your_email">أدخل بريدك الإلكتروني</string>
+    <string name="enter_your_name">أدخل اسمك</string>
+    <string name="forget_your_password">نسيت كلمة المرور</string>
+    <string name="new_here">ليس لديك حساب ؟</string>
+    <string name="continue_as_guest">الاستمرار كضيف</string>
+    <string name="login_with_google">تسجيل الدخول عبر جوجل</string>
+    <string name="sign_up_with_google"> التسجيل مع جوجل</string>
+    <string name="one_of_us">لديك حساب؟</string>
+    <string name="home">الرئيسية</string>
+    <string name="booking">الحجوزات</string>
+    <string name="offers">العروض</string>
+    <string name="services">الخدمات</string>
+    <string name="services_">خدمات</string>
+    <string name="setting">الإعدادت</string>
+    <string name="see_all">رؤية الكل</string>
+    <string name="recommended_for_you">مقترح لك </string>
+    <string name="book_now">إحجز الان</string>
+     <string name="explore">استكشف</string>
+    <string name="porfile">الملف الشخصى</string>
+    <string name="support">الدعم</string>
+    <string name="contact_us">اتصل بنا</string>
+    <string name="language">اللغة</string>
+    <string name="privacy_and_usage_policy">سياسة الخصوصية والاستخدام</string>
+    <string name="notification">إشعارات</string>
+    <string name="log_out">تسجيل خروج</string>
+    <string name="choose_the_service_you_want">اختر الخدمة التي تريدها</string>
+    <string name="choose_the_service_you_want_to_book">اختر الخدمة التي تريد حجزها </string>
+    <string name="make_appointment">حدد موعدا</string>
+    <string name="my_history">تاريخ الحجوزات</string>
+     <string name="lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.</string>
+    <string name="but_you_can_book_for">" ولكن يمكنك حجز " </string>
+    <string name="selected">المحدد</string>
+    <string name="unavailable">غير متوفر </string>
+    <string name="available">متوفر</string>
+    <string name="great">عظيم</string>
+    <string name="your_appointment_has_been_nsucessfully_booked">لقد تم حجز موعدك \nبنجاح</string>
+    <string name="notifaction_ll_be_send_to_you_when_the_nbooked_date_is_close">سيتم إرسال الإشعارات إليك عند اقتراب \nتاريخ الحجز</string>
+    <string name="thank_you">شكرًا لك</string>
+    <string name="view_my_booking">عرض الحجز الخاص بي</string>
+    <string name="rebooking">إعادة الحجز</string>
+    <string name="your_booking">حجزك</string>
+    <string name="booking_appointment">حجز موعد</string>
+    <string name="email">بريد إلكتروني</string>
+    <string name="change">تغيير</string>
+    <string name="delete_account">حذف الحساب</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="contact_information">معلومات الاتصال</string>
+    <string name="location">الموقع</string>
+    <string name="mobile">الهاتف</string>
+    <string name="working_hours">ساعات العمل</string>
+    <string name="i_understand_that_this_will_remove_my_account">أدرك أن هذا سيؤدي إلى إزالة حسابي.</string>
+    <string name="keep_account">الاحتفاظ بالحساب</string>
+    <string name="confirm_delete">الرجاء تأكيد الحذف</string>
+    <string name="delete_your_account">حذف حسابك؟</string>
+    <string name="send">إرسال</string>
+    <string name="reset_your_password">اعد ضبط كلمه السر</string>
+    <string name="email_address">عنوان البريد الإلكتروني</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="resend">إعادة الإرسال</string>
+    <string name="didn_t_receive_the_email">لم تتلقى البريد الإلكتروني؟</string>
+    <string name="check_your_mail">راجع بريدك</string>
+    <string name="create_new_password">إنشاء كلمة مرور جديدة</string>
+    <string name="enter_new_password">أدخل كلمة المرور الجديدة</string>
+    <string name="must_be_at_least_8_characters">يجب أن يكون على الأقل 8 أحرف.</string>
+    <string name="both_passwords_must_match">يجب أن تتطابق كلمتا المرور.</string>
+    <string name="you_must_log_in">يجب تسجيل الدخول</string>
+    <string name="you_must_log_in_to_be_able_to_complete_your_reservation">يجب عليك تسجيل الدخول  \n لتتمكن من إكمال حجزك. </string>
+    <string name="are_you_sure_you_want_to_logout">هل تريد تسجيل الخروج</string>
+    <string name="cancel">إلغاء</string>
+    <string name="cancel1"><u>إلغاء الحجز</u></string>
+     <string name="barber_s_is_not_available_today">الموظف غير متوفر اليوم</string>
+    <string name="choose_the_time_with_ahmed_ali">اختر الوقت مع </string>
+    <string name="time">الوقت</string>
+    <string name="curent_password">كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_new_password">تأكيد كلمة المرور الجديدة</string>
+    <string name="submit">تم</string>
+    <string name="skip">تخطى</string>
+    <string name="packages">الباقات</string>
+    <string name="about_this_service">عن الخدمة:</string>
+    <string name="about_this_pack">عن الباقة:</string>
+    <string name="about_this_offer">عن العرض:</string>
+    <string name="total">الإجمالى</string>
+    <string name="cancellation_booking">الغاء الحجز</string>
+    <string name="are_you_sure_to_cancel_your_booking">هل أنت متأكد من إلغاء الحجز الخاص بك؟</string>
+    <string name="continuee">استمرار</string>
+    <string name="basket">السلة</string>
+    <string name="empty_msg_email">برجاءإدخال بريدك الإلكتروني</string>
+    <string name="empty_password">برجاءإدخال كلمة المرور</string>
+    <string name="empty_confirm_password">برجاءتأكيد كلمة المرور </string>
+    <string name="no_internet">لا يوجد إتصال بالانترنت</string>
+    <string name="empty_name_msg">برجاءإدخال الاسم </string>
+     <string name="msg_empty_password"> برجاءإدخال كلمة المرور </string>
+    <string name="msg_empty_new_password">برجاءإدخال كلمة المرور الجديدة</string>
+     <string name="price_from">"السعر : "</string>
+    <string name="sr">ر.س</string>
+    <string name="min"> دق</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="email_not_exist">البريد الإلكتروني غير موجود</string>
+    <string name="enter_the_email_we_send_to"> سيتم إرسال كود OTP الى  :</string>
+    <string name="service_type">نوع الخدمة:</string>
+    <string name="barbars">الموظفين\n</string>
+    <string name="choose_the_barber">اختار الموظف</string>
+    <string name="time_">الوقت: </string>
+    <string name="date_">التاريخ: </string>
+    <string name="your_cart_is_currently_empty">السلة فارغه حاليا!</string>
+    <string name="before_you_proceed_to_checkout_you_must_add_some_service_to_your_basket_you_will_find_alot_of_intersting_services_in_our">قبل الشروع في الخروج، يجب عليك إضافة بعض الخدمات إلى سلتك. ستجد الكثير من الخدمات المثيرة للاهتمام في صفحة "الخدمات" الخاصة بنا</string>
+    <string name="add_service">اضف خدمة</string>
+    <string name="there_are_no_offers_in_this_service">لا يوجد عروض فى هذه الخدمة !</string>
+    <string name="date_and_time">"التاريخ والوقت : "</string>
+    <string name="h">" س "</string>
+    <string name="you_don_t_have_an_appoinment">ليس لديك موعد</string>
+    <string name="you_don_t_have_any_history">ليس لديك أى حجوزات قديمة</string>
+     <string name="or_try_with_other_staff">أو حاول مع موظفين آخرين</string>
+    <string name="notes">ملاحظات</string>
+    <string name="msg_empty_phone_number">برجاء إدخال رقم الهاتف الخاص بك</string>
+    <string name="enter_phone_number">ادخل رقم الهاتف الخاص بك</string>
+    <string name="rate_your_barbar">قيم الموظف</string>
+    <string name="enter_the_email_associated_with_your_account_and_we_will_send_an_email_with_a_code_to_reset_a_file_password">أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل إليك بريدًا إلكترونيًا يحتوي على رمز لإعادة تعيين كلمة المرور  </string>
+    <string name="please_go_to">الذهاب إلى</string>
+    <string name="add_to_basket"> اضف إلى السلة</string>
+    <string name="add_another_service">اضافه خدمة اخرى</string>
+    <string name="complete_the_booking">إكمال الحجز </string>
+    <string name="activate_notification">تفعيل الإشعارات</string>
+    <string name="wrong_otp">خطأ بالكود</string>
+    <string name="material_calendar_monday">اثنين</string>
+    <string name="material_calendar_tuesday">ثلاثاء</string>
+    <string name="material_calendar_wednesday">أربعاء</string>
+    <string name="material_calendar_thursday">خميس</string>
+    <string name="material_calendar_friday">جمعة</string>
+    <string name="material_calendar_saturday">سبت</string>
+    <string name="material_calendar_sunday">حد</string>
+
+    <array name="material_calendar_months_array">
+        <item>يناير</item>
+        <item>فبراير</item>
+        <item>مارس</item>
+        <item>أبريل</item>
+        <item>مايو</item>
+        <item>يونيو</item>
+        <item>يوليو</item>
+        <item>أغسطس</item>
+        <item>سبتمبر</item>
+        <item>أكتوبر</item>
+        <item>نوفمبر</item>
+        <item>ديسمبر</item>
+    </array>
+
+    <string name="material_calendar_today_button">اليوم</string>
+    <string name="material_calendar_positive_button">تم</string>
+    <string name="material_calendar_negative_button">الغاء</string>
+    <string name="email_already_exist">البريد الالكتروني موجود مسبقا</string>
+    <string name="ignore">تجاهل</string>
+</resources>

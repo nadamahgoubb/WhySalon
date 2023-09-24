@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:background="@color/grey_50"
+         android:background="@color/grey_50"
                 android:backgroundTint="@color/grey_50"
                 app:abbreviationsBarColor="@color/grey_50"
                 app:disabledDaysLabelsColor="@color/grey_400"
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_5sdp"
-                    android:text="@string/but_you_can_book_for_next_week_3_may"
+                    android:text="@string/but_you_can_book_for"
                     android:textColor="@color/grey_700"
                     android:textSize="@dimen/_11sdp"
                     android:textStyle="bold"
@@ -329,8 +329,7 @@
                             android:drawablePadding="@dimen/_6sdp"
                             android:paddingVertical="@dimen/_3sdp"
                             android:paddingStart="@dimen/_5sdp"
-                            android:text="Date: 26 july "
-                            android:textColor="@color/grey_1000"
+                             android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
 
@@ -351,8 +350,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingStart="@dimen/_5sdp"
-                            android:text="Time:04:30 am"
-                            android:textColor="@color/grey_1000"
+                             android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
                     </LinearLayout>

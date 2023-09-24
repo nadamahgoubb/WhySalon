@@ -35,6 +35,8 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
     }
 
     override fun onFragmentReady() {
+     state=0
+        mViewModel.barbar = null
         setupUi()
         initAdapter()
         mViewModel.apply {
@@ -128,7 +130,7 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
             }
         }
 
-        parent.setTitle(resources.getString(R.string.barbars))
+        parent.setTitle(resources.getString(R.string.choose_the_barber))
         mViewModel.total = arguments?.getString(Constants.TOTAL)
         this.orderId = if (arguments?.getString(Constants.ORDER_ID) != "") {
             arguments?.getString(Constants.ORDER_ID).toString()
@@ -141,7 +143,9 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
 
     override fun onBarbarClickListener(item: BarbarItem?) {
         mViewModel.barbar = item
-        barbar = item!!
+        if (item != null) {
+            barbar = item
+        }
         if (item == null) {
             enablebtn(false)
         } else enablebtn(true)

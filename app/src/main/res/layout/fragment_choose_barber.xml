@@ -39,7 +39,7 @@
                         android:drawablePadding="@dimen/_6sdp"
                         android:paddingVertical="@dimen/_3sdp"
                         android:paddingStart="@dimen/_12sdp"
-                        android:text="Choose the barber"
+                        android:text="@string/choose_the_barber"
                         android:textColor="@color/grey_1000"
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold"

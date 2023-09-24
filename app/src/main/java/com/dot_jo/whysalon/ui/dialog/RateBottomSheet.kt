@@ -82,14 +82,14 @@ class RateBottomSheet(
             dismiss()
         }
         binding.btnDone.setOnClickListener {
-            if (state == 1) {
-                mViewModel.rateBarber(
+             binding.progressBar.isVisible= true
+                 mViewModel.rateBarber(
                     binding.rating.rating.toString(),
                     binding.notesEt.text.toString(),
                     barberId,
                     orderId
                 )
-            }
+
         }
         binding.rating.onRatingBarChangeListener =
             RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
@@ -98,20 +98,21 @@ class RateBottomSheet(
             }
 
 
-        binding.ivProfile.loadImage(resources.getDrawable(R.drawable.user_tst), isCircular = true)
-        return binding.root
+         return binding.root
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun handleViewState(action: HomeAction) {
         when (action) {
             is HomeAction.Rate -> {
+                binding.progressBar.isVisible= false
                 Toast.makeText(requireContext(), action.data.scalar.toString(), Toast.LENGTH_SHORT)
                     .show()
                 dismiss()
             }
 
             is HomeAction.ShowFailureMsg -> action.message?.let {
+                binding.progressBar.isVisible= false
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstDialog)
                 } else {

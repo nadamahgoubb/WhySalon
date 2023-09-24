@@ -76,12 +76,14 @@ the industry's standard dummy text ever since the
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/_5sdp"
+                android:paddingStart="@dimen/_5sdp"
+               android:gravity="start"
                         android:text="@string/i_understand_that_this_will_remove_my_account"
+
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_13sdp"
+               app:layout_constraintEnd_toEndOf="parent"         android:textSize="@dimen/_13sdp"
                         app:layout_constraintBottom_toBottomOf="@id/checkbox"
                         app:layout_constraintStart_toEndOf="@+id/checkbox"
                         app:layout_constraintTop_toTopOf="@id/checkbox" />

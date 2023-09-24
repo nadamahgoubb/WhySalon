@@ -78,7 +78,7 @@ android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:paddingVertical="@dimen/_10sdp"
-                android:orientation="horizontal"
+ android:layout_marginHorizontal="@dimen/_10sdp"               android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/_4sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -160,18 +160,6 @@ android:layout_marginEnd="@dimen/_15sdp"
                         tools:listitem="@layout/item_offers" />
 
                 </LinearLayout>
-<!--
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rec_offers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                     android:clipToPadding="false"
-                 android:orientation="vertical"
-              android:layout_margin="@dimen/_10sdp"      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                    tools:listitem="@layout/item_offers" />-->
 
 
             </androidx.core.widget.NestedScrollView>
@@ -206,7 +194,7 @@ android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:paddingVertical="@dimen/_10sdp"
-                android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text"
+                android:text="@string/there_are_no_offers_in_this_service"
                 android:textAlignment="center"
                 android:textColor="@color/grey_700"
                 android:textSize="@dimen/_11sdp"

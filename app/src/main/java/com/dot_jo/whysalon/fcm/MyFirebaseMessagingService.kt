@@ -8,9 +8,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.navigation.NavDeepLinkBuilder
 import com.bumptech.glide.Glide
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.data.PrefsHelper
@@ -26,7 +28,10 @@ import javax.inject.Inject
 private const val CHANNEL_ID = "my_channel"
 @AndroidEntryPoint
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-
+    companion object {
+        private const val TAG = "MyFirebaseMessagingServ"
+        const val NOTIFICATION_ID = "NOTIFICATION_ID"
+    }
     @Inject
     lateinit var fcmUseCase: FcmUseCase
     override fun onNewToken(s: String) {
@@ -40,8 +45,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        sendBroadCast()
-        Log.d("isllam", "onMessageReceived: ${remoteMessage.data}")
+         Log.d("isllam", "onMessageReceived: ${remoteMessage.data}")
         showNotification(remoteMessage.data)
     }
 
@@ -49,6 +53,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHelper.getLanguage())) } }
 
     private fun showNotification(remoteMessage: Map<String, String>) {
+        var bundel = Bundle()
 
 
         Log.d("isllam", "showNotification: $remoteMessage")
@@ -56,20 +61,94 @@ token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHel
         val orderId = remoteMessage["order_id"]
         val barber_image = remoteMessage["barber_image"]
         val orderStatus = remoteMessage["order_status"]
-        val intent = Intent(applicationContext, MainActivity::class.java)
+
+        val contentIntent: PendingIntent? = (if (orderStatus != null) {
+
+            if (orderStatus == "2") {
+                /* if (barberId != null && orderId != null) {
+                    intent.putExtra(Constants.BARBER_ID, barberId.toString())
+                    intent.putExtra(Constants.ORDER_ID, orderId.toString())
+                    intent.putExtra(Constants.BARBER, barber_image.toString())
+                }*/
+                sendRealTimeBroadcast(FcmResponse(barberId, orderId, barber_image))
+
+                NavDeepLinkBuilder(applicationContext).setComponentName(MainActivity::class.java)
+                    .setGraph(R.navigation.main_nav).setDestination(R.id.homeFragment)
+                    // .setArguments(bundel)
+                    .createPendingIntent()
+
+            } else {
+                val intent = Intent(this, MainActivity::class.java)
+                PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_IMMUTABLE)
+            }
+
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        })
+
+
+
+      /*  val intent = Intent(this, MainActivity::class.java)
         intent.action = Constants.OPEN_NOTIFICATION
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_IMMUTABLE)
         if (orderStatus == "2") {
             if (barberId != null && orderId != null) {
                 intent.putExtra(Constants.BARBER_ID, barberId.toString())
                 intent.putExtra(Constants.ORDER_ID, orderId.toString())
                 intent.putExtra(Constants.BARBER, barber_image.toString())
             }
+            sendRealTimeBroadcast(FcmResponse( barberId, orderId, barber_image ))
+        }
+    val notificationManager =
+        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    val pattern = longArrayOf(500, 500, 500, 500, 500, 500, 500, 500, 500)
+
+        bundel.putParcelable(
+            Constants.Notifaction,
+            FcmResponse(barberId, orderId, barber_image )
+        )
+        val pendingIntent =
+            PendingIntent.getActivity(
+                applicationContext, 100, intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+*/
+
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val pattern = longArrayOf(500, 500, 500, 500, 500, 500, 500, 500, 500)
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel(notificationManager)
         }
 
 
+    //   myRemoteViews.setOnClickPendingIntent(R.id.widget_button, myPendingIntent)
 
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        val pendingIntent =
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setAutoCancel(true)
+            .setSmallIcon(R.drawable.logo)
+            .setContentTitle(remoteMessage["title"])
+            .setContentText(remoteMessage["body"])
+            .setContentIntent(contentIntent)
+            .setVibrate(pattern)
+
+
+    notificationManager.notify(Random().nextInt(), notification.build())
+}
+
+private fun sendRealTimeBroadcast(response:FcmResponse ) {
+    val intent =
+        Intent(MainActivity.MAIN_SCREEN_ACTION) //used to receive in intent filter when register the broadcast
+    intent.putExtra(Constants.Notifaction, response)
+    sendBroadcast(intent)
+
+}
+/*        val pendingIntent =
             PendingIntent.getActivity(
                 applicationContext, 100, intent,
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
@@ -103,12 +182,12 @@ token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHel
                 .submit()
         }
         val bitmap = futureTarget.get()
-        notification.setLargeIcon(bitmap)
+     //   notification.setLargeIcon(bitmap)
         Glide.with(this).clear(futureTarget)
 
 
         notificationManager.notify(Random().nextInt(), notification.build())
-    }
+    }*/
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager) {
@@ -129,9 +208,5 @@ token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHel
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun sendBroadCast() {
-        val intent = Intent()
-        intent.action = "com.mrhbaa.whysalon.Notify"
-        sendBroadcast(intent)
-    }
+
 }

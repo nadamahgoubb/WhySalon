@@ -24,6 +24,7 @@ data class LoginParams(
 data class CheckEmailParam(
 
     var email: String = "",
+    var inregister: Boolean = true,
 
     ) : Parcelable
 

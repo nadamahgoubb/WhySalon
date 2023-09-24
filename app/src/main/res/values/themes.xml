@@ -7,17 +7,16 @@
         <item name="colorOnPrimary">@color/white</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/white</item>
-        <!-- Customize your theme here. -->
+         <!-- Customize your theme here. -->
         <!-- Status bar color. -->
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
         <item name="android:windowTranslucentStatus">true</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="fontFamily">@font/roboto_regular</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:windowFullscreen">false</item>
+         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:fitsSystemWindows">false</item>  </style>
 

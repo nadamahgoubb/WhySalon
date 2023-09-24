@@ -21,18 +21,25 @@ import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseActivity
 import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.databinding.ActivityMainBinding
+import com.dot_jo.whysalon.fcm.FcmBroadcast
+import com.dot_jo.whysalon.fcm.FcmResponse
 import com.dot_jo.whysalon.util.Constants
+import com.dot_jo.whysalon.util.ext.getMyData
 import com.dot_jo.whysalon.util.ext.isNull
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-
+companion object
+{
+    const val MAIN_SCREEN_ACTION ="MAIN_SCREEN_ACTION"
+}
 
     lateinit var navController: NavController
     private var hasNotificationPermissionGranted = false
     private lateinit var reciever: Receiver
+    private val fcmBroadcast by lazy { FcmBroadcast() }
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         notificationPermission()
         binding.progress = baseShowProgress
         reciever = Receiver()
-        registerReceiver(reciever, IntentFilter("com.mrhbaa.whysalon.Notify"))
+        registerReceiver(reciever, IntentFilter(MAIN_SCREEN_ACTION))
         binding.ivIconNotifaction.setOnClickListener {
             navController.navigate(R.id.notifactionFragment)
         }
@@ -50,6 +57,33 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.ivIconNotifaction.isVisible = !PrefsHelper.getUserData().isNull()
         handleNotificationIntent()
+        registerReceiver(receiver, IntentFilter(MAIN_SCREEN_ACTION))
+     }
+
+    private val receiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+
+            var data: FcmResponse? = intent.getMyData<FcmResponse>(Constants.Notifaction)
+            if (data == null) {
+                 /*     startActivity(
+                         Intent(
+                             this@MainActivity, MainActivity::class.java
+                         )
+                     )
+     this@MainActivity.finish()*/
+            } else {
+                val barberId = data.BARBER_Id
+                val orderId = data.ORDER_I
+                val barber_image = data.BARBER
+                navController.navigate(
+                    R.id.rateBottomSheet, bundleOf(
+                        Constants.BARBER_ID to barberId,
+                        Constants.ORDER_ID to orderId,
+                        Constants.BARBER to barber_image
+                    )
+                )
+            }
+        }
     }
 
     private fun handleNotificationIntent() {

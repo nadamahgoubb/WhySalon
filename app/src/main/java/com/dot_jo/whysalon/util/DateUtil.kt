@@ -14,9 +14,8 @@ import java.util.*
 
 fun convertPttern(serverDateFormat: Date?): String {
     var userPattern: String? = "yyyy-MM-dd"
-    val userDateFormat = SimpleDateFormat(userPattern, Locale.getDefault())
-
-     if (serverDateFormat != null) {
+    val userDateFormat = SimpleDateFormat(userPattern, Locale.ENGLISH)
+      if (serverDateFormat != null) {
         val userDate = userDateFormat.format(serverDateFormat)
         return userDate
     }
@@ -98,8 +97,8 @@ fun getMonthNameFromDate(s: String): String? {
     //  return   (SimpleDateFormat("yyyy-MM-dd").parse(s) )
     var ld = LocalDate.parse(
         s,
-        DateTimeFormatter.ofPattern("yyyy-MM-dd")
-    )
+        DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.getDefault()))
+
     return ld.month.name
 }
 

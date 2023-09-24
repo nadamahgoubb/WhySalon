@@ -14,12 +14,12 @@ import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.data.response.CategoriesItem
 import com.dot_jo.whysalon.data.response.ImageItem
 import com.dot_jo.whysalon.data.response.OfferssItem
- import com.dot_jo.whysalon.data.response.ServicesItem
+import com.dot_jo.whysalon.data.response.ServicesItem
 import com.dot_jo.whysalon.databinding.FragmentItemDetailsBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.packagee.PackagesServicesLineAdapter
- import com.dot_jo.whysalon.ui.fragment.allPackages.SectionsHomePagerAdapter
- import com.dot_jo.whysalon.util.Constants
+import com.dot_jo.whysalon.ui.fragment.allPackages.SectionsHomePagerAdapter
+import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
 import com.dot_jo.whysalon.util.ext.isNull
@@ -52,11 +52,11 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         binding.swiperefreshHome.setOnRefreshListener {
             if (type == Constants.Package) {
                 (item as ServicesItem).id?.let { mViewModel.getPackagesDetails(it) }
-            } else if (type == Constants.Service){
+            } else if (type == Constants.Service) {
                 (item as CategoriesItem).id?.let { mViewModel.getServiceDetails(it) }
 
-            }else { //OFFERS
-   }
+            } else { //OFFERS
+            }
             binding.swiperefreshHome.isRefreshing = false
         }
     }
@@ -101,15 +101,11 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
                 loadPackageServices(action.data.services)
 
             }
+
             is BasketAction.AddItemToCart ->
 
-      //      findNavController().navigate(R.id.basketFragment)
-
-            findNavController().navigate(
-                R.id.basketFragment,
-                null,
-                NavOptions.Builder().setPopUpTo(R.id.homeFragment, false).build()
-            )
+                //      findNavController().navigate(R.id.basketFragment)
+                showToast(action.data.scalar)
 
 
             else -> {}
@@ -121,7 +117,6 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(false)
-        parent.setTitle(resources.getString(R.string.hair_services))
         parent.showback(true)
 
         parent.cardback.setOnClickListener {
@@ -130,17 +125,16 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         type = arguments?.getInt(Constants.Type)!!
         if (type == Constants.Package) {
             binding.tv1.setText(resources.getString(R.string.about_this_pack))
-            item = arguments?.getParcelable(Constants.PACKAGE) 
+            item = arguments?.getParcelable(Constants.PACKAGE)
             (item as ServicesItem)?.id?.let { mViewModel.getPackagesDetails(it) }
-            //    loadPackageData(item as ServicesItem)
-        } else if(type == Constants.OFFERS) {
+
+        } else if (type == Constants.OFFERS) {
+
             binding.tv1.setText(resources.getString(R.string.about_this_offer))
-            item  = arguments?.getParcelable(Constants.PACKAGE)
-            //!! as OfferssItem
+            item = arguments?.getParcelable(Constants.PACKAGE) //!! as OfferssItem
+            loadOfferData(item as OfferssItem)
 
-          loadOfferData(item as OfferssItem)
-
-        } else{
+        } else {
             binding.tv1.setText(resources.getString(R.string.about_this_service))
             item = arguments?.getParcelable(Constants.PACKAGE)
             (item as ServicesItem)?.id?.let { mViewModel.getServiceDetails(it) }
@@ -152,13 +146,14 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
     @SuppressLint("SetTextI18n")
     private fun loadOfferData(item: OfferssItem) {
         binding.lytData.isVisible = true
-        //  binding.tvServices.setText(item?.name.toString())
+         binding.tvDesc.isVisible =true
         binding.tvTitle.setText(item?.services?.name.toString())
         binding.tvDesc.setText(item?.services?.description.toString())
         binding.tvMoneyTitle.text =
-            resources.getString(R.string.price_from)+" "+ item.price?.toDoubleOrNull()?.roundToInt()
-                .toString()+" " + resources.getString(R.string.sr)
-       // binding.tvTime.setText(item?.services?.duration.toString() + " " + resources.getString(R.string.min))
+            resources.getString(R.string.price_from) + " " + item.price?.toDoubleOrNull()
+                ?.roundToInt()
+                .toString() + " " + resources.getString(R.string.sr)
+        // binding.tvTime.setText(item?.services?.duration.toString() + " " + resources.getString(R.string.min))
         binding.tvTime.setText(item?.services?.duration?.toIntOrNull()
             ?.let { getDuration(it, requireContext()) })
         item?.services?.images?.let { loadSlider(it) }
@@ -177,25 +172,49 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
                 findNavController().navigate(R.id.loginFirstDialog)
 
             } else {
-              //
-           //     if (type == Constants.Package) {
-           //         //          //    loadPackageData(item as ServicesItem)
-           //     } else {
-           //         item?.price?.let { it1 -> item?.id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
-           //         //   loadPackageData(item as CategoriesItem)
+                //
+                //     if (type == Constants.Package) {
+                //         //          //    loadPackageData(item as ServicesItem)
+                //     } else {
+                //         item?.price?.let { it1 -> item?.id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
+                //         //   loadPackageData(item as CategoriesItem)
 //
-           //     }
+                //     }
                 if (type == Constants.Package) {
-                     (item as ServicesItem )?.price?.let { it1 ->   (item as ServicesItem )?.id?.let { it2 -> mViewModel.addToBasket(it2, null,it1) } }
+                    (item as ServicesItem)?.price?.let { it1 ->
+                        (item as ServicesItem)?.id?.let { it2 ->
+                            mViewModel.addToBasket(
+                                it2,
+                                null,
+                                it1
+                            )
+                        }
+                    }
 
                     //    loadPackageData(item as ServicesItem)
-                } else if(type == Constants.OFFERS) {
-                     //!! as OfferssItem
-                    (item as OfferssItem )?.price?.let { it1 ->   (item as OfferssItem )?.service_id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
+                } else if (type == Constants.OFFERS) {
+                    //!! as OfferssItem
+                    (item as OfferssItem)?.price?.let { it1 ->
+                        (item as OfferssItem)?.service_id?.let { it2 ->
+                            mViewModel.addToBasket(
+                                null,
+                                it2,
+                                it1
+                            )
+                        }
+                    }
 
 
-                } else{
-                    (item as ServicesItem )?.price?.let { it1 ->   (item as ServicesItem )?.id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
+                } else {
+                    (item as ServicesItem)?.price?.let { it1 ->
+                        (item as ServicesItem)?.id?.let { it2 ->
+                            mViewModel.addToBasket(
+                                null,
+                                it2,
+                                it1
+                            )
+                        }
+                    }
 
                 }
             }
@@ -214,21 +233,26 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
 
     fun loadPackageData(item: ServicesItem?) {
         binding.lytData.isVisible = true
-        //  binding.tvServices.setText(item?.name.toString())
+        binding.tvServiceCount.isVisible =true
         binding.tvTitle.setText(item?.name.toString())
-        binding.tvDesc.setText(item?.description.toString())
         binding.tvMoneyTitle.setText(
             resources.getString(R.string.price_from) + item?.price?.toDoubleOrNull()?.roundToInt()
                 .toString() + resources.getString(R.string.sr)
         )
-   //     binding.tvTime.setText(item?.duration.toString() + " " + resources.getString(R.string.min))
+        //     binding.tvTime.setText(item?.duration.toString() + " " + resources.getString(R.string.min))
         binding.tvTime.setText(item?.duration?.toIntOrNull()
             ?.let { getDuration(it, requireContext()) })
 
 
         item?.images?.let { loadSlider(it) }
 
+        if (type == Constants.Package) {
+            binding.tvServiceCount.setText(item?.servicesCount.toString() + resources.getString(R.string.services_) + ":")
 
+        } else {
+            binding.tvDesc.setText(item?.description.toString())
+            binding.tvDesc.isVisible =true
+        }
     }
 
 

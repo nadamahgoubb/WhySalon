@@ -10,6 +10,7 @@ import com.dot_jo.whysalon.data.response.BarbarItem
 import com.dot_jo.whysalon.databinding.ItemChooseBarberBinding
 import com.dot_jo.whysalon.ui.interfaces.BarbarClickListener
 import com.dot_jo.whysalon.util.ext.loadImage
+import com.dot_jo.whysalon.util.ext.roundTo
 
 
 class BarbarAdapter(
@@ -38,7 +39,7 @@ class BarbarAdapter(
 
         var currentItem = list[position]
         holder.binding.tvName.setText(currentItem.name)
-        holder.binding.tvRating.setText(currentItem.avg_rates)
+        holder.binding.tvRating.setText(currentItem.avg_rates?.toDouble()?.roundTo(1).toString())
         holder.binding.imgWishItem.loadImage(currentItem.image)
 
         holder.binding.checkbox.setOnClickListener {

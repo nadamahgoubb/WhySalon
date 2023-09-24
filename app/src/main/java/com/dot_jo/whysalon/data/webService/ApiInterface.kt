@@ -15,6 +15,7 @@ import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationItem
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
+import com.dot_jo.whysalon.data.response.OtpCheckEmailAfterRegisterResponse
 import com.dot_jo.whysalon.data.response.OtpCheckEmailResponse
 import com.dot_jo.whysalon.data.response.PackageDetails
 import com.dot_jo.whysalon.data.response.PackagesResponse
@@ -36,6 +37,11 @@ interface ApiInterface {
     suspend fun login(
         @Field("email") email: String, @Field("password") password: String
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
+   @POST("auth/register/check-email")
+    @FormUrlEncoded
+    suspend fun checkMailInRegisteration(
+        @Field("email") email: String
+    ): NetworkResponse<DevResponse<OtpCheckEmailAfterRegisterResponse>, ErrorResponse>
 
     @POST("auth/register")
     @FormUrlEncoded

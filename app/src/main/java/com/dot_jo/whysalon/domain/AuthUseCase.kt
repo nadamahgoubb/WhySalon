@@ -32,9 +32,16 @@ class AuthUseCase @Inject constructor(private val repository: Repository):
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
             else  if (params is CheckEmailParam) {
-                flow {
-                  emit(repository.checkEmail(params))
-                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+                if(params.inregister){
+                    flow {
+                        emit(repository.checkMailInRegisteration(params))
+                    } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+                }else{
+                    flow {
+                        emit(repository.checkEmail(params))
+                    } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+                }
+
             }
             else  if (params is RegisterParams) {
                 flow {
