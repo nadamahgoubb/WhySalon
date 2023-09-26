@@ -14,7 +14,7 @@ data class ContactUsResponse(
     @SerializedName("lat"           ) var lat         : String?                    = null,
     @SerializedName("facebook_url"      ) var facebookUrl     : String?                    = null,
     @SerializedName("instagram_url"     ) var instagramUrl    : String?                    = null,
-    @SerializedName("snapchat"          ) var snapchat        : String?                    = null,
+    @SerializedName("tiktok_url"          ) var tiktok_url        : String?                    = null,
     @SerializedName("contact_us_day"    ) var contactUsDay    : ArrayList<ContactUsDay>    = arrayListOf(),
     @SerializedName("contact_us_phones" ) var contactUsPhones : ArrayList<ContactUsPhones> = arrayListOf()
 ) : Parcelable

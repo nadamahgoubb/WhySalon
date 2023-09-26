@@ -54,7 +54,7 @@ class DeleteFragment : BaseFragment<FragmentDeleteBinding>() {
         }
         binding.btnDelete.setOnClickListener {
             if (agreed) {
-mViewModel.deleteAccount()
+                mViewModel.deleteAccount()
 
             } else {
                 showToast(getString(R.string.confirm_delete))
@@ -106,7 +106,7 @@ mViewModel.deleteAccount()
         parent.showBottomBar(false)
         parent.showToolbar(true)
         parent.showNotifactionFragment(false)
-        parent.setTitle(resources.getString(R.string.delete_account))
+        parent.setToolbarTitle(resources.getString(R.string.delete_account))
         parent.showback(true)
 
 

@@ -19,6 +19,7 @@ import com.dot_jo.whysalon.databinding.FragmentItemDetailsBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.packagee.PackagesServicesLineAdapter
 import com.dot_jo.whysalon.ui.fragment.allPackages.SectionsHomePagerAdapter
+import com.dot_jo.whysalon.ui.fragment.home.HomeAction
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
@@ -102,11 +103,14 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
 
             }
 
-            is BasketAction.AddItemToCart ->
-
-                //      findNavController().navigate(R.id.basketFragment)
+            is BasketAction.AddItemToCart -> {
                 showToast(action.data.scalar)
+                mViewModel. getCart()
+            }
+            is BasketAction.ShowCartData -> {
+                parent.setBadge(action.data.carts.size)
 
+            }
 
             else -> {}
         }

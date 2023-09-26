@@ -29,8 +29,7 @@
                 android:layout_width="@dimen/_48sdp"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/beard"
-                app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,8 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:text="Hair Services"
-            android:textAlignment="center"
+             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold"

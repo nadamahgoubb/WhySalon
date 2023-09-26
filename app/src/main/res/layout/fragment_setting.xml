@@ -179,6 +179,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="?android:selectableItemBackground"
+                android:drawableEnd="@drawable/ic_arrow_right_"
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="@dimen/_12sdp"
@@ -188,18 +189,6 @@
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/view_pass" />
-
-            <ImageView
-                android:id="@+id/iv_more_contactus"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:padding="@dimen/_1sdp"
-                android:rotation="180"
-                android:src="@drawable/ic_arrow"
-                app:layout_constraintBottom_toBottomOf="@id/tv_contact_us"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_contact_us" />
 
             <View
                 android:id="@+id/view_1"
@@ -256,6 +245,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_right_"
                 android:drawablePadding="@dimen/_8sdp"
                 android:focusable="true"
                 android:paddingVertical="@dimen/_12sdp"
@@ -265,27 +255,69 @@
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/view_2" />
-
-            <ImageView
-                android:id="@+id/iv_more_privacy"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
+            <View
+                android:id="@+id/view_5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:padding="@dimen/_1sdp"
-                android:rotation="180"
-                android:src="@drawable/ic_arrow"
-                app:layout_constraintBottom_toBottomOf="@id/tv_privacy"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_privacy" />
+                android:background="@color/gray_400"
+                android:paddingTop="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_privacy" />
+            <TextView
+                android:id="@+id/tv_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_right_"
+         android:drawablePadding="@dimen/_8sdp"
+                android:focusable="true"
+                android:paddingVertical="@dimen/_12sdp"
+
+                 android:text="@string/terms_condition"
+                android:textColor="@color/grey_1000"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/view_5" />
+            <View
+                android:id="@+id/view_6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/gray_400"
+                android:paddingTop="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_terms" />
+            <TextView
+                android:id="@+id/tv_aboutus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_right_"
+                android:drawablePadding="@dimen/_8sdp"
+                android:focusable="true"
+                android:paddingVertical="@dimen/_12sdp"
+
+                android:text="@string/about_us"
+                android:textColor="@color/grey_1000"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/tv_terms" />
+
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lyt_notifaction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                app:layout_constraintTop_toBottomOf="@+id/tv_privacy">
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aboutus">
 
                 <View
                     android:id="@+id/view_3"

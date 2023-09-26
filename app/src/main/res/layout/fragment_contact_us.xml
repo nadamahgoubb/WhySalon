@@ -20,9 +20,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lyt_data"
-  android:visibility="gone"              android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp">
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_20sdp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_1"
@@ -82,7 +84,7 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/roboto_regular"
-                             android:textColor="@color/grey_1000"
+                            android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +162,7 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/roboto_regular"
-                             android:textColor="@color/grey_1000"
+                            android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +240,7 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/roboto_regular"
-                             android:textColor="@color/grey_1000"
+                            android:textColor="@color/grey_1000"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -274,46 +276,54 @@
                     android:id="@+id/tv1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                       android:fontFamily="@font/roboto_regular"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Follow Us On"
                     android:textColor="@color/black"
-      android:layout_marginVertical="@dimen/_10sdp"              android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/card_working_hour" />
 
 
                 />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
- android:layout_marginTop="@dimen/_3sdp" app:layout_constraintTop_toBottomOf="@+id/tv1"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    >
-    <ImageView
- android:id="@+id/iv_facbook" android:layout_marginHorizontal="@dimen/_3sdp"      android:layout_width="@dimen/_30sdp"
-      android:layout_height="@dimen/_30sdp"
-android:src="@drawable/facebook"
-        />
-    <ImageView
 
-        android:id="@+id/iv_twiter"    android:layout_width="@dimen/_30sdp"
-    android:layout_marginHorizontal="@dimen/_3sdp"  android:layout_height="@dimen/_30sdp"
-android:src="@drawable/twiter"
-        />
-    <ImageView
-    android:layout_marginHorizontal="@dimen/_3sdp"    android:layout_width="@dimen/_30sdp"
-        android:id="@+id/iv_instagram"      android:layout_height="@dimen/_30sdp"
-android:src="@drawable/instagram"
-        />
-</LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/iv_facbook"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:src="@drawable/facebook" />
 
-            </ScrollView>
-        </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+                    <ImageView
+
+                        android:id="@+id/iv_tictok"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:src="@drawable/tictok" />
+
+                    <ImageView
+                        android:id="@+id/iv_instagram"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:src="@drawable/instagram" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
 
 </layout>

@@ -47,6 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
             getCategory()
             getPackages()
             getOffers()
+            getCart()
 
             observe(viewState) {
                 handleViewState(it)
@@ -55,6 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
         binding.swiperefreshHome.setOnRefreshListener {
             mViewModel.getCategory()
             mViewModel.getPackages()
+            mViewModel.  getCart()
             mViewModel.getOffers()
             binding.swiperefreshHome.isRefreshing = false
         }
@@ -103,9 +105,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
         }
 
             is HomeAction.AddItemToCart->{
-                showToast("Package Added To Cart Successfully")
+                showToast(getString(R.string.package_added_to_cart_successfully))
+               mViewModel. getCart()
             }
+            is HomeAction.ShowCartData -> {
+                parent.setBadge(action.data.carts.size)
 
+            }
             is HomeAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstDialog)
@@ -140,9 +146,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
         parent.showBottomBar(true)
         parent.showToolbar(true)
         if (PrefsHelper.getUserData() == null) {
-            parent.setTitle(resources.getString(R.string.hello))
+            parent.setToolbarTitle(resources.getString(R.string.hello))
         } else {
-            parent.setTitle(resources.getString(R.string.hello) + " " + PrefsHelper.getUserData()?.client?.name)
+            parent.setToolbarTitle(resources.getString(R.string.hello) + " " + PrefsHelper.getUserData()?.client?.name)
 
         }
         parent.showback(false)

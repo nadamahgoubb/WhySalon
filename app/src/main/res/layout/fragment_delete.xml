@@ -49,13 +49,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginHorizontal="@dimen/_11sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="Lorem Ipsum is simply dummy text of the printing
-and typesetting industry. Lorem Ipsum has been
-the industry's standard dummy text ever since the
-1500s when an unknown printer took."
+                        android:text="@string/are_you_sure_you_want_to_delete_this_account_all_your_data_including_past_and_future_reservation_will_be_permanently_deleted_this_action_can_t_be_undone"
                         android:textColor="@color/grey_1000"
                         android:textSize="@dimen/_12sdp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -67,26 +64,26 @@ the industry's standard dummy text ever since the
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/selector_cb_square"
+                         android:background="@drawable/selector_cb_square"
                         android:button="@null"
-                        android:padding="@dimen/_10sdp"
-                        android:textSize="@dimen/_13sdp"
-                        app:layout_constraintBottom_toTopOf="@id/btn_keep_account"
+                         app:layout_constraintTop_toTopOf="@id/check"
+                        app:layout_constraintBottom_toBottomOf="@id/check" android:textSize="@dimen/_13sdp"
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_5sdp"
-               android:gravity="start"
-                        android:text="@string/i_understand_that_this_will_remove_my_account"
+                    android:id="@+id/check"    android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:gravity="start"
 
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/i_understand_that_this_will_remove_my_account"
                         android:textColor="@color/black"
-               app:layout_constraintEnd_toEndOf="parent"         android:textSize="@dimen/_13sdp"
-                        app:layout_constraintBottom_toBottomOf="@id/checkbox"
+           android:layout_marginBottom="@dimen/_10sdp"             android:textSize="@dimen/_13sdp"
+                        app:layout_constraintBottom_toTopOf="@id/btn_keep_account"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/checkbox"
-                        app:layout_constraintTop_toTopOf="@id/checkbox" />
+                       />
 
                     <TextView
                         android:id="@+id/btn_keep_account"
@@ -94,8 +91,7 @@ the industry's standard dummy text ever since the
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:padding="@dimen/_7sdp"
-                        android:paddingStart="@dimen/_5sdp"
-                        android:text="@string/keep_account"
+                        android:paddingStart="@dimen/_5sdp"      android:text="@string/keep_account"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp"
                         app:layout_constraintBottom_toTopOf="@id/card_btn"

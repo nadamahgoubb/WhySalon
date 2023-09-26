@@ -84,7 +84,7 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.packages))
+        parent.setToolbarTitle(resources.getString(R.string.packages))
         parent.showback(true)
         parent.showNotifactionFragment(false)
         parent.cardback.setOnClickListener {

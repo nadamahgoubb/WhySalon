@@ -40,11 +40,7 @@ var total :String? = null
                 handleViewState(it)
             }
         }
-     /*   binding.swiperefreshHome.setOnRefreshListener {
-     mViewModel.            getCart()
 
-            binding.swiperefreshHome.isRefreshing = false
-        }*/
     }
 
     private fun handleViewState(action: BasketAction) {
@@ -74,7 +70,9 @@ var total :String? = null
                 //    binding.shimmer.stopShimmerAnimation()
                 action.data?.let {
                     loadPackageData(it)
+                    parent.setBadge(action.data.carts.size)
                 }
+
             }
             is BasketAction.DeleteFromCart -> {
                 item?.let { adapter.removeItem(it) }
@@ -113,7 +111,7 @@ var total :String? = null
         parent = requireActivity() as MainActivity
         parent.showBottomBar(true)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.basket))
+        parent.setToolbarTitle(resources.getString(R.string.basket))
         parent.showback(true)
         parent.showNotifactionFragment(false)
 

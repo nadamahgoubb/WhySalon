@@ -27,11 +27,26 @@ class ServicesFragment : BaseFragment<FragmentServicesBinding>(), HomeClickListe
      lateinit var adapter: ServicesAdapter
      private val mViewModel: HomeViewModel by viewModels()
 
+    override fun onFragmentReady() {
+        setupUi()
+         initAdapter()
+
+        mViewModel.apply {
+            getCategory()
+             observe(viewState) {
+                handleViewState(it)
+            }
+        }
+        binding.swiperefreshHome.setOnRefreshListener {
+            mViewModel. getCategory()
+             binding.swiperefreshHome.isRefreshing= false
+        }
+    }
     private fun handleViewState(action: HomeAction) {
         when (action) {
             is HomeAction.ShowLoading -> {
                 binding.shimmer.startShimmerAnimation()
-                 showProgress(action.show)
+                showProgress(action.show)
                 if (action.show) {
                     hideKeyboard()
                 }
@@ -62,21 +77,6 @@ class ServicesFragment : BaseFragment<FragmentServicesBinding>(), HomeClickListe
             }
         }
     }
-    override fun onFragmentReady() {
-        setupUi()
-         initAdapter()
-
-        mViewModel.apply {
-            getCategory()
-             observe(viewState) {
-                handleViewState(it)
-            }
-        }
-        binding.swiperefreshHome.setOnRefreshListener {
-            mViewModel. getCategory()
-             binding.swiperefreshHome.isRefreshing= false
-        }
-    }
 
     private fun initAdapter() {
         adapter = ServicesAdapter( this)
@@ -88,7 +88,7 @@ class ServicesFragment : BaseFragment<FragmentServicesBinding>(), HomeClickListe
         parent = requireActivity() as MainActivity
         parent.showBottomBar(true)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.services))
+        parent.setToolbarTitle(resources.getString(R.string.services))
         parent.showback(false)
         parent.showNotifactionFragment(false)
 

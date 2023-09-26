@@ -130,7 +130,7 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
             }
         }
 
-        parent.setTitle(resources.getString(R.string.choose_the_barber))
+        parent.setToolbarTitle(resources.getString(R.string.choose_the_barber))
         mViewModel.total = arguments?.getString(Constants.TOTAL)
         this.orderId = if (arguments?.getString(Constants.ORDER_ID) != "") {
             arguments?.getString(Constants.ORDER_ID).toString()

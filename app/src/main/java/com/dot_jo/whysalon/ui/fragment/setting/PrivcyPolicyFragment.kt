@@ -1,33 +1,17 @@
 package com.dot_jo.whysalon.ui.fragment.setting
 
-import android.graphics.Paint
-import android.net.Uri
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
-import com.dot_jo.whysalon.data.response.Client
 import com.dot_jo.whysalon.databinding.FragmentPrivcyPolicyBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.fragment.profile.ProfileAction
 import com.dot_jo.whysalon.ui.fragment.profile.ProfileViewModel
-import com.dot_jo.whysalon.util.FileManager
-import com.dot_jo.whysalon.util.PermissionManager
 import com.dot_jo.whysalon.util.ext.hideKeyboard
-import com.dot_jo.whysalon.util.ext.loadImage
 import com.dot_jo.whysalon.util.observe
-import com.dot_jo.whysalon.util.requestAppPermissions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.cardback
-import java.io.File
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class PrivcyPolicyFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
@@ -67,7 +51,7 @@ class PrivcyPolicyFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
             }
 
             is ProfileAction.ShowPrivacy -> {
-binding.tvPrivacy.setText(action.data)            }
+                binding.tvPrivacy.setText(action.data.privacy_policy)             }
 
             else -> {
 
@@ -79,7 +63,7 @@ binding.tvPrivacy.setText(action.data)            }
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.privacy_and_usage_policy))
+        parent.setToolbarTitle(resources.getString(R.string.privacy_and_usage_policy))
         parent.showNotifactionFragment(false)
         //      parent.binding.ivIconNotifaction.isVisible= false
         parent.showback(true)

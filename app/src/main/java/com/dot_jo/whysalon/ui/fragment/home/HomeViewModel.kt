@@ -11,11 +11,13 @@ import com.dot_jo.whysalon.data.param.OffersParam
 import com.dot_jo.whysalon.data.param.RateParam
 import com.dot_jo.whysalon.data.param.ServicesByCategoryParams
 import com.dot_jo.whysalon.data.param.UpdateFcmTokenParam
+import com.dot_jo.whysalon.data.response.CartResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
 import com.dot_jo.whysalon.data.response.PackagesResponse
 import com.dot_jo.whysalon.data.response.ServicesResponse
+import com.dot_jo.whysalon.domain.CartUseCase
 import com.dot_jo.whysalon.domain.HomeUseCase
 import com.dot_jo.whysalon.util.NetworkConnectivity
 import com.dot_jo.whysalon.util.Resource
@@ -25,7 +27,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(app: Application, val useCase: HomeUseCase) :
+class HomeViewModel @Inject constructor(app: Application, val useCase: HomeUseCase , val useCaseCart: CartUseCase) :
     BaseViewModel<HomeAction>(app) {
 
     init {
@@ -100,6 +102,28 @@ class HomeViewModel @Inject constructor(app: Application, val useCase: HomeUseCa
         } else {
             produce(HomeAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
+    }
+    fun getCart( ) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(HomeAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = useCaseCart.invoke(
+                    viewModelScope,        ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(HomeAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(HomeAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(HomeAction.ShowCartData(res.data.data as CartResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(HomeAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+
     }
 
     fun getPackages() {

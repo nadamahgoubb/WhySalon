@@ -103,4 +103,12 @@
         android:id="@+id/privcyPolicyFragment"
         android:name="com.dot_jo.whysalon.ui.fragment.setting.PrivcyPolicyFragment"
         android:label="PrivcyPolicyFragment" />
+    <fragment
+        android:id="@+id/aboutusFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.AboutusFragment"
+        android:label="AboutusFragment" />
+    <fragment
+        android:id="@+id/termsAndConitionFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.setting.TermsAndConitionFragment"
+        android:label="TermsAndConitionFragment" />
 </navigation>

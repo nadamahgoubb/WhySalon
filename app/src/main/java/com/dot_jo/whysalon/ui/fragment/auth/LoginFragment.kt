@@ -49,6 +49,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private fun googleInit() {
         // Setup Google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com")
             .requestEmail()
             .build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
@@ -121,7 +122,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun signInWithGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
-        signInWithGoogleLauncher.launch(signInIntent)
+      //  signInWithGoogleLauncher.launch(signInIntent)
+        startActivityForResult(signInIntent, 1000)
     }
 
     private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {

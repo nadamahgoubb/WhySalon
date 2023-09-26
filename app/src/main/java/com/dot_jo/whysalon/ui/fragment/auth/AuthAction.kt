@@ -18,4 +18,6 @@ sealed class AuthAction() : Action {
     data class EmailCheckedAfterRegister(
         val data: OtpCheckEmailAfterRegisterResponse,
      ) : AuthAction()
+
+    data class OtpChecked(val data : OtpCheckEmailResponse) : AuthAction()
 }

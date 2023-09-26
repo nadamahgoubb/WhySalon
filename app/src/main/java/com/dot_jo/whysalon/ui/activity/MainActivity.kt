@@ -9,8 +9,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -23,9 +23,13 @@ import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.databinding.ActivityMainBinding
 import com.dot_jo.whysalon.fcm.FcmBroadcast
 import com.dot_jo.whysalon.fcm.FcmResponse
+import com.dot_jo.whysalon.ui.fragment.home.HomeAction
+import com.dot_jo.whysalon.ui.fragment.home.HomeViewModel
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.getMyData
 import com.dot_jo.whysalon.util.ext.isNull
+import com.dot_jo.whysalon.util.observe
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,42 +39,22 @@ companion object
 {
     const val MAIN_SCREEN_ACTION ="MAIN_SCREEN_ACTION"
 }
+    private val mViewModel: HomeViewModel by viewModels()
 
     lateinit var navController: NavController
     private var hasNotificationPermissionGranted = false
-    private lateinit var reciever: Receiver
-    private val fcmBroadcast by lazy { FcmBroadcast() }
-
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setupNavController()
-        notificationPermission()
-        binding.progress = baseShowProgress
-        reciever = Receiver()
-        registerReceiver(reciever, IntentFilter(MAIN_SCREEN_ACTION))
-        binding.ivIconNotifaction.setOnClickListener {
-            navController.navigate(R.id.notifactionFragment)
-        }
-        binding.ivCancel.setOnClickListener {
-            navController.popBackStack()
-        }
-        binding.ivIconNotifaction.isVisible = !PrefsHelper.getUserData().isNull()
-        handleNotificationIntent()
-        registerReceiver(receiver, IntentFilter(MAIN_SCREEN_ACTION))
-     }
-
-    private val receiver = object : BroadcastReceiver() {
+     private val fcmBroadcast by lazy { FcmBroadcast() }
+    private val reciever = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
 
             var data: FcmResponse? = intent.getMyData<FcmResponse>(Constants.Notifaction)
             if (data == null) {
-                 /*     startActivity(
-                         Intent(
-                             this@MainActivity, MainActivity::class.java
-                         )
-                     )
-     this@MainActivity.finish()*/
+                /*     startActivity(
+                        Intent(
+                            this@MainActivity, MainActivity::class.java
+                        )
+                    )
+    this@MainActivity.finish()*/
             } else {
                 val barberId = data.BARBER_Id
                 val orderId = data.ORDER_I
@@ -86,22 +70,82 @@ companion object
         }
     }
 
-    private fun handleNotificationIntent() {
-        if (intent.action == Constants.OPEN_NOTIFICATION) {
-            if (intent.hasExtra(Constants.BARBER_ID) && intent.hasExtra(Constants.ORDER_ID)) {
-                val barberId = intent.getStringExtra(Constants.BARBER_ID)
-                val orderId = intent.getStringExtra(Constants.ORDER_ID)
-                val barber_image = intent.getStringExtra(Constants.BARBER)
-                navController.navigate(
-                    R.id.rateBottomSheet, bundleOf(
-                        Constants.BARBER_ID to barberId,
-                        Constants.ORDER_ID to orderId,
-                        Constants.BARBER to barber_image
-                    )
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setupNavController()
+        notificationPermission()
+        binding.progress = baseShowProgress
+         registerReceiver(reciever, IntentFilter(MAIN_SCREEN_ACTION))
+        onClick()
+
+         mViewModel.apply {
+            getCart()
+
+            observe(viewState) {
+                handleViewState(it)
+            }
+        }
+
+    }
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        var data: FcmResponse? = intent.getMyData<FcmResponse>(Constants.Notifaction)
+        if (data == null) {
+            navController.navigate(R.id.homeFragment)
+
+        } else {
+            val barberId = data.BARBER_Id
+            val orderId = data.ORDER_I
+            val barber_image = data.BARBER
+            navController.navigate(
+                R.id.rateBottomSheet, bundleOf(
+                    Constants.BARBER_ID to barberId,
+                    Constants.ORDER_ID to orderId,
+                    Constants.BARBER to barber_image
                 )
+            )
+        }
+
+
+
+        super.onNewIntent(intent)
+    }
+
+
+    private fun onClick() {
+        binding.ivIconNotifaction.setOnClickListener {
+            navController.navigate(R.id.notifactionFragment)
+        }
+        binding.ivCancel.setOnClickListener {
+            navController.popBackStack()
+        }
+        binding.ivIconNotifaction.isVisible = !PrefsHelper.getUserData().isNull()    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun handleViewState(action: HomeAction) {
+        when (action) {
+            is HomeAction.ShowLoading -> {
+
+
+            }
+  is HomeAction.ShowCartData -> {
+      setBadge(action.data.carts.size)
+
+            }
+
+
+
+
+            else -> {
+
             }
         }
     }
+
+
+
 
     private fun setupNavController() {
         val navHostFragment =
@@ -109,8 +153,11 @@ companion object
 
         navController = navHostFragment.navController
         binding.navView.setupWithNavController(navController)
-
-        binding.navView.setOnItemSelectedListener {
+       // var badge = binding.navView.getOrCreateBadge(R.id.basketFragment);
+      //  badge.isVisible = true;
+// An icon only badge will be displayed unless a number is set:
+     //   badge.number = 1;
+         binding.navView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeFragment -> {
                     navController.navigate(R.id.homeFragment)
@@ -165,6 +212,49 @@ companion object
         }
     }
 
+    fun setBadge(count: Int) {
+        if (count == 0) {
+            binding.navView.removeBadge(R.id.basketFragment)
+        } else {
+            val badge =   binding.navView.getOrCreateBadge(R.id.basketFragment) // previously showBadge
+            badge.number = count
+             badge.badgeGravity= BadgeDrawable.BOTTOM_END
+
+             badge.backgroundColor = getColor(R.color.red_500)
+            badge.badgeTextColor = getColor(R.color.white)
+        }
+    }
+/*
+    @SuppressLint("PrivateResource")
+    private fun addBadge(position: Int) {
+        // get badge container (parent)
+        val bottomMenu = binding.navView.menu
+        val v = bottomMenu?.findItem (R.id.basketFragment)
+
+        // inflate badge from layout
+     var   badge = LayoutInflater.from(this)
+            .inflate(R.layout.badge_layout, binding.navView, false)
+
+        // create badge layout parameter
+
+        //    badge?.layoutParams?.let {
+                val badgeLayout: FrameLayout.LayoutParams? = badge?.layoutParams?.let {
+                    FrameLayout.LayoutParams(
+                        it
+                    )
+                }
+                    //.apply {
+            //        gravity = Gravity.CENTER_HORIZONTAL
+                 //   topMargin = resources.getDimension(com.intuit.sdp.R.dimen._4sdp).toInt()
+
+                    // <dimen name="bagde_left_margin">8dp</dimen>
+               //     leftMargin = resources.getDimension(com.intuit.sdp.R.dimen._4sdp).toInt()
+          //      }
+                v?.addView(badge, badgeLayout)
+       //     }
+
+        // add view to bottom bar with layout parameter
+    }*/
     fun showToolbar(show: Boolean) {
 
         binding.header.isVisible = show
@@ -175,7 +265,7 @@ companion object
         binding.navView.isVisible = show
     }
 
-    fun setTitle(title: String) {
+    fun setToolbarTitle(title: String) {
 
         binding.tvTitle.setText(title)
     }
@@ -186,6 +276,8 @@ companion object
     }
 
     fun showNotifactionFragment(show: Boolean) {
+   binding.card.isVisible= true
+
         if (show) {
             binding.tvTitle.setText(resources.getString(R.string.notification))
             binding.ivIconNotifaction.isVisible = false

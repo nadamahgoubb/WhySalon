@@ -32,24 +32,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
         }
 
-
-
-        binding.btnAr.setOnClickListener {
-            binding.btnAr.setBackgroundResource(R.drawable.bg_btn_white)
-            binding.btnAr.setTextColor(resources.getColor(R.color.black))
-            binding.btnEn.setBackgroundResource(R.drawable.bg_btn_black_white_border)
-            binding.btnEn.setTextColor(resources.getColor(R.color.white))
-
-            PrefsHelper.setLanguage(Constants.EN)
-            nextScreen()
-        }
-        binding.btnEn.setOnClickListener {
-
-            PrefsHelper.setLanguage(Constants.EN)
-            nextScreen()
-
-        }
-
     }
 
     private fun nextScreen() {

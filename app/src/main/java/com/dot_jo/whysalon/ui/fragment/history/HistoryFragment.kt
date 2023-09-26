@@ -103,7 +103,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.my_history))
+        parent.setToolbarTitle(resources.getString(R.string.my_history))
         parent.showback(true)
         parent.showNotifactionFragment(false)
 

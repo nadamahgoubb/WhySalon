@@ -1,12 +1,21 @@
 package com.dot_jo.whysalon.ui.activity
 
+import android.content.ContentValues
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseActivity
 import com.dot_jo.whysalon.databinding.ActivityAuthBinding
 import com.dot_jo.whysalon.util.Constants
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,6 +58,53 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         }
 
 
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val task: Task<GoogleSignInAccount> =
+            GoogleSignIn.getSignedInAccountFromIntent(data)
+        handleSignInResult(task)
+
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            var account = completedTask.getResult(
+                ApiException::class.java
+            )
+            updateUI(account)
+
+        } catch (e: ApiException) {
+          //  signOut()
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.e(ContentValues.TAG, "signInResult:failed code=" + e.getStatusCode());
+            //    updateUI(null);
+        }
+    }
+
+
+    private fun updateUI(account: GoogleSignInAccount?) {
+        if (account != null) {
+             Toast.makeText(this, account.displayName + "" + account.idToken,Toast.LENGTH_LONG).show()
+        }
+
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        if (acct != null) {
+            val personName = acct.displayName
+            val personGivenName = acct.givenName
+            val personFamilyName = acct.familyName
+            val personEmail = acct.email
+            val personId = acct.id
+            val personPhoto: Uri? = acct.photoUrl
+            Toast.makeText(this, personName,Toast.LENGTH_LONG).show()
+
+         } else {
+            Toast.makeText(this, "error",Toast.LENGTH_LONG).show()
+
+        }
 
     }
 

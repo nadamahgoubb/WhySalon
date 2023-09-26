@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splash">
+        android:background="@mipmap/splash">
 
 
         <ImageView
@@ -26,86 +26,5 @@ app:layout_constraintBottom_toBottomOf="parent"
 
             />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lyt_lang"
-            android:layout_width="match_parent"
-      android:visibility="gone"      android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-
-            <TextView
-                android:id="@+id/tv_chooselang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:fontFamily="@font/robotomedium"
-                android:text="@string/please_choose_language"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/lyt_lang"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_chooselang2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/robotomedium"
-                android:text="@string/please_choose_language_ar"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_chooselang"
-
-                />
-
-            <LinearLayout
-                android:id="@+id/ll_btns"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_chooselang2">
-
-                <Button
-
-                    android:id="@+id/btn_ar"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_btn_black_white_border"
-                     android:text="@string/ar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                     />
-
-                <Button
-                    android:id="@+id/btn_en"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:layout_weight="1"
-                     android:text="@string/en"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:background="@drawable/bg_btn_white_black_border"
-                  />
-
-            </LinearLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

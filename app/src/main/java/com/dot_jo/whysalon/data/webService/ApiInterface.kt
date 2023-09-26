@@ -5,6 +5,7 @@ import com.dot_jo.whysalon.base.BasePagingResponse
 import com.dot_jo.whysalon.base.DevResponse
 import com.dot_jo.whysalon.base.ErrorResponse
 import com.dot_jo.whysalon.base.NetworkResponse
+import com.dot_jo.whysalon.data.response.AboutUsResponse
 import com.dot_jo.whysalon.data.response.BarbarsResponse
 import com.dot_jo.whysalon.data.response.BookingResponse
 import com.dot_jo.whysalon.data.response.CartResponse
@@ -61,6 +62,12 @@ interface ApiInterface {
     @FormUrlEncoded
     suspend fun checkEmail(
         @Field("email") email: String,
+    ): NetworkResponse<DevResponse<OtpCheckEmailResponse>, ErrorResponse>
+    @GET("auth/reset-password/check-otp/{email}/{otp}")
+     suspend fun checkOtp(
+        @Path("email") email: String,
+        @Path("otp") otp: String
+
     ): NetworkResponse<DevResponse<OtpCheckEmailResponse>, ErrorResponse>
 
     @POST("auth/reset-password")
@@ -213,6 +220,9 @@ interface ApiInterface {
     @GET("settings")
     suspend fun getSetting(
     ): NetworkResponse<DevResponse<PrivacyPolicyResponse>, ErrorResponse>
+ @GET("about-us")
+    suspend fun getabout(
+    ): NetworkResponse<DevResponse<AboutUsResponse>, ErrorResponse>
 
     @GET("notifications")
     suspend fun getNotifications(

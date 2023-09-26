@@ -68,6 +68,12 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         binding.tvPrivacy.setOnClickListener {
             findNavController().navigate(R.id.privcyPolicyFragment)
         }
+        binding.tvTerms.setOnClickListener {
+            findNavController().navigate(R.id.termsAndConitionFragment)
+        }
+        binding.tvAboutus.setOnClickListener {
+            findNavController().navigate(R.id.aboutusFragment)
+        }
         binding.btnLogin.setOnClickListener {
             PrefsHelper.clear()
             var intent = Intent(activity, AuthActivity::class.java)
@@ -150,7 +156,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         parent.showBottomBar(true)
         parent.showToolbar(true)
         parent.showNotifactionFragment(false)
-        parent.setTitle(resources.getString(R.string.setting))
+        parent.setToolbarTitle(resources.getString(R.string.setting))
         parent.showback(false)
 
 binding.checkbox.isChecked = PrefsHelper.getLanguage()==Constants.AR

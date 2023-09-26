@@ -10,6 +10,7 @@ import com.dot_jo.whysalon.data.param.LoginParams
 import com.dot_jo.whysalon.data.param.RegisterParams
 import com.dot_jo.whysalon.data.param.ResetPasswordParams
 import com.dot_jo.whysalon.data.Repository
+import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -43,7 +44,11 @@ class AuthUseCase @Inject constructor(private val repository: Repository):
                 }
 
             }
-            else  if (params is RegisterParams) {
+            else  if (params is CheckOtpWithEmailParam) {
+                flow {
+                    emit(repository.checkOtp(params))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }else  if (params is RegisterParams) {
                 flow {
                     emit(repository.register(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>

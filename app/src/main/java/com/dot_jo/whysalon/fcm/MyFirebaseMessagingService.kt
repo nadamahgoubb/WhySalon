@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import com.bumptech.glide.Glide
 import com.dot_jo.whysalon.R
@@ -71,10 +72,14 @@ token?.let {fcmUseCase.sendFcmTokenToServer( UpdateFcmTokenParam(it, 0, PrefsHel
                     intent.putExtra(Constants.BARBER, barber_image.toString())
                 }*/
                 sendRealTimeBroadcast(FcmResponse(barberId, orderId, barber_image))
-
-                NavDeepLinkBuilder(applicationContext).setComponentName(MainActivity::class.java)
-                    .setGraph(R.navigation.main_nav).setDestination(R.id.homeFragment)
-                    // .setArguments(bundel)
+                 NavDeepLinkBuilder(applicationContext).setComponentName(MainActivity::class.java)
+                    .setGraph(R.navigation.main_nav).setDestination(R.id.rateBottomSheet)
+                    .setArguments(    bundleOf(
+                        Constants.BARBER_ID to barberId,
+                        Constants.ORDER_ID to orderId,
+                        Constants.BARBER to barber_image
+                    )
+                    )
                     .createPendingIntent()
 
             } else {

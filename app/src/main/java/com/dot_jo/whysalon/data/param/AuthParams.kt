@@ -30,6 +30,15 @@ data class CheckEmailParam(
 
 
 @Parcelize
+data class CheckOtpWithEmailParam(
+
+    var email: String = "",
+    var otp: String = "",
+
+    ) : Parcelable
+
+
+@Parcelize
 data class ResetPasswordParams(
 
     var email: String = "",

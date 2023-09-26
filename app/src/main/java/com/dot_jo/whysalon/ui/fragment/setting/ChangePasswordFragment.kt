@@ -47,7 +47,7 @@ mViewModel.isValidParamsChangePass(binding.etCurrentPass.text.toString(),
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setTitle(resources.getString(R.string.change_password))
+        parent.setToolbarTitle(resources.getString(R.string.change_password))
 
         parent.showNotifactionFragment(false)
         parent.showback(true)

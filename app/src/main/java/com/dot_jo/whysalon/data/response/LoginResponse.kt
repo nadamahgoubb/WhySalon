@@ -47,6 +47,10 @@ data class PrivacyPolicyResponse(
     @SerializedName("terms_and_conditions") var terms_and_conditions: String? = null,
     @SerializedName("privacy_policy") var privacy_policy: String? = null
 ) : Parcelable
+@Parcelize
+data class AboutUsResponse(
+    @SerializedName("description") var description: String? = null,
+ ) : Parcelable
 
 @Parcelize
 data class NotificationsResponse(

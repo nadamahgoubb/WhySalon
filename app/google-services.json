@@ -48,6 +48,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370194282562:android:5232628d8ce9f664df15db",
+        "android_client_info": {
+          "package_name": "com.dot_joo.whysalonbarber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKYOsogpK2IM3GXQ_i_z2eA6RqkyBdyCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370194282562-jd5j7h23ljrtdum2me7g9ojoggmc2102.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dotjo.WhySalonBarber"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

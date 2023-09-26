@@ -34,8 +34,7 @@ class RateBottomSheet(
 ) : BottomSheetDialogFragment() {
 
     private lateinit var binding: DialogBootomRateBinding
-    private lateinit var parent: MainActivity
-    var rate = 0 // not rated yet
+     var rate = 0 // not rated yet
     var state = 0 // not allowed_to_submit  // 1// allow to submit
     private var orderId by Delegates.notNull<String>()
     private var barberId by Delegates.notNull<String>()
@@ -68,8 +67,7 @@ class RateBottomSheet(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DialogBootomRateBinding.inflate(inflater)
-        parent = requireActivity() as MainActivity
-        orderId = arguments?.getString(Constants.ORDER_ID).toString()
+         orderId = arguments?.getString(Constants.ORDER_ID).toString()
         barberId = arguments?.getString(Constants.BARBER_ID).toString()
         barber_image = arguments?.getString(Constants.BARBER).toString()
       binding.ivProfile.loadImage(barber_image, isCircular = true)

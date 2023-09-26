@@ -22,7 +22,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
     private lateinit var parent: MainActivity
     private val mViewModel: ProfileViewModel by viewModels()
     var facebookUrl = ""
-    var snapchatUrl = ""
+    var tiktok_url = ""
     var instagramUrl = ""
     var lat :String? = null
     var lng  :String? = null
@@ -49,8 +49,8 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
         binding.ivInstagram.setOnClickListener {
             openUrl(instagramUrl)
         }
-        binding.ivTwiter.setOnClickListener {
-            openUrl(snapchatUrl)
+        binding.ivTictok.setOnClickListener {
+            openUrl(tiktok_url)
         }
         binding.lytLocation.setOnClickListener {
             lat?.let { it1 -> lng?.let { it2 -> openMap(it1, it2) } }
@@ -114,7 +114,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
             binding.lytData.isVisible= true
  it.facebookUrl?.let {facebookUrl = it  }
  it.instagramUrl?.let {instagramUrl = it  }
- it.snapchat?.let {snapchatUrl = it  }
+ it.tiktok_url?.let {tiktok_url = it  }
  it.lat?.let {lat = it  }
  it.lng?.let {lng = it  }
 
@@ -137,7 +137,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
         parent.showBottomBar(false)
         parent.showToolbar(true)
         parent.showNotifactionFragment(false)
-        parent.setTitle(resources.getString(R.string.contact_us))
+        parent.setToolbarTitle(resources.getString(R.string.contact_us))
         parent.showback(true)
 
         parent.cardback.setOnClickListener {

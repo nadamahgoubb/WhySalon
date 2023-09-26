@@ -8,6 +8,7 @@ import com.dot_jo.whysalon.base.BaseViewModel
 import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.data.param.EditProfileParam
 import com.dot_jo.whysalon.data.param.changePasswordParam
+import com.dot_jo.whysalon.data.response.AboutUsResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
 import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
@@ -65,7 +66,7 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
                         )
                     }) { res ->
                         when (res) {
-                            is Resource.Failure -> produce(ProfileAction.ShowFailureMsg(res.message.toString()))
+                            is Resource.Failure -> produce(ProfileAction.ShowFailureUpdatingImage(res.message.toString()))
                             is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
                             is Resource.Success -> {
 
@@ -103,7 +104,11 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
     }
 
     fun isValidParamsChangePass(oldpass: String, newpass: String, confirmpass: String) {
-        if (newpass.isNullOrBlank()) {
+        if (oldpass.isNullOrBlank()) {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.msg_empty_password)))
+            false
+
+        } else if (newpass.isNullOrBlank()) {
             produce(ProfileAction.ShowFailureMsg(getString(R.string.msg_empty_new_password)))
             false
 
@@ -205,7 +210,7 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
                         is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
                         is Resource.Success -> {
 
-                            (res.data.data as PrivacyPolicyResponse).privacy_policy?.let {
+                            (res.data.data as PrivacyPolicyResponse)?.let {
                                 produce(
                                     ProfileAction.ShowPrivacy(
                                         it
@@ -219,8 +224,35 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
         } else {
             produce(ProfileAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
+    }  fun getAbouUs() {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(ProfileAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = useCaseSetting.invoke(
+                    viewModelScope, 4
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(ProfileAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            (res.data.data as AboutUsResponse)?.let {
+                                produce(
+                                    ProfileAction.ShowAboutUs(
+                                        it
+                                    )
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
     }
- fun getContactusData() {
+  fun getContactusData() {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(ProfileAction.ShowLoading(true))
 

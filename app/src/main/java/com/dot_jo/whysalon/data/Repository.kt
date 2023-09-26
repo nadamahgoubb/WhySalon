@@ -6,6 +6,7 @@ import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.AddReBookingParams
 import com.dot_jo.whysalon.data.param.AddToCartParams
 import com.dot_jo.whysalon.data.param.CheckEmailParam
+import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
 import com.dot_jo.whysalon.data.param.DeleteFromBookingParam
 import com.dot_jo.whysalon.data.param.EditProfileParam
 import com.dot_jo.whysalon.data.param.LoginParams
@@ -40,6 +41,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
         api.resetPassword(param.email, param.otp, param.password)
 
     suspend fun checkEmail(param: CheckEmailParam) = api.checkEmail(param.email)
+    suspend fun checkOtp(param: CheckOtpWithEmailParam) = api.checkOtp(param.email, param.otp)
 
     suspend fun getServicesInCategory(param: ServicesByCategoryParams) =
         api.getServicesInCategory(param.id)//categoryId
@@ -101,6 +103,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun getBooking() = api.getBooking()
     suspend fun getHistory() = api.getHistory()
     suspend fun getSetting() = api.getSetting()
+    suspend fun getabout() = api.getabout()
     suspend fun getNotifications(param: PagingParams) = api.getNotifications(param.page)
     suspend fun getContactUsData() = api.getContactUsData()
 }

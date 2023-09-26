@@ -24,15 +24,17 @@ import com.hbb20.CountryCodePicker
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment<FragmentRegisterBinding>(), CountryCodePicker.OnCountryChangeListener {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
+    CountryCodePicker.OnCountryChangeListener {
 
-private var  countryCode="+966"
-private var  otp=""
+    private var countryCode = "+966"
+    private var otp = ""
     private val mViewModel: AuthViewModel by viewModels()
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-    var state=0
-    var sendingCount=0
+    var state = 0
+    var sendingCount = 0
     private fun onclick() {
+        binding.countryCodePicker.setOnCountryChangeListener (this)
         binding.tvSignin.setPaintFlags(binding.tvSignin.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
 
         binding.tvSignin.setOnClickListener {
@@ -45,7 +47,7 @@ private var  otp=""
             signInWithGoogle()
         }
         binding.tvResend.setOnClickListener {
-         sendingCount=1
+            sendingCount = 1
             mViewModel.registerParam?.email?.let { it1 ->
                 mViewModel.checkEmailAfterRegisteration(
                     it1
@@ -53,43 +55,40 @@ private var  otp=""
             }
         }
         binding.cardback.setOnClickListener {
-           if(state == 0) {
-
-
+            if (state == 0) {
                 requireActivity().onBackPressed()
-
-        }else {
+            } else {
                 state0()
-           }
+            }
 
         }
         binding.btnSignup.setOnClickListener {
-       //     if(state == 0||binding.etEmail.text.toString() != emailVerified) {
-                 mViewModel.isVaildRegisteration(
-                    binding.etName.text.toString(),
-                    binding.etEmail.text.toString(),
-                    countryCode, binding.etPhone.text.toString(),
-                    binding.etPassword.text.toString(),
-                    binding.etPasswordComfirm.text.toString(),
-                     state
-                )
-       //     }else{
-        //        mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
-         //   }
+            //     if(state == 0||binding.etEmail.text.toString() != emailVerified) {
+            mViewModel.isVaildRegisteration(
+                binding.etName.text.toString(),
+                binding.etEmail.text.toString(),
+                countryCode,
+                binding.etPhone.text.toString(),
+                binding.etPassword.text.toString(),
+                binding.etPasswordComfirm.text.toString(),
+                state
+            )
+            //     }else{
+            //        mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
+            //   }
         }
         binding.btnDone.setOnClickListener {
-         if(binding.etOtp.otp == otp) {
-           mViewModel.  emailVerified = mViewModel.registerParam?.email.toString()
-             mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
-             binding.lytFilData.isVisible= true
-             binding.lytOtp.isVisible=false
-         }
-            else{
+            if (binding.etOtp.otp == otp) {
+                mViewModel.emailVerified = mViewModel.registerParam?.email.toString()
+                mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
+                binding.lytFilData.isVisible = true
+                binding.lytOtp.isVisible = false
+            } else {
                 showToast(resources.getString(R.string.wrong_otp))
-         }
-
             }
+
         }
+    }
 
 
     override fun onFragmentReady() {
@@ -103,23 +102,27 @@ private var  otp=""
         }
 
     }
-fun state0(){
-sendingCount=0
-    binding.lytFilData.isVisible= true
-    binding.lytOtp.isVisible=false
-    state=0
-}fun state1( ) {
 
-    binding.lytFilData.isVisible= false
-    binding.lytOtp.isVisible=true
-    binding.tvEmailSendTo.text=resources.getString(R.string.enter_the_email_we_send_to)+ mViewModel.registerParam?.email
-    state=1
-}
+    fun state0() {
+        sendingCount = 0
+        binding.lytFilData.isVisible = true
+        binding.lytOtp.isVisible = false
+        state = 0
+    }
+
+    fun state1() {
+
+        binding.lytFilData.isVisible = false
+        binding.lytOtp.isVisible = true
+        binding.tvEmailSendTo.text =
+            resources.getString(R.string.enter_the_email_we_send_to) + mViewModel.registerParam?.email
+        state = 1
+    }
+
     private fun googleInit() {
         // Setup Google
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
+        val gso =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
     }
 
@@ -140,6 +143,7 @@ sendingCount=0
                 gotoHome()
 
             }
+
             is AuthAction.EmailCheckedAfterRegister -> {
                 showProgress(false)
                 if (action.data.exists == true) {
@@ -174,9 +178,11 @@ sendingCount=0
             }
         }
     }
+
     private fun onBack() {
         activity?.let {
-            requireActivity().onBackPressedDispatcher.addCallback(it,
+            requireActivity().onBackPressedDispatcher.addCallback(
+                it,
                 object : OnBackPressedCallback(true) {
                     override fun handleOnBackPressed() {
                         when (state) {
@@ -187,6 +193,7 @@ sendingCount=0
                                     requireActivity().onBackPressed()
                                 }
                             }
+
                             1 -> state0()
 
                         }
@@ -200,6 +207,7 @@ sendingCount=0
     private fun signInWithGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
         signInWithGoogleLauncher.launch(signInIntent)
+
     }
 
     private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
@@ -208,16 +216,17 @@ sendingCount=0
 
             // Signed in successfully, show authenticated UI.
             val fullName = account.displayName?.split(" ")
-        mViewModel.    emailVerified = account.email.toString()
+            mViewModel.emailVerified = account.email.toString()
 
-                mViewModel.isVaildRegisteration(
+            mViewModel.isVaildRegisteration(
                 if (fullName.isNullOrEmpty()) "" else fullName[0],
                 account.email!!,
-countryCode,
+                countryCode,
                 "2222222",
                 account.id!!,
                 account.id!!,
-        1,    )
+                1,
+            )
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -231,8 +240,7 @@ countryCode,
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             val data = result.data
-            val task: Task<GoogleSignInAccount> =
-                GoogleSignIn.getSignedInAccountFromIntent(data)
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             Log.d("islam", "task: ${task.exception}")
             handleGoogleSignInResult(task)
         }
@@ -241,8 +249,9 @@ countryCode,
         showActivity(MainActivity::class.java, clearAllStack = true)
 
     }
+
     override fun onCountrySelected() {
-        countryCode ="+"+ binding.countryCodePicker.selectedCountryCode
+        countryCode = "+" + binding.countryCodePicker.selectedCountryCode
 
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseViewModel
 import com.dot_jo.whysalon.data.param.CheckEmailParam
+import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
 import com.dot_jo.whysalon.data.param.LoginParams
 import com.dot_jo.whysalon.data.param.RegisterParams
 import com.dot_jo.whysalon.data.param.ResetPasswordParams
@@ -36,6 +37,10 @@ fun isValidParamsChangePass(  newpass: String, confirmpass: String) {
     }
     else if (confirmpass.isNullOrBlank()) {
         produce(AuthAction.ShowFailureMsg(getString(R.string.empty_confirm_password)))
+        false
+
+    } else if (confirmpass.length<8 ||newpass.length<8 ) {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.passmust_be_at_least_8_characters)))
         false
 
     }else if (!confirmpass.equals(newpass)) {
@@ -114,6 +119,26 @@ fun isVaildLogin(
                         is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
                         is Resource.Success -> {
                             produce(AuthAction.EmailChecked(res.data.data as OtpCheckEmailResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }   fun checkOtp(email: String, otp: String) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(AuthAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                authUserCase.invoke(
+                    viewModelScope, CheckOtpWithEmailParam( email, otp)
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+                            produce(AuthAction.OtpChecked(res.data.data as OtpCheckEmailResponse))
                         }
                     }
                 }

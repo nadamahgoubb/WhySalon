@@ -101,8 +101,8 @@ class SubServiceFragment : BaseFragment<FragmentSubServiceBinding>(), HomeClickL
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setTitle(item?.name)
-        parent.showback(true)
+        item?.name?.let { parent.setToolbarTitle(it) }
+         parent.showback(true)
 
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
@@ -120,7 +120,6 @@ class SubServiceFragment : BaseFragment<FragmentSubServiceBinding>(), HomeClickL
                 Constants.PACKAGE to item, Constants.Type to Constants.Service
             )
         )
-
     }
 
     override fun onBookNowClickListener(item: ServicesItem) {

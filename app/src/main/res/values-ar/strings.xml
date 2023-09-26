@@ -99,6 +99,7 @@
     <string name="create_new_password">إنشاء كلمة مرور جديدة</string>
     <string name="enter_new_password">أدخل كلمة المرور الجديدة</string>
     <string name="must_be_at_least_8_characters">يجب أن يكون على الأقل 8 أحرف.</string>
+    <string name="passmust_be_at_least_8_characters">يجب الا تقل كلمة المرور عن  8 أحرف.</string>
     <string name="both_passwords_must_match">يجب أن تتطابق كلمتا المرور.</string>
     <string name="you_must_log_in">يجب تسجيل الدخول</string>
     <string name="you_must_log_in_to_be_able_to_complete_your_reservation">يجب عليك تسجيل الدخول  \n لتتمكن من إكمال حجزك. </string>
@@ -123,6 +124,7 @@
     <string name="continuee">استمرار</string>
     <string name="basket">السلة</string>
     <string name="empty_msg_email">برجاءإدخال بريدك الإلكتروني</string>
+    <string name="empty_msg_otp">برجاءإدخال الكود المرسل إليك</string>
     <string name="empty_password">برجاءإدخال كلمة المرور</string>
     <string name="empty_confirm_password">برجاءتأكيد كلمة المرور </string>
     <string name="no_internet">لا يوجد إتصال بالانترنت</string>
@@ -141,7 +143,7 @@
     <string name="time_">الوقت: </string>
     <string name="date_">التاريخ: </string>
     <string name="your_cart_is_currently_empty">السلة فارغه حاليا!</string>
-    <string name="before_you_proceed_to_checkout_you_must_add_some_service_to_your_basket_you_will_find_alot_of_intersting_services_in_our">قبل الشروع في الخروج، يجب عليك إضافة بعض الخدمات إلى سلتك. ستجد الكثير من الخدمات المثيرة للاهتمام في صفحة "الخدمات" الخاصة بنا</string>
+    <string name="before_you_proceed_to_checkout_you_must_add_some_service_to_your_basket_you_will_find_alot_of_intersting_services_in_our">قبل المتابعة  في الحجز ، يجب عليك إضافة بعض الخدمات إلى سلتك. ستجد الكثير من الخدمات المثيرة للاهتمام في صفحة "الخدمات" الخاصة بنا</string>
     <string name="add_service">اضف خدمة</string>
     <string name="there_are_no_offers_in_this_service">لا يوجد عروض فى هذه الخدمة !</string>
     <string name="date_and_time">"التاريخ والوقت : "</string>
@@ -188,4 +190,11 @@
     <string name="material_calendar_negative_button">الغاء</string>
     <string name="email_already_exist">البريد الالكتروني موجود مسبقا</string>
     <string name="ignore">تجاهل</string>
+    <string name="are_you_sure_you_want_to_delete_this_account_all_your_data_including_past_and_future_reservation_will_be_permanently_deleted_this_action_can_t_be_undone">هل أنت متأكد أنك تريد حذف هذا الحساب؟. سيتم حذف جميع بياناتك بما في ذلك الحجز السابق والمستقبلي نهائيًا.لا يمكن التراجع عن هذا الإجراء</string>
+    <string name="you_currently_don_t_have_any_reservations_start_exploring_our_services_and_book_an_appointment">ليس لديك أي حجوزات حاليًا. ابدأ في استكشاف خدماتنا وحجز موعد مع موظفك المفضل.</string>
+    <string name="terms_condition">الشروط والأحكام</string>
+    <string name="about_us">عن التطبيق</string>
+    <string name="your_new_password_must_be_different_from_previous_used_passwords">يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمات المرور المستخدمة سابقًا.</string>
+    <string name="package_added_to_cart_successfully">Package Added To Cart Successfully</string>
+
 </resources>

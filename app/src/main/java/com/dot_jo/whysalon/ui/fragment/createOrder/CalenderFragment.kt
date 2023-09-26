@@ -28,8 +28,6 @@ import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_calender.btn_goto_date
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -94,6 +92,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
 
             is CreateOrderAction.ShowBookingAdded -> {
                 showProgress(false)
+                parent.setBadge(0)
                 findNavController().navigate(R.id.orderSucessDialog)
 
 
@@ -152,7 +151,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
                 getDayFromDate(dateReal!!)!!
             )
             date_= convertPttern(e.time)
-            if (orderId==null){
+            if (orderId.isNullOrEmpty()){
                 mViewModel.getTimes(dateReal!!)
             }else{
                 mViewModel.getTimesReBooking(dateReal!!,orderId!!)
@@ -177,7 +176,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         parent.showBottomBar(false)
         parent.showToolbar(true)
         parent.showback(true)
-        parent.setTitle(resources.getString(com.dot_jo.whysalon.R.string.booking_appointment))
+        parent.setToolbarTitle(resources.getString(com.dot_jo.whysalon.R.string.booking_appointment))
         //  binding.cal.setOnDayClickListener(this)
         parent.showNotifactionFragment(false)
 

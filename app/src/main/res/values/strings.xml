@@ -84,7 +84,7 @@
     <string name="location">Location</string>
     <string name="mobile">Mobile</string>
     <string name="working_hours">Working Hours</string>
-    <string name="i_understand_that_this_will_remove_my_account">I understand that this will remove my account.</string>
+    <string name="i_understand_that_this_will_remove_my_account">I understand that this will remove my account</string>
     <string name="keep_account">Keep account</string>
     <string name="confirm_delete">Please Confirm Deletion</string>
     <string name="delete_your_account">Delete your account?</string>
@@ -98,6 +98,7 @@
     <string name="create_new_password">Create New Password</string>
     <string name="enter_new_password">Enter new Password</string>
     <string name="must_be_at_least_8_characters">Must be at least 8 characters.</string>
+    <string name="passmust_be_at_least_8_characters">Password Must be at least 8 characters.</string>
     <string name="both_passwords_must_match">Both passwords must match.</string>
     <string name="you_must_log_in">You must log in</string>
     <string name="you_must_log_in_to_be_able_to_complete_your_reservation">You must log in to be able to complete your \nreservation.</string>
@@ -123,6 +124,7 @@
     <string name="continuee">Continue</string>
     <string name="basket">Basket</string>
     <string name="empty_msg_email">Please Enter your Email</string>
+    <string name="empty_msg_otp">Please Enter your OTP</string>
     <string name="empty_password">Please Enter your password</string>
     <string name="empty_confirm_password">Please Confirm your password</string>
     <string name="no_internet">No Internet Connection</string>
@@ -188,4 +190,10 @@
     <string name="material_calendar_negative_button">Cancel</string>
     <string name="email_already_exist">Email already exists</string>
     <string name="ignore">Ignore</string>
+    <string name="are_you_sure_you_want_to_delete_this_account_all_your_data_including_past_and_future_reservation_will_be_permanently_deleted_this_action_can_t_be_undone">Are you sure you want to delete this account? \nAll your data including past and future reservation will be permanently deleted.this action can\'t be undone</string>
+    <string name="you_currently_don_t_have_any_reservations_start_exploring_our_services_and_book_an_appointment">You currently have no reservations. Start exploring our services and book an appointment with your favorite barber.</string>
+    <string name="terms_condition">Terms And Condition</string>
+    <string name="about_us">About Us</string>
+    <string name="your_new_password_must_be_different_from_previous_used_passwords">Your new password must be different from previous used passwords.</string>
+    <string name="package_added_to_cart_successfully">Package Added To Cart Successfully</string>
 </resources>

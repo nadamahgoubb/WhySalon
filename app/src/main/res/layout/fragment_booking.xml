@@ -15,7 +15,7 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">>
+                android:fillViewport="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                             android:layout_marginTop="@dimen/_20sdp"
                             android:text="@string/you_don_t_have_an_appoinment"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_15sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -47,12 +47,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:text="Lorem ispum is just dummy text of prining and typesetting industry "
+                            android:text="@string/you_currently_don_t_have_any_reservations_start_exploring_our_services_and_book_an_appointment"
                             android:textAlignment="center"
                             android:textColor="@color/grey_800"
-                            android:textSize="@dimen/_10sdp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@id/tv_1"
+                            android:textSize="@dimen/_12sdp"
+                             app:layout_constraintEnd_toEndOf="@id/tv_1"
                             app:layout_constraintStart_toStartOf="@id/tv_1"
                             app:layout_constraintTop_toBottomOf="@+id/tv_1" />
 

@@ -25,6 +25,12 @@ class SettingUseCase @Inject constructor(private val repository: Repository):
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
 
+  else if (params ==4) {
+                flow {
+                  emit(repository.getabout( ))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }
+
 
             else {
                 flow {
