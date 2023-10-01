@@ -154,7 +154,8 @@
     <string name="notes">ملاحظات</string>
     <string name="msg_empty_phone_number">برجاء إدخال رقم الهاتف الخاص بك</string>
     <string name="enter_phone_number">ادخل رقم الهاتف الخاص بك</string>
-    <string name="rate_your_barbar">قيم الموظف</string>
+    <string name="rate_your_barbar">كيف هي خدمتك اليوم؟ يرجى تقييم تجربتك وترك أي تعليق أو اقتراحات.
+نحن نقدر رأيك.</string>
     <string name="enter_the_email_associated_with_your_account_and_we_will_send_an_email_with_a_code_to_reset_a_file_password">أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل إليك بريدًا إلكترونيًا يحتوي على رمز لإعادة تعيين كلمة المرور  </string>
     <string name="please_go_to">الذهاب إلى</string>
     <string name="add_to_basket"> اضف إلى السلة</string>

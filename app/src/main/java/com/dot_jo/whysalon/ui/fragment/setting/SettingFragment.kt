@@ -81,9 +81,6 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             startActivity(intent)
             activity?.finish()
         }
-        binding.lytNotifaction.setOnClickListener {
-            findNavController().navigate(R.id.notifactionFragment)
-        }
 
         binding.checkboxNotifaction.setOnClickListener {
 

@@ -10,65 +10,58 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
         android:background="@drawable/bg_btn_white"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:paddingVertical="@dimen/_10sdp">
-
- 
+        android:paddingVertical="@dimen/_5sdp">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tv_service"
 
-            <TextView
-                android:id="@+id/tv_service"
-
-                android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_12sdp"
-                 android:textColor="@color/black"
-                android:textDirection="locale"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/iv_on"
+            android:layout_width="@dimen/_10sdp"
+            android:visibility="gone"     android:layout_height="@dimen/_10sdp"
+            android:src="@drawable/selected_dot"
+            app:layout_constraintBottom_toBottomOf="@id/tv_service"
+            app:layout_constraintStart_toEndOf="@id/tv_service"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="@id/tv_service"
+            app:tint="@color/green_A700" />
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/grey_dark_"
+            app:layout_constraintEnd_toStartOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toBottomOf="@id/tv_service" />
 
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-               android:layout_marginTop="@dimen/_5sdp"
-                android:textDirection="locale"
-                android:layout_marginEnd="@dimen/_5sdp"
-                 android:textColor="@color/grey_dark_"
-                app:layout_constraintEnd_toStartOf="@+id/tv_date"
-                app:layout_constraintStart_toStartOf="@id/tv_service"
-                app:layout_constraintTop_toBottomOf="@id/tv_service" />
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTint="@color/black"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTint="@color/black"
-                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

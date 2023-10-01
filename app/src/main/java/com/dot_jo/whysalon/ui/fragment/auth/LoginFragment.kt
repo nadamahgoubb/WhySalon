@@ -13,6 +13,7 @@ import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.databinding.FragmentLoginBinding
+import com.dot_jo.whysalon.ui.activity.AuthActivity
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
@@ -35,6 +36,7 @@ import kotlinx.coroutines.NonDisposableHandle.parent
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private val mViewModel: AuthViewModel by viewModels()
+    private lateinit var parent: AuthActivity
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     override fun onFragmentReady() {
         googleInit()
@@ -98,6 +100,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun onclick() {
+    parent = requireActivity() as AuthActivity
         binding.tvForgetPassword.setPaintFlags(binding.tvForgetPassword.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         binding.tvSignup.setPaintFlags(binding.tvSignup.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
 
@@ -113,7 +116,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             )
         }
         binding.btnGoogle.setOnClickListener {
-            signInWithGoogle()
+           signInWithGoogle()
         }
         binding.btnContineAsGuest.setOnClickListener {
             mViewModel.continueAsGyest()

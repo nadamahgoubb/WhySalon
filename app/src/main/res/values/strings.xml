@@ -154,7 +154,8 @@
     <string name="notes">Notes</string>
     <string name="msg_empty_phone_number">Please Enter your Phone Number</string>
     <string name="enter_phone_number">Enter your Phone number</string>
-    <string name="rate_your_barbar">Rate your Barbar</string>
+    <string name="rate_your_barbar">How is your service today? Please rate your experince and leave any comment or sugestations .
+We value your feedback. </string>
     <string name="enter_the_email_associated_with_your_account_and_we_will_send_an_email_with_a_code_to_reset_a_file_password">Enter the email associated with your account and We will send an email with a code to reset a file password.</string>
     <string name="please_go_to">Please GO to</string>
     <string name="add_to_basket">Add to Basket</string>
