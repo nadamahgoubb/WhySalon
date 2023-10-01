@@ -125,9 +125,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun signInWithGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
-      //  signInWithGoogleLauncher.launch(signInIntent)
-        startActivityForResult(signInIntent, 1000)
-    }
+       signInWithGoogleLauncher.launch(signInIntent)
+     }
 
     private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
