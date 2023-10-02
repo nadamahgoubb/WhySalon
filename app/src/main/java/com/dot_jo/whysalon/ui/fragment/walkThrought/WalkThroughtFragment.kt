@@ -37,14 +37,17 @@ class WalkThrougthFragment() : BaseFragment<FragmentWalkThroughtBinding>() {
                 when (pos) {
                     0 -> {
 binding.tvTitleSlider.setText(resources.getString(R.string.walk_title_1))
+binding.tvMsgSlider.setText(resources.getString(R.string.walk_msg_1))
 
                     }
                     1 -> {
                         binding.tvTitleSlider.setText(resources.getString(R.string.walk_title_2))
+                        binding.tvMsgSlider.setText(resources.getString(R.string.walk_msg_2))
 
                     }
                     2 -> {
                         binding.tvTitleSlider.setText(resources.getString(R.string.walk_title_3))
+                        binding.tvMsgSlider.setText(resources.getString(R.string.walk_msg_3))
 
                     }
                 }

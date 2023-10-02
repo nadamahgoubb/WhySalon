@@ -15,10 +15,16 @@
     <string name="ar">العربية</string>
     <string name="en">English</string>
     <string name="next">التالى</string>
-    <string name="walk_title_1">حجز زيارة سهلة \n
+<!--    <string name="walk_title_1">حجز زيارة سهلة \n
 و بسرعة</string>
     <string name="walk_title_2"> الخبراء \n المتخصصون </string>
-    <string name="walk_title_3">مصففو شعر بإحتراف \n ذو مهارات عالية</string>
+    <string name="walk_title_3">مصففو شعر بإحتراف \n ذو مهارات عالية</string>-->
+    <string name="walk_title_1">مرحبًا بك في واى صالون!</string>
+    <string name="walk_title_2">حجز زيارة سلس</string>
+    <string name="walk_title_3">مصصفو شعر على درجة عالة من المهارة</string>
+    <string name="walk_msg_1">تبدأ هنا تجربتك المثالية في صالون الحلاقة</string>
+    <string name="walk_msg_2">جدولة المواعيد ببضع نقرات فقط. لا مزيد من الانتظار!</string>
+    <string name="walk_msg_3">يوجد هنا مصففو شعر  موهوبون لصياغة مظهرك المثالي</string>
     <string name="don_t_have_account">لا تمتلك حساب؟</string>
     <string name="create_acount">إنشاء حساب  </string>
     <string name="sign_up">تسجيل حساب جديد</string>

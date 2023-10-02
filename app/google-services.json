@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
+          "client_id": "370194282562-3uipt0v13n19ujiqe714snk5quvj3kcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dot_jo.whysalon",
+            "certificate_hash": "dff21bfb6c03e168aebf0cd61a4599fb43a30c1a"
+          }
+        },
+        {
+          "client_id": "370194282562-tbai9ufs7a8d218ti6r2iaje5e9egrsa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -34,7 +42,7 @@
               "client_id": "370194282562-jd5j7h23ljrtdum2me7g9ojoggmc2102.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.dot_jo.whysalon"
+                "bundle_id": "com.dotjo.WhySalonBarber"
               }
             }
           ]
@@ -50,7 +58,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com",
+          "client_id": "370194282562-4cg97coan15umsse4h2c0nfvnfqgtu6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dot_joo.whysalonbarber",
+            "certificate_hash": "42c593681af14dc8c830ecffd6359ee3c418660c"
+          }
+        },
+        {
+          "client_id": "370194282562-tbai9ufs7a8d218ti6r2iaje5e9egrsa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

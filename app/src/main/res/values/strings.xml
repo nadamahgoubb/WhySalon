@@ -15,9 +15,12 @@
     <string name="ar">العربية</string>
     <string name="en">English</string>
     <string name="next">Next</string>
-    <string name="walk_title_1">Book A Visit Easy \n And Fast</string>
-    <string name="walk_title_2">The professional \nspecialists</string>
-    <string name="walk_title_3">Professional hairdresser \n with high skills</string>
+    <string name="walk_title_1">Welcome to Why Salon!</string>
+    <string name="walk_title_2">Seamless Booking</string>
+    <string name="walk_title_3">Skilled Barbers</string>
+    <string name="walk_msg_1">Your Ultimate Barbershop Experience Starts Here</string>
+    <string name="walk_msg_2">Schedule appointments with just a few taps. No more waiting!</string>
+    <string name="walk_msg_3">Our talented barbers are here to craft your perfect look</string>
     <string name="don_t_have_account">Don\'t have Account?</string>
     <string name="create_acount">Create new account</string>
     <string name="sign_up">Sign up</string>

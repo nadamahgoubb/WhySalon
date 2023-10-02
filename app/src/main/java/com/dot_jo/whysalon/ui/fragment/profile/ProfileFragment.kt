@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
+import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.data.response.Client
 import com.dot_jo.whysalon.databinding.FragmentProfileBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
@@ -105,7 +106,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
         }
-        binding.tvChangePass.setPaintFlags(binding.tvChangePass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+        if(PrefsHelper.getUserData()?.client?.social == true){
+            binding.lytChangepass.isVisible= true
+            binding.tvChangePass.setPaintFlags(binding.tvChangePass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+
+        }
     }
 
     private fun onClick() {

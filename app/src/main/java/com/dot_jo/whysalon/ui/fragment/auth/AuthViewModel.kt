@@ -54,7 +54,7 @@ fun isValidParamsChangePass(  newpass: String, confirmpass: String) {
 
 }  
 fun isVaildLogin(
-        email: String?, password: String?, type: Int
+        email: String?, password: String?, soical: Boolean
     ) { // 1 FOR NORMAL  // 0 FOR LOGIN WITH BIOMETRIC
         if (email.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_msg_email)))
@@ -65,14 +65,14 @@ fun isVaildLogin(
         } else {
 
 
-            loginWithPhoneNumber(email, password, type)
+            loginWithPhoneNumber(email, password, soical)
 
             true
 
         }
     }
 
-    fun loginWithPhoneNumber(email: String, password: String, type: Int) {
+    fun loginWithPhoneNumber(email: String, password: String, social: Boolean ) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(AuthAction.ShowLoading(true))
 
@@ -89,7 +89,7 @@ fun isVaildLogin(
 
                             produce(
                                 AuthAction.LoginSuccess(
-                                    res.data.data as LoginResponse
+                                    res.data.data as LoginResponse, social
                                 )
                             )
 
@@ -190,14 +190,14 @@ fun isVaildLogin(
         }
     }
 
-    fun isVaildRegisteration(name: String, email: String, country_code: String, phone: String, pass: String, repeated_pass: String, state:Int) {
+    fun isVaildRegisteration(name: String, email: String, country_code: String, phone: String, pass: String, repeated_pass: String, state:Int , social :Boolean) {
         if (name.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_name_msg)))
             false
         } else if (email.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_msg_email)))
             false
-        } else if (phone.isNullOrBlank()) {
+        } else if (!social&&phone.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_phone_number)))
             false
         } else if (pass.isNullOrBlank()) {
@@ -216,7 +216,7 @@ fun isVaildLogin(
                         name,
                         email,
                         country_code, phone,
-                        pass))
+                        pass), social)
             }
             else {
                 checkEmailAfterRegisteration(email)
@@ -235,7 +235,7 @@ fun isVaildLogin(
     }
 
 
-      fun register(params: RegisterParams) {
+      fun register(params: RegisterParams, social: Boolean) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(AuthAction.ShowLoading(true))
 
@@ -250,7 +250,7 @@ fun isVaildLogin(
 
                             (res.data.data as LoginResponse)?.let {
                                 AuthAction.RegisterSucess(
-                                    it
+                                    it, social
                                 )
                             }?.let { produce(it) }
                         }

@@ -37,9 +37,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     lateinit var fcmUseCase: FcmUseCase
     override fun onNewToken(s: String) {
         super.onNewToken(s)
-        Log.d("islam", "onNewToken: $s")
-        Log.d("islam", "onNewToken: aaa")
-        PrefsHelper.setFCMToken(s)
+
+         PrefsHelper.setFCMToken(s)
         sendRegistrationToServer(s)
     }
 

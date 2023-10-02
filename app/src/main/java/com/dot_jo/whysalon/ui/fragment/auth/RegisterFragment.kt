@@ -63,7 +63,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
 
         }
         binding.btnSignup.setOnClickListener {
-            //     if(state == 0||binding.etEmail.text.toString() != emailVerified) {
+            signOut()      //     if(state == 0||binding.etEmail.text.toString() != emailVerified) {
             mViewModel.isVaildRegisteration(
                 binding.etName.text.toString(),
                 binding.etEmail.text.toString(),
@@ -71,7 +71,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
                 binding.etPhone.text.toString(),
                 binding.etPassword.text.toString(),
                 binding.etPasswordComfirm.text.toString(),
-                state
+                state,
+                false
             )
             //     }else{
             //        mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
@@ -80,7 +81,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
         binding.btnDone.setOnClickListener {
             if (binding.etOtp.otp == otp) {
                 mViewModel.emailVerified = mViewModel.registerParam?.email.toString()
-                mViewModel.registerParam?.let { it1 -> mViewModel.register(it1) }
+                mViewModel.registerParam?.let { it1 -> mViewModel.register(it1, false) }
                 binding.lytFilData.isVisible = true
                 binding.lytOtp.isVisible = false
             } else {
@@ -102,7 +103,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
         }
 
     }
+    fun signOut() {
+        mGoogleSignInClient.signOut()
 
+    }
     fun state0() {
         sendingCount = 0
         binding.lytFilData.isVisible = true
@@ -137,6 +141,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
 
             is AuthAction.RegisterSucess -> {
                 showProgress(false)
+                action.data.client?.social= action.social
                 PrefsHelper.saveUserData(action.data)
 
                 PrefsHelper.saveToken(action.data.client?.token)
@@ -221,15 +226,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
             mViewModel.isVaildRegisteration(
                 if (fullName.isNullOrEmpty()) "" else fullName[0],
                 account.email!!,
-                countryCode,
-                "2222222",
+                "",
+                "",
                 account.id!!,
                 account.id!!,
                 1,
+                true
             )
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            signOut()    // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.d("islam", "handleSignInResult: $e")
             showToast(e.message.toString())
         }

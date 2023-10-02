@@ -19,18 +19,13 @@ import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.showActivity
 import com.dot_jo.whysalon.util.observe
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 @AndroidEntryPoint
@@ -51,7 +46,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private fun googleInit() {
         // Setup Google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com")
+        .requestIdToken("370194282562-9bpek2og0i8dil6k0ig8av7q8ash2jk2.apps.googleusercontent.com")
             .requestEmail()
             .build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
@@ -68,10 +63,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
             is AuthAction.LoginSuccess -> {
                 showProgress(false)
-
-                PrefsHelper.saveToken(action.data.client?.token)
+                action.data.client?.social= action.social
                 PrefsHelper.saveUserData(action.data)
-                gotoHome()
+                PrefsHelper.saveToken(action.data.client?.token)
+                 gotoHome()
 
             }
 
@@ -112,11 +107,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
         binding.btnLogin.setOnClickListener {
             mViewModel.isVaildLogin(
-                binding.etEmail.text.toString(), binding.etPassword.text.toString(), 0
+                binding.etEmail.text.toString(), binding.etPassword.text.toString(), false
             )
         }
         binding.btnGoogle.setOnClickListener {
-           signInWithGoogle()
+            signOut()
+            signInWithGoogle()
         }
         binding.btnContineAsGuest.setOnClickListener {
             mViewModel.continueAsGyest()
@@ -141,10 +137,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             mViewModel.isVaildLogin(
                 account.email!!,
                 account.id!!,
-                0
+                true
             )
         } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
+            signOut()       // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.d("islam", "handleSignInResult: $e")
             showToast(e.message.toString())
@@ -164,5 +160,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun gotoHome() {
         showActivity(MainActivity::class.java, clearAllStack = true)
+    }
+
+    fun signOut() {
+        mGoogleSignInClient.signOut()
+
     }
 }

@@ -53,6 +53,7 @@ data class RegisterParams(
     val country_code: String="",
     val phone: String="",
      val password: String="",
+
  ) : Parcelable
 @Parcelize
 data class UpdateFcmTokenParam(

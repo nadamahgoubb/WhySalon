@@ -7,171 +7,175 @@
 
     </data>
 
-        <androidx.core.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_white_rounded_top"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fillViewport="true"
-            android:background="@drawable/bg_btn_white_rounded_top"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            >
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tvskip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/skip"
+                android:textColor="@color/red_A700"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvskip" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lyt_header"
+            <TextView
+                android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                >
-
-                <TextView
-                    android:id="@+id/tvskip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:paddingHorizontal="@dimen/_20sdp"
-                    android:paddingVertical="@dimen/_10sdp"
-                    android:text="@string/skip"
-                    android:textColor="@color/red_A700"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_profile"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvskip" />
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/robotomedium"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:text="@string/rate_your_barbar"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile" />
 
 
-                <TextView
-                    android:id="@+id/tv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/robotomedium"
-                    android:text="@string/rate_your_barbar"
-             android:textAlignment="center"       android:textColor="@color/black"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+            <RatingBar
+                android:id="@+id/rating"
+                style="@style/foodRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:isIndicator="false"
+                android:layoutDirection="inherit"
+                android:numStars="5"
+                android:stepSize="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.525"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv2">
+
+            </RatingBar>
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+           android:layout_marginHorizontal="@dimen/_20sdp"     android:layout_marginVertical="@dimen/_10sdp"
+                android:background="@color/grey_400"
+                app:layout_constraintTop_toBottomOf="@+id/rating" />
+
+            <EditText
+                android:id="@+id/notes_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/full_border_radius_8"
+                android:gravity="start"
+                android:hint="@string/notes"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minLines="4"
+                android:padding="@dimen/_12sdp"
+                android:textAlignment="viewStart"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/btn_done"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v1" />
 
 
-                <RatingBar
-                    android:id="@+id/rating"
-                    style="@style/foodRatingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="12dp"
-                    android:isIndicator="false"
-                    android:layoutDirection="inherit"
-            android:numStars="5"
-                    android:stepSize="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.525"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv2">
+            <!--
 
-                </RatingBar>
+                            <TextView
+                                android:id="@+id/tv7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Choose up to 5 reasons "
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_11sdp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.502"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/notes_et" />
 
-                <View
-                    android:id="@+id/v1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_marginVertical="@dimen/_10sdp"
-                    android:background="@color/grey_400"
-                    app:layout_constraintTop_toBottomOf="@+id/rating" />
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_services"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:clipToPadding="false"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv7"
+                                app:spanCount="3"
+                                tools:listitem="@layout/item_filter_rating" />
+            -->
 
-                <EditText
-                    android:id="@+id/notes_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/full_border_radius_8"
-                    android:gravity="start"
-                    android:hint="@string/notes"
-                    android:importantForAutofill="no"
-                    android:inputType="textMultiLine"
-                    android:minLines="4"
-                    android:padding="@dimen/_12sdp"
-                    android:textAlignment="viewStart"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/btn_done"
-                    app:layout_constraintTop_toBottomOf="@id/v1" />
+            <Button
+                android:id="@+id/btn_done"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/bg_btn_black_white_border"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                app:cornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@id/progress_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
 
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-                <!--
-
-                                <TextView
-                                    android:id="@+id/tv7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="32dp"
-                                    android:fontFamily="@font/roboto_regular"
-                                    android:text="Choose up to 5 reasons "
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_11sdp"
-                                    android:visibility="gone"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.502"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/notes_et" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/rv_services"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:clipToPadding="false"
-                                    android:orientation="vertical"
-                                    android:visibility="gone"
-                                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/tv7"
-                                    app:spanCount="3"
-                                    tools:listitem="@layout/item_filter_rating" />
-                -->
-
-                <Button
-                    android:id="@+id/btn_done"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/bg_btn_black_white_border"
-            android:layout_marginBottom="@dimen/_10sdp"        android:text="@string/submit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
-                    app:cornerRadius="@dimen/_10sdp"
-                    app:layout_constraintBottom_toTopOf="@id/progress_bar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.504"
-                    app:layout_constraintStart_toStartOf="parent" />
-                />
-
-                <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progress_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-           android:visibility="gone"         android:layout_marginTop="@dimen/_30sdp"
-                    android:indeterminate="true"
-                    app:indicatorColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
- </layout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

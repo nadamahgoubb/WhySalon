@@ -19,6 +19,7 @@ data class Client(
     @SerializedName("notify") var notify: String? = null,
     @SerializedName("country_code") var country_code: String? = null,
     @SerializedName("phone") var phone: String? = null,
+ var social: Boolean = false,
 
 ) : Parcelable
 
