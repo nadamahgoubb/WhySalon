@@ -134,11 +134,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 "islam",
                 "handleSignInResult:${account.id} ${account.email} ${account.displayName}"
             )
-            mViewModel.isVaildLogin(
-                account.email!!,
-                account.id!!,
-                true
-            )
+            mViewModel.loginWithGoogle(
+                 account.id!!,
+             )
         } catch (e: ApiException) {
             signOut()       // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.

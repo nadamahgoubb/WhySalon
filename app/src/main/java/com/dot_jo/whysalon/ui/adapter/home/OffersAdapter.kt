@@ -47,7 +47,7 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OffersViewHol
          holder.binding.tvMoneyAfter.setText("( "+ currentItem?.services?.price?.toDoubleOrNull()?.roundToInt().toString()+" "+context.resources.getString(
             R.string.sr) + " )")
         holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type)+" "+currentItem.services?.name)
-           holder.binding.imgWishItem.loadImage(currentItem.services?.image)
+           holder.binding.imgWishItem.loadImage(currentItem.services?.small_image)
 
         holder.binding.root.setOnClickListener {
             listener.onOffersClickListener(currentItem)

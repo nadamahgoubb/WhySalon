@@ -22,6 +22,22 @@
           }
         },
         {
+          "client_id": "370194282562-7jt0ejfcpdkbr0flt9fvh8em85i8rica.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dot_jo.whysalon",
+            "certificate_hash": "cd358343ef7e0e1178c9af447b617a6989deee64"
+          }
+        },
+        {
+          "client_id": "370194282562-it17ic71j4ja4g3ub2aresv14bbbcp8o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dot_jo.whysalon",
+            "certificate_hash": "42c593681af14dc8c830ecffd6359ee3c418660c"
+          }
+        },
+        {
           "client_id": "370194282562-tbai9ufs7a8d218ti6r2iaje5e9egrsa.apps.googleusercontent.com",
           "client_type": 3
         }

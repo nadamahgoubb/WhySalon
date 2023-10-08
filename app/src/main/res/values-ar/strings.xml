@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Why Salon</string>
+    <string name="app_name">WHY salon</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="select_date">اختار التاريخ</string>
@@ -64,6 +64,7 @@
     <string name="contact_us">اتصل بنا</string>
     <string name="language">اللغة</string>
     <string name="privacy_and_usage_policy">سياسة الخصوصية والاستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="notification">إشعارات</string>
     <string name="log_out">تسجيل خروج</string>
     <string name="choose_the_service_you_want">اختر الخدمة التي تريدها</string>
@@ -142,7 +143,7 @@
     <string name="min"> دق</string>
     <string name="change_password">تغيير كلمة المرور</string>
     <string name="email_not_exist">البريد الإلكتروني غير موجود</string>
-    <string name="enter_the_email_we_send_to"> سيتم إرسال كود OTP الى  :</string>
+    <string name="enter_the_email_we_send_to"> "سيتم إرسال كود OTP الى  : "</string>
     <string name="service_type">نوع الخدمة:</string>
     <string name="barbars">الموظفين\n</string>
     <string name="choose_the_barber">اختار الموظف</string>
@@ -199,9 +200,16 @@
     <string name="ignore">تجاهل</string>
     <string name="are_you_sure_you_want_to_delete_this_account_all_your_data_including_past_and_future_reservation_will_be_permanently_deleted_this_action_can_t_be_undone">هل أنت متأكد أنك تريد حذف هذا الحساب؟. سيتم حذف جميع بياناتك بما في ذلك الحجز السابق والمستقبلي نهائيًا.لا يمكن التراجع عن هذا الإجراء</string>
     <string name="you_currently_don_t_have_any_reservations_start_exploring_our_services_and_book_an_appointment">ليس لديك أي حجوزات حاليًا. ابدأ في استكشاف خدماتنا وحجز موعد مع موظفك المفضل.</string>
+    <string name="you_currently_don_t_have_any_rhis_start_exploring_our_services_and_book_an_appointment">ليس لديك أي حجوزات قديمة حاليًا. ابدأ في استكشاف خدماتنا وحجز موعد مع موظفك المفضل.</string>
     <string name="terms_condition">الشروط والأحكام</string>
     <string name="about_us">عن التطبيق</string>
     <string name="your_new_password_must_be_different_from_previous_used_passwords">يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمات المرور المستخدمة سابقًا.</string>
-    <string name="package_added_to_cart_successfully">Package Added To Cart Successfully</string>
+    <string name="package_added_to_cart_successfully">تم إضافه الباقة إلى السلة بنجاح</string>
+    <string name="enter_your_birthdate"> ادخل تاريخ الميلاد</string>
+    <string name="birthdate"> تاريخ الميلاد</string>
+    <string name="empty_date_of_birth">برجاء إدخال تاريخ الميلاد</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="edit_profile">تعديل </string>
+    <string name="save">Save</string>
 
 </resources>

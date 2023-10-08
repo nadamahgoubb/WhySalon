@@ -19,6 +19,14 @@ data class LoginParams(
 
     ) : Parcelable
 
+@Parcelize
+data class loginbyGoogleParams(
+
+     var id: String = "",
+
+
+    ) : Parcelable
+
 
 @Parcelize
 data class CheckEmailParam(
@@ -53,6 +61,8 @@ data class RegisterParams(
     val country_code: String="",
     val phone: String="",
      val password: String="",
+     val google_id: String?="",
+     val date_of_birth: String?="",
 
  ) : Parcelable
 @Parcelize
@@ -71,7 +81,8 @@ data class EditProfileParam(
     var name: String = "",
     var country_code: String = "",
     var phone: String = "",
-    var image:File
+    var date_of_birth: String = "",
+    var image:File?
 
     ) : Parcelable
 
@@ -85,6 +96,7 @@ fun EditProfileParam.toMap(): Map<String, RequestBody>{
     itemMap["name"] = name.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
     itemMap["country_code"] = country_code.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
     itemMap["phone"] = phone.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+    itemMap["date_of_birth"] = date_of_birth.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
 
 
     return itemMap

@@ -2,6 +2,8 @@ package com.dot_jo.whysalon.ui.fragment.setting
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +18,8 @@ import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
@@ -86,6 +90,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadData(data: ContactUsResponse) {
         var days = ""
         var numbers = ""
@@ -94,15 +99,15 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
             binding.tvAddress.setText(it.address)
 
             data.contactUsPhones.forEach {
-                numbers = numbers + it.phone + "\n"
+                numbers = numbers +it.countryCode +" "+ it.phone + "\n"
             }
             data.contactUsDay.forEach {
                 if (it.toDay == null) {
                     days =
-                        days + it.fromDay?.name + " " + "(" + it.fromTime + " - " + it.toTime + ")" + "\n"
+                        days + it.fromDay?.name + " " + "(" + adjustTime(it.fromTime) + " - " +   adjustTime(it.toTime)+ ")" + "\n"
                 } else {
                     days =
-                        days + it.fromDay?.name + " - " + it.toDay?.name + " " + "(" + it.fromTime + " - " + it.toTime + ")" + "\n"
+                        days + it.fromDay?.name + " - " + it.toDay?.name + " " + "(" +  adjustTime(it.fromTime )+ " - " +  adjustTime(it.toTime) + ")" + "\n"
 
                 }
             }
@@ -120,6 +125,11 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
 
 
         }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun adjustTime(time:String?): String {
+     return   LocalTime.parse(time!!).format(
+            DateTimeFormatter.ofPattern("h:mma")) ?: ""
     }
     fun openMap(  latitude :String , longitude :String){
         val uri = "https://www.google.com.tw/maps/place/$latitude,$longitude"

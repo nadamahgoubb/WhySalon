@@ -1,5 +1,10 @@
 package com.dot_jo.whysalon.ui.fragment.setting
 
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
+import android.text.TextUtils
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
@@ -12,6 +17,7 @@ import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.cardback
+import org.jsoup.Jsoup
 
 @AndroidEntryPoint
 class AboutusFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
@@ -19,7 +25,7 @@ class AboutusFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
     private val mViewModel: ProfileViewModel by viewModels()
     override fun onFragmentReady() {
         setupUi()
-         mViewModel.apply {
+        mViewModel.apply {
             mViewModel.getAbouUs()
             observe(viewState) {
                 handleViewState(it)
@@ -51,13 +57,15 @@ class AboutusFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
             }
 
             is ProfileAction.ShowAboutUs -> {
-binding.tvPrivacy.setText(action.data.description)            }
+                binding.tvPrivacy.setText(Html.fromHtml((action.data.description)))
+            }
 
             else -> {
 
             }
         }
     }
+
 
     private fun setupUi() {
         parent = requireActivity() as MainActivity
@@ -71,8 +79,7 @@ binding.tvPrivacy.setText(action.data.description)            }
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
         }
-        }
-
+    }
 
 
 }

@@ -16,6 +16,9 @@ import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.data.response.Client
 import com.dot_jo.whysalon.databinding.FragmentProfileBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
+import com.dot_jo.whysalon.ui.dialog.CancelBookingDialog
+import com.dot_jo.whysalon.ui.dialog.EditProfileDialog
+import com.dot_jo.whysalon.ui.dialog.EditProfileDialogClickLisenter
 import com.dot_jo.whysalon.util.FileManager
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.loadImage
@@ -28,6 +31,7 @@ import java.io.File
 @AndroidEntryPoint
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+    private var client: Client?= null
     private lateinit var parent: MainActivity
     private val mViewModel: ProfileViewModel by viewModels()
     override fun onFragmentReady() {
@@ -85,11 +89,35 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun loadData(client: Client?) {
+      this.client = client
         client?.let {
-            binding.lytData.isVisible= true
             binding.ivProfile.loadImage(client.image, isCircular = true,placeHolderOnFsImage = R.drawable.empty_user_)
             binding.tvName.setText(client.name)
             binding.tvEmail.setText(client.email)
+            if(client.phone.isNullOrEmpty()){
+                binding.tvPhone.isVisible= false
+                binding.tv12.isVisible= false
+                binding.view2.isVisible= false
+
+            }else{
+                binding.tvPhone.setText(client.phone)
+                binding.tvPhone.isVisible= true
+                binding.tv12.isVisible= true
+                binding.view2.isVisible= true
+            }
+            if(client.date_of_birth.isNullOrEmpty()){
+                binding.tvBirthdate.isVisible= false
+                binding.tv13.isVisible= false
+                binding.view3.isVisible= false
+
+            }else{
+                binding.tvBirthdate.setText(client.date_of_birth)
+                binding.tvBirthdate.isVisible= true
+                binding.tv13.isVisible= true
+                binding.view3.isVisible= true
+
+            }
+            binding.lytData.isVisible= true
         }
     }
 
@@ -106,7 +134,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         parent.cardback.setOnClickListener {
             activity?.onBackPressed()
         }
-        if(PrefsHelper.getUserData()?.client?.social == true){
+        if(PrefsHelper.getUserData()?.client?.google_id == null ||PrefsHelper.getUserData()?.client?.google_id.isNullOrEmpty() ){
             binding.lytChangepass.isVisible= true
             binding.tvChangePass.setPaintFlags(binding.tvChangePass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
 
@@ -123,6 +151,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         binding.ivEditPic.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
+           binding.btnEditaccount.setOnClickListener {
+               client?.let { it1 ->
+                   EditProfileDialog.newInstance(it1, object : EditProfileDialogClickLisenter {
+
+                       override fun onEditClickListener() {
+
+                           mViewModel.showProfile()
+
+                       }
+                   }) .show(childFragmentManager, CancelBookingDialog::class.java.canonicalName)
+               }
+
+           }
+
     }
 
 
@@ -155,7 +197,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                                  image = file
 
                                 binding.ivProfile.loadImage(file, isCircular = true)
-                                mViewModel.editProfile(file)
+                                mViewModel.editProfileImg(file)
                     }
                 }  }
         } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {

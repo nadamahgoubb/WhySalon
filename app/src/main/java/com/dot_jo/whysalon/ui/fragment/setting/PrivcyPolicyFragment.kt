@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.ui.fragment.setting
 
+import android.text.Html
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
@@ -12,6 +13,7 @@ import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.cardback
+import org.jsoup.Jsoup
 
 @AndroidEntryPoint
 class PrivcyPolicyFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
@@ -51,7 +53,7 @@ class PrivcyPolicyFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
             }
 
             is ProfileAction.ShowPrivacy -> {
-                binding.tvPrivacy.setText(action.data.privacy_policy)             }
+                binding.tvPrivacy.setText(Html.fromHtml( action.data.privacy_policy)  )             }
 
             else -> {
 
@@ -63,7 +65,7 @@ class PrivcyPolicyFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(false)
         parent.showToolbar(true)
-        parent.setToolbarTitle(resources.getString(R.string.privacy_and_usage_policy))
+        parent.setToolbarTitle(resources.getString(R.string.privacy_policy))
         parent.showNotifactionFragment(false)
         //      parent.binding.ivIconNotifaction.isVisible= false
         parent.showback(true)

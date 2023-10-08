@@ -7,7 +7,9 @@ import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationsResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
+import com.dot_jo.whysalon.data.response.OtpCheckEmailAfterRegisterResponse
 import com.dot_jo.whysalon.data.response.PrivacyPolicyResponse
+import com.dot_jo.whysalon.ui.fragment.auth.AuthAction
 
 sealed class ProfileAction() : Action {
 
@@ -23,6 +25,9 @@ sealed class ProfileAction() : Action {
     data  class ShowPrivacy(val data: PrivacyPolicyResponse) : ProfileAction()
     data  class ShowAboutUs(val data: AboutUsResponse) : ProfileAction()
      data  class ShowContactUsResponse(val data : ContactUsResponse) : ProfileAction()
+    data class EmailCheckedAfterRegister(
+        val data: OtpCheckEmailAfterRegisterResponse,
+    ) : ProfileAction()
 
 
 }

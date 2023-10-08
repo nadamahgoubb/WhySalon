@@ -1,5 +1,6 @@
 package com.dot_jo.whysalon.ui.fragment.setting
 
+import android.text.Html
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
@@ -12,6 +13,7 @@ import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.cardback
+import org.jsoup.Jsoup
 
 @AndroidEntryPoint
 class TermsAndConitionFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
@@ -51,7 +53,8 @@ class TermsAndConitionFragment : BaseFragment<FragmentPrivcyPolicyBinding>() {
             }
 
             is ProfileAction. ShowPrivacy -> {
-binding.tvPrivacy.setText(action.data.terms_and_conditions)            }
+                 binding.tvPrivacy.setText(Html.fromHtml( action.data.terms_and_conditions))
+        }
 
             else -> {
 

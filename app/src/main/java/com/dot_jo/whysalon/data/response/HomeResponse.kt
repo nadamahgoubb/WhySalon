@@ -15,6 +15,7 @@ data class ServicesItem(
     @SerializedName("email") var email: String? = null,
     @SerializedName("id") var id: String? = null,
     @SerializedName("image") var image: String? = null,
+    @SerializedName("small_image") var small_image: String? = null,
     @SerializedName("name") var name: String? = null,
     @SerializedName("duration") var duration: String? = null,
     @SerializedName("price") var price: String? = null,

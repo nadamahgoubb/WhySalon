@@ -56,11 +56,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
         binding.swiperefreshHome.setOnRefreshListener {
             mViewModel.getCategory()
             mViewModel.getPackages()
-            mViewModel.  getCart()
+            mViewModel.getCart()
             mViewModel.getOffers()
             binding.swiperefreshHome.isRefreshing = false
         }
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun handleViewState(action: HomeAction) {
         when (action) {
@@ -90,28 +91,52 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
                 showProgress(false)
 
                 action.data.packages?.let {
-                    adapterPackages.list = it
-                    adapterPackages.notifyDataSetChanged()
+
+                    if (it.size > 0) {
+                        adapterPackages.list = it
+                        adapterPackages.notifyDataSetChanged()
+                        binding.rvRecommended.isVisible= true
+                        binding.tvRecommended.isVisible= true
+                        binding.tvRecommendedViewAll.isVisible= true
+                    } else {
+                        binding.rvRecommended.isVisible= false
+                        binding.tvRecommended.isVisible= false
+                        binding.tvRecommendedViewAll.isVisible= false
+
+                    } }
+            }
+
+            is HomeAction.ShowOffers -> {
+                binding.shimmerOffers.isVisible = false
+                binding.shimmerOffers.stopShimmerAnimation()
+                showProgress(false)
+
+                action.data.offers?.let {
+                    if (it.size > 0) {
+                        adapterOffers.list = it
+                        adapterOffers.notifyDataSetChanged()
+                        binding.recOffers.isVisible= true
+                        binding.tvOffers.isVisible= true
+                        binding.tvOffersViewAll.isVisible= true
+                    } else {
+                    binding.recOffers.isVisible= false
+                    binding.tvOffers.isVisible= false
+                    binding.tvOffersViewAll.isVisible= false
+
+                    }
                 }
-            }   is HomeAction.ShowOffers -> {
-            binding.shimmerOffers.isVisible = false
-            binding.shimmerOffers.stopShimmerAnimation()
-            showProgress(false)
-
-            action.data.offers?.let {
-                adapterOffers.list = it
-                adapterOffers.notifyDataSetChanged()
             }
-        }
 
-            is HomeAction.AddItemToCart->{
+            is HomeAction.AddItemToCart -> {
                 showToast(getString(R.string.package_added_to_cart_successfully))
-               mViewModel. getCart()
+                mViewModel.getCart()
             }
+
             is HomeAction.ShowCartData -> {
                 parent.setBadge(action.data.carts.size)
 
             }
+
             is HomeAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstDialog)
@@ -184,7 +209,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
     }
 
     override fun onBookNowClickListener(item: ServicesItem) {
-        mViewModel.addToBasket(item.id,null,item.price!!)
+        mViewModel.addToBasket(item.id, null, item.price!!)
     }
 
     override fun onOffersClickListener(item: OfferssItem) {
@@ -192,6 +217,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeClickListener, Off
             R.id.itemDetailsFragment, bundleOf(
                 Constants.PACKAGE to item, Constants.Type to Constants.OFFERS
             )
-        )  }
+        )
+    }
 
 }

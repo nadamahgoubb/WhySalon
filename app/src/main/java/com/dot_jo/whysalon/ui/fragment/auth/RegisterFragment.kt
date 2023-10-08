@@ -1,9 +1,12 @@
 package com.dot_jo.whysalon.ui.fragment.auth
 
+import android.app.DatePickerDialog
 import android.graphics.Paint
+import android.os.Build
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.dot_jo.whysalon.R
@@ -13,6 +16,8 @@ import com.dot_jo.whysalon.databinding.FragmentRegisterBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.showActivity
+import com.dot_jo.whysalon.util.formatDate
+import com.dot_jo.whysalon.util.getMonthNameFromDate
 import com.dot_jo.whysalon.util.observe
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -22,17 +27,25 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.hbb20.CountryCodePicker
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter.ofPattern
+import java.util.Calendar
+import java.util.Locale
+import javax.xml.datatype.DatatypeConstants.MONTHS
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
     CountryCodePicker.OnCountryChangeListener {
-
+   var  date_of_birth:String? = null
     private var countryCode = "+966"
     private var otp = ""
     private val mViewModel: AuthViewModel by viewModels()
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     var state = 0
     var sendingCount = 0
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun onclick() {
         binding.countryCodePicker.setOnCountryChangeListener (this)
         binding.tvSignin.setPaintFlags(binding.tvSignin.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
@@ -44,6 +57,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
             mViewModel.continueAsGyest()
         }
         binding.btnGoogle.setOnClickListener {
+            signOut()
             signInWithGoogle()
         }
         binding.tvResend.setOnClickListener {
@@ -71,7 +85,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
                 binding.etPhone.text.toString(),
                 binding.etPassword.text.toString(),
                 binding.etPasswordComfirm.text.toString(),
-                state,
+                date_of_birth,
+                null,
                 false
             )
             //     }else{
@@ -88,6 +103,25 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
                 showToast(resources.getString(R.string.wrong_otp))
             }
 
+        }
+        binding.etBirthdate.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+
+            val dpd = DatePickerDialog(requireActivity(),R.style.DialogTheme, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+
+                var date =     LocalDate.of(year, monthOfYear+1, dayOfMonth)
+                date.formatDate("yyyy-MM-dd", Locale.getDefault())
+           date_of_birth = date.toString()     // Display Selected date in textbox
+                binding.etBirthdate.setText(
+                    "" + dayOfMonth + " " + (getMonthNameFromDate(date.toString()))?.substring(0,3)
+                        + ", " + year)
+            }, year, month, day)
+            dpd.datePicker.maxDate = System.currentTimeMillis()
+             dpd.show()
         }
     }
 
@@ -230,8 +264,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
                 "",
                 account.id!!,
                 account.id!!,
-                1,
-                true
+                "",
+                account.id!!,
+                 true
             )
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.

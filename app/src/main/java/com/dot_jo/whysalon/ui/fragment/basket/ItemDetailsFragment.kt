@@ -54,10 +54,11 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
             if (type == Constants.Package) {
                 (item as ServicesItem).id?.let { mViewModel.getPackagesDetails(it) }
             } else if (type == Constants.Service) {
-                (item as CategoriesItem).id?.let { mViewModel.getServiceDetails(it) }
+                (item as ServicesItem).id?.let { mViewModel.getServiceDetails(it) }
 
             } else { //OFFERS
-            }
+             //   item = arguments?.getParcelable(Constants.PACKAGE) //!! as OfferssItem
+                loadOfferData(item as OfferssItem)      }
             binding.swiperefreshHome.isRefreshing = false
         }
     }

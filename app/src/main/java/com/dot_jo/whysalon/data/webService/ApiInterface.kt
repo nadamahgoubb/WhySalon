@@ -38,6 +38,11 @@ interface ApiInterface {
     suspend fun login(
         @Field("email") email: String, @Field("password") password: String
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
+
+    @GET("auth/login/login-by-google/{id}")
+     suspend fun loginbyGoogle(
+        @Path("id") id: String
+    ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
    @POST("auth/register/check-email")
     @FormUrlEncoded
     suspend fun checkMailInRegisteration(
@@ -51,7 +56,9 @@ interface ApiInterface {
         @Field("email") email: String,
         @Field("country_code") country_code: String,
         @Field("phone") phone: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("google_id") google_id: String?,
+        @Field("date_of_birth") date_of_birth: String?
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
     @GET("auth/register/guest")

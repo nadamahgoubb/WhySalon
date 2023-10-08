@@ -2,13 +2,14 @@ package com.dot_jo.whysalon.ui.fragment.createOrder
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener
-import com.dot_jo.whysalon.R
+ import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.response.TimesOfBarbarResponse
 import com.dot_jo.whysalon.databinding.FragmentCalenderBinding
@@ -28,6 +29,7 @@ import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_calender.btn_goto_date
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter

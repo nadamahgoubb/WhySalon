@@ -21,6 +21,7 @@ import com.dot_jo.whysalon.data.param.GetTimesReBookingParams
 import com.dot_jo.whysalon.data.param.OffersParam
 import com.dot_jo.whysalon.data.param.RateParam
 import com.dot_jo.whysalon.data.param.ReBookingParam
+import com.dot_jo.whysalon.data.param.loginbyGoogleParams
 import com.dot_jo.whysalon.data.param.toMap
 import com.dot_jo.whysalon.data.webService.ApiInterface
 import com.dot_jo.whysalon.util.FileManager.toMultiPart
@@ -29,9 +30,10 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun login(param: LoginParams) = api.login(param.email, param.password)
+    suspend fun loginbyGoogle(param: loginbyGoogleParams) = api.loginbyGoogle(param.id )
 
     suspend fun register(param: RegisterParams) =
-        api.register(param.name, param.email,param.country_code, param.phone, param.password)
+        api.register(param.name, param.email,param.country_code, param.phone, param.password,param.google_id , param.date_of_birth)
  suspend fun checkMailInRegisteration(param: CheckEmailParam) =
         api.checkMailInRegisteration(  param.email )
 
@@ -60,7 +62,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
         api.updateFcmToken(params.fcm_token, params.mobile_id, params.lang)
 
     suspend fun updateProfile(params: EditProfileParam) =
-        api.updateProfile(params.toMap(), params.image.toMultiPart("image"))
+        api.updateProfile(params.toMap(), params.image?.toMultiPart("image"))
 
 
     suspend fun changePassword(params: changePasswordParam) =

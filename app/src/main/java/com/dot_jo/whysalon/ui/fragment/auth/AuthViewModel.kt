@@ -10,6 +10,7 @@ import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
 import com.dot_jo.whysalon.data.param.LoginParams
 import com.dot_jo.whysalon.data.param.RegisterParams
 import com.dot_jo.whysalon.data.param.ResetPasswordParams
+import com.dot_jo.whysalon.data.param.loginbyGoogleParams
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.OtpCheckEmailAfterRegisterResponse
 import com.dot_jo.whysalon.data.response.OtpCheckEmailResponse
@@ -90,6 +91,37 @@ fun isVaildLogin(
                             produce(
                                 AuthAction.LoginSuccess(
                                     res.data.data as LoginResponse, social
+                                )
+                            )
+
+
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+  fun loginWithGoogle(accountId: String ) {
+                if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(AuthAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = authUserCase.invoke(
+                    viewModelScope, loginbyGoogleParams(
+                      accountId
+                    ) // static 0 for android devices
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(
+                                AuthAction.LoginSuccess(
+                                    res.data.data as LoginResponse, true
                                 )
                             )
 
@@ -190,7 +222,7 @@ fun isVaildLogin(
         }
     }
 
-    fun isVaildRegisteration(name: String, email: String, country_code: String, phone: String, pass: String, repeated_pass: String, state:Int , social :Boolean) {
+    fun isVaildRegisteration(name: String, email: String, country_code: String, phone: String, pass: String, repeated_pass: String,date_of_birth: String?, google_id:String?, social :Boolean) {
         if (name.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_name_msg)))
             false
@@ -206,6 +238,9 @@ fun isVaildLogin(
         } else if (repeated_pass.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_confirm_password)))
             false
+        }  else if (!social&&date_of_birth.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_date_of_birth)))
+            false
         } else if (!repeated_pass.equals(pass)) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.both_passwords_must_match)))
             false
@@ -216,7 +251,7 @@ fun isVaildLogin(
                         name,
                         email,
                         country_code, phone,
-                        pass), social)
+                        pass ,google_id,date_of_birth), social)
             }
             else {
                 checkEmailAfterRegisteration(email)
@@ -226,7 +261,7 @@ fun isVaildLogin(
                 name,
                 email,
                 country_code, phone,
-                pass,
+                pass,google_id, date_of_birth
             )
 
             true

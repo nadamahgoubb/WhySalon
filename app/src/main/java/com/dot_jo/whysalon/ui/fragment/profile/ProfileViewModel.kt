@@ -1,33 +1,37 @@
 package com.dot_jo.whysalon.ui.fragment.profile
 
-
 import android.app.Application
 import androidx.lifecycle.viewModelScope
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseViewModel
 import com.dot_jo.whysalon.data.PrefsHelper
+import com.dot_jo.whysalon.data.param.CheckEmailParam
 import com.dot_jo.whysalon.data.param.EditProfileParam
-import com.dot_jo.whysalon.data.param.changePasswordParam
+ import com.dot_jo.whysalon.data.param.changePasswordParam
 import com.dot_jo.whysalon.data.response.AboutUsResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
 import com.dot_jo.whysalon.data.response.ContactUsResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationsResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
+import com.dot_jo.whysalon.data.response.OtpCheckEmailAfterRegisterResponse
 import com.dot_jo.whysalon.data.response.PrivacyPolicyResponse
+import com.dot_jo.whysalon.domain.AuthUseCase
 import com.dot_jo.whysalon.domain.ProfileUseCase
 import com.dot_jo.whysalon.domain.SettingUseCase
-import com.dot_jo.whysalon.util.NetworkConnectivity
+ import com.dot_jo.whysalon.util.NetworkConnectivity
 import com.dot_jo.whysalon.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.File
 import javax.inject.Inject
 
-
 @HiltViewModel
-class ProfileViewModel @Inject constructor(app: Application, val useCase: ProfileUseCase,  val useCaseSetting: SettingUseCase) :
+class ProfileViewModel @Inject constructor(app: Application, val useCase: ProfileUseCase,  val useCaseSetting: SettingUseCase ,val authUserCase: AuthUseCase) :
     BaseViewModel<ProfileAction>(app) {
+
+      var editProfileParam: EditProfileParam? =null
+      var emailVerified: String? =null
 
     fun showProfile() {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
@@ -52,7 +56,7 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
         }
     }
 
-    fun editProfile(img: File) {
+    fun editProfileImg(img: File) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(ProfileAction.ShowLoading(true))
 
@@ -62,11 +66,94 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
                         EditProfileParam(
                             PrefsHelper.getUserData()?.client?.email.toString(), it,
                             PrefsHelper.getUserData()?.client?.country_code.toString(),
-                            PrefsHelper.getUserData()?.client?.phone.toString(),  img
+                            PrefsHelper.getUserData()?.client?.phone.toString(),PrefsHelper.getUserData()?.client?.date_of_birth.toString(),  img,
                         )
                     }) { res ->
                         when (res) {
                             is Resource.Failure -> produce(ProfileAction.ShowFailureUpdatingImage(res.message.toString()))
+                            is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
+                            is Resource.Success -> {
+
+                                produce(ProfileAction.ShowProfileUpdates(res.data.data as OtpChangePassswordResponse))
+                            }
+                        }
+                    }
+            }
+        } else {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+    fun isVaildEditProfile(name: String, email: String, country_code: String, phone: String ,date_of_birth: String? ) {
+        if (name.isNullOrBlank()) {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_name_msg)))
+            false
+        } else if (email.isNullOrBlank()) {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_msg_email)))
+            false
+        }   else if (date_of_birth.isNullOrBlank()) {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_date_of_birth)))
+            false
+        }  else {
+            if(PrefsHelper.getUserData()?.client?.email == email ) {
+                editProfileData(
+                    EditProfileParam(
+                        email,
+                        name,
+                        country_code, phone,
+                        date_of_birth, null) )
+            }
+            else {
+                checkEmailAfterRegisteration(email)
+            }
+
+            this.editProfileParam =       EditProfileParam(
+                email,
+                name,
+                country_code, phone,
+                  date_of_birth, null
+            )
+
+            true
+
+        }
+    }
+    fun checkEmailAfterRegisteration(  email: String) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(ProfileAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = authUserCase.invoke(
+                    viewModelScope, CheckEmailParam( email, true)
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(ProfileAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+                            produce(ProfileAction.EmailCheckedAfterRegister(res.data.data as OtpCheckEmailAfterRegisterResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(ProfileAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun editProfileData(data: EditProfileParam) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(ProfileAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res =
+                    useCase.invoke(viewModelScope, data?.name?.let {
+                        EditProfileParam(
+                          data?.email.toString(), it,
+                            data?.country_code.toString(),
+                            data?.phone.toString(),data?.date_of_birth.toString(),  null,
+                        )
+                    }) { res ->
+                        when (res) {
+                            is Resource.Failure -> produce(ProfileAction.ShowFailureMsg(res.message.toString()))
                             is Resource.Progress -> produce(ProfileAction.ShowLoading(res.loading))
                             is Resource.Success -> {
 

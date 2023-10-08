@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Why Salon</string>
+    <string name="app_name">WHY Salon</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="select_date">Select Date</string>
@@ -61,6 +61,7 @@
     <string name="contact_us">Contact Us</string>
     <string name="language">Language</string>
     <string name="privacy_and_usage_policy">Privacy and usage policy</string>
+    <string name="privacy_policy">Privacy Policy</string>
     <string name="notification">Notifications</string>
     <string name="log_out">Log out</string>
     <string name="choose_the_service_you_want">Choose the service you want</string>
@@ -139,7 +140,7 @@
     <string name="min"> Min</string>
     <string name="change_password">Change Password</string>
     <string name="email_not_exist">Email Not Exist</string>
-    <string name="enter_the_email_we_send_to">Enter the OTP we send to</string>
+    <string name="enter_the_email_we_send_to">"Enter the OTP we send to : "</string>
     <string name="service_type">Service type:</string>
     <string name="barbars">Barbers\n</string>
     <string name="choose_the_barber">Choose the Barber</string>
@@ -196,8 +197,15 @@ We value your feedback. </string>
     <string name="ignore">Ignore</string>
     <string name="are_you_sure_you_want_to_delete_this_account_all_your_data_including_past_and_future_reservation_will_be_permanently_deleted_this_action_can_t_be_undone">Are you sure you want to delete this account? \nAll your data including past and future reservation will be permanently deleted.this action can\'t be undone</string>
     <string name="you_currently_don_t_have_any_reservations_start_exploring_our_services_and_book_an_appointment">You currently have no reservations. Start exploring our services and book an appointment with your favorite barber.</string>
+    <string name="you_currently_don_t_have_any_rhis_start_exploring_our_services_and_book_an_appointment">You currently have no history. Start exploring our services and book an appointment with your favorite barber.</string>
     <string name="terms_condition">Terms And Condition</string>
     <string name="about_us">About Us</string>
     <string name="your_new_password_must_be_different_from_previous_used_passwords">Your new password must be different from previous used passwords.</string>
     <string name="package_added_to_cart_successfully">Package Added To Cart Successfully</string>
+    <string name="enter_your_birthdate">Enter Your Birth Date</string>
+    <string name="birthdate">Birth Date</string>
+    <string name="empty_date_of_birth">Please enter date of birth</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
 </resources>

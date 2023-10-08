@@ -11,6 +11,7 @@ import com.dot_jo.whysalon.data.param.RegisterParams
 import com.dot_jo.whysalon.data.param.ResetPasswordParams
 import com.dot_jo.whysalon.data.Repository
 import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
+import com.dot_jo.whysalon.data.param.loginbyGoogleParams
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,7 +28,11 @@ class AuthUseCase @Inject constructor(private val repository: Repository):
                     emit(repository.login(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
-           else  if (params is ResetPasswordParams) {
+           else  if (params is loginbyGoogleParams) {
+                flow {
+                  emit(repository.loginbyGoogle(params))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }   else  if (params is ResetPasswordParams) {
                 flow {
                   emit(repository.resetpassword(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>

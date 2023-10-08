@@ -86,9 +86,9 @@
                                 android:id="@+id/et_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                                 android:background="@drawable/bg_btn_white_grey_border"
-                                android:drawableStart="@drawable/user"
+                              android:drawableStart="@drawable/user"
                                 android:drawablePadding="@dimen/_8sdp"
                                 android:hint="@string/enter_your_name"
 
@@ -170,6 +170,20 @@
 
                             </LinearLayout>
 
+                            <TextView
+                                android:id="@+id/et_birthdate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/bg_btn_white_grey_border"
+                                 android:drawablePadding="@dimen/_8sdp"
+                                android:hint="@string/enter_your_birthdate"
+ android:gravity="center_vertical"
+                                android:minHeight="@dimen/_40sdp"
+                          android:textColor="@color/black"                android:paddingHorizontal="@dimen/_10sdp"
+                                android:textColorHint="@color/grey3"
+                                android:textSize="@dimen/_10sdp"
+                                app:drawableStartCompat="@drawable/ic_birthday_cake" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -407,7 +421,7 @@
                         android:layout_marginTop="@dimen/_60sdp"
                         android:fontFamily="@font/robotomedium"
                         android:gravity="center"
-                        android:text="@string/reset_password"
+                        android:text="@string/check_your_mail"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_16sdp"
                         app:layout_constraintEnd_toEndOf="parent"

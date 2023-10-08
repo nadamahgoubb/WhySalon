@@ -51,7 +51,7 @@ class SubServicesAdapter(
             ?.let { getDuration(it, context) })
 
 
-        holder.binding.imgWishItem.loadImage(currentItem.image)
+        holder.binding.imgWishItem.loadImage(currentItem.small_image)
         holder.binding.root.setOnClickListener {
             listener.onPackagesClickListener(currentItem)
         }

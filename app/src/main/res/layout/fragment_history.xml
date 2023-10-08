@@ -46,7 +46,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:text="Lorem ispum is just dummy text of prining and typesetting industry "
+                            android:text="@string/you_currently_don_t_have_any_rhis_start_exploring_our_services_and_book_an_appointment"
                             android:textAlignment="center"
                             android:textColor="@color/grey_800"
                             android:textSize="@dimen/_10sdp"
