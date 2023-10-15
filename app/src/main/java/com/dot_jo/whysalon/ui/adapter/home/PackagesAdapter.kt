@@ -57,7 +57,7 @@ class PackagesAdapter(
             ?.let { getDuration(it, context) }
 
 
-        holder.binding.ivService.loadImage(currentItem.small_image)
+        holder.binding.ivService.loadImage(currentItem.image)
         holder.binding.lytBook.setOnClickListener {
             listener.onBookNowClickListener(currentItem)
         }

@@ -23,13 +23,9 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_80sdp"
                 android:fillViewport="true">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -79,7 +75,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="@dimen/_10sdp"
                                 android:layout_marginVertical="@dimen/_15sdp"
-                                android:textColor="@color/black"
+                 android:visibility="gone"               android:textColor="@color/black"
                                 android:textSize="@dimen/_14sdp"
                                 android:textStyle="bold"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +86,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="@dimen/_10sdp"
-                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_15sdp"
                                 android:orientation="horizontal"
                                 android:weightSum="2"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -205,7 +201,6 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.core.widget.NestedScrollView>
 
@@ -215,7 +210,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/transparent"
                 android:minHeight="@dimen/_60sdp"
-      android:layout_marginTop="@dimen/_10sdp"          app:cardBackgroundColor="@color/transparent"
+                 android:foreground="#40000000"
+                app:cardBackgroundColor="@color/transparent"
                 app:cardElevation="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -223,9 +219,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
-                    android:paddingTop="@dimen/_5sdp"
-                    app:layout_constraintTop_toTopOf="parent">
+android:paddingTop="@dimen/_20sdp"
+                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cardback"
@@ -272,7 +267,7 @@
                             android:layout_height="@dimen/_20sdp"
                             android:layout_centerInParent="true"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_notifaction"
+                            android:src="@drawable/ringing"
 
                             app:tint="@color/white" />
                     </com.google.android.material.card.MaterialCardView>
@@ -291,12 +286,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
 
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_80sdp"
-                android:background="@color/white"
-                android:elevation="@dimen/_90sdp"
+         app:cardCornerRadius="0dp"       android:background="@color/white"
+                 app:cardElevation="@dimen/_20sdp"
                 android:gravity="bottom"
                 android:paddingVertical="@dimen/_20sdp"
                 android:shadowColor="@color/grey_dark_"
@@ -329,10 +324,10 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        >
+
     </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 
 

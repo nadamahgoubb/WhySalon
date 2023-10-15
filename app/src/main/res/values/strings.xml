@@ -47,6 +47,7 @@
     <string name="one_of_us">One of us?</string>
     <string name="home">Home</string>
     <string name="booking">Booking</string>
+    <string name="yourbooking">Your Booking</string>
     <string name="offers">Offers</string>
     <string name="services">Services</string>
     <string name="services_">Services</string>
@@ -63,6 +64,7 @@
     <string name="privacy_and_usage_policy">Privacy and usage policy</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="notification">Notifications</string>
+    <string name="notification_">Notifications</string>
     <string name="log_out">Log out</string>
     <string name="choose_the_service_you_want">Choose the service you want</string>
     <string name="choose_the_service_you_want_to_book">Choose the service you want to book</string>

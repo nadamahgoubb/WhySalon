@@ -6,13 +6,20 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_5sdp"
-        android:background="@drawable/bg_btn_white"
-        android:paddingVertical="@dimen/_10sdp">
+         android:background="@drawable/bg_btn_white"
+        app:cardElevation="@dimen/_2sdp"
+
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"  >
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
@@ -28,11 +35,10 @@
 
             <ImageView
                 android:id="@+id/img_wish_item"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                 app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,4 +122,5 @@ android:id="@+id/lyt_data"
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

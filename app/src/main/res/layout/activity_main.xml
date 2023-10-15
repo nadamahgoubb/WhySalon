@@ -19,23 +19,22 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         tools:context=".ui.activity.main.MainActivity">
-
+        <ImageView
+            android:id="@+id/iv_header"
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:src="@drawable/header"
+            android:paddingEnd="@dimen/_10sdp"
+            android:scaleType="centerCrop"     app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
-            android:paddingTop="@dimen/_20sdp"
           android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/_110sdp">
+            android:minHeight="@dimen/_100sdp">
 
-            <ImageView
-                android:id="@+id/iv_header"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/header"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardback"
                 android:layout_width="@dimen/_35sdp"
@@ -62,7 +61,7 @@
                 android:id="@+id/card"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                         android:layout_marginHorizontal="@dimen/_10sdp"
           android:backgroundTint="@color/transparent"
                  app:cardCornerRadius="@dimen/_25sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +86,7 @@
                     android:layout_height="@dimen/_20sdp"
                       android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_notifaction"
+                    android:src="@drawable/ringing"
 
                     app:tint="@color/white" />
             </com.google.android.material.card.MaterialCardView>
@@ -96,12 +95,11 @@
                 android:id="@+id/tv_title"
                 android:layout_width="0dp"
             android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginTop="@dimen/_40sdp"           android:gravity="center"
            android:layout_marginHorizontal="@dimen/_44sdp"      android:textColor="@color/white"
-                android:textSize="@dimen/_18sdp"
-                 app:layout_constraintEnd_toEndOf="parent"
+     android:textSize="@dimen/_18sdp"
+          app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/_20sdp"
 
                  app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

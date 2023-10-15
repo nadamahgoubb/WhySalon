@@ -39,7 +39,7 @@ fun convertPttern(INPUT_DATE_STRING: String, userPattern: String = "dd MMMM yyyy
 }
 
 fun toLong(s: String): Long {
-    return (SimpleDateFormat("dd/MM/yy").parse(s)).time
+    return (SimpleDateFormat("yyyy-MM-dd").parse(s)).time
 
 }
 
@@ -101,8 +101,32 @@ fun getMonthNameFromDate(s: String): String? {
 
     return ld.month.name
 }
-
-
+fun convertLongToTime(time: Long): String {
+    val date = Date(time)
+    val format = SimpleDateFormat("yyyy-MM-dd")
+    return format.format(date)
+}
+fun ArabicToEnglish(str: String):String {
+    var result = ""
+    var en = '0'
+    for (ch in str) {
+        en = ch
+        when (ch) {
+           '٠'  -> en = '0'
+            '١' -> en = '1'
+            '٢' -> en = '2'
+            '٣' -> en = '3'
+            '٤' -> en = '4'
+            '٥' -> en = '5'
+            '٦' -> en = '6'
+            '٧' -> en = '7'
+            '٨' -> en = '8'
+            '٩' -> en = '9'
+        }
+        result = "${result}$en"
+    }
+    return result
+}
 fun getDuration(min: Int, context: Context): String {
     if (min > 60) {
         var h = min / 60

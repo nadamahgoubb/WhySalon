@@ -47,7 +47,7 @@
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+              android:visibility="gone"      android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/bg_btn_white_grey_border"
                     android:drawableStart="@drawable/mail"
                     android:drawablePadding="@dimen/_8sdp"

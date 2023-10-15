@@ -115,11 +115,14 @@ companion object
 
 
     private fun onClick() {
-        binding.ivIconNotifaction.setOnClickListener {
-            navController.navigate(R.id.notifactionFragment)
-        }
-        binding.ivCancel.setOnClickListener {
-            navController.popBackStack()
+        binding.card.setOnClickListener {
+            if(navController.currentDestination?.id?.equals(R.id.notifactionFragment) == true){
+                navController.popBackStack()
+
+            }else{
+                navController.navigate(R.id.notifactionFragment)
+
+            }
         }
         binding.ivIconNotifaction.isVisible = !PrefsHelper.getUserData().isNull()    }
 

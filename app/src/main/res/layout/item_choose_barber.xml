@@ -7,13 +7,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/your_rectangle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
             android:background="@drawable/bg_btn_white_grey_border"
             android:layout_marginStart="@dimen/_10sdp"
             android:padding="@dimen/_2sdp"

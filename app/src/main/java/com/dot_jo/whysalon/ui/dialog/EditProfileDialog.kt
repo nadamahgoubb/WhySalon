@@ -3,6 +3,7 @@ package com.dot_jo.whysalon.ui.dialog
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.graphics.Paint
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
+import com.dot_jo.whysalon.data.PrefsHelper
 import com.dot_jo.whysalon.data.response.Client
  import com.dot_jo.whysalon.databinding.DialogBootomEditProfileBinding
 import com.dot_jo.whysalon.ui.fragment.profile.ProfileAction
@@ -83,7 +85,13 @@ val client: Client, val listener: EditProfileDialogClickLisenter
         binding.countryCodePicker.setOnCountryChangeListener (this)
         showData()
 countryCode= client.country_code.toString()
+        if(PrefsHelper.getUserData()?.client?.google_id == null || PrefsHelper.getUserData()?.client?.google_id.isNullOrEmpty() ){
+            binding.etEmail.isVisible= true
 
+        }else{
+             binding.etEmail.isVisible= false
+
+        }
         binding.btnSignup.setOnClickListener {
              binding.progressBar.isVisible= true
                  mViewModel.isVaildEditProfile(
@@ -224,12 +232,7 @@ is ProfileAction.ShowProfileUpdates ->{
             resources.getString(R.string.enter_the_email_we_send_to) + mViewModel.editProfileParam?.email
         state = 1
     }
-    fun setLayoutMargin(view: View, bottom: Int) {
-        val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
-         layoutParams.marginEnd = bottom
-        layoutParams.marginStart =bottom
-        view.layoutParams = layoutParams
-    }
+
 
     @SuppressLint("CutPasteId")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_6sdp"
-     android:layout_marginHorizontal="@dimen/_12sdp"
+     android:layout_marginHorizontal="@dimen/_2sdp"
+        app:cardElevation="@dimen/_2sdp"
         app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_5sdp"
-        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_11">
 
@@ -53,7 +53,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/iv_barber"
+                android:id="@+id/card_barber"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -64,10 +64,11 @@
                 app:layout_constraintTop_toBottomOf="@id/card">
 
                 <ImageView
+                android:id="@+id/iv_barber"
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
                     android:layout_gravity="center"
-                    android:src="@drawable/barber_4" />
+                   />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -78,9 +79,9 @@
                  android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/iv_barber"
-                app:layout_constraintStart_toEndOf="@id/iv_barber"
-                app:layout_constraintTop_toTopOf="@id/iv_barber" />
+                app:layout_constraintBottom_toBottomOf="@id/card_barber"
+                app:layout_constraintStart_toEndOf="@id/card_barber"
+                app:layout_constraintTop_toTopOf="@id/card_barber" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/iv_service_type"
@@ -90,8 +91,8 @@
                 android:backgroundTint="@color/grey"
                 app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="0dp"
-                app:layout_constraintStart_toStartOf="@id/iv_barber"
-                app:layout_constraintTop_toBottomOf="@id/iv_barber">
+                app:layout_constraintStart_toStartOf="@id/card_barber"
+                app:layout_constraintTop_toBottomOf="@id/card_barber">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"
@@ -122,7 +123,7 @@
                 android:backgroundTint="@color/grey"
                 app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="0dp"
-                app:layout_constraintStart_toStartOf="@id/iv_barber"
+                app:layout_constraintStart_toStartOf="@id/card_barber"
                 app:layout_constraintTop_toBottomOf="@id/iv_service_type">
 
                 <ImageView
@@ -166,7 +167,7 @@
                 android:backgroundTint="@color/grey"
                 app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="0dp"
-                app:layout_constraintStart_toStartOf="@id/iv_barber"
+                app:layout_constraintStart_toStartOf="@id/card_barber"
                 app:layout_constraintTop_toBottomOf="@id/iv_money">
 
                 <ImageView

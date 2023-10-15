@@ -11,10 +11,10 @@
             android:id="@+id/swiperefresh_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_btn_white"
+            android:background="@drawable/bg_btn_white_rounded_top"
             android:backgroundTint="@color/grey_100">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -145,7 +145,7 @@ android:visibility="gone"
         </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
          </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
 

@@ -100,7 +100,7 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>(), CancelBookingLis
         parent.showToolbar(true)
         parent.showNotifactionFragment(false)
         parent.showback(false)
-        parent.setToolbarTitle(resources.getString(R.string.booking))
+        parent.setToolbarTitle(resources.getString(R.string.yourbooking))
         binding.btnHistory.setOnClickListener {
             findNavController().navigate(R.id.historyFragment)
         }

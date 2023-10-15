@@ -35,7 +35,7 @@
                         android:id="@+id/tv_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:drawablePadding="@dimen/_6sdp"
                         android:paddingVertical="@dimen/_3sdp"
                         android:paddingStart="@dimen/_12sdp"
@@ -50,9 +50,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:orientation="vertical"
+android:layout_marginTop="@dimen/_10sdp"
+                         android:orientation="vertical"
                         app:layout_constraintBottom_toTopOf="@+id/lyt_nxt"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -61,9 +60,8 @@
                         <com.facebook.shimmer.ShimmerFrameLayout
                             android:id="@+id/shimmer"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
-                             >
+                         android:visibility="gone"   android:layout_height="wrap_content"
+                              >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -89,8 +87,7 @@
                             android:id="@+id/rv_barbars"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:clipToPadding="false"
+                             android:clipToPadding="false"
                             android:orientation="vertical"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"

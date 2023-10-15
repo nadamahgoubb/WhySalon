@@ -6,13 +6,18 @@
     <data>
 
     </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:background="@drawable/bg_btn_white"
+        app:cardElevation="@dimen/_2sdp"
 
+        >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:background="@drawable/bg_btn_white"
-        android:paddingHorizontal="@dimen/_5sdp"
+         android:paddingHorizontal="@dimen/_10sdp"
         android:paddingVertical="@dimen/_10sdp">
 
         <com.google.android.material.card.MaterialCardView
@@ -129,4 +134,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

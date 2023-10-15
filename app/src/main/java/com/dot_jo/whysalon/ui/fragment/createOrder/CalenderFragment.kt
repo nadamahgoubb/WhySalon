@@ -2,21 +2,23 @@ package com.dot_jo.whysalon.ui.fragment.createOrder
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.text.format.DateUtils
 import android.util.Log
+import android.widget.CalendarView
+import android.widget.CalendarView.OnDateChangeListener
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener
- import com.dot_jo.whysalon.R
+import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.response.TimesOfBarbarResponse
 import com.dot_jo.whysalon.databinding.FragmentCalenderBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.FilterTimeAdapter
 import com.dot_jo.whysalon.ui.interfaces.FilterTimeClickListener
+import com.dot_jo.whysalon.util.ArabicToEnglish
 import com.dot_jo.whysalon.util.Constants
+import com.dot_jo.whysalon.util.convertLongToTime
 import com.dot_jo.whysalon.util.convertPttern
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
@@ -26,10 +28,10 @@ import com.dot_jo.whysalon.util.getMonthFromDate
 import com.dot_jo.whysalon.util.getMonthNameFromDate
 import com.dot_jo.whysalon.util.getYearFromDate
 import com.dot_jo.whysalon.util.observe
+import com.dot_jo.whysalon.util.toLong
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_calender.btn_goto_date
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -145,7 +147,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
         }
         binding.btnGotoDate.setOnClickListener {
             var e = Calendar.getInstance()
-            binding.cal.setDate(e)
+            binding.cal.setDate(e.timeInMillis)
             e = Calendar.getInstance()
             e.set(
                 getYearFromDate(dateReal!!)!!,
@@ -158,7 +160,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
             }else{
                 mViewModel.getTimesReBooking(dateReal!!,orderId!!)
             }
-            binding.cal.setDate(e)
+           binding.cal.setDate(e.timeInMillis)
 
         }
 
@@ -193,24 +195,34 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
     fun setupCalender() {
         //   Setting minumum and maximum dates:
         val calendarView = binding.cal
-        var min = Calendar.getInstance()//.add()
-        var dayBefore = LocalDate.now()?.plusDays(-1)
+         var min = Calendar.getInstance()//.add()
+        var dayBefore = LocalDate.now()
         dayBefore?.let {
             min.set(dayBefore.year, dayBefore.monthValue - 1, dayBefore.dayOfMonth);
-            calendarView.setMinimumDate(min)
+            calendarView.minDate= min.timeInMillis
         }
-        calendarView.setOnDayClickListener(OnDayClickListener {
-            if (it.isEnabled) {
-                date_= convertPttern(it.calendar.time)
-                 if (orderId.isNullOrEmpty()){
-                    mViewModel.getTimes(convertPttern(it.calendar.time))
-                 }else{
-                    mViewModel.getTimesReBooking(convertPttern(it.calendar.time),orderId)
+
+        calendarView.setOnDateChangeListener(OnDateChangeListener { view, year, month, dayOfMonth ->
+            var date = "$year-${month + 1}-$dayOfMonth"
+//DateTimeFormatter.of
+ //   date=LocalTime.parse(date).format(
+     //           DateTimeFormatter.ofPattern("YYYY-MM-dd"))
+            date=     LocalDate.of  (year,month+1,dayOfMonth).formatDate("YYYY-MM-dd", Locale.ENGLISH)  // changing the textview
+            // data to selected date
+         //   textView.setText(date)
+          //  if (it.isEnabled) {
+            date_= ArabicToEnglish(  convertLongToTime(toLong( date)))
+          //  date_= (convertLongToTime(calendarView.date))
+                if (orderId.isNullOrEmpty()){
+                    mViewModel.getTimes(date)
+                }else{
+                    mViewModel.getTimesReBooking(date,orderId)
+                        //ArabicToEnglish(convertLongToTime(toLong( date))),orderId)
                     Log.d("isllam", "setupCalender2: $orderId")
                 }
 
                 binding.cal
-            }
+
 
         })
     }

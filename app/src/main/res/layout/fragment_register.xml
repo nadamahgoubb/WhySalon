@@ -82,7 +82,15 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:orientation="vertical">
 
-                            <EditText
+                            <TextView
+                                 android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+   android:text="@string/sign_up"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                 android:textColorHint="@color/grey3"
+                                android:textSize="@dimen/_16sdp" />
+    <EditText
                                 android:id="@+id/et_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

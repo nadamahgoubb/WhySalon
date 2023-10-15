@@ -79,9 +79,9 @@ data class EditProfileParam(
 
     var email: String = "",
     var name: String = "",
-    var country_code: String = "",
-    var phone: String = "",
-    var date_of_birth: String = "",
+    var country_code: String? = "",
+    var phone: String? = "",
+    var date_of_birth: String? = "",
     var image:File?
 
     ) : Parcelable

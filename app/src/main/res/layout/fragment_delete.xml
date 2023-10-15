@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_btn_white"
+        android:background="@drawable/bg_btn_white_rounded_top"
         android:fillViewport="true">
 
         <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout

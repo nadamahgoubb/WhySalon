@@ -130,16 +130,16 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.applandeo.materialcalendarview.CalendarView
+            <CalendarView
                 android:id="@+id/cal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginVertical="@dimen/_10sdp"
+                android:theme="@style/CalenderViewCustom"
+                 android:layout_marginVertical="@dimen/_10sdp"
          android:background="@color/grey_50"
                 android:backgroundTint="@color/grey_50"
                 app:abbreviationsBarColor="@color/grey_50"
-                app:disabledDaysLabelsColor="@color/grey_400"
+             app:disabledDaysLabelsColor="@color/grey_400"
                 app:headerColor="@color/grey_50"
                 app:headerLabelColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -389,6 +389,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.dot_jo.whysalon.data.response.BarbarsResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
 import com.dot_jo.whysalon.data.response.TimesOfBarbarResponse
 import com.dot_jo.whysalon.domain.CreateOrderUseCase
+import com.dot_jo.whysalon.util.ArabicToEnglish
 import com.dot_jo.whysalon.util.NetworkConnectivity
 import com.dot_jo.whysalon.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -107,13 +108,13 @@ class CreateOrderViewModel @Inject constructor(
 
     }
     fun getTimes(date :String) {
-        this.date = date
+        this.date = ArabicToEnglish( date)
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
             produce(CreateOrderAction.ShowLoading(true))
 
             viewModelScope.launch {
                  useCase.invoke(
-                    viewModelScope, barbar?.id?.let { GetTimesParams(it, date) }
+                    viewModelScope, barbar?.id?.let { GetTimesParams(it, ArabicToEnglish(date)) }
                 ) { res ->
                     when (res) {
                         is Resource.Failure -> produce(CreateOrderAction.ShowFailureMsg(res.message.toString()))
@@ -132,13 +133,13 @@ class CreateOrderViewModel @Inject constructor(
     }
 
     fun getTimesReBooking(date :String,orderId:String?=null) {
-        this.date = date
+        this.date =ArabicToEnglish( date)
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
             produce(CreateOrderAction.ShowLoading(true))
 
             viewModelScope.launch {
                 useCase.invoke(
-                    viewModelScope, barbar?.id?.let { GetTimesReBookingParams(it, date,orderId) }
+                    viewModelScope, barbar?.id?.let { GetTimesReBookingParams(it, ArabicToEnglish(date),orderId) }
                 ) { res ->
                     when (res) {
                         is Resource.Failure -> produce(CreateOrderAction.ShowFailureMsg(res.message.toString()))

@@ -45,10 +45,10 @@ class BookingAdapter(
         var image: String? = null
         currentItem.carts.forEach {
             if (it.packagee == null) {
-                serviceType = serviceType + it.service?.name +"  "
+                serviceType = serviceType + it.service?.name +"-"
                 image = it.service?.image
             } else {
-                serviceType = serviceType + it.packagee?.name +"  "
+                serviceType = serviceType + it.packagee?.name +"-"
                 image = it.packagee?.image
 
             }
@@ -66,6 +66,7 @@ class BookingAdapter(
                 .toString() + context.resources.getString(R.string.sr)
         )
         holder.binding.ivService.loadImage(image)
+        holder.binding.ivBarber.loadImage(currentItem.barber?.image)
 
         holder.binding.tvCancel.setOnClickListener {
             listener.onCancelBooking(currentItem, position)

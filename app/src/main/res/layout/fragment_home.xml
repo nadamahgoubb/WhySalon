@@ -32,25 +32,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <!--
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/shimmer">
-                        <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmer_view_container"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="15dp"
-                            android:orientation="vertical"
-                            shimmer:duration="800">
 
-                            &lt;!&ndash; Adding 7 rows of placeholders &ndash;&gt;
-
-                        </com.facebook.shimmer.ShimmerFrameLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/lyt_Data"
                         android:layout_width="match_parent"

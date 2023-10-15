@@ -79,6 +79,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
 
             is ProfileAction.ShowProfile -> {
+          PrefsHelper.saveUserData(action.data)
                 loadData(action.data.client)
             }
 

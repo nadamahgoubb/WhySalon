@@ -9,21 +9,21 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_btn_white">
+android:paddingVertical="@dimen/_8sdp"        android:layout_height="match_parent"
+        android:background="@drawable/bg_btn_white_rounded_top"
+      >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_30sdp"
             tools:context=".ui.fragments.accountFragment.AccountFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -264,32 +264,8 @@
                 android:background="@color/gray_400"
                 android:paddingTop="@dimen/_12sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_privacy" />
-            <TextView
-                android:id="@+id/tv_terms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_arrow_right_"
-         android:drawablePadding="@dimen/_8sdp"
-                android:focusable="true"
-                android:paddingVertical="@dimen/_12sdp"
 
-                 android:text="@string/terms_condition"
-                android:textColor="@color/grey_1000"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/view_5" />
-            <View
-                android:id="@+id/view_6"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/gray_400"
-                android:paddingTop="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_terms" />
+
             <TextView
                 android:id="@+id/tv_aboutus"
                 android:layout_width="match_parent"
@@ -306,10 +282,34 @@
                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/tv_terms" />
+                app:layout_constraintTop_toBottomOf="@+id/view_5" />
+            <View
+                android:id="@+id/view_6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/gray_400"
+                android:paddingTop="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aboutus" />
 
+            <TextView
+                android:id="@+id/tv_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_right_"
+                android:drawablePadding="@dimen/_8sdp"
+                android:focusable="true"
+                android:paddingVertical="@dimen/_12sdp"
 
-
+                android:text="@string/terms_condition"
+                android:textColor="@color/grey_1000"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/view_6" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lyt_notifaction"
                 android:layout_width="match_parent"
@@ -317,7 +317,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@+id/tv_aboutus">
+                app:layout_constraintTop_toBottomOf="@+id/tv_terms">
 
                 <View
                     android:id="@+id/view_3"
@@ -335,7 +335,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:paddingVertical="@dimen/_14sdp"
 
-                    android:text="@string/notification"
+                    android:text="@string/notification_"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"

@@ -90,10 +90,7 @@ class ProfileViewModel @Inject constructor(app: Application, val useCase: Profil
         } else if (email.isNullOrBlank()) {
             produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_msg_email)))
             false
-        }   else if (date_of_birth.isNullOrBlank()) {
-            produce(ProfileAction.ShowFailureMsg(getString(R.string.empty_date_of_birth)))
-            false
-        }  else {
+        }   else {
             if(PrefsHelper.getUserData()?.client?.email == email ) {
                 editProfileData(
                     EditProfileParam(
