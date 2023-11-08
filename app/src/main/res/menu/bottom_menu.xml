@@ -18,9 +18,9 @@
         android:title="@string/basket" />
 
     <item
-        android:id="@+id/servicesFragment"
-        android:icon="@drawable/selector_services"
-         android:title="@string/services" />
+        android:id="@+id/packagesFragment"
+        android:icon="@drawable/selector_package"
+         android:title="@string/packages" />
 
     <item
         android:id="@+id/settingFragment"

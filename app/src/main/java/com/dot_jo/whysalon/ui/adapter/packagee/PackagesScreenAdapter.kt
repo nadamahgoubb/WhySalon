@@ -4,13 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.data.response.ServicesItem
 import com.dot_jo.whysalon.databinding.ItemPackagesBinding
 import com.dot_jo.whysalon.ui.interfaces.HomeClickListener
+import com.dot_jo.whysalon.util.ExpandAnimation
 import com.dot_jo.whysalon.util.ext.loadImage
-import com.dot_jo.whysalon.util.ext.roundTo
 import com.dot_jo.whysalon.util.getDuration
 
 
@@ -40,22 +41,25 @@ class PackagesScreenAdapter(
 
         var currentItem = list[position]
         holder.binding.tvMoneyTitle.setText(
-            context.resources.getString(R.string.price_from) + " " + currentItem?.price?.toDoubleOrNull()
-                ?.roundTo(2) + context.resources.getString(
+            context.resources.getString(R.string.price_) + " " + currentItem?.price  +" "+ context.resources.getString(
                 R.string.sr
             )
         )
-        holder.binding.tvDescription.text = currentItem.description
+        holder.binding.tvDesc.text = currentItem.description
 
         holder.binding.tvService.setText(currentItem.name)
         holder.binding.tvTime.setText(currentItem.duration?.toIntOrNull()
             ?.let { getDuration(it, context) })
 
 
-        holder.binding.imgWishItem.loadImage(currentItem.small_image)
-        holder.binding.root.setOnClickListener {
+         holder.binding.root.setOnClickListener {
             listener.onPackagesClickListener(currentItem)
         }
+        holder.binding.lytAdd.setOnClickListener {
+            listener.onBookNowClickListener(currentItem)
+        }
+
+
 
     }
 

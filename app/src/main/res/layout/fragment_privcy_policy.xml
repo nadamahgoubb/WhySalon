@@ -31,10 +31,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
            android:padding="@dimen/_15sdp"         android:layout_marginEnd="@dimen/_10sdp"
-                      android:textColor="@color/grey3"
+                      android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent" />
+                     app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

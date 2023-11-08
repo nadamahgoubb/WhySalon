@@ -48,20 +48,25 @@ class HistoryAdapter(
         var image: String? = null
         currentItem.carts.forEach {
             if (it.packagee == null) {
-                serviceType = serviceType + it.service?.name +"-"
+                serviceType = serviceType + it.service?.name +" - "
                 image = it.service?.image
             } else {
-                serviceType = serviceType + it.packagee?.name+"-"
+                serviceType = serviceType + it.packagee?.name+" - "
                 image = it.packagee?.image
 
             }
         }
-        holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type) + serviceType)
+      //  holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type) + serviceType)
+        holder.binding.tvServicesType.setText(
+            context.resources.getString(R.string.service_type) + serviceType.substring(
+                0, serviceType.length - 3
+            ).toString()
+        )
         currentItem.duration?.toIntOrNull()?.let {
             holder.binding.tvDuration.setText(getDuration(it, context))
         }
         holder.binding.tvMoney.setText(
-            currentItem.total?.toDoubleOrNull()?.roundTo(2)
+            currentItem.final_total_after_discount?.toDoubleOrNull()?.roundTo(2)
                 .toString() + context.resources.getString(R.string.sr)
         )
         holder.binding.ivService.loadImage(image)

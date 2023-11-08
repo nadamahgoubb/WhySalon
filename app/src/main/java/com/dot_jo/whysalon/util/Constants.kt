@@ -1,7 +1,14 @@
 package com.dot_jo.whysalon.util
 
 object Constants {
-  const val TOTAL: String ="TOTAL"
+  const val visa =0
+  const val cash =1
+  const val mada =2
+  const val mastercard =3
+  const val american_express =4
+  const val complementary =5
+
+    const val TOTAL: String ="TOTAL"
   const val BARBER : String ="barber"
     const val Type: String ="Type"
 

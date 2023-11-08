@@ -110,6 +110,27 @@ data class BarberDays(
 ) : Parcelable
 
 @Parcelize
+
+
+data class CuponResponse(
+
+    @SerializedName("coupon") var coupon: CouponItem? = null,
+
+
+) : Parcelable
+
+@Parcelize
+
+
+data class CouponItem(
+
+     @SerializedName("code") var code: String? = null,
+    @SerializedName("end_date") var end_date: String? = null,
+    @SerializedName("percent") var percent: String? = null,
+
+) : Parcelable
+
+@Parcelize
 data class BookingResponse(
     @SerializedName("bookings") var bookings: ArrayList<BookingsItem> = arrayListOf()
 
@@ -131,6 +152,7 @@ data class BookingsItem(
     @SerializedName("tax") var tax: String? = null,
     @SerializedName("total") var total: String? = null,
     @SerializedName("final_total") var finalTotal: String? = null,
+    @SerializedName("final_total_after_discount") var final_total_after_discount: String? = null,
     @SerializedName("date") var date: String? = null,
     @SerializedName("from") var from: String? = null,
     @SerializedName("to") var to: String? = null,

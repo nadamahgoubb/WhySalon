@@ -12,6 +12,7 @@ import com.dot_jo.whysalon.data.param.RateParam
 import com.dot_jo.whysalon.data.param.ServicesByCategoryParams
 import com.dot_jo.whysalon.data.param.UpdateFcmTokenParam
 import com.dot_jo.whysalon.data.response.CartResponse
+import com.dot_jo.whysalon.data.response.CategoiesAndServicesResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
@@ -95,6 +96,27 @@ class HomeViewModel @Inject constructor(app: Application, val useCase: HomeUseCa
                         is Resource.Success -> {
 
                             produce(HomeAction.CategoriesSucess(res.data.data as CategoriesResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(HomeAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }  fun getCategoiesAndServices() {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
+            produce(HomeAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = useCase.invoke(
+                    viewModelScope, HomeUseCase.CategoiesAndServices
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(HomeAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(HomeAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(HomeAction.CategoiesAndServicesSucess(res.data.data as CategoiesAndServicesResponse))
                         }
                     }
                 }

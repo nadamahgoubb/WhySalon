@@ -119,13 +119,6 @@ class ChooseBarberFragment : BaseFragment<FragmentChooseBarberBinding>(), Barbar
         binding.cardNext.setOnClickListener {
             if (state == 1) {
 
-                findNavController().navigate(
-                    R.id.calenderFragment,
-                    bundleOf(
-                        Constants.BARBER to barbar.name!!,
-                        Constants.ORDER_ID to if (orderId == "") "" else orderId
-                    )
-                )
 
             }
         }

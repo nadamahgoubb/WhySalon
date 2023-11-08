@@ -5,6 +5,7 @@ import com.dot_jo.whysalon.base.PagingParams
 import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.AddReBookingParams
 import com.dot_jo.whysalon.data.param.AddToCartParams
+import com.dot_jo.whysalon.data.param.CheckCuponParams
 import com.dot_jo.whysalon.data.param.CheckEmailParam
 import com.dot_jo.whysalon.data.param.CheckOtpWithEmailParam
 import com.dot_jo.whysalon.data.param.DeleteFromBookingParam
@@ -49,6 +50,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
         api.getServicesInCategory(param.id)//categoryId
 
     suspend fun getCategories() = api.getCategories()
+    suspend fun getCategoriesAndServices() = api.getCategoriesAndServices()
     suspend fun getPackages() = api.getPackages()
     suspend fun getServiceDetails(param: ServicesByCategoryParams) =
         api.getServiceDetails(param.id) // service _id
@@ -79,9 +81,11 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun addReBooking(params: AddReBookingParams) =
         api.addReBooking(params.barber_id, params.date, params.time, params.order_id)
     suspend fun addBooking(params: AddBookingParams) =
-        api.addBooking(params.barber_id, params.date, params.time,)
+        api.addBooking(params.barber_id, params.date, params.time, params.payment_method, params.discount_code,params.phone, params.country_code
+        )
 
     suspend fun getBarbar() = api.getBarbar()
+    suspend fun checkCupon(param: CheckCuponParams) = api.checkCupon(param.code)
     suspend fun deleteBooking(param: DeleteFromBookingParam) = param.booking_id?.let {
         api.deleteBooking(
             it

@@ -22,12 +22,13 @@ class HomeUseCase @Inject constructor(private val repository: Repository) :
     companion object HomeUseCase {
         val packags = 1
         val categories = 2
+        val CategoiesAndServices  = 3
     }
 
     override fun executeRemote(params: Any?): Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>> {
-        return if (params is ServicesByCategoryParams) {
+        return if (params == CategoiesAndServices) {
             flow {
-                emit(repository.getServicesInCategory(params))
+                emit(repository.getCategoriesAndServices( ))
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
         } else if (params is UpdateFcmTokenParam) {
             flow {
@@ -43,17 +44,17 @@ class HomeUseCase @Inject constructor(private val repository: Repository) :
             flow {
                 emit(repository.getPackages())
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
-        } else if (params is OffersParam) {
+        }/* else if (params is OffersParam) {
             flow {
                 emit(repository.getOffers(params))
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
-        } else if (params is AddToCartParams) {
+        } */else if (params is AddToCartParams) {
             flow {
                 emit(repository.addToCart(params))
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
         } else {
             flow {
-                emit(repository.getCategories())
+                emit(repository.getCategoriesAndServices())
             } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
         }
 

@@ -1,8 +1,9 @@
 package com.dot_jo.whysalon.data.response
 
- import android.os.Parcelable
- import com.google.gson.annotations.SerializedName
+  import android.os.Parcelable
+  import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+  import kotlinx.android.parcel.RawValue
 
 
 @Parcelize
@@ -24,8 +25,6 @@ import kotlinx.android.parcel.Parcelize
     ) : Parcelable
 
 @Parcelize
-
-
 data class Services (
 
     @SerializedName("id"          ) var id          : Int?              = null,
@@ -38,3 +37,27 @@ data class Services (
     @SerializedName("images"      ) var images      : ArrayList<String> = arrayListOf()
 
 ) : Parcelable
+
+@Parcelize
+data class ServicesHomeItem (
+    @SerializedName("service_id"          ) var serviceId          : Int?              = null,
+@SerializedName("service_name"        ) var serviceName        : String?           = null,
+@SerializedName("service_description" ) var serviceDescription : String?           = null,
+@SerializedName("service_duration"    ) var serviceDuration    : Int?              = null,
+@SerializedName("category_id"         ) var categoryId         : Int?              = null,
+@SerializedName("service_image"       ) var serviceImage       : String?           = null,
+@SerializedName("small_image"         ) var smallImage         : String?           = null,
+@SerializedName("offer"               ) var offer              : Boolean?          = null,
+@SerializedName("price"               ) var price              : Int?              = null,
+@SerializedName("price_before"        ) var priceBefore        : Int?              = null,
+@SerializedName("images"              ) var images             : @RawValue ArrayList<Images> = arrayListOf()
+
+
+) : Parcelable
+
+data class Images (
+
+    @SerializedName("id"   ) var id   : Int?    = null,
+    @SerializedName("name" ) var name : String? = null
+
+)

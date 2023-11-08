@@ -10,133 +10,184 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/bg_btn_white"
-        android:paddingHorizontal="@dimen/_5sdp"
-        android:paddingVertical="@dimen/_9sdp">
+        android:paddingVertical="@dimen/_5sdp">
+
+
+        <TextView
+            android:id="@+id/tv_service"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/ic_clock"
+
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toBottomOf="@id/tv_service"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="@string/time_"
+            android:textColor="@color/grey11"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_clock"
+            app:layout_constraintStart_toEndOf="@id/iv_clock"
+            app:layout_constraintTop_toTopOf="@id/iv_clock" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+             android:textColor="@color/grey12"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_clock"
+            app:layout_constraintStart_toEndOf="@id/tv_1"
+            app:layout_constraintTop_toTopOf="@id/iv_clock" />
+
+        <ImageView
+            android:id="@+id/iv_money"
+
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/ic_discount_circle"
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toBottomOf="@id/tv_time"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="@string/price_form"
+            android:textColor="@color/grey11"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_money"
+            app:layout_constraintStart_toEndOf="@id/iv_money"
+            app:layout_constraintTop_toTopOf="@id/iv_money" />
+
+        <TextView
+            android:id="@+id/tv_money_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_5sdp"
+             android:textColor="@color/grey12"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_2"
+            app:layout_constraintTop_toTopOf="@id/tv_2" />
+
+
+        <ImageView
+            android:id="@+id/iv_service_type"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/support"
+            app:tint="@color/black"
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toBottomOf="@id/tv_money_title" />
+
+
+        <TextView
+            android:id="@+id/tv_service_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_2sdp"
+             android:textColor="@color/grey12"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_service_type"
+            app:layout_constraintStart_toEndOf="@id/iv_service_type"
+            app:layout_constraintTop_toTopOf="@id/iv_service_type" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="@string/services_avaliable"
+            android:textColor="@color/grey11"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_service_count"
+            app:layout_constraintStart_toEndOf="@id/tv_service_count"
+            app:layout_constraintTop_toTopOf="@id/tv_service_count" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
-            android:layout_width="@dimen/_75sdp"
-            android:layout_height="@dimen/_100sdp"
-            app:cardCornerRadius="@dimen/_12sdp"
-
-            app:cardElevation="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/lyt_add"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_money_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_money_title">
 
             <ImageView
-                android:id="@+id/img_wish_item"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="match_parent"
+                android:id="@+id/iv_plus"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"
-                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
+                android:src="@drawable/ic_add" />
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/iv_paper"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            app:tint="@color/black"        android:layout_gravity="center"
+            android:src="@drawable/paper"
+            app:layout_constraintBottom_toBottomOf="@id/tv_desc"
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+            app:layout_constraintTop_toTopOf="@id/tv_desc"
+         />
+
+        <TextView
+            android:id="@+id/tv_desc"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:paddingStart="@dimen/_5sdp"
 
-            app:layout_constraintBottom_toBottomOf="@id/card"
+            android:textColor="@color/grey11"
+            android:textSize="@dimen/_11sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/card"
-            app:layout_constraintTop_toTopOf="@id/card">
+            app:layout_constraintStart_toEndOf="@id/iv_paper"
+            app:layout_constraintTop_toBottomOf="@id/tv_3" />
 
-            <TextView
-                android:id="@+id/tv_service"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_13sdp"
-                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-            <ImageView
-                android:id="@+id/iv_clock"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:src="@drawable/ic_clock"
-
-                app:layout_constraintStart_toStartOf="@id/tv_service"
-                app:layout_constraintTop_toBottomOf="@id/tv_service"
-                app:tint="@color/grey_1000" />
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_6sdp"
-                 android:paddingStart="@dimen/_5sdp"
-                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_clock"
-                app:layout_constraintStart_toEndOf="@id/iv_clock"
-                app:layout_constraintTop_toTopOf="@id/iv_clock" />
-
-            <ImageView
-                android:id="@+id/iv_money"
-
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:src="@drawable/reminder"
-                app:layout_constraintStart_toStartOf="@id/tv_service"
-                app:layout_constraintTop_toBottomOf="@id/tv_time"
-                app:tint="@color/grey_1000" />
-
-            <TextView
-                android:id="@+id/tv_money_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_5sdp"
-                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/iv_money"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_money"
-                app:layout_constraintTop_toTopOf="@id/iv_money" />
-
-
-            <ImageView
-                android:id="@+id/iv_service_type"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:src="@drawable/paper"
-
-                app:layout_constraintStart_toStartOf="@id/tv_service"
-                app:layout_constraintTop_toBottomOf="@id/tv_money_title" />
-
-
-            <TextView
-                android:id="@+id/tv_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_service_type"
-                app:layout_constraintTop_toTopOf="@id/iv_service_type" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

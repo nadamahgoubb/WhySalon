@@ -9,9 +9,11 @@ import com.dot_jo.whysalon.data.response.AboutUsResponse
 import com.dot_jo.whysalon.data.response.BarbarsResponse
 import com.dot_jo.whysalon.data.response.BookingResponse
 import com.dot_jo.whysalon.data.response.CartResponse
+import com.dot_jo.whysalon.data.response.CategoiesAndServicesResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.ChangeNotifactionStatus
 import com.dot_jo.whysalon.data.response.ContactUsResponse
+import com.dot_jo.whysalon.data.response.CuponResponse
 import com.dot_jo.whysalon.data.response.LoginResponse
 import com.dot_jo.whysalon.data.response.NotificationItem
 import com.dot_jo.whysalon.data.response.OffersResponse
@@ -141,14 +143,10 @@ interface ApiInterface {
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
     @GET("profile/change-status-notify")
-    suspend fun changeNotifactionStatus(
-
-    ): NetworkResponse<DevResponse<ChangeNotifactionStatus>, ErrorResponse>
+    suspend fun changeNotifactionStatus(): NetworkResponse<DevResponse<ChangeNotifactionStatus>, ErrorResponse>
 
     @GET("cart")
-    suspend fun getCart(
-
-    ): NetworkResponse<DevResponse<CartResponse>, ErrorResponse>
+    suspend fun getCart(): NetworkResponse<DevResponse<CartResponse>, ErrorResponse>
 
     @POST("cart/add")
     @FormUrlEncoded
@@ -188,6 +186,11 @@ interface ApiInterface {
     @GET("barbers")
     suspend fun getBarbar(
     ): NetworkResponse<DevResponse<BarbarsResponse>, ErrorResponse>
+    @FormUrlEncoded
+    @POST("booking/check-coupon")
+    suspend fun checkCupon(
+        @Field("code") code: String?,
+    ): NetworkResponse<DevResponse<CuponResponse>, ErrorResponse>
 
     @FormUrlEncoded
     @POST("booking/add-booking")
@@ -204,6 +207,10 @@ interface ApiInterface {
         @Field("barber_id") barber_id: String,
         @Field("date") date: String?,
         @Field("time") time: String?,
+        @Field("payment_method") payment_method: String?,
+        @Field("discount_code") discount_code: String?,
+        @Field("phone") phone: String?,
+        @Field("country_code") country_code: String?,
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
     @GET("booking/delete-booking/{orderId}")
@@ -238,6 +245,9 @@ interface ApiInterface {
     @GET("contact-us")
     suspend fun getContactUsData(
     ): NetworkResponse<DevResponse<ContactUsResponse>, ErrorResponse>
+  @GET("categories_and_services")
+    suspend fun getCategoriesAndServices(
+    ): NetworkResponse<DevResponse<CategoiesAndServicesResponse>, ErrorResponse>
 
     @FormUrlEncoded
     @POST("barber-rate")

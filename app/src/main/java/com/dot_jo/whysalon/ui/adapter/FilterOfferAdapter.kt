@@ -20,7 +20,7 @@ class FilterOfferAdapter(var listener: FilterOffersByCategoryClickListener) : Re
             field = value
             notifyDataSetChanged()
         }
- var lastSelectedPostion=-1
+ var lastSelectedPostion=0
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterOfferViewHolder {
         context = parent.context
         return FilterOfferViewHolder(
@@ -40,27 +40,28 @@ class FilterOfferAdapter(var listener: FilterOffersByCategoryClickListener) : Re
         holder.binding.tvTitle.setOnClickListener {
             if (holder.binding.tvTitle.isChecked) {
                 currentItem.checked = 1
-                holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_white)
-                holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.black))
+                holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_black_white_border)
+                holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.white))
                 selectOneItemOnly(currentItem , position)
                 listener.onFilterOffersByCategory(currentItem)
 
             } else {
          //       lastSelectedPostion =-1
                 currentItem.checked = 0
-                holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_black_white_border)
-                holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.white))
-                 listener.onFilterOffersByCategory(null)
+
+                holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_white)
+                holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.black))
+                listener.onFilterOffersByCategory(null)
             }
         }
 
         if(currentItem.checked==1){
+
+            holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_black_white_border)
+            holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.white))     }else{
+
             holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_white)
             holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.black))
-        }else{
-            holder.binding.tvTitle.setBackgroundResource(R.drawable.bg_btn_black_white_border)
-            holder.binding.tvTitle.setTextColor(context.resources.getColor(R.color.white))
-
         }
     }
     fun updateItem(item: CategoriesItem) {

@@ -111,4 +111,8 @@
         android:id="@+id/termsAndConitionFragment"
         android:name="com.dot_jo.whysalon.ui.fragment.setting.TermsAndConitionFragment"
         android:label="TermsAndConitionFragment" />
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.dot_jo.whysalon.ui.fragment.checkout.CheckoutFragment"
+        android:label="CheckoutFragment" />
 </navigation>

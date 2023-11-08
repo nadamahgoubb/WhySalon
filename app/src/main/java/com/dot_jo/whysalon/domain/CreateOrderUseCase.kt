@@ -9,6 +9,7 @@ import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.GetTimesParams
 import com.dot_jo.whysalon.data.Repository
 import com.dot_jo.whysalon.data.param.AddReBookingParams
+import com.dot_jo.whysalon.data.param.CheckCuponParams
 import com.dot_jo.whysalon.data.param.GetTimesReBookingParams
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,12 @@ class CreateOrderUseCase @Inject constructor(private val repository: Repository)
             is AddBookingParams -> {
                 flow {
                     emit(repository.addBooking(params))
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+
+            }
+            is CheckCuponParams -> {
+                flow {
+                    emit(repository.checkCupon(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
 
             }

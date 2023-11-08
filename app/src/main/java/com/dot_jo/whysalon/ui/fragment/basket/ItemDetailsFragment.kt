@@ -5,13 +5,11 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.PrefsHelper
-import com.dot_jo.whysalon.data.response.CategoriesItem
 import com.dot_jo.whysalon.data.response.ImageItem
 import com.dot_jo.whysalon.data.response.OfferssItem
 import com.dot_jo.whysalon.data.response.ServicesItem
@@ -19,7 +17,6 @@ import com.dot_jo.whysalon.databinding.FragmentItemDetailsBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.packagee.PackagesServicesLineAdapter
 import com.dot_jo.whysalon.ui.fragment.allPackages.SectionsHomePagerAdapter
-import com.dot_jo.whysalon.ui.fragment.home.HomeAction
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
@@ -155,7 +152,7 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         binding.tvTitle.setText(item?.services?.name.toString())
         binding.tvDesc.setText(item?.services?.description.toString())
         binding.tvMoneyTitle.text =
-            resources.getString(R.string.price_from) + " " + item.price?.toDoubleOrNull()
+            resources.getString(R.string.price_) + " " + item.price?.toDoubleOrNull()
                 ?.roundToInt()
                 .toString() + " " + resources.getString(R.string.sr)
         // binding.tvTime.setText(item?.services?.duration.toString() + " " + resources.getString(R.string.min))
@@ -172,19 +169,12 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
     }
 
     private fun onClick() {
-        binding.lytNxt.setOnClickListener {
+      /*  binding.lytNxt.setOnClickListener {
             if (PrefsHelper.getUserData().isNull()) {
                 findNavController().navigate(R.id.loginFirstDialog)
 
             } else {
-                //
-                //     if (type == Constants.Package) {
-                //         //          //    loadPackageData(item as ServicesItem)
-                //     } else {
-                //         item?.price?.let { it1 -> item?.id?.let { it2 -> mViewModel.addToBasket(null, it2,it1) } }
-                //         //   loadPackageData(item as CategoriesItem)
-//
-                //     }
+
                 if (type == Constants.Package) {
                     (item as ServicesItem)?.price?.let { it1 ->
                         (item as ServicesItem)?.id?.let { it2 ->
@@ -224,7 +214,7 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
                 }
             }
 
-        }
+        }*/
         binding.cardback.setOnClickListener {
 
             findNavController().popBackStack()
@@ -241,7 +231,7 @@ class ItemDetailsFragment : BaseFragment<FragmentItemDetailsBinding>() {
         binding.tvServiceCount.isVisible =true
         binding.tvTitle.setText(item?.name.toString())
         binding.tvMoneyTitle.setText(
-            resources.getString(R.string.price_from) + item?.price?.toDoubleOrNull()?.roundToInt()
+            resources.getString(R.string.price_) + item?.price?.toDoubleOrNull()?.roundToInt()
                 .toString() + resources.getString(R.string.sr)
         )
         //     binding.tvTime.setText(item?.duration.toString() + " " + resources.getString(R.string.min))

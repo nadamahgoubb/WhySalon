@@ -2,6 +2,7 @@ package com.dot_jo.whysalon.ui.fragment.home
 
 import com.dot_jo.whysalon.base.Action
 import com.dot_jo.whysalon.data.response.CartResponse
+import com.dot_jo.whysalon.data.response.CategoiesAndServicesResponse
 import com.dot_jo.whysalon.data.response.CategoriesResponse
 import com.dot_jo.whysalon.data.response.OffersResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
@@ -17,6 +18,7 @@ sealed class HomeAction() : Action {
     data class ShowFailureMsg(val message: String?) : HomeAction()
     data class PackagesSucess(val data: PackagesResponse) : HomeAction()
     data class CategoriesSucess(val data: CategoriesResponse) : HomeAction()
+    data class CategoiesAndServicesSucess(val data: CategoiesAndServicesResponse) : HomeAction()
     data class ServicesByCategory(val data: ServicesResponse) : HomeAction()
     data class AddItemToCart(val data: OtpChangePassswordResponse) : HomeAction()
     data class  ShowCartData(val data : CartResponse): HomeAction ()

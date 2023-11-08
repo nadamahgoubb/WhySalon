@@ -18,6 +18,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="grey">#1F000000</color>
+    <color name="grey11">#66000000</color>
+    <color name="grey12">#99000000</color>
      <color name="grey_medium">#4D000000</color>
     <color name="grey1">#4D000000</color>
     <color name="grey3">#BF000000</color>

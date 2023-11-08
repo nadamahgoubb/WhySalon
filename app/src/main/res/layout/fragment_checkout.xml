@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
+        android:id="@+id/swiperefresh_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@drawable/bg_btn_white_rounded_top"
+        android:backgroundTint="@color/white"
+        android:fillViewport="true">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+          android:visibility="gone"      android:id="@+id/lyt_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+             android:background="@drawable/bg_btn_white_rounded_top"
+                android:backgroundTint="@color/white"
+                android:fillViewport="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:text="@string/choose_the_barber"
+                    android:textColor="@color/grey_1000"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_barbars"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_1"
+                    tools:itemCount="12"
+                    tools:listitem="@layout/item_choose_barber" />
+
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:text="@string/choose_the_time_with_barber_s_name"
+                    android:textColor="@color/grey_1000"
+                    android:textSize="@dimen/_14sdp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_barbars" />
+
+                <LinearLayout
+                    android:id="@+id/lyt_calender"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tv_2">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/lyt1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_10sdp"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                            <TextView
+                                android:id="@+id/exOneMonthText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:fontFamily="sans-serif-light"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/exOneYearText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_3sdp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_prev"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/ic_arrow_left"
+                            app:layout_constraintBottom_toBottomOf="@id/lyt1"
+                            app:layout_constraintEnd_toStartOf="@+id/iv_next"
+                            app:layout_constraintTop_toTopOf="@id/lyt1"
+                            app:tint="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/iv_next"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/ic_arrow_right"
+                            app:layout_constraintBottom_toBottomOf="@id/lyt1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/lyt1"
+                            app:tint="@color/black" />
+
+                        <LinearLayout
+                            android:id="@+id/legendLayout"
+                            layout="@layout/calendar_day_legend_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+
+                            android:weightSum="7"
+                            app:layout_constraintTop_toBottomOf="@+id/lyt1">
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                            <include layout="@layout/calendar_day_legend_text" />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <com.kizitonwose.calendar.view.WeekCalendarView
+                        android:id="@+id/exOneWeekCalendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cv_dayViewResource="@layout/item_day_calender"
+                        app:layout_constraintTop_toBottomOf="@id/lyt_header"
+                        tools:layout_editor_absoluteX="6dp" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_times"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_calender">
+
+                    <TextView
+                        android:id="@+id/tv_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/time"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_14sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_times"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_10sdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_11"
+                        tools:listitem="@layout/item_filter_time" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_no_available_times"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_times">
+
+                    <View
+                        android:id="@+id/v1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@color/grey_1000"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:text="@string/barber_s_is_not_available_today"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+                    <TextView
+                        android:id="@+id/tv_23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:text="@string/but_you_can_book_for"
+                        android:textColor="@color/grey_700"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_22" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_goto_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginVertical="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:paddingHorizontal="@dimen/_30sdp"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_12sdp"
+                        app:cornerRadius="@dimen/_4sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_23" />
+
+                    <LinearLayout
+                        android:id="@+id/lyt_re"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_goto_date">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/ic_re"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_try_another_barber"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_try_another_barber" />
+
+                        <TextView
+                            android:id="@+id/tv_try_another_barber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:text="@string/or_try_with_other_staff"
+                            android:textColor="@color/grey_700"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/iv_re"
+                            app:layout_constraintTop_toBottomOf="@+id/btn_goto_date" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_fill_data"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/lyt_rebook"
+                    app:layout_constraintTop_toBottomOf="@id/lyt_no_available_times">
+
+                    <TextView
+                        android:id="@+id/tv_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/discount"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_14sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_disount_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/bg_btn_white_grey_border"
+                        android:hint="@string/enter_discount_code"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="@dimen/_40sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColorHint="@color/grey_medium"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_3" />
+
+                    <LinearLayout
+                        android:id="@+id/lyt_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="6"
+                        app:layout_constraintTop_toBottomOf="@+id/et_disount_code">
+
+                        <com.hbb20.CountryCodePicker
+                            android:id="@+id/country_code_picker"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/bg_btn_black_white_border"
+                            android:backgroundTint="@color/gray1"
+                            android:clickable="true"
+                            android:gravity="center"
+                            app:ccp_defaultNameCode="SA"
+                            app:ccp_showFlag="false"
+                            app:ccp_showNameCode="false"
+                            app:ccp_showPhoneCode="true"
+                            app:ccp_textSize="@dimen/_12sdp" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_weight="4.5"
+                            android:gravity="center"
+                            android:hint=""
+                            app:hintAnimationEnabled="false"
+                            app:hintEnabled="false"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_btn_white_grey_border"
+                                android:hint="@string/enter_phone_number"
+
+                                android:inputType="phone"
+                                android:minHeight="@dimen/_40sdp"
+                                android:textAlignment="viewStart"
+                                android:textColorHint="@color/grey3"
+                                android:textSize="@dimen/_10sdp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <!--   <EditText
+                           android:id="@+id/et_phone"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="@dimen/_8sdp"
+                           android:background="@drawable/bg_btn_white_grey_border"
+                           android:drawableStart="@drawable/ic_call"
+                           android:drawablePadding="@dimen/_4sdp"
+                           android:drawableTint="@color/grey"
+                           android:hint="@string/enter_phone_number"
+                           android:inputType="phone"
+                           android:minHeight="@dimen/_40sdp"
+                           android:paddingHorizontal="@dimen/_10sdp"
+                           android:textAlignment="viewStart"
+                           android:textColorHint="@color/grey_medium"
+                           android:textSize="@dimen/_12sdp"
+                           app:layout_constraintTop_toBottomOf="@+id/et_disount_code" />
+   -->
+                    <TextView
+                        android:id="@+id/tv_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/payment_methods"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_14sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lyt_phone" />
+
+                    <!--    <TextView
+                            android:id="@+id/et_payment_method"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:background="@drawable/bg_btn_white_grey_border"
+                            android:drawableEnd="@drawable/ccp_ic_arrow_drop_down"
+                            android:drawableTint="@color/black"
+                            android:gravity="center_vertical"
+                            android:hint="@string/select_payment_method"
+                            android:minHeight="@dimen/_40sdp"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:textColorHint="@color/grey_medium"
+                            android:textSize="@dimen/_12sdp"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_4" />-->
+                    <LinearLayout
+                        android:id="@+id/et_payment_method"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@drawable/bg_btn_white_grey_border"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_4">
+
+                        <Spinner
+                            android:id="@+id/spinner_payment"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_45sdp"
+                            android:backgroundTint="@color/black"
+                            android:hint="@string/select_payment_method"
+                            android:pointerIcon="none"
+
+                            android:spinnerMode="dialog"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/lyt_rebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_150sdp"
+                    android:background="@color/white"
+                    android:gravity="bottom"
+                    android:paddingVertical="@dimen/_20sdp"
+                    app:cardElevation="@dimen/_6sdp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:id="@+id/lyt_show_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                android:visibility="gone"      android:layout_marginHorizontal="@dimen/_10sdp"
+                             android:backgroundTint="@color/grey"
+                            android:orientation="horizontal"
+                             android:weightSum="2"
+                            app:layout_constraintBottom_toTopOf="@+id/lyt_nxt"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/iv_clock"
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/calendar"
+
+
+                                app:tint="@color/grey_1000" />
+
+                            <TextView
+                                android:id="@+id/tv_date_selected"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="@dimen/_6sdp"
+                                 android:paddingStart="@dimen/_5sdp"
+                                android:textColor="@color/grey_1000"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+
+                            <ImageView
+                                android:id="@+id/iv_money"
+
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_clock"
+
+                                app:tint="@color/grey_1000" />
+
+                            <TextView
+                                android:id="@+id/tv_time_selected"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="@dimen/_5sdp"
+                                android:textColor="@color/grey_1000"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/lyt_nxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginHorizontal="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:elevation="@dimen/_65sdp"
+                            android:text="@string/reservation_finished"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:cornerRadius="@dimen/_4sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lyt_show_time" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>
+
+
+</layout>

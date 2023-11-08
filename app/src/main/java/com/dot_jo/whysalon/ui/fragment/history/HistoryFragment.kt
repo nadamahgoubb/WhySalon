@@ -19,6 +19,7 @@ import com.dot_jo.whysalon.ui.interfaces.HistoryClickListener
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
+import com.dot_jo.whysalon.util.ext.showActivity
 import com.dot_jo.whysalon.util.getYearFromDate
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -111,8 +112,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
             activity?.onBackPressed()
         }
         binding.btnMakeappon.setOnClickListener {
-            findNavController().navigate(R.id.servicesFragment)
-        }
+
+            showActivity(MainActivity::class.java , clearAllStack = true)           }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

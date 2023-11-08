@@ -172,7 +172,12 @@ companion object
 
                         navController.navigate(R.id.loginFirstDialog)
                     } else {
-                        navController.navigate(R.id.bookingFragment)
+                        navController.navigate(
+                            R.id.bookingFragment,
+                            null,
+                            NavOptions.Builder().setPopUpTo(R.id.homeFragment, false).build()
+                        )
+                        //navController.navigate(R.id.bookingFragment)
                     }
                     true
                 }
@@ -193,17 +198,26 @@ companion object
                     true
                 }
 
-                R.id.servicesFragment -> {
+                R.id.packagesFragment -> {
 
-
-                    navController.navigate(R.id.servicesFragment)
+                    navController.navigate(
+                        R.id.packagesFragment,
+                        null,
+                        NavOptions.Builder().setPopUpTo(R.id.homeFragment, false).build()
+                    )
+                   // navController.navigate(R.id.packagesFragment)
 
                     true
                 }
 
                 R.id.settingFragment -> {
 
-                    navController.navigate(R.id.settingFragment)
+                    navController.navigate(
+                        R.id.settingFragment,
+                        null,
+                        NavOptions.Builder().setPopUpTo(R.id.homeFragment, false).build()
+                    )
+                    //navController.navigate(R.id.settingFragment)
 
                     true
                 }

@@ -15,6 +15,7 @@ import com.dot_jo.whysalon.ui.interfaces.CancelBookingListener
 import com.dot_jo.whysalon.ui.interfaces.ConfirmCancelBookingListener
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
+import com.dot_jo.whysalon.util.ext.showActivity
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -108,8 +109,7 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>(), CancelBookingLis
             findNavController().navigate(R.id.historyFragment)
         }
         binding.btnMakeappon.setOnClickListener {
-            findNavController().navigate(R.id.servicesFragment)
-        }
+showActivity(MainActivity::class.java , clearAllStack = true)        }
 
     }
 

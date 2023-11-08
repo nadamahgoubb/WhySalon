@@ -3,6 +3,7 @@ package com.dot_jo.whysalon.data.response
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class ServicesResponse(
@@ -24,7 +25,7 @@ data class ServicesItem(
     @SerializedName("images") var images: ArrayList<ImageItem>? = arrayListOf(),
     // for package details
     @SerializedName("services_count") var servicesCount: Int? = null,
-
+var choosen:Boolean  = false
     ) : Parcelable
 
 @Parcelize
@@ -88,4 +89,45 @@ data class OfferssItem(
 
 
 
+) : Parcelable
+
+
+
+@Parcelize
+data class CategoiesAndServicesResponse(
+    @SerializedName("categories_and_services" ) var categoriesAndServices : ArrayList<CategoriesAndServices> = arrayListOf()
+
+
+) : Parcelable
+
+
+@Parcelize
+
+data class CategoriesAndServices (
+
+    @SerializedName("category_id"          ) var categoryId          : Int?                = null,
+    @SerializedName("category_name"        ) var categoryName        : String?             = null,
+    @SerializedName("category_description" ) var categoryDescription : String?             = null,
+    @SerializedName("category_image"       ) var categoryImage       : String?             = null,
+    @SerializedName("services"             ) var services            : ArrayList<ServicesInCatgories> = arrayListOf(),
+    var checked:Int ? = 0
+
+) : Parcelable
+
+@Parcelize
+
+data class ServicesInCatgories (
+
+
+@SerializedName("service_id"          ) var serviceId          : String?              = null,
+@SerializedName("service_name"        ) var serviceName        : String?           = null,
+@SerializedName("service_description" ) var serviceDescription : String?           = null,
+@SerializedName("service_duration"    ) var serviceDuration    : Double?              = null,
+@SerializedName("category_id"         ) var categoryId         : String?              = null,
+@SerializedName("service_image"       ) var serviceImage       : String?           = null,
+@SerializedName("small_image"         ) var smallImage         : String?           = null,
+@SerializedName("offer"               ) var offer              : Boolean?          = null,
+@SerializedName("price"               ) var price              : String?              = null,
+@SerializedName("price_before"        ) var priceBefore        : String?              = null,
+@SerializedName("images"              ) var images             : @RawValue ArrayList<Images> = arrayListOf()
 ) : Parcelable

@@ -51,6 +51,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
     private lateinit var parent: MainActivity
     private val mViewModel: CreateOrderViewModel by activityViewModels()
     var state = 0
+    private var today: LocalDate? = LocalDate.now()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onFragmentReady() {
@@ -62,6 +63,8 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
             orderId = ""
         }
         date_ =  LocalDate.now().formatDate("yyyy-MM-dd")
+
+
         mViewModel.apply {
 
         
@@ -122,7 +125,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
 
 
     private fun onClick() {
-        binding.lytNext.setOnClickListener {
+      /*  binding.lytNext.setOnClickListener {
             if (state == 1) {
                 time?.let { it1 ->
                     mViewModel.barbar?.id?.let { it2 ->
@@ -144,7 +147,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
                     }
                 }
             }
-        }
+        }*/
         binding.btnGotoDate.setOnClickListener {
             var e = Calendar.getInstance()
             binding.cal.setDate(e.timeInMillis)
@@ -195,7 +198,8 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>(), FilterTimeClic
     fun setupCalender() {
         //   Setting minumum and maximum dates:
         val calendarView = binding.cal
-         var min = Calendar.getInstance()//.add()
+
+        var min = Calendar.getInstance()//.add()
         var dayBefore = LocalDate.now()
         dayBefore?.let {
             min.set(dayBefore.year, dayBefore.monthValue - 1, dayBefore.dayOfMonth);

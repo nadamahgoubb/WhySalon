@@ -10,7 +10,6 @@ import com.dot_jo.whysalon.data.response.ServicesItem
 import com.dot_jo.whysalon.databinding.ItemServiceDetailsBinding
 import com.dot_jo.whysalon.ui.interfaces.HomeClickListener
 import com.dot_jo.whysalon.util.ext.loadImage
-import com.dot_jo.whysalon.util.ext.roundTo
 import com.dot_jo.whysalon.util.getDuration
 
 
@@ -40,8 +39,7 @@ class SubServicesAdapter(
 
         var currentItem = list[position]
         holder.binding.tvMoneyTitle.setText(
-            context.resources.getString(R.string.price_from) + " " + currentItem?.price?.toDoubleOrNull()
-                ?.roundTo(2) + " " + context.resources.getString(
+            context.resources.getString(R.string.price_) + " " + currentItem?.price + " " + context.resources.getString(
                 R.string.sr
             )
         )

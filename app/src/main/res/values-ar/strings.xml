@@ -75,9 +75,9 @@
     <string name="my_history">حجوزاتى السابقة</string>
      <string name="lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.</string>
     <string name="but_you_can_book_for">" ولكن يمكنك حجز " </string>
-    <string name="selected">المحدد</string>
-    <string name="unavailable">غير متوفر </string>
-    <string name="available">متوفر</string>
+    <string name="selected">تم إختياره</string>
+    <string name="unavailable">غير متاح </string>
+    <string name="available">متاح</string>
     <string name="great">عظيم</string>
     <string name="your_appointment_has_been_nsucessfully_booked">لقد تم حجز موعدك \nبنجاح</string>
     <string name="notifaction_ll_be_send_to_you_when_the_nbooked_date_is_close">سيتم إرسال الإشعارات إليك عند اقتراب \nتاريخ الحجز</string>
@@ -131,6 +131,7 @@
     <string name="cancellation_booking">الغاء الحجز</string>
     <string name="are_you_sure_to_cancel_your_booking">هل أنت متأكد من إلغاء الحجز الخاص بك؟</string>
     <string name="continuee">استمرار</string>
+    <string name="continuee_cancel">استكمال</string>
     <string name="basket">السلة</string>
     <string name="empty_msg_email">برجاءإدخال بريدك الإلكتروني</string>
     <string name="empty_msg_otp">برجاءإدخال الكود المرسل إليك</string>
@@ -140,7 +141,7 @@
     <string name="empty_name_msg">برجاءإدخال الاسم </string>
      <string name="msg_empty_password"> برجاءإدخال كلمة المرور </string>
     <string name="msg_empty_new_password">برجاءإدخال كلمة المرور الجديدة</string>
-     <string name="price_from">"السعر : "</string>
+     <string name="price_">"السعر : "</string>
     <string name="sr">ر.س</string>
     <string name="min"> دق</string>
     <string name="change_password">تغيير كلمة المرور</string>
@@ -207,11 +208,22 @@
     <string name="about_us">عن التطبيق</string>
     <string name="your_new_password_must_be_different_from_previous_used_passwords">يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمات المرور المستخدمة سابقًا.</string>
     <string name="package_added_to_cart_successfully">تم إضافه الباقة إلى السلة بنجاح</string>
+    <string name="added_to_cart_successfully">تم الإضافه إلى السلة بنجاح</string>
     <string name="enter_your_birthdate"> ادخل تاريخ الميلاد</string>
     <string name="birthdate"> تاريخ الميلاد</string>
     <string name="empty_date_of_birth">برجاء إدخال تاريخ الميلاد</string>
     <string name="phone_number">رقم الهاتف</string>
     <string name="edit_profile">تعديل </string>
     <string name="save">Save</string>
-
+    <string name="choose_the_time_with_barber_s_name">اختار الوقت مع </string>
+    <string name="discount">الخصم</string>
+     <string name="enter_discount_code">ادخل كود الخصم</string>
+    <string name="payment_methods">طرق الدفع</string>
+    <string name="select_payment_method">اختار طريقة الدفع</string>
+    <string name="reservation_finished">إتمام الحجز</string>
+    <string name="choose_your_packages">اختار الباقة</string>
+    <string name="services_avaliable"> من الخدمات المتاحة</string>
+    <string name="empty_payment_type">برجاء اختيار طريقة الدفع</string>
+    <string name="choose_packages_you_want">اختار الباقة</string>
+    <string name="vaild_cupon_with">كود خصم صالح ب </string>
 </resources>

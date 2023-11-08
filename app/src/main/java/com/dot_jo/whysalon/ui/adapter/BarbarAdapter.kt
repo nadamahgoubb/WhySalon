@@ -40,10 +40,25 @@ class BarbarAdapter(
         var currentItem = list[position]
         holder.binding.tvName.setText(currentItem.name)
         holder.binding.tvRating.setText(currentItem.avg_rates?.toDouble()?.roundTo(1).toString())
-        holder.binding.imgWishItem.loadImage(currentItem.image)
+        holder.binding.imgWishItem.loadImage(currentItem.image , isCircular = true)
 
-        holder.binding.checkbox.setOnClickListener {
-            if (holder.binding.checkbox.isChecked) {
+         holder.binding.root.setOnClickListener {
+
+            if (currentItem.seleted== false) {
+                currentItem.seleted= true
+           selectOneItemOnly(currentItem, position)
+                listener.onBarbarClickListener(currentItem)
+
+            } else {
+                currentItem.seleted= false
+                updateItem(currentItem)
+                lastSelectedPostion= -1
+                listener.onBarbarClickListener(null)
+
+            }
+        }
+ holder.binding.lytRoot.rootView.setOnClickListener {
+            if (currentItem.seleted== false) {
                 currentItem.seleted= true
            selectOneItemOnly(currentItem, position)
                 listener.onBarbarClickListener(currentItem)
@@ -59,10 +74,10 @@ class BarbarAdapter(
 
 
         if (currentItem.seleted == true) {
-        holder.binding.yourRectangle.setBackgroundResource(R.drawable.bg_btn_white_black_border)
+        holder.binding.lytRoot.setBackgroundResource(R.drawable.bg_btn_white_black_border)
             holder.binding.checkbox.isChecked = true      //    binding.item11.your_rectangle.setBackgroundResource(R.drawable.bg_btn_white_grey_border)
         } else {
-            holder.binding.yourRectangle.setBackgroundResource(R.drawable.bg_btn_white_grey_border)
+            holder.binding.lytRoot.setBackgroundResource(R.drawable.bg_btn_white_grey_border)
             holder.binding.checkbox.isChecked = false
 
         }

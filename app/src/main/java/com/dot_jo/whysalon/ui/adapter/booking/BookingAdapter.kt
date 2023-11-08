@@ -13,6 +13,7 @@ import com.dot_jo.whysalon.ui.interfaces.CancelBookingListener
 import com.dot_jo.whysalon.util.convertPttern
 import com.dot_jo.whysalon.util.ext.loadImage
 import com.dot_jo.whysalon.util.ext.roundTo
+import com.dot_jo.whysalon.util.getDuration
 
 
 class BookingAdapter(
@@ -45,26 +46,34 @@ class BookingAdapter(
         var image: String? = null
         currentItem.carts.forEach {
             if (it.packagee == null) {
-                serviceType = serviceType + it.service?.name +"-"
+                serviceType = serviceType + it.service?.name +" - "
                 image = it.service?.image
             } else {
-                serviceType = serviceType + it.packagee?.name +"-"
+                serviceType = serviceType + it.packagee?.name +" - "
                 image = it.packagee?.image
 
             }
         }
-        holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type) + serviceType)
+       // holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type) + serviceType)
+        holder.binding.tvServicesType.setText(
+            context.resources.getString(R.string.service_type) + serviceType.substring(
+                0, serviceType.length - 3
+            ).toString()
+        )
         currentItem.date?.let {
             holder.binding.tvDate.setText(
-                context.resources.getString(R.string.date_and_time) + convertPttern(
+                context.resources.getString(R.string.date_) + convertPttern(
                     it, "dd MMMM"
                 ) + " - " + currentItem.from
             )
         }
         holder.binding.tvMoney.setText(
-            currentItem.total?.toDoubleOrNull()?.roundTo(2)
+            currentItem.final_total_after_discount?.toDoubleOrNull()?.roundTo(2)
                 .toString() + context.resources.getString(R.string.sr)
         )
+        currentItem.duration?.toIntOrNull()?.let {
+            holder.binding.tvTiming.setText(getDuration(it, context))
+        }
         holder.binding.ivService.loadImage(image)
         holder.binding.ivBarber.loadImage(currentItem.barber?.image)
 

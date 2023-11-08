@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
@@ -12,11 +13,12 @@ import com.dot_jo.whysalon.data.response.CartsItemResponse
 import com.dot_jo.whysalon.databinding.FragmentBasketBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
 import com.dot_jo.whysalon.ui.adapter.booking.BasketsAdapter
- import com.dot_jo.whysalon.ui.interfaces.BasketClickListener
+import com.dot_jo.whysalon.ui.interfaces.BasketClickListener
 import com.dot_jo.whysalon.util.Constants
 import com.dot_jo.whysalon.util.ext.hideKeyboard
 import com.dot_jo.whysalon.util.ext.init
 import com.dot_jo.whysalon.util.ext.roundTo
+import com.dot_jo.whysalon.util.ext.showActivity
 import com.dot_jo.whysalon.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.cardback
@@ -26,9 +28,9 @@ class BasketFragment : BaseFragment<FragmentBasketBinding>(), BasketClickListene
     private var item: CartsItemResponse? = null
     private lateinit var parent: MainActivity
     val mViewModel: BasketViewModel by viewModels()
-var total :String? = null
-      lateinit var adapter: BasketsAdapter
-     override fun onFragmentReady() {
+    var total: String? = null
+    lateinit var adapter: BasketsAdapter
+    override fun onFragmentReady() {
 
         setupUi()
         onClick()
@@ -74,45 +76,48 @@ var total :String? = null
                 }
 
             }
+
             is BasketAction.DeleteFromCart -> {
                 item?.let { adapter.removeItem(it) }
                 mViewModel.getCart()
             }
+
             else -> {}
         }
     }
 
     @SuppressLint("SuspiciousIndentation")
     private fun loadPackageData(it: CartResponse) {
-     it?.carts?.let {
-     //    adapter.differ.submitList( it)
-         adapter.ordersList= it
-         adapter.notifyDataSetChanged()
-     }
-        if(it?.carts?.size==0)  {
-     binding.lytData.isVisible= false
-            binding.lytEmptyState.isVisible= true
-
-        }else{
-         binding.lytEmptyState.isVisible= false
-         binding.lytData.isVisible= true
-         binding.lytNxt.isVisible= true
-          total =it?.finalTotal?.toDoubleOrNull()?.roundTo(2).toString()
-            binding.tvTotalPrice.setText(total+ resources.getString(R.string.sr))
-
+        it?.carts?.let {
+            //    adapter.differ.submitList( it)
+            adapter.ordersList = it
+            adapter.notifyDataSetChanged()
         }
-     }
+        if (it?.carts?.size == 0) {
+            binding.lytData.isVisible = false
+            binding.lytEmptyState.isVisible = true
 
-    private  fun  initAdapter(){
+        } else {
+            binding.lytEmptyState.isVisible = false
+            binding.lytData.isVisible = true
+            binding.lytNxt.isVisible = true
+            total = it?.finalTotal?.toDoubleOrNull()?.roundTo(2).toString()
+            binding.tvTotalPrice.setText(total + resources.getString(R.string.sr))
+            binding.lytTotal.isVisible = true
+        }
+    }
+
+    private fun initAdapter() {
         adapter = BasketsAdapter(this)
-        binding.recOffers.init( context, adapter, 2)
- }
+        binding.recOffers.init(context, adapter, 2)
+    }
+
     private fun setupUi() {
         parent = requireActivity() as MainActivity
         parent.showBottomBar(true)
         parent.showToolbar(true)
         parent.setToolbarTitle(resources.getString(R.string.basket))
-        parent.showback(true)
+        parent.showback(false)
         parent.showNotifactionFragment(false)
 
         parent.cardback.setOnClickListener {
@@ -123,18 +128,31 @@ var total :String? = null
 
     private fun onClick() {
         binding.btnGoservice.setOnClickListener {
-            findNavController().navigate(R.id.servicesFragment)
+          findNavController().navigate(
+                R.id.homeFragment,
+                null,
+                NavOptions.Builder().setPopUpTo(R.id.homeFragment, true).build()
+            )
+
+
+         //   showActivity(MainActivity::class.java, clearAllStack = true)
         }
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.chooseBarberFragment , bundleOf(Constants.TOTAL  to total))
+            findNavController().navigate(R.id.checkoutFragment)
+            //     findNavController().navigate(R.id.chooseBarberFragment , bundleOf(Constants.TOTAL  to total))
         }
         binding.btnAddService.setOnClickListener {
-            findNavController().navigate(R.id.servicesFragment   )
+            findNavController().navigate(
+                R.id.homeFragment,
+                null,
+                NavOptions.Builder().setPopUpTo(R.id.homeFragment, false).build()
+            )
+          //  showActivity(MainActivity::class.java, clearAllStack = true)
         }
     }
 
     override fun onDeleteClickLisenter(item: CartsItemResponse) {
-       this . item = item
+        this.item = item
         item.id?.let { mViewModel.deleteFromBasket(it) }
 
 

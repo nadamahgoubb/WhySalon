@@ -7,10 +7,12 @@ import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseViewModel
 import com.dot_jo.whysalon.data.param.AddBookingParams
 import com.dot_jo.whysalon.data.param.AddReBookingParams
+import com.dot_jo.whysalon.data.param.CheckCuponParams
 import com.dot_jo.whysalon.data.param.GetTimesParams
 import com.dot_jo.whysalon.data.param.GetTimesReBookingParams
 import com.dot_jo.whysalon.data.response.BarbarItem
 import com.dot_jo.whysalon.data.response.BarbarsResponse
+import com.dot_jo.whysalon.data.response.CuponResponse
 import com.dot_jo.whysalon.data.response.OtpChangePassswordResponse
 import com.dot_jo.whysalon.data.response.TimesOfBarbarResponse
 import com.dot_jo.whysalon.domain.CreateOrderUseCase
@@ -58,7 +60,7 @@ class CreateOrderViewModel @Inject constructor(
         }
     }
     fun addBooking(
-        barber_id: String, date: String, time: String) {
+        barber_id: String, date: String, time: String, payment_method: String, discount_code: String?,phone: String?,country_code: String?,) {
 
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
 
@@ -66,7 +68,8 @@ class CreateOrderViewModel @Inject constructor(
             viewModelScope.launch {
                 var res = useCase.invoke(
                     viewModelScope, AddBookingParams(
-                        barber_id, date, time
+                        barber_id, date, time,
+                        payment_method , discount_code,phone ,country_code
                     )
 
                 ) { res ->
@@ -76,6 +79,33 @@ class CreateOrderViewModel @Inject constructor(
                         is Resource.Success -> {
 
                             produce(CreateOrderAction.ShowBookingAdded(res.data.data as OtpChangePassswordResponse))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(CreateOrderAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+    fun checkCupon(
+        code: String ) {
+
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+            produce(CreateOrderAction.ShowLoading(true))
+            viewModelScope.launch {
+                var res = useCase.invoke(
+                    viewModelScope, CheckCuponParams(
+                     code
+                    )
+
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(CreateOrderAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(CreateOrderAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(CreateOrderAction.ShowCuponVaildation(res.data.data as CuponResponse))
                         }
                     }
                 }

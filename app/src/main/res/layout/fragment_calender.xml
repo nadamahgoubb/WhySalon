@@ -61,7 +61,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_2sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal"
                     android:weightSum="3"
@@ -137,11 +137,12 @@
                 android:theme="@style/CalenderViewCustom"
                  android:layout_marginVertical="@dimen/_10sdp"
          android:background="@color/grey_50"
-                android:backgroundTint="@color/grey_50"
+       android:backgroundTint="@color/grey_50"
                 app:abbreviationsBarColor="@color/grey_50"
-             app:disabledDaysLabelsColor="@color/grey_400"
+              app:disabledDaysLabelsColor="@color/grey_400"
+    android:animateLayoutChanges="true"
                 app:headerColor="@color/grey_50"
-                app:headerLabelColor="@color/black"
+             app:headerLabelColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lyt_availabe"
@@ -154,8 +155,7 @@
                 android:id="@+id/lyt_no_available_times"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/lyt_times">
+                 app:layout_constraintTop_toBottomOf="@+id/lyt_times">
 
                 <View
                     android:id="@+id/v1"
@@ -247,8 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/cal">
+                 app:layout_constraintTop_toBottomOf="@+id/cal">
 
                 <TextView
                     android:id="@+id/tv_11"
@@ -305,8 +304,7 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:orientation="horizontal"
-                        android:visibility="gone"
-                        android:weightSum="2"
+                         android:weightSum="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">

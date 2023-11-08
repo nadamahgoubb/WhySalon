@@ -59,6 +59,8 @@ class CancelBookingDialog( val listener : ConfirmCancelBookingListener
     fun setLayoutMarginTop(view: View, bottom: Float) {
         val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = bottom.toInt()
+        layoutParams.leftMargin = 30
+        layoutParams.rightMargin = 30
         view.layoutParams = layoutParams
     }
 

@@ -97,7 +97,7 @@
             android:layout_marginVertical="@dimen/_5sdp"
             android:backgroundTint="@color/red"
             android:padding="@dimen/_5sdp"
-            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardCornerRadius="@dimen/_18sdp"
             app:layout_constraintStart_toStartOf="@id/tv_service"
             app:layout_constraintTop_toBottomOf="@id/rv_services">
 

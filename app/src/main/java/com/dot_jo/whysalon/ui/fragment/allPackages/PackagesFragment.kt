@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
 import com.dot_jo.whysalon.data.response.CategoriesItem
+import com.dot_jo.whysalon.data.response.ServicesInCatgories
 import com.dot_jo.whysalon.data.response.ServicesItem
 import com.dot_jo.whysalon.databinding.FragmentPackagesBinding
 import com.dot_jo.whysalon.ui.activity.MainActivity
@@ -46,7 +47,7 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
     private fun handleViewState(action: HomeAction) {
         when (action) {
             is HomeAction.ShowLoading -> {
-                binding.shimmer.startShimmerAnimation()
+                //   binding.shimmer.startShimmerAnimation()
                 showProgress(action.show)
                 if (action.show) {
                     hideKeyboard()
@@ -54,14 +55,25 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
             }
 
             is HomeAction.PackagesSucess -> {
-                binding.shimmer.isVisible = false
-                binding.shimmer.stopShimmerAnimation()
+                //  binding.shimmer.isVisible = false
+                //   binding.shimmer.stopShimmerAnimation()
                 showProgress(false)
 
                 action.data.packages?.let {
-                    adapterPackages.list = it
-                    adapterPackages.notifyDataSetChanged()
+                    if (it.size > 0) {
+                        binding.lytData.isVisible = true
+                        adapterPackages.list = it
+                        adapterPackages.notifyDataSetChanged()
+                    }
                 }
+            }
+            is HomeAction.ShowCartData -> {
+                parent.setBadge(action.data.carts.size)
+
+            }
+            is HomeAction.AddItemToCart -> {
+                showToast(getString(R.string.added_to_cart_successfully))
+                mViewModel.getCart()
             }
 
             is HomeAction.ShowFailureMsg -> action.message?.let {
@@ -82,10 +94,10 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
 
     private fun setupUi() {
         parent = requireActivity() as MainActivity
-        parent.showBottomBar(false)
+        parent.showBottomBar(true)
         parent.showToolbar(true)
         parent.setToolbarTitle(resources.getString(R.string.packages))
-        parent.showback(true)
+        parent.showback(false)
         parent.showNotifactionFragment(false)
         parent.cardback.setOnClickListener {
             findNavController().popBackStack()
@@ -112,7 +124,12 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
     }
 
     override fun onBookNowClickListener(item: ServicesItem) {
-        TODO("Not yet implemented")
-    }
+mViewModel.addToBasket(
+    item.id,
+    null,
+    item.price.toString()
+)    }
+
+
 
 }
