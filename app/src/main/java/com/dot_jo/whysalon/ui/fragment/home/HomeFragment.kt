@@ -5,26 +5,27 @@ package com.dot_jo.whysalon.ui.fragment.home
  import android.view.MotionEvent
  import androidx.annotation.RequiresApi
  import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+ import androidx.fragment.app.viewModels
+ import androidx.navigation.fragment.findNavController
  import androidx.recyclerview.widget.LinearLayoutManager
  import androidx.recyclerview.widget.RecyclerView
-import com.dot_jo.whysalon.R
-import com.dot_jo.whysalon.base.BaseFragment
-import com.dot_jo.whysalon.data.PrefsHelper
-import com.dot_jo.whysalon.data.response.CategoriesAndServices
-import com.dot_jo.whysalon.data.response.ServicesInCatgories
-import com.dot_jo.whysalon.databinding.FragmentHomeBinding
-import com.dot_jo.whysalon.ui.activity.MainActivity
-import com.dot_jo.whysalon.ui.adapter.home.FilterServiceHomeAdapter
-import com.dot_jo.whysalon.ui.adapter.home.NewServiceAdapter
-import com.dot_jo.whysalon.ui.interfaces.FilterHomeByServiceClickListener
-import com.dot_jo.whysalon.ui.interfaces.HomeSericeListener
-import com.dot_jo.whysalon.util.SimpleDividerItemDecoration
-import com.dot_jo.whysalon.util.ext.hideKeyboard
-import com.dot_jo.whysalon.util.ext.init
-import com.dot_jo.whysalon.util.observe
-import dagger.hilt.android.AndroidEntryPoint
+ import com.dot_jo.whysalon.R
+ import com.dot_jo.whysalon.base.BaseFragment
+ import com.dot_jo.whysalon.data.PrefsHelper
+ import com.dot_jo.whysalon.data.response.CategoriesAndServices
+ import com.dot_jo.whysalon.data.response.ServicesInCatgories
+ import com.dot_jo.whysalon.databinding.FragmentHomeBinding
+ import com.dot_jo.whysalon.ui.activity.MainActivity
+ import com.dot_jo.whysalon.ui.adapter.home.FilterServiceHomeAdapter
+ import com.dot_jo.whysalon.ui.adapter.home.NewServiceAdapter
+ import com.dot_jo.whysalon.ui.interfaces.FilterHomeByServiceClickListener
+ import com.dot_jo.whysalon.ui.interfaces.HomeSericeListener
+ import com.dot_jo.whysalon.util.SimpleDividerItemDecoration
+ import com.dot_jo.whysalon.util.ext.hideKeyboard
+ import com.dot_jo.whysalon.util.ext.init
+ import com.dot_jo.whysalon.util.observe
+ import com.google.android.material.tabs.TabLayout
+ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
@@ -184,19 +185,38 @@ list= it
 
         adapterNewService = NewServiceAdapter(this)
         binding.rvSubServices.init(requireContext(), adapterNewService, 2)
-        binding.rvSubServices.addItemDecoration(SimpleDividerItemDecoration(requireContext()));
+       // binding.rvSubServices.addItemDecoration(SimpleDividerItemDecoration(requireContext()));
+/*
         binding.rvSubServices.setOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-
+                if (isRecyclerViewAtTop()) {
+                    */
+/*    if (current < list.size - 1) {
+                        current = current + 1
+                        list.get(current).checked = 1
+                        adapter.selectOneItemOnly(list.get(current), current)
+                        adapter.notifyDataSetChanged()
+                        adapterNewService.list = list.get(current).services
+                        adapterNewService.notifyDataSetChanged()
+                    }  *//*
+  //your recycler view reached Top do some thing
                 }
-                if (!recyclerView.canScrollVertically(0) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (isRecyclerViewABottom()) {
+                    //your recycler view reached Top do some thing
+                    if (current < list.size - 1) {
+                        current = current + 1
+                        list.get(current).checked = 1
+                        adapter.selectOneItemOnly(list.get(current), current)
+                        adapter.notifyDataSetChanged()
+                        adapterNewService.list = list.get(current).services
+                        adapterNewService.notifyDataSetChanged()
+                    }
                 }
 
-            }
 
-            /*
+                */
+/*
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
         val layoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
@@ -228,8 +248,10 @@ list= it
 
             }
             //if (!recyclerView.canScrollVertically(1) && dy > 0)
-            */
-            /* {
+            *//*
+
+                */
+/* {
         //    Toast.makeText(requireContext(), "Last", Toast.LENGTH_LONG).show();
 
             //scrolled to BOTTOM
@@ -237,10 +259,15 @@ list= it
         {
                      //scrolled to TOP
         }}*//*
+*/
+/*
 
         }
-*/
+*//*
+
+            }
         })
+*/
 
        /* binding.rvSubServices.setOnScrollChangeListener { view, i, i1, i2, i3 ->
             if (!binding.rvSubServices.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
@@ -252,7 +279,7 @@ list= it
 
             }
         }*/
-        val linearLayoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
+
 
 /*
         binding.rvSubServices.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
@@ -291,7 +318,7 @@ list= it
              }
         })
 */
-    }
+
                 /*   fun onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
 
                         } */
@@ -333,6 +360,85 @@ list= it
         binding.recOffers.init(requireContext(), adapterOffers, 2)
 */
 
+        val linearLayoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
+
+        binding.rvSubServices .addOnItemTouchListener( object :  RecyclerView.OnItemTouchListener {
+
+
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                if (e.getAction() == MotionEvent.ACTION_UP
+                    || e.getAction() == MotionEvent.ACTION_MOVE
+                ) {
+                    if (linearLayoutManager.findFirstCompletelyVisibleItemPosition() > 0) {
+                        if (current < list.size - 1) {
+                            current = current + 1
+                            list.get(current).checked = 1
+                            adapter.selectOneItemOnly(list.get(current), current)
+                            adapter.notifyDataSetChanged()
+                            adapterNewService.list = list.get(current).services
+                            adapterNewService.notifyDataSetChanged()
+                        }   //your recycler view reached Top do some thing
+                    }
+
+                    //your recycler view reached Top do some thing
+
+
+                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition() + 1 < binding.rvSubServices.getAdapter()
+                            ?.getItemCount()!!
+                    ) {
+                        if (current > 1) {
+                            current = current - 1
+                            list.get(current).checked = 1
+                            adapter.selectOneItemOnly(list.get(current), current)
+                            adapter.notifyDataSetChanged()
+                            adapterNewService.list = list.get(current).services
+                            adapterNewService.notifyDataSetChanged()
+                        }
+                    }
+                }
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+            }
+        })
+        binding.rvSubServices.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val itemPosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
+                if (itemPosition == 0) { //  item position of uses
+            showToast("0")
+                } else if (itemPosition == 1) { //  item position of side effects
+                    showToast("1")
+                } else if (itemPosition == 2) { //  item position of how it works
+                    showToast("2")
+                } else if (itemPosition == 3) { //  item position of precaution
+                    showToast("3")
+                }
+            }
+        })
+/*  if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+              }
+              if (!recyclerView.canScrollVertically(0) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+              }*//*
+
+
+        })
+*/
+
+    }
+
+  open fun isRecyclerViewAtTop(): Boolean {
+    return if (binding.rvSubServices.getChildCount() === 0) true else binding.rvSubServices.getChildAt(0)
+        .getTop() === 0
+}  open fun isRecyclerViewABottom(): Boolean {
+    return if (binding.rvSubServices.getChildCount() === list.get(current).services.size) true else binding.rvSubServices.getChildAt(0)
+        .getTop() === 0
+}
     override fun onFilterOffersByCategory(position: Int, item: CategoriesAndServices?) {
       current   =position
       item?.services?.let {
