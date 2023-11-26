@@ -138,7 +138,7 @@ class BasketFragment : BaseFragment<FragmentBasketBinding>(), BasketClickListene
          //   showActivity(MainActivity::class.java, clearAllStack = true)
         }
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.checkoutFragment)
+            findNavController().navigate(R.id.checkoutFragment , bundleOf(Constants.TOTAL  to total))
             //     findNavController().navigate(R.id.chooseBarberFragment , bundleOf(Constants.TOTAL  to total))
         }
         binding.btnAddService.setOnClickListener {

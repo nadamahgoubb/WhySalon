@@ -25,7 +25,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-          android:visibility="gone"      android:id="@+id/lyt_data"
+       android:id="@+id/lyt_data"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
              android:background="@drawable/bg_btn_white_rounded_top"
@@ -347,6 +347,7 @@
                     <LinearLayout
                         android:id="@+id/lyt_phone"
                         android:layout_width="match_parent"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:gravity="center"
@@ -402,50 +403,18 @@
 
                     </LinearLayout>
 
-                    <!--   <EditText
-                           android:id="@+id/et_phone"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_marginTop="@dimen/_8sdp"
-                           android:background="@drawable/bg_btn_white_grey_border"
-                           android:drawableStart="@drawable/ic_call"
-                           android:drawablePadding="@dimen/_4sdp"
-                           android:drawableTint="@color/grey"
-                           android:hint="@string/enter_phone_number"
-                           android:inputType="phone"
-                           android:minHeight="@dimen/_40sdp"
-                           android:paddingHorizontal="@dimen/_10sdp"
-                           android:textAlignment="viewStart"
-                           android:textColorHint="@color/grey_medium"
-                           android:textSize="@dimen/_12sdp"
-                           app:layout_constraintTop_toBottomOf="@+id/et_disount_code" />
-   -->
-                    <TextView
+
+    <!--                <TextView
                         android:id="@+id/tv_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:text="@string/payment_methods"
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_14sdp"
+              android:visibility="gone"          android:textSize="@dimen/_14sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/lyt_phone" />
 
-                    <!--    <TextView
-                            android:id="@+id/et_payment_method"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:background="@drawable/bg_btn_white_grey_border"
-                            android:drawableEnd="@drawable/ccp_ic_arrow_drop_down"
-                            android:drawableTint="@color/black"
-                            android:gravity="center_vertical"
-                            android:hint="@string/select_payment_method"
-                            android:minHeight="@dimen/_40sdp"
-                            android:paddingHorizontal="@dimen/_10sdp"
-                            android:textColorHint="@color/grey_medium"
-                            android:textSize="@dimen/_12sdp"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_4" />-->
                     <LinearLayout
                         android:id="@+id/et_payment_method"
                         android:layout_width="match_parent"
@@ -468,7 +437,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView" />
-                    </LinearLayout>
+                    </LinearLayout>-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
@@ -544,11 +513,45 @@
                                 android:textSize="@dimen/_10sdp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lyt_next"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_marginVertical="@dimen/_10sdp"
+                            android:background="@drawable/bg_btn_gray"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            app:backgroundTint="@color/black"
+                            app:layout_constraintTop_toBottomOf="@+id/lyt_show_time">
+
+                            <TextView
+                                android:id="@+id/btn_next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_10sdp"
+                                android:text="@string/booking_appointment"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                            android:textSize="@dimen/_13sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/lyt_nxt"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
+                 android:visibility="gone"           android:layout_height="@dimen/_50sdp"
                             android:layout_marginHorizontal="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:elevation="@dimen/_65sdp"

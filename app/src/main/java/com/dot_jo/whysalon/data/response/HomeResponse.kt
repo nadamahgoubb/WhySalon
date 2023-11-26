@@ -110,7 +110,9 @@ data class CategoriesAndServices (
     @SerializedName("category_description" ) var categoryDescription : String?             = null,
     @SerializedName("category_image"       ) var categoryImage       : String?             = null,
     @SerializedName("services"             ) var services            : ArrayList<ServicesInCatgories> = arrayListOf(),
-    var checked:Int ? = 0
+    var checked:Int ? = 0,
+    var index:Int  = 0,
+
 
 ) : Parcelable
 
@@ -129,5 +131,7 @@ data class ServicesInCatgories (
 @SerializedName("offer"               ) var offer              : Boolean?          = null,
 @SerializedName("price"               ) var price              : String?              = null,
 @SerializedName("price_before"        ) var priceBefore        : String?              = null,
-@SerializedName("images"              ) var images             : @RawValue ArrayList<Images> = arrayListOf()
+@SerializedName("images"              ) var images             : @RawValue ArrayList<Images> = arrayListOf(),
+var index:Int  = 0,
+
 ) : Parcelable

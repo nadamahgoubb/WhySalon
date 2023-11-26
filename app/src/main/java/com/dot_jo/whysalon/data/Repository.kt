@@ -79,7 +79,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
     suspend fun deleteCart(params: DeleteFronCartParams) = api.deleteFronCart(params.package_id)
     suspend fun getOffers(params: OffersParam) = api.getOffers(params.category_id)
     suspend fun addReBooking(params: AddReBookingParams) =
-        api.addReBooking(params.barber_id, params.date, params.time, params.order_id)
+        api.addReBooking(params.barber_id, params.date, params.time, params.order_id,params.payment_method, params.discount_code,params.phone, params.country_code)
     suspend fun addBooking(params: AddBookingParams) =
         api.addBooking(params.barber_id, params.date, params.time, params.payment_method, params.discount_code,params.phone, params.country_code
         )
@@ -91,8 +91,7 @@ class Repository @Inject constructor(private val api: ApiInterface) {
             it
         )
     }
-
-    suspend fun rebooking(param: ReBookingParam) = param.booking_id?.let {
+     suspend fun rebooking(param: ReBookingParam) = param.booking_id?.let {
         api.rebooking(
             it
         )

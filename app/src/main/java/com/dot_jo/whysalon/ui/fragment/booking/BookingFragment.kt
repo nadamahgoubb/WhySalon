@@ -3,6 +3,7 @@ package com.dot_jo.whysalon.ui.fragment.booking
 import android.annotation.SuppressLint
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
@@ -108,8 +109,11 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>(), CancelBookingLis
         binding.btnGoHistory.setOnClickListener {
             findNavController().navigate(R.id.historyFragment)
         }
-        binding.btnMakeappon.setOnClickListener {
-showActivity(MainActivity::class.java , clearAllStack = true)        }
+        binding.btnMakeappon.setOnClickListener {   findNavController().navigate(
+            R.id.homeFragment,
+            null,
+            NavOptions.Builder().setPopUpTo(R.id.homeFragment, true).build()
+        )     }
 
     }
 

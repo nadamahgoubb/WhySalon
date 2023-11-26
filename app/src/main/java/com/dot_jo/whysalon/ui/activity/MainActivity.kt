@@ -116,7 +116,7 @@ companion object
 
     private fun onClick() {
         binding.card.setOnClickListener {
-            if(navController.currentDestination?.id?.equals(R.id.notifactionFragment) == true){
+             if(navController.currentDestination?.id?.equals(R.id.notifactionFragment) == true){
                 navController.popBackStack()
 
             }else{

@@ -226,4 +226,6 @@
     <string name="empty_payment_type">برجاء اختيار طريقة الدفع</string>
     <string name="choose_packages_you_want">اختار الباقة</string>
     <string name="vaild_cupon_with">كود خصم صالح ب </string>
+    <string name="there_are_no_current_services">لا يوجد خدمات حالية!</string>
+    <string name="there_are_no_current_packages">لا يوجد باقات حاليا!</string>
 </resources>

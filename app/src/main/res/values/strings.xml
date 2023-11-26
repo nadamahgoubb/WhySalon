@@ -220,6 +220,7 @@ We value your feedback. </string>
     <string name="select_payment_method">Select Payment method</string>
     <string name="reservation_finished">Reservation Finished</string>
     <string name="there_are_no_current_services">There are no current services!</string>
+    <string name="there_are_no_current_packages">There are no current Packages!</string>
     <string name="choose_your_packages">Choose your packages</string>
     <string name="services_avaliable">services avaliable</string>
     <string name="empty_payment_type">Please choose Payment type</string>

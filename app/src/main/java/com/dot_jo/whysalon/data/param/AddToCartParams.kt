@@ -16,6 +16,8 @@ data class AddReBookingParams(
     var date: String,
     var time: String,
     var order_id: String = "",
+    var  payment_method: String, var discount_code: String?,
+    var   phone: String?,var country_code: String?,
 )
 data class AddBookingParams(
     var barber_id: String,

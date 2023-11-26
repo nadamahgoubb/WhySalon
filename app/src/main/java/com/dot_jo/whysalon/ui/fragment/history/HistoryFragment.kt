@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.dot_jo.whysalon.R
 import com.dot_jo.whysalon.base.BaseFragment
@@ -75,7 +76,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
 
             is BookingAction.ShowReBooking -> {
                 findNavController().navigate(
-                    R.id.chooseBarberFragment, bundleOf(
+                    R.id.checkoutFragment, bundleOf(
                         Constants.TOTAL to action.data.finalTotal?.toDoubleOrNull()
                             ?.roundToInt().toString(),
                         Constants.ORDER_ID to orderId
@@ -113,7 +114,11 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(), HistoryClickList
         }
         binding.btnMakeappon.setOnClickListener {
 
-            showActivity(MainActivity::class.java , clearAllStack = true)           }
+            findNavController().navigate(
+                R.id.homeFragment,
+                null,
+                NavOptions.Builder().setPopUpTo(R.id.homeFragment, true).build()
+            )     }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

@@ -31,7 +31,13 @@ class FilterServiceHomeAdapter(var listener: FilterHomeByServiceClickListener) :
         )
 
     }
-
+  /*  fun updateList(position: Int) {
+        for ((index ,model) in list.withIndex()) {
+            model?.checked = position == index
+        }
+        notifyDataSetChanged()
+    }
+*/
 
     override fun onBindViewHolder(holder: FilterOfferViewHolder, position: Int) {
         var currentItem = list[position]
@@ -85,6 +91,7 @@ class FilterServiceHomeAdapter(var listener: FilterHomeByServiceClickListener) :
                     lastDeafult.categoryImage,
                      lastDeafult.services,
                     0,
+                    lastDeafult.index,
 
                     )
             )

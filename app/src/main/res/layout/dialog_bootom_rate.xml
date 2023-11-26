@@ -75,7 +75,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:isIndicator="false"
                 android:layoutDirection="inherit"
-                android:numStars="5"
+         android:rating="5"       android:numStars="5"
                 android:stepSize="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.525"

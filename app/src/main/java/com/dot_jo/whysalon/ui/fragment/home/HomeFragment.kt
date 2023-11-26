@@ -2,7 +2,6 @@ package com.dot_jo.whysalon.ui.fragment.home
 
  import android.annotation.SuppressLint
  import android.os.Build
- import android.view.MotionEvent
  import androidx.annotation.RequiresApi
  import androidx.core.view.isVisible
  import androidx.fragment.app.viewModels
@@ -24,7 +23,6 @@ package com.dot_jo.whysalon.ui.fragment.home
  import com.dot_jo.whysalon.util.ext.hideKeyboard
  import com.dot_jo.whysalon.util.ext.init
  import com.dot_jo.whysalon.util.observe
- import com.google.android.material.tabs.TabLayout
  import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -35,11 +33,12 @@ var serviceCount=0
    // lateinit var adapterPackages: PackagesAdapter
     lateinit var adapterNewService: NewServiceAdapter
   //  lateinit var adapterOffers: OffersAdapter
-    lateinit var adapter: FilterServiceHomeAdapter
+    lateinit var adapter_: FilterServiceHomeAdapter
     private lateinit var parent: MainActivity
     private val mViewModel: HomeViewModel by viewModels()
 
    var list: ArrayList<CategoriesAndServices> = arrayListOf()
+   var listSub: ArrayList<ServicesInCatgories> = arrayListOf()
     override fun onFragmentReady() {
         setupUi()
         onClick()
@@ -77,86 +76,67 @@ var serviceCount=0
 
             is HomeAction.CategoiesAndServicesSucess -> {
                 showProgress(false)
-binding.lytData.isVisible= true
+                binding.lytData.isVisible = true
+                listSub = arrayListOf()
                 action.data.categoriesAndServices?.let {
-list= it
-                    adapter.list = it
-                    adapter.notifyDataSetChanged()
-                    if(it.get(0).services.isNullOrEmpty()){
+                    list = it
+                    adapter_.list = it
+                    adapter_.notifyDataSetChanged()
+
+                    it.forEachIndexed { index, element ->
+
+                            element.index = index
+                            element.services.forEach {
+                                it.index = index
+                            }
+                            listSub.addAll(element.services)
+
+
+
+                    }
+                    if (it.get(0).services.isNullOrEmpty()) {
                         binding.lytEmptyState.isVisible = true
                         binding.lytData.isVisible = false
-                    }else {
+                    } else {
                         it?.get(0)?.checked = 1
                         it.get(0)?.services?.let {
 
-                            adapterNewService.list = it
+                            adapterNewService.list = listSub
                             adapterNewService.notifyDataSetChanged()
 
-                            current=0
-                            serviceCount= it.size
+                            current = 0
+                            serviceCount = it.size
                         }
-                    }}
-            }
-
-          /*  is HomeAction.PackagesSucess -> {
-
-                showProgress(false)
-
-                action.data.packages?.let {
-
-                    if (it.size > 0) {
-                        adapterPackages.list = it
-                        adapterPackages.notifyDataSetChanged()
-                        binding.rvRecommended.isVisible= true
-
-                    } else {
-                        binding.rvRecommended.isVisible= false
-
-
-                    } }
-            }
-*/
-
-            is HomeAction.AddItemToCart -> {
-                showToast(getString(R.string.added_to_cart_successfully))
-                mViewModel.getCart()
-            }
-
-            is HomeAction.ShowCartData -> {
-                parent.setBadge(action.data.carts.size)
-
-            }
-
-            is HomeAction.ShowFailureMsg -> action.message?.let {
-                if (it.contains("401") == true) {
-                    findNavController().navigate(R.id.loginFirstDialog)
-                } else {
-                    showToast(action.message)
-                }
-                showProgress(false)
-
-            }
-          /*  is HomeAction.ServicesByCategory -> {
-
-                showProgress(false)
-                action.data.services?.let {
-                    if (it.isNullOrEmpty()) {
-                        binding.lytEmptyState.isVisible = true
-                        binding.lytData.isVisible = false
-                    } else {
-                        binding.lytEmptyState.isVisible = false
-                        binding.lytData.isVisible = true
-                        adapterNewService.list = it
-                        adapterNewService.notifyDataSetChanged()
-                        binding.rvSubServices.addItemDecoration(SimpleDividerItemDecoration(requireContext()));
                     }
                 }
-            }*/
-            else -> {
 
             }
+
+                is HomeAction.AddItemToCart -> {
+                    showToast(getString(R.string.added_to_cart_successfully))
+                    mViewModel.getCart()
+                }
+
+                is HomeAction.ShowCartData -> {
+                    parent.setBadge(action.data.carts.size)
+
+                }
+
+                is HomeAction.ShowFailureMsg -> action.message?.let {
+                    if (it.contains("401") == true) {
+                        findNavController().navigate(R.id.loginFirstDialog)
+                    } else {
+                        showToast(action.message)
+                    }
+                    showProgress(false)
+
+                }
+
+                else -> {
+
+                }
+            }
         }
-    }
 
     private fun onClick() {
 
@@ -180,277 +160,61 @@ list= it
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun initAdapter() {
-        adapter = FilterServiceHomeAdapter(this)
-        binding.rvServices.init(requireContext(), adapter, 1)
+        adapter_ = FilterServiceHomeAdapter(this)
+        binding.rvServices.init(requireContext(), adapter_, 1)
 
         adapterNewService = NewServiceAdapter(this)
         binding.rvSubServices.init(requireContext(), adapterNewService, 2)
-       // binding.rvSubServices.addItemDecoration(SimpleDividerItemDecoration(requireContext()));
-/*
-        binding.rvSubServices.setOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (isRecyclerViewAtTop()) {
-                    */
-/*    if (current < list.size - 1) {
-                        current = current + 1
-                        list.get(current).checked = 1
-                        adapter.selectOneItemOnly(list.get(current), current)
-                        adapter.notifyDataSetChanged()
-                        adapterNewService.list = list.get(current).services
-                        adapterNewService.notifyDataSetChanged()
-                    }  *//*
-  //your recycler view reached Top do some thing
-                }
-                if (isRecyclerViewABottom()) {
-                    //your recycler view reached Top do some thing
-                    if (current < list.size - 1) {
-                        current = current + 1
-                        list.get(current).checked = 1
-                        adapter.selectOneItemOnly(list.get(current), current)
-                        adapter.notifyDataSetChanged()
-                        adapterNewService.list = list.get(current).services
-                        adapterNewService.notifyDataSetChanged()
-                    }
-                }
-
-
-                */
-/*
-    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-        super.onScrolled(recyclerView, dx, dy)
-        val layoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
-        val isScrolledToTop =
-            layoutManager.findFirstVisibleItemPosition() == 0 && layoutManager.findViewByPosition(0)?.top == 0
-        val isScrolledToBottom =
-            layoutManager.findLastVisibleItemPosition() + layoutManager.childCount == layoutManager.itemCount
-
-        if (isScrolledToTop) {
-            if (current < list.size - 1) {
-                current = current + 1
-                list.get(current).checked = 1
-                adapter.selectOneItemOnly(list.get(current), current)
-                adapter.notifyDataSetChanged()
-                adapterNewService.list = list.get(current).services
-                adapterNewService.notifyDataSetChanged()
-            }
-        } else if (isScrolledToBottom) {
-            if (current > 1) {
-                current = current - 1
-                list.get(current).checked = 1
-                adapter.selectOneItemOnly(list.get(current), current)
-                adapter.notifyDataSetChanged()
-                adapterNewService.list = list.get(current).services
-                adapterNewService.notifyDataSetChanged()
-            }
-        }
-        else {
-
-            }
-            //if (!recyclerView.canScrollVertically(1) && dy > 0)
-            *//*
-
-                */
-/* {
-        //    Toast.makeText(requireContext(), "Last", Toast.LENGTH_LONG).show();
-
-            //scrolled to BOTTOM
-        }else if (!recyclerView.canScrollVertically(-1) && dy < 0)
-        {
-                     //scrolled to TOP
-        }}*//*
-*/
-/*
-
-        }
-*//*
-
-            }
-        })
-*/
-
-       /* binding.rvSubServices.setOnScrollChangeListener { view, i, i1, i2, i3 ->
-            if (!binding.rvSubServices.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
-                *//*   *//*
-
-
-            } else {
-
-
-            }
-        }*/
-
-
-/*
-        binding.rvSubServices.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                if (e.getAction() == MotionEvent.ACTION_UP
-                    || e.getAction() == MotionEvent.ACTION_MOVE){
-                    if (linearLayoutManager.findFirstCompletelyVisibleItemPosition() > 0)
-                    {
-                        if (current > 1) {
-                            current = current - 1
-                            list.get(current).checked = 1
-                            adapter.selectOneItemOnly(list.get(current), current)
-                            adapter.notifyDataSetChanged()
-                            adapterNewService.list = list.get(current).services
-                            adapterNewService.notifyDataSetChanged()
-                        }                 }
-
-                    if (linearLayoutManager.findLastVisibleItemPosition()+1 < binding.rvSubServices.getAdapter()?.getItemCount()!!)
-                    {
-                        if (current < list.size - 1) {
-                            current = current + 1
-                            list.get(current).checked = 1
-                            adapter.selectOneItemOnly(list.get(current), current)
-                            adapter.notifyDataSetChanged()
-                            adapterNewService.list = list.get(current).services
-                            adapterNewService.notifyDataSetChanged()
-                        }                          }
-                }
-                return false;
-            }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-             }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-             }
-        })
-*/
-
-                /*   fun onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-
-                        } */
-
-/*
-// ... ... ...
-
-        // ... ... ...
-        fun onScroll(
-            lw: AbsListView, firstVisibleItem: Int,
-            visibleItemCount: Int, totalItemCount: Int
-        ) {
-            when (lw.id) {
-                R.id.your_list_id -> {
-
-                    // Make your calculation stuff here. You have all your
-                    // needed info from the parameters of this function.
-
-                    // Sample calculation to determine if the last
-                    // item is fully visible.
-                    val lastItem = firstVisibleItem + visibleItemCount
-                    if (lastItem == totalItemCount) {
-                        if (preLast !== lastItem) {
-                            //to avoid multiple calls for last item
-                            Log.d("Last", "Last")
-                            preLast = lastItem
+        //  var linearLayoutManager = LinearLayoutManager(requireContext())
+        binding.rvSubServices.apply {
+            val linearLayoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
+            //   layoutManager = linearLayoutManager
+            //    adapter = CategoryAdapter(catModel)
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    if(isSelectSubCatScrollClick) {
+                    linearLayoutManager?.let { lm ->
+                        val index = lm.findFirstVisibleItemPosition()
+                        if ((listSub.size - 1) >= index) {
+                            listSub[index]?.let { sd ->
+                             if (current != sd. index) {
+                                 current = sd.index
+                                 list.get(current).checked = 1
+                                 adapter_?.selectOneItemOnly(
+                                     list.get(current),
+                                     list.get(current).index
+                                 )
+                                 //  selectOneItemOnly(currentItem , position)
+                                 binding.rvServices.layoutManager?.scrollToPosition(current)
+                                 //    binding.rvSubServices.layoutManager?.scrollToPosition(current)
+                             }    }
                         }
                     }
-                }
-            }
+                 }
+            })
         }
-)*/
-/*
-
-        adapterCategories = CategoriesAdapter(this)
-        binding.recServices.init(requireContext(), adapterCategories, 1)
-
-        adapterOffers = OffersAdapter(this)
-        binding.recOffers.init(requireContext(), adapterOffers, 2)
-*/
-
-        val linearLayoutManager = binding.rvSubServices.layoutManager as LinearLayoutManager
-
-        binding.rvSubServices .addOnItemTouchListener( object :  RecyclerView.OnItemTouchListener {
-
-
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                if (e.getAction() == MotionEvent.ACTION_UP
-                    || e.getAction() == MotionEvent.ACTION_MOVE
-                ) {
-                    if (linearLayoutManager.findFirstCompletelyVisibleItemPosition() > 0) {
-                        if (current < list.size - 1) {
-                            current = current + 1
-                            list.get(current).checked = 1
-                            adapter.selectOneItemOnly(list.get(current), current)
-                            adapter.notifyDataSetChanged()
-                            adapterNewService.list = list.get(current).services
-                            adapterNewService.notifyDataSetChanged()
-                        }   //your recycler view reached Top do some thing
-                    }
-
-                    //your recycler view reached Top do some thing
-
-
-                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition() + 1 < binding.rvSubServices.getAdapter()
-                            ?.getItemCount()!!
-                    ) {
-                        if (current > 1) {
-                            current = current - 1
-                            list.get(current).checked = 1
-                            adapter.selectOneItemOnly(list.get(current), current)
-                            adapter.notifyDataSetChanged()
-                            adapterNewService.list = list.get(current).services
-                            adapterNewService.notifyDataSetChanged()
-                        }
-                    }
-                }
-                return false
-            }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-            }
-        })
-        binding.rvSubServices.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val itemPosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
-                if (itemPosition == 0) { //  item position of uses
-            showToast("0")
-                } else if (itemPosition == 1) { //  item position of side effects
-                    showToast("1")
-                } else if (itemPosition == 2) { //  item position of how it works
-                    showToast("2")
-                } else if (itemPosition == 3) { //  item position of precaution
-                    showToast("3")
-                }
-            }
-        })
-/*  if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-
-              }
-              if (!recyclerView.canScrollVertically(0) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-              }*//*
-
-
-        })
-*/
-
     }
 
-  open fun isRecyclerViewAtTop(): Boolean {
-    return if (binding.rvSubServices.getChildCount() === 0) true else binding.rvSubServices.getChildAt(0)
-        .getTop() === 0
-}  open fun isRecyclerViewABottom(): Boolean {
-    return if (binding.rvSubServices.getChildCount() === list.get(current).services.size) true else binding.rvSubServices.getChildAt(0)
-        .getTop() === 0
-}
     override fun onFilterOffersByCategory(position: Int, item: CategoriesAndServices?) {
       current   =position
-      item?.services?.let {
+        adapter_?.selectOneItemOnly(list.get(current), current)
+        binding.rvServices.layoutManager?.scrollToPosition(current)
+        item?.services?.let {
             if (it.isNullOrEmpty()) {
                 binding.lytEmptyState.isVisible = true
                 binding.lytData.isVisible = false
             } else {
                 binding.lytEmptyState.isVisible = false
                 binding.lytData.isVisible = true
-                adapterNewService.list = it
-                adapterNewService.notifyDataSetChanged()
-                binding.rvSubServices.addItemDecoration(SimpleDividerItemDecoration(requireContext()));
+            //    adapterNewService.list = it
+              //  adapterNewService.notifyDataSetChanged()
+                var newPosition =0
+                var  i =0
+                while(i   < position){
+                    newPosition= newPosition+list.get(i).services.count()
+            i++
+                }
+                binding.rvSubServices.layoutManager?.scrollToPosition( newPosition);
             }
         }  }
 

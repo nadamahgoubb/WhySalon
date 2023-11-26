@@ -61,10 +61,16 @@ class PackagesFragment : BaseFragment<FragmentPackagesBinding>(), HomeClickListe
 
                 action.data.packages?.let {
                     if (it.size > 0) {
+                        binding.lytEmptyState.isVisible = false
                         binding.lytData.isVisible = true
                         adapterPackages.list = it
                         adapterPackages.notifyDataSetChanged()
-                    }
+                    }    else {
+                            binding.lytEmptyState.isVisible = true
+                            binding.lytData.isVisible = false
+
+                        }
+
                 }
             }
             is HomeAction.ShowCartData -> {

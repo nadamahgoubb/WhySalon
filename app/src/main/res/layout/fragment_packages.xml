@@ -9,8 +9,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/bg_btn_white_rounded_top"
-        android:backgroundTint="@color/white" android:layout_height="match_parent">
+        android:backgroundTint="@color/white">
 
         <com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout
             android:id="@+id/swiperefresh_home"
@@ -19,53 +20,92 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/lyt_data"
-            android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                 >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_services"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_15sdp"
-                        android:text="@string/choose_packages_you_want"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_empty_state"
+                android:visibility="gone"        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_services">
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_packages"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tv_2"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:clipToPadding="false"
-                            android:orientation="vertical"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:text="@string/there_are_no_current_packages"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
-                            tools:listitem="@layout/item_packages" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    </LinearLayout>
 
+                        <ImageView
+                            android:id="@+id/iv_empty"
+                            android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/_40sdp"    android:layout_height="0dp"
+                         android:padding="@dimen/_50sdp"
+                             android:src="@drawable/percentage"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_2" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_services"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:text="@string/choose_packages_you_want"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_services">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_packages"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipToPadding="false"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_offers_view_all"
+                                tools:listitem="@layout/item_packages" />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             </ScrollView>
         </com.dot_jo.whysalon.base.OnlyVerticalSwipeRefreshLayout>

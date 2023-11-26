@@ -9,7 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history_year_bfore"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
+       android:layout_height="@dimen/_400sdp"
+        android:minHeight="@dimen/_300sdp"
         android:layout_marginTop="@dimen/_8sdp"
         android:clipToPadding="false"
         android:orientation="horizontal"

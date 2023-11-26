@@ -72,9 +72,9 @@ import kotlin.properties.Delegates
 class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(), BarbarClickListener,
     FilterTimeClickListener, CountryCodePicker.OnCountryChangeListener {
 
-    var paymentId = -1
     private var countryCode = "+966"
     private var date_: String? = null
+    var enableCheckout = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     private var today: LocalDate = LocalDate.now()
@@ -92,11 +92,12 @@ class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(), BarbarClickLis
         setupUi()
         initAdapter()
 
+        mViewModel.total = arguments?.getString(Constants.TOTAL)
         orderId = arguments?.getString(Constants.ORDER_ID, "").toString()
         if (orderId == "null") {
             orderId = ""
         }
-
+        binding.tvTotal.text = mViewModel.total + resources.getString(R.string.sr)
         date_ = LocalDate.now().formatDate("yyyy-MM-dd")
 
         today = LocalDate.parse(date_, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
@@ -170,10 +171,15 @@ class CheckoutFragment : BaseFragment<FragmentCheckoutBinding>(), BarbarClickLis
 
 
             }
-  is CreateOrderAction.ShowCuponVaildation -> {
-                showProgress(false)
-showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?.percent + " %")
 
+            is CreateOrderAction.ShowCuponVaildation -> {
+                showProgress(false)
+                showToast(resources.getString(R.string.vaild_cupon_with) + " " + action.data.coupon?.percent + " %")
+                discount = action.data.coupon?.percent.toString()
+                mViewModel.totalAfterDiscount =
+                    ((mViewModel.total?.toDouble()
+                        ?.times((100 - discount!!.toDouble())))?.div(100)).toString()
+                binding.tvTotal.setText(mViewModel.totalAfterDiscount + resources.getString(R.string.sr))
 
             }
 
@@ -183,6 +189,7 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
         }
     }
 
+    var discount: String? = null
     private fun showTimeList(data: TimesOfBarbarResponse) {
         if (data.date == today_date) {
 
@@ -213,6 +220,8 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
         }
     }
 
+    var phone: String? = null
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupUi() {
         parent = requireActivity() as MainActivity
@@ -224,27 +233,30 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
             activity?.onBackPressed()
         }
         binding.countryCodePicker.setOnCountryChangeListener(this)
+
+        var phone = binding.etPhone.text.toString()
+        if (PrefsHelper.getUserData()?.client?.phone.isNullOrEmpty()) {
+            binding.lytPhone.isVisible = true
+        }
         binding.etDisountCode.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                if (charSequence.toString().length >  3){
-               mViewModel.checkCupon(charSequence.toString())    // d = charSequence.toString()
-                 }
+                if (charSequence.toString().length > 3) {
+                    mViewModel.checkCupon(charSequence.toString())    // d = charSequence.toString()
+                }
             }
 
             override fun afterTextChanged(editable: Editable) {}
         })
 
 
-    binding.lytNxt.setOnClickListener {
+        binding.lytNext.setOnClickListener {
             //   if (state == 1) {
             var phone = binding.etPhone.text.toString()
             if (mViewModel.barbar == null) showToast(resources.getString(R.string.choose_the_barber))
             else if (mViewModel.date == null) showToast("" + resources.getString((R.string.choose_the_time_with_barber_s_name)) + " " + mViewModel?.barbar?.name.toString())
             else if (time == null) showToast("" + resources.getString((R.string.choose_the_time_with_barber_s_name)) + " " + mViewModel?.barbar?.name.toString())
-            else if (paymentId == 0) {
-                showToast(resources.getString(R.string.empty_payment_type))
-            } else if (binding.etPhone.text.toString().isNullOrEmpty()) {
+            else if (binding.etPhone.text.toString().isNullOrEmpty()) {
                 if (PrefsHelper.getUserData()?.client?.phone.isNullOrEmpty()) {
                     showToast(resources.getString(R.string.msg_empty_phone_number))
                 } else {
@@ -257,14 +269,17 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                                         it2,
                                         it3,
                                         it1,
-                                        paymentId.toString(),
+                                        Constants.cash.toString(),
                                         binding.etDisountCode.text.toString(),
                                         phone,
                                         countryCode
                                     )
                                 } else {
                                     mViewModel.addReBooking(
-                                        it2, it3, it1, orderId!!
+                                        it2, it3, it1, orderId!!, Constants.cash.toString(),
+                                        binding.etDisountCode.text.toString(),
+                                        phone,
+                                        countryCode
                                     )
                                 }
 
@@ -272,8 +287,8 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                         }
                     }
 
-                }}
-            else {
+                }
+            } else {
                 time?.let { it1 ->
                     mViewModel.barbar?.id?.let { it2 ->
                         mViewModel.date?.let { it3 ->
@@ -282,14 +297,17 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                                     it2,
                                     it3,
                                     it1,
-                                    paymentId.toString(),
+                                    Constants.cash.toString(),
                                     binding.etDisountCode.text.toString(),
                                     phone,
                                     countryCode
                                 )
                             } else {
                                 mViewModel.addReBooking(
-                                    it2, it3, it1, orderId!!
+                                    it2, it3, it1, orderId!!, Constants.cash.toString(),
+                                    binding.etDisountCode.text.toString(),
+                                    phone,
+                                    countryCode
                                 )
                             }
 
@@ -328,8 +346,8 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
 
         }
 
-        var listPayment = arrayListOf<SpinnerModl>()
-        listPayment.add(SpinnerModl(Constants.visa, "فيزا", "visa"))
+        /*    var listPayment = arrayListOf<SpinnerModl>()
+    *//*    listPayment.add(SpinnerModl(Constants.visa, "فيزا", "visa"))
         listPayment.add(SpinnerModl(Constants.cash, "نقدي", "Cash"))
         listPayment.add(SpinnerModl(Constants.mada, "مدى", "mada"))
         listPayment.add(SpinnerModl(Constants.mastercard, "ماستر كارد", "mastercard"))
@@ -338,7 +356,8 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                 Constants.american_express, "اميريكان اكسربيس", "american_express"
             )
         )
-        listPayment.add(SpinnerModl(Constants.complementary, "خصم استثنائي", "complementary"))
+        listPayment.add(SpinnerModl(Constants.complementary, "خصم استثنائي", "complementary"))*//*
+        listPayment.add(SpinnerModl(Constants.cash, "الدفع نقدا", "Pay at the store"))
         listPayment.add(SpinnerModl(0, "اختر طريقة الدفع", "Select Payment method"))
 
 
@@ -352,7 +371,7 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                     var pos = listPayment.get(position).id
                     if (pos != null) {
                         paymentId = pos
-
+                        checkEnableCheckout()
                     }
 
 
@@ -363,6 +382,7 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
             }
 
 //                     mViewModel.checkCupon(binding.etDisountCode.text.toString())
+   */
     }
 
     private val weekCalendarView: WeekCalendarView get() = binding.exOneWeekCalendar
@@ -380,9 +400,9 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
 
         daysOfWeek = daysOfWeek()
 
-       binding.legendLayout.children.map { it as TextView }
+        binding.legendLayout.children.map { it as TextView }
 
-      //  (binding.legendLayout).lyt_children?.children?.map { it as TextView }
+            //  (binding.legendLayout).lyt_children?.children?.map { it as TextView }
             ?.forEachIndexed { index, textView ->
                 textView.text = daysOfWeek[index].displayText()
                 textView.setTextColorRes(R.color.grey3)
@@ -586,11 +606,30 @@ showToast(resources.getString(R.string.vaild_cupon_with)+" "+action.data.coupon?
                     mViewModel.date!!
                 )!!.substring(0, 3)
             state = 1
+            checkEnableCheckout()
 
 
         }
     }/* */
+fun checkEnableCheckout(){
+    if (mViewModel.barbar == null) enableButoon(false)
+    else if (mViewModel.date == null) enableButoon(false)
+    else if (time == null) enableButoon(false)
+      else {
+        enableButoon(true)   }
 
+}
+    fun enableButoon(boolean: Boolean) {
+        if (boolean) {
+
+            binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_black_white_border)
+            binding.lytNext.isEnabled= true
+        } else {
+            binding.lytNext.background = resources.getDrawable(R.drawable.bg_btn_gray)
+            binding.lytNext.isEnabled= false
+
+        }
+    }
     override fun onCountrySelected() {
         countryCode = "+" + binding.countryCodePicker.selectedCountryCode
     }

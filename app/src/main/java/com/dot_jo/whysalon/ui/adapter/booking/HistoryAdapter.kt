@@ -56,15 +56,13 @@ class HistoryAdapter(
 
             }
         }
-      //  holder.binding.tvServicesType.setText(context.resources.getString(R.string.service_type) + serviceType)
-        holder.binding.tvServicesType.setText(
+         holder.binding.tvServicesType.setText(
             context.resources.getString(R.string.service_type) + serviceType.substring(
                 0, serviceType.length - 3
             ).toString()
         )
-        currentItem.duration?.toIntOrNull()?.let {
-            holder.binding.tvDuration.setText(getDuration(it, context))
-        }
+             holder.binding.tvDuration.setText( currentItem.duration+" " +context.resources.getString(R.string.min))
+
         holder.binding.tvMoney.setText(
             currentItem.final_total_after_discount?.toDoubleOrNull()?.roundTo(2)
                 .toString() + context.resources.getString(R.string.sr)

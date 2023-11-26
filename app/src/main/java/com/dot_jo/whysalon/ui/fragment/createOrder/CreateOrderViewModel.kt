@@ -30,10 +30,11 @@ class CreateOrderViewModel @Inject constructor(
 ) : BaseViewModel<CreateOrderAction>(app) {
 
     var total: String? = null
+    var totalAfterDiscount: String? = null
     var date: String? = null
     var barbar: BarbarItem? = null
     fun addReBooking(
-        barber_id: String, date: String, time: String,orderId:String) {
+        barber_id: String, date: String, time: String,orderId:String, payment_method: String, discount_code: String?,phone: String?,country_code: String?,) {
 
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
 
@@ -42,7 +43,8 @@ class CreateOrderViewModel @Inject constructor(
                 var res = useCase.invoke(
                     viewModelScope, AddReBookingParams(
                         barber_id, date, time,orderId
-                    )
+                    , payment_method , discount_code ,phone  ,country_code )
+
 
                 ) { res ->
                     when (res) {

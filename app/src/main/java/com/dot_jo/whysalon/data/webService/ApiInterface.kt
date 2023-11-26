@@ -199,6 +199,10 @@ interface ApiInterface {
         @Field("date") date: String?,
         @Field("time") time: String?,
         @Field("order_id") order_id: String = "",
+        @Field("payment_method") payment_method: String?,
+        @Field("discount_code") discount_code: String?,
+        @Field("phone") phone: String?,
+        @Field("country_code") country_code: String?,
     ): NetworkResponse<DevResponse<OtpChangePassswordResponse>, ErrorResponse>
 
     @FormUrlEncoded

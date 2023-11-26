@@ -71,8 +71,9 @@ class BookingAdapter(
             currentItem.final_total_after_discount?.toDoubleOrNull()?.roundTo(2)
                 .toString() + context.resources.getString(R.string.sr)
         )
-        currentItem.duration?.toIntOrNull()?.let {
-            holder.binding.tvTiming.setText(getDuration(it, context))
+        currentItem.duration?.let {
+            holder.binding.tvTiming.setText(it+" " +context.resources.getString(R.string.min))
+                //getDuration(it, context))
         }
         holder.binding.ivService.loadImage(image)
         holder.binding.ivBarber.loadImage(currentItem.barber?.image)
