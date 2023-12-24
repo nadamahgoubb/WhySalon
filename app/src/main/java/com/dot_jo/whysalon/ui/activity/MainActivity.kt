@@ -241,38 +241,7 @@ companion object
             badge.badgeTextColor = getColor(R.color.white)
         }
     }
-/*
-    @SuppressLint("PrivateResource")
-    private fun addBadge(position: Int) {
-        // get badge container (parent)
-        val bottomMenu = binding.navView.menu
-        val v = bottomMenu?.findItem (R.id.basketFragment)
-
-        // inflate badge from layout
-     var   badge = LayoutInflater.from(this)
-            .inflate(R.layout.badge_layout, binding.navView, false)
-
-        // create badge layout parameter
-
-        //    badge?.layoutParams?.let {
-                val badgeLayout: FrameLayout.LayoutParams? = badge?.layoutParams?.let {
-                    FrameLayout.LayoutParams(
-                        it
-                    )
-                }
-                    //.apply {
-            //        gravity = Gravity.CENTER_HORIZONTAL
-                 //   topMargin = resources.getDimension(com.intuit.sdp.R.dimen._4sdp).toInt()
-
-                    // <dimen name="bagde_left_margin">8dp</dimen>
-               //     leftMargin = resources.getDimension(com.intuit.sdp.R.dimen._4sdp).toInt()
-          //      }
-                v?.addView(badge, badgeLayout)
-       //     }
-
-        // add view to bottom bar with layout parameter
-    }*/
-    fun showToolbar(show: Boolean) {
+     fun showToolbar(show: Boolean) {
 
         binding.header.isVisible = show
     }

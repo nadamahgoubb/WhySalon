@@ -5,8 +5,6 @@ import com.dot_jo.whysalon.base.BaseUseCase
 import com.dot_jo.whysalon.base.DevResponse
 import com.dot_jo.whysalon.base.ErrorResponse
 import com.dot_jo.whysalon.base.NetworkResponse
-import com.dot_jo.whysalon.data.param.EditProfileParam
-import com.dot_jo.whysalon.data.param.changePasswordParam
 import com.dot_jo.whysalon.data.Repository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow

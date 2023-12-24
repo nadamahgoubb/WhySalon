@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
 @AndroidEntryPoint
-
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private var client: Client?= null
     private lateinit var parent: MainActivity
